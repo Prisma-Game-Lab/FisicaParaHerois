@@ -10,7 +10,7 @@ using UnityEngine;
 
 public class PushPullAction : MonoBehaviour, IAction {
 
-    public void Do()
+    public void Do(List<PhysicsObject> targets)
     {
         
     }

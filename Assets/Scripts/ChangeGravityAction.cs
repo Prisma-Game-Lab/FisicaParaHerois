@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ChangeGravityAction : MonoBehaviour, IAction {
-    public void Do()
+    public void Do(List<PhysicsObject> targets)
     {
        
     }

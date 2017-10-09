@@ -9,5 +9,5 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface IAction {
-    void Do();
+    void Do(List<PhysicsObject> targets);
 }
