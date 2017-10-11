@@ -8,20 +8,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeMassAction : MonoBehaviour, IAction {
+[RequireComponent(typeof(PhysicsObject))]
+public class ChangeMassAction : MonoBehaviour, IAction<float>
+{
 
-    public void Do(List<PhysicsObject> targets)
+    private PhysicsObject _physicsObj;
+    private float _defaultMass;
+
+    public void Do(float newMass)
     {
-
+        if (newMass >= 0)
+        {
+            _physicsObj.physicsData.mass = newMass;
+        }
     }
 
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void Start()
+    {
+        _physicsObj = gameObject.GetComponent<PhysicsObject>();
+        _defaultMass = _physicsObj.physicsData.mass;
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }

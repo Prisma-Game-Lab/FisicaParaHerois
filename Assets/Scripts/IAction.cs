@@ -8,6 +8,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IAction {
-    void Do(List<PhysicsObject> targets);
+public interface IAction<T> {
+
+    void Do(T parameter);
+    
 }

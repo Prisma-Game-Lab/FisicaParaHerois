@@ -8,11 +8,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PushPullAction : MonoBehaviour, IAction {
+public class PushPullAction : MonoBehaviour, IAction<float> {
 
-    public void Do(List<PhysicsObject> targets)
+    public void Do(float temp)
     {
-        
+        //temporary parameter and implementation
     }
 
     // Use this for initialization

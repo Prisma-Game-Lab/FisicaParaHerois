@@ -11,7 +11,7 @@ using UnityEngine;
 public class PlayerInfo : MonoBehaviour {
 
     public float Life;
-    public List<IAction> Actions;
+    public List<IAction<float>> Actions;
 
 	// Use this for initialization
 	void Start () {
