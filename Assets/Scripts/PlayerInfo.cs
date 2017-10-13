@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour {
-
+    static public GameObject PlayerGameObject;
     public float Life;
     public List<IAction<float>> Actions;
 
@@ -17,9 +17,15 @@ public class PlayerInfo : MonoBehaviour {
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    void Awake()
+    {
+        //Seta a referência do gameObject do player
+        PlayerGameObject = gameObject;
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 

@@ -12,8 +12,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
     public List<EnemyActionInfo<float>> Actions = new List<EnemyActionInfo<float>>();
-
     public float Life = 100;
+    [Tooltip("Distância mínima entre inimigo e player para que o inimigo o detecte")] public float MaxDistanceToDetectPlayer = 5f;
 
     //States
     [HideInInspector] public IState CurrentState;
@@ -67,8 +67,8 @@ public class Enemy : MonoBehaviour {
     /// <returns></returns>
     public bool IsPlayerVisible()
     {
-        //Somente para teste, depois será implementado algo para checar se o player está próximo
-        if (Input.GetKey("1"))
+        //Se a distância entre enemy e player for menor que a distância mínima, inimigo detectou o player
+        if (Vector3.Distance(transform.position, PlayerInfo.PlayerGameObject.transform.position) <= MaxDistanceToDetectPlayer)
         {
             return true;
         }
