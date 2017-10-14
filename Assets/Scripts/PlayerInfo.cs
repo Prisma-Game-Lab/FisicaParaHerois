@@ -11,9 +11,7 @@ using UnityEngine;
 public class PlayerInfo : MonoBehaviour {
     static public GameObject PlayerGameObject;
     public float Life;
-    public List<IAction<float>> Actions = new List<IAction<float>>();
-
-    //Estados do player??
+    public List<IAction<float>> Actions;
 
 	// Use this for initialization
 	void Start () {
