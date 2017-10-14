@@ -13,6 +13,9 @@ public class PlayerInput : MonoBehaviour {
     public PlayerInfo Player;
 
     private float holdTime = 0.8f;          // tempo para ativar a ação do hold
+    private float speed = 2.0f;
+
+    //Chamar ações que os botão irão realizar
 
     // Use this for initialization
     void Start () {
@@ -23,9 +26,37 @@ public class PlayerInput : MonoBehaviour {
     void Update () {
 
         // Verifica se está rodando o jogo no unity caso contrário será em algum mobile
-        #if UNITY_STANDALONE || UNITY_WEBPLAYER
+#if UNITY_STANDALONE || UNITY_WEBPLAYER
         // Controles do teclado
 
+        //Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+        //Player.transform.position += move * speed * Time.deltaTime;
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            Vector2 movement = Vector2.zero;
+            movement.x = Player.transform.position.x - 1 * (Time.deltaTime / 0.5f);
+            //movement.x = Mathf.Max(-1, Player.transform.position.x - 1 * (Time.deltaTime / 0.5f));
+
+            Rigidbody2D rb = Player.GetComponent<Rigidbody2D>();
+            rb.AddForce(movement * speed);
+
+            //float moveHorizontal = Input.GetAxis("Horizontal");
+
+            // Vector3 movement = new Vector3(moveHorizontal, 0.0f, Player.transform.position.y);
+
+            //Rigidbody rb = Player.GetComponent<Rigidbody>();
+            //rb.AddForce(movement * speed);
+            //Player.transform.position = new Vector3(Player.transform.position.x + 5, Player.transform.position.y);
+        } else if (Input.GetKey(KeyCode.D))
+        {
+            Vector2 movement = Vector2.zero;
+            movement.x = Player.transform.position.x - 1 * (Time.deltaTime / 0.5f);
+           // movement.x = Mathf.Max(-1, Player.transform.position.x - 1 * (Time.deltaTime / 0.5f));
+
+            Rigidbody2D rb = Player.GetComponent<Rigidbody2D>();
+            rb.AddForce(-movement * speed);
+        }
 
         // Verifica se está jogando com iOS ou Android
         #elif UNITY_IOS || UNITY_ANDROID 
