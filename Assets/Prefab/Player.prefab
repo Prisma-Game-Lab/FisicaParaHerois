@@ -72,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1413990827813878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.71, y: 1.01, z: 0}
+  m_LocalPosition: {x: -4.55, y: 1.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4251511561311984}
@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 114559763252504456}
+  HoldTime: 0.8
 --- !u!114 &114559763252504456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -236,7 +237,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af42030753f9fd41a73a2ab073ad2c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Life: 0
+  Life: 1
+  PaceSpeed: 2
+  JumpSpeed: 300
 --- !u!114 &114786070342135950
 MonoBehaviour:
   m_ObjectHideFlags: 1

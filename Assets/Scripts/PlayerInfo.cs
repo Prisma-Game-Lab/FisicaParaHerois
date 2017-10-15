@@ -15,24 +15,31 @@ public class PlayerInfo : MonoBehaviour {
     [Tooltip("Velocidade com que o player se move")]
     public float PaceSpeed = 2.0f;
     [Tooltip("Velocidade com que o player realiza o pulo")]
-    public float JumpSpeed = 6.0f;
+    public float JumpSpeed = 60.0f;
 
     private bool receiveDamage;
     private float damageNumber;
     private Vector2 movement;
+    private Rigidbody2D rb;
 
     void Awake()
     {
         //Seta a referência do gameObject do player
         PlayerGameObject = gameObject;
 
-        Actions.Add(new PushPullAction());
+        IAction<float>[] playerActions = gameObject.GetComponents<IAction<float>>();
+
+        foreach(IAction<float> action in playerActions)
+        {
+            Actions.Add(action);
+        }
     }
 
     // Use this for initialization
     void Start () {
 
         damageNumber = 0.0f;
+        rb = this.GetComponent<Rigidbody2D>();
 
     }
 
@@ -57,7 +64,9 @@ public class PlayerInfo : MonoBehaviour {
     /// </summary>
     void OnDeath()
     {
-        Destroy(this);
+        Debug.Log("Player morreu");
+        GameManager.IsEnded = true;
+        Time.timeScale = 0;
     }
 
     /// <summary>
@@ -90,7 +99,6 @@ public class PlayerInfo : MonoBehaviour {
     public void Jump()
     {
         print("JUMP" +  Vector2.up * JumpSpeed);
-        Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
         rb.AddForce(Vector2.up * JumpSpeed);
     }
 
