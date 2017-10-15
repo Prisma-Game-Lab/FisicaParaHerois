@@ -9,15 +9,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour {
-    public float masterVolume;
+    static public SoundManager Instance;
+
+    public float MasterVolume = 1.0f; //define o volume principal do jogo
 
 	// Use this for initialization
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    void Awake() {
+        //Se registra como instância de SoundManager
+        Instance = this;
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }

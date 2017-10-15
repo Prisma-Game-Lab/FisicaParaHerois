@@ -190,6 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 691094800}
   - component: {fileID: 691094801}
+  - component: {fileID: 691094802}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -228,6 +229,18 @@ MonoBehaviour:
   IsEnded: 0
   Data: {fileID: 104656830}
   TimeText: {fileID: 2122209615}
+--- !u!114 &691094802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 691094799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a758a18a1713a42bb144707b127c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MasterVolume: 1
 --- !u!1001 &1334893297
 Prefab:
   m_ObjectHideFlags: 0
