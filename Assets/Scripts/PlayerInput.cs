@@ -56,6 +56,9 @@ public class PlayerInput : MonoBehaviour {
 
             Rigidbody2D rb = Player.GetComponent<Rigidbody2D>();
             rb.AddForce(-movement * speed);
+        } else if (Input.GetKeyDown(KeyCode.P))
+        {
+            GameManager.Instance.OnPause();
         }
 
         // Verifica se está jogando com iOS ou Android
