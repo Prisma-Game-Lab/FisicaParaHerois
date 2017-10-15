@@ -7,68 +7,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< HEAD
 using UnityEngine.SceneManagement;
-=======
 using UnityEngine.UI;
->>>>>>> ba5cb325c7503e84d3418f283386c1cdfecf09b0
 
 public class GameManager : MonoBehaviour {
     static public GameManager Instance;
 
     public static bool IsPaused;
-    public bool IsEnded;
-<<<<<<< HEAD
+    public static bool IsEnded;
     public float TimeInGame;
-
-=======
->>>>>>> ba5cb325c7503e84d3418f283386c1cdfecf09b0
     public PlayerData Data;
-
     public Text TimeText;
 
-    private float _time;
+    private static float _time;
 
 	// Use this for initialization
 	void Start () {
-<<<<<<< HEAD
         IsPaused = false;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        TimeInGame += Time.deltaTime;
-
-        if (IsEnded)
-        {
-            Data.StoreData(1, TimeInGame);
-        }
-	}
-
-    public static void PauseGame()
-    {
-
-        Canvas cnv = GameObject.Find("Canvas").GetComponent<Canvas>();
-        GameObject pause = cnv.transform.FindChild("Pause").GetComponent<GameObject>();
-
-        if (Time.timeScale == 0)
-        {
-            cnv.transform.FindChild("Pause").gameObject.SetActive(false);
-            Time.timeScale = 1f;
-            IsPaused = false;
-        } else
-        {
-            cnv.transform.FindChild("Pause").gameObject.SetActive(true);
-            Time.timeScale = 0;
-            IsPaused = true;
-        }
-        
-    }
 
     public static void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-=======
         //Zera o tempo
         _time = 0.0f;
         IsPaused = false;
@@ -113,19 +73,23 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public void OnPause()
     {
+        Canvas cnv = GameObject.Find("Canvas").GetComponent<Canvas>();
+        GameObject pause = cnv.transform.FindChild("Pause").GetComponent<GameObject>();
+
         if (IsPaused)
         {
+            cnv.transform.FindChild("Pause").gameObject.SetActive(false);
             Time.timeScale = 1f;
             Debug.Log("Jogo despausado");
         }
 
         else
         {
+            cnv.transform.FindChild("Pause").gameObject.SetActive(true);
             Time.timeScale = 0f;
             Debug.Log("Jogo pausado");
         }
 
         IsPaused = !IsPaused;
->>>>>>> ba5cb325c7503e84d3418f283386c1cdfecf09b0
     }
 }
