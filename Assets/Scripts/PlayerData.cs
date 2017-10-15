@@ -21,4 +21,11 @@ public class PlayerData : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    //Chamado quando o jogo acaba (Game Manager?)
+    public void StoreData(int lvl, float time)
+    {
+        Level = lvl;
+        Time = time;
+    }
 }
