@@ -71,27 +71,25 @@ public class PlayerInfo : MonoBehaviour {
     // Movimentação
     public void Move(bool walkLeft)
     {
-        if (movement.x < 2)
+        if (movement.x > -2)
         {
-            // movement.x = Mathf.Max(-1, this.transform.position.x - 1 * (Time.deltaTime / 0.5f));
             movement.x = this.transform.position.x - 1 * (Time.deltaTime / 0.5f);
         }
 
-        print(movement);
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
 
         if (walkLeft)
         {
-            rb.AddForce(Vector2.left * PaceSpeed);
+            rb.AddForce(movement * PaceSpeed);
         } else
         {
-            rb.AddForce(Vector2.right * PaceSpeed);
+            rb.AddForce(-movement * PaceSpeed);
         }
     }
 
     public void Jump()
     {
-        print("JUMP" + Vector2.up * JumpSpeed);
+        print("JUMP" +  Vector2.up * JumpSpeed);
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
         rb.AddForce(Vector2.up * JumpSpeed);
     }
