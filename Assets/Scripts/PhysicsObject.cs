@@ -11,6 +11,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PhysicsObject : MonoBehaviour {
 
+    [HideInInspector]
     public Rigidbody2D physicsData;
 
 	// Use this for initialization

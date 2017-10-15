@@ -42,9 +42,17 @@ public class PlayerInput : MonoBehaviour {
             Player.Jump();
         }
 
+<<<<<<< HEAD
         if (Input.GetKeyDown(KeyCode.R))
         {
             GameManager.ReloadScene();
+=======
+            Rigidbody2D rb = Player.GetComponent<Rigidbody2D>();
+            rb.AddForce(-movement * speed);
+        } else if (Input.GetKeyDown(KeyCode.P))
+        {
+            GameManager.Instance.OnPause();
+>>>>>>> ba5cb325c7503e84d3418f283386c1cdfecf09b0
         }
 
         if (Input.GetKeyDown(KeyCode.P))

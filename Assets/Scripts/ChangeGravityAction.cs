@@ -11,6 +11,8 @@ using UnityEngine;
 [RequireComponent(typeof(PhysicsObject))]
 public class ChangeGravityAction : MonoBehaviour, IAction<float> {
 
+    
+
     private PhysicsObject _physicsObj;
 
     public void Do(float newGravity)
@@ -26,6 +28,6 @@ public class ChangeGravityAction : MonoBehaviour, IAction<float> {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 }
