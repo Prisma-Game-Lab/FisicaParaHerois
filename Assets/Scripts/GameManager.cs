@@ -92,4 +92,9 @@ public class GameManager : MonoBehaviour {
 
         IsPaused = !IsPaused;
     }
+
+    public void OnQuit()
+    {
+        Application.Quit();
+    }
 }
