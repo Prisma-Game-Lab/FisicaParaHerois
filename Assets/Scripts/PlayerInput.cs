@@ -156,7 +156,9 @@ public class PlayerInput : MonoBehaviour {
 
         if (hit.collider != null)
         {
-            if(hit.collider.name == "physicsObject")
+            print(hit.collider.name);
+
+            if (hit.transform.name == "physicsObject")
             {
                 Debug.Log(hit.transform.name);
 

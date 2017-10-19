@@ -13,7 +13,7 @@ public class PlayerInfo : MonoBehaviour {
     public float Life;
     public List<IAction<float>> Actions;
     [Tooltip("Velocidade com que o player se move")]
-    public float PaceSpeed = 2.0f;
+    public float PaceSpeed = 20.0f;
     [Tooltip("Velocidade com que o player realiza o pulo")]
     public float JumpSpeed = 60.0f;
 
