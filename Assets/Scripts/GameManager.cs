@@ -74,18 +74,18 @@ public class GameManager : MonoBehaviour {
     public void OnPause()
     {
         Canvas cnv = GameObject.Find("Canvas").GetComponent<Canvas>();
-        GameObject pause = cnv.transform.FindChild("Pause").GetComponent<GameObject>();
+        GameObject pause = cnv.transform.Find("Pause").GetComponent<GameObject>();
 
         if (IsPaused)
         {
-            cnv.transform.FindChild("Pause").gameObject.SetActive(false);
+            cnv.transform.Find("Pause").gameObject.SetActive(false);
             Time.timeScale = 1f;
             Debug.Log("Jogo despausado");
         }
 
         else
         {
-            cnv.transform.FindChild("Pause").gameObject.SetActive(true);
+            cnv.transform.Find("Pause").gameObject.SetActive(true);
             Time.timeScale = 0f;
             Debug.Log("Jogo pausado");
         }
