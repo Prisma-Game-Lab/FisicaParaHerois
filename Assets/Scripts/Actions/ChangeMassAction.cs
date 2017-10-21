@@ -11,6 +11,7 @@ using UnityEngine;
 [RequireComponent(typeof(PhysicsObject))]
 public class ChangeMassAction : MonoBehaviour, IAction<float>
 {
+    static private string _actionName = "Change mass";
 
     private PhysicsObject _physicsObj;
     private float _defaultMass;
@@ -21,6 +22,16 @@ public class ChangeMassAction : MonoBehaviour, IAction<float>
         {
             _physicsObj.physicsData.mass = newMass;
         }
+    }
+
+    public void SetTarget(PhysicsObject target)
+    {
+        _physicsObj = target;
+    }
+
+    public string GetActionName()
+    {
+        return _actionName;
     }
 
     // Use this for initialization

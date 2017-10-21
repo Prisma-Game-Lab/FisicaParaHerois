@@ -10,10 +10,21 @@ using UnityEngine;
 
 public class PushPullAction : MonoBehaviour, IAction<float> {
     private PhysicsObject _object;
+    static private string _actionName = "Push/Pull";
 
     void Start()
     {
         _object = gameObject.GetComponent<PhysicsObject>();
+    }
+
+    public string GetActionName()
+    {
+        return _actionName;
+    }
+
+    public void SetTarget(PhysicsObject target)
+    {
+        _object = target;
     }
 
     public void Do(float temp)

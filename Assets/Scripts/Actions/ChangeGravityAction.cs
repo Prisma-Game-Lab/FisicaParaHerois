@@ -10,14 +10,23 @@ using UnityEngine;
 
 [RequireComponent(typeof(PhysicsObject))]
 public class ChangeGravityAction : MonoBehaviour, IAction<float> {
-
-    
+    static private string _actionName = "Change gravity";
 
     private PhysicsObject _physicsObj;
 
     public void Do(float newGravity)
     {
         _physicsObj.physicsData.gravityScale = newGravity;
+    }
+
+    public string GetActionName()
+    {
+        return _actionName;
+    }
+
+    public void SetTarget(PhysicsObject target)
+    {
+        _physicsObj = target;
     }
 
     // Use this for initialization

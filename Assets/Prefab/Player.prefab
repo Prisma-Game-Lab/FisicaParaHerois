@@ -45,6 +45,10 @@ GameObject:
   - component: {fileID: 114559763252504456}
   - component: {fileID: 114786070342135950}
   - component: {fileID: 114155683488570428}
+  - component: {fileID: 114476802914293694}
+  - component: {fileID: 114030663555191090}
+  - component: {fileID: 114172692887732120}
+  - component: {fileID: 114313061478305260}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -213,6 +217,17 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1362967556964012}
   m_Enabled: 1
+--- !u!114 &114030663555191090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413990827813878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb435dc3cae973043b2b40b09fbbd50e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114155683488570428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,6 +241,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 114559763252504456}
   HoldTime: 0.8
+--- !u!114 &114172692887732120
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413990827813878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 777af722a345c874aae4df6e8ad1076c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114313061478305260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413990827813878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bb349087ba72c34784def38df39e96e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114476802914293694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413990827813878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569de5793067cb246b4897702b6cb9f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  physicsData: {fileID: 0}
+  ObjectSprite: {fileID: 0}
+  CanPlayerInteract: 0
 --- !u!114 &114559763252504456
 MonoBehaviour:
   m_ObjectHideFlags: 1

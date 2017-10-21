@@ -14,14 +14,24 @@ public class PhysicsObject : MonoBehaviour {
     [HideInInspector]
     public Rigidbody2D physicsData;
 
+    public Sprite ObjectSprite;
+    public bool CanPlayerInteract = true; //Define se o player pode interagir com esse objeto
+
 	// Use this for initialization
 	void Start () {
-        physicsData = gameObject.GetComponent<Rigidbody2D>();
-
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    void Awake()
+    {
+        physicsData = gameObject.GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update () {
+    }
+
+    void OnMouseDown()
+    {
+        ActionPanel.Instance.OnPanelActivated(this);
+    }
 }

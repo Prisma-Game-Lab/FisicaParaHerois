@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour {
-    static public GameObject PlayerGameObject;
+    static public PlayerInfo PlayerInstance;
     public float Life;
     public List<IAction<float>> Actions;
     [Tooltip("Velocidade com que o player se move")]
@@ -24,8 +24,9 @@ public class PlayerInfo : MonoBehaviour {
 
     void Awake()
     {
-        //Seta a referência do gameObject do player
-        PlayerGameObject = gameObject;
+        //Seta a referência do player
+        PlayerInstance = this;
+        Actions = new List<IAction<float>>();
 
         IAction<float>[] playerActions = gameObject.GetComponents<IAction<float>>();
 

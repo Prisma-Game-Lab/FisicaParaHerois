@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour {
     public bool IsPlayerVisible()
     {
         //Se a distância entre enemy e player for menor que a distância mínima, inimigo detectou o player
-        if (Vector3.Distance(transform.position, PlayerInfo.PlayerGameObject.transform.position) <= MaxDistanceToDetectPlayer)
+        if (Vector3.Distance(transform.position, PlayerInfo.PlayerInstance.transform.position) <= MaxDistanceToDetectPlayer)
         {
             return true;
         }
