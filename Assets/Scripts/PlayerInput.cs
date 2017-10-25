@@ -15,9 +15,12 @@ public class PlayerInput : MonoBehaviour {
     [Tooltip("Tempo mínimo para identificar um toque longo")]
     public float HoldTime = 0.8f;
 
+    private bool _isJumping = false;
+    private GameObject _directionBeforeJump;
+
     // Use this for initialization
     void Start () {
-
+        Input.multiTouchEnabled = true;
     }
 
     // Update is called once per frame
@@ -54,6 +57,7 @@ public class PlayerInput : MonoBehaviour {
 #elif UNITY_IOS || UNITY_ANDROID
 
         CheckInput();
+        CheckJump();
 
  #endif
 
@@ -74,8 +78,8 @@ public class PlayerInput : MonoBehaviour {
             {
                 Touch touch = Input.GetTouch(i);
 
-                // Verifica se o toque foi em algum item da UI
-                if (EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+                    // Verifica se o toque foi em algum item da UI
+                    if (EventSystem.current.IsPointerOverGameObject(touch.fingerId))
                 {
                     Debug.Log("UI is touched");
                     UITouch(touch);
@@ -96,26 +100,20 @@ public class PlayerInput : MonoBehaviour {
         //GameObject HUDbntLast = EventSystem.current.lastSelectedGameObject;
         TouchPhase phase = touch.phase;
 
-        if(HUDbnt.name == "LeftDir")
+        if (HUDbnt.name == "LeftDir" && !_isJumping)
         {
             Player.Move(true);
 
-        } else if (HUDbnt.name == "RightDir")
+        } else if (HUDbnt.name == "RightDir" && !_isJumping)
         {
             Player.Move(false);
         }
 
-        if (HUDbnt.name == "Jump")
+        if (HUDbnt.name == "Jump" && !_isJumping)
         {
             if (touch.phase == TouchPhase.Began)
             {
-                BoxCollider2D playerCollider = Player.GetComponent<BoxCollider2D>();
-                BoxCollider2D floorCollider = GameObject.Find("Floor").GetComponent<BoxCollider2D>();
-
-                if (playerCollider.IsTouching(floorCollider))
-                {
-                    Player.Jump();
-                }
+                Player.Jump();
             }
         } else if (HUDbnt.name == "Action")
         {
@@ -181,7 +179,7 @@ public class PlayerInput : MonoBehaviour {
                 } else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
                 {
                     // Velocidade do drag do objeto
-                    float touchSpeed = touch.deltaPosition.magnitude / touch.deltaTime;
+                   // float touchSpeed = touch.deltaPosition.magnitude / touch.deltaTime;
                     Debug.Log("Throw Object");
                 }
 
@@ -210,8 +208,47 @@ public class PlayerInput : MonoBehaviour {
                         Debug.Log("Change heat");
                     }
                 }
-            }
+            } 
         }
     }
-    
+
+    private void CheckJump()
+    {
+        BoxCollider2D playerCollider = Player.GetComponent<BoxCollider2D>();
+        Transform scene = GameObject.Find("SceneObjects").transform;
+        Transform objects = GameObject.Find("PhysicsObjects").transform;
+        bool touchingScene = false;
+        bool touchingObject = false;
+
+        for (int i = 0; i < scene.childCount; i += 1)
+        {
+            Collider2D sceneObjectCollider = scene.GetChild(i).GetComponent<Collider2D>();
+
+            if (playerCollider.IsTouching(sceneObjectCollider))
+            {
+                touchingScene = true;
+            }
+        }
+
+        for (int i = 0; i < objects.childCount; i += 1)
+        {
+            Collider2D physicsObjectCollider = objects.GetChild(i).GetComponent<Collider2D>();
+
+            if (playerCollider.IsTouching(physicsObjectCollider))
+            {
+                touchingObject = true;
+            }
+        }
+
+        if ((touchingObject || touchingScene))
+        {
+            _isJumping = false;
+            // verificar aqui se continua a andar ou não 
+
+        } else
+        {
+            _isJumping = true;
+        }
+    }
+
 }
