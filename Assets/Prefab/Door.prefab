@@ -9,48 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1465589156539304}
+  m_RootGameObject: {fileID: 1364758370351054}
   m_IsPrefabParent: 1
---- !u!1 &1465589156539304
+--- !u!1 &1364758370351054
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4559084066748644}
-  - component: {fileID: 33157102973130060}
-  - component: {fileID: 23074883430126102}
-  - component: {fileID: 50144754948742226}
-  - component: {fileID: 114420677551320888}
-  - component: {fileID: 61139010036872702}
-  - component: {fileID: 233854150081734556}
+  - component: {fileID: 4239176691125722}
+  - component: {fileID: 33425682871100532}
+  - component: {fileID: 23807289014981608}
+  - component: {fileID: 61940777889602448}
+  - component: {fileID: 50206470550567982}
+  - component: {fileID: 114754494840106314}
   m_Layer: 0
-  m_Name: Gangorra
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4559084066748644
+--- !u!4 &4239176691125722
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1465589156539304}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.17, z: 0}
-  m_LocalScale: {x: 4.1625, y: 0.20718756, z: 1}
+  m_GameObject: {fileID: 1364758370351054}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalPosition: {x: 8.989, y: -1.813, z: 0}
+  m_LocalScale: {x: 1.7370332, y: 2.5862255, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23074883430126102
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+--- !u!23 &23807289014981608
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1465589156539304}
+  m_GameObject: {fileID: 1364758370351054}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -58,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8f19715734a4e4c428e15e6f06920c1a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,20 +76,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33157102973130060
+--- !u!33 &33425682871100532
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1465589156539304}
+  m_GameObject: {fileID: 1364758370351054}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!50 &50144754948742226
+--- !u!50 &50206470550567982
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1465589156539304}
+  m_GameObject: {fileID: 1364758370351054}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -103,13 +102,13 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &61139010036872702
+  m_Constraints: 7
+--- !u!61 &61940777889602448
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1465589156539304}
+  m_GameObject: {fileID: 1364758370351054}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -127,42 +126,18 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.99999994}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114420677551320888
+--- !u!114 &114754494840106314
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1465589156539304}
+  m_GameObject: {fileID: 1364758370351054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 569de5793067cb246b4897702b6cb9f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 06347581e63ac594093ee7431b378a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  physicsData: {fileID: 0}
-  ObjectSprite: {fileID: 0}
-  CanPlayerInteract: 0
---- !u!233 &233854150081734556
-HingeJoint2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1465589156539304}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: -0.17}
-  m_UseMotor: 0
-  m_Motor:
-    m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
-  m_UseLimits: 0
-  m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: 359
+  BeginLocked: 1
+  NextScene: TestScene

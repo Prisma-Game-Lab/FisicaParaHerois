@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour {
     private bool _isLocked;
@@ -26,7 +27,10 @@ public class Door : MonoBehaviour {
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider == PlayerInfo.PlayerInstance.gameObject || collision.otherCollider == PlayerInfo.PlayerInstance.gameObject)
+        Debug.Log("Collider: " + collision.collider.gameObject);
+        Debug.Log("Other Collider: " + collision.otherCollider.gameObject);
+        Debug.Log(collision.collider == PlayerInfo.PlayerInstance.gameObject);
+        if (collision.collider.gameObject == PlayerInfo.PlayerInstance.gameObject || collision.otherCollider.gameObject == PlayerInfo.PlayerInstance.gameObject)
         {
             if(_isLocked == false)
             {
@@ -37,7 +41,7 @@ public class Door : MonoBehaviour {
 
     public void OnEnter()
     {
-        Application.LoadLevel(NextScene);
+        SceneManager.LoadScene(NextScene);
     }
 
     public void Unlock() {

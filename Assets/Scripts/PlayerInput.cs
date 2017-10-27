@@ -100,16 +100,16 @@ public class PlayerInput : MonoBehaviour {
         //GameObject HUDbntLast = EventSystem.current.lastSelectedGameObject;
         TouchPhase phase = touch.phase;
 
-        if (HUDbnt.name == "LeftDir" && !_isJumping)
+        if (HUDbnt.name == "LeftDir")
         {
             Player.Move(true);
 
-        } else if (HUDbnt.name == "RightDir" && !_isJumping)
+        } else if (HUDbnt.name == "RightDir")
         {
             Player.Move(false);
         }
 
-        if (HUDbnt.name == "Jump" && !_isJumping)
+        if (HUDbnt.name == "Jump")
         {
             if (touch.phase == TouchPhase.Began)
             {

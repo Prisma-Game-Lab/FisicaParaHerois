@@ -23,8 +23,14 @@ public class PressurePlate : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider == PlayerInfo.PlayerInstance.gameObject || collision.otherCollider == PlayerInfo.PlayerInstance.gameObject)
+        Debug.Log("Collider: " + collision.collider.gameObject);
+        Debug.Log("Other Collider: " + collision.otherCollider.gameObject);
+        if (collision.collider.gameObject == PlayerInfo.PlayerInstance.gameObject 
+            || collision.otherCollider.gameObject == PlayerInfo.PlayerInstance.gameObject
+            || collision.collider.tag == "Box"
+            || collision.otherCollider.tag == "Box")
         {
+            Debug.Log("Porta aberta");
             DoorToOpen.Unlock();
         }
     }
