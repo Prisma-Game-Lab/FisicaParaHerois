@@ -24,6 +24,11 @@ public class ChangeGravityAction : MonoBehaviour, IAction<float> {
         return _actionName;
     }
 
+    public float GetCurrentValue()
+    {
+        return _physicsObj.physicsData.gravityScale;
+    }
+
     public void SetTarget(PhysicsObject target)
     {
         _physicsObj = target;

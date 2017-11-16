@@ -34,6 +34,11 @@ public class ChangeMassAction : MonoBehaviour, IAction<float>
         return _actionName;
     }
 
+    public float GetCurrentValue()
+    {
+        return _physicsObj.physicsData.mass;
+    }
+
     // Use this for initialization
     void Start()
     {

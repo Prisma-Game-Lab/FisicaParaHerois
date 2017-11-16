@@ -22,6 +22,11 @@ public class PushPullAction : MonoBehaviour, IAction<float> {
         return _actionName;
     }
 
+    public float GetCurrentValue()
+    {
+        return 0; //não faz sentido GetCurrentValue para essa Action
+    }
+
     public void SetTarget(PhysicsObject target)
     {
         _object = target;

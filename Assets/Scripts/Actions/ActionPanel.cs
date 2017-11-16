@@ -61,7 +61,7 @@ public class ActionPanel : MonoBehaviour {
 
         _chosenAction = PlayerInfo.PlayerInstance.Actions[action];
         _actionNameText.text = _chosenAction.GetActionName();
-
+        _chosenValueSlider.value = _chosenAction.GetCurrentValue();
     }
 
     /// <summary>
