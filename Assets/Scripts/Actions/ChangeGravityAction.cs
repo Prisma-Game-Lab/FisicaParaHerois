@@ -14,7 +14,7 @@ public class ChangeGravityAction : MonoBehaviour, IAction<float> {
 
     private PhysicsObject _physicsObj;
 
-    public void Do(float newGravity)
+    public void OnActionUse(float newGravity)
     {
         _physicsObj.physicsData.gravityScale = newGravity;
     }

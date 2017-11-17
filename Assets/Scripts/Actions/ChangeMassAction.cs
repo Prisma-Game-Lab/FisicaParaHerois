@@ -16,7 +16,7 @@ public class ChangeMassAction : MonoBehaviour, IAction<float>
     private PhysicsObject _physicsObj;
     private float _defaultMass;
 
-    public void Do(float newMass)
+    public void OnActionUse(float newMass)
     {
         if (newMass >= 0)
         {

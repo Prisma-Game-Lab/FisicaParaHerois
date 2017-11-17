@@ -11,6 +11,7 @@ using UnityEngine;
 public class PushPullAction : MonoBehaviour, IAction<float> {
     private PhysicsObject _object;
     static private string _actionName = "Push/Pull";
+    private float tempMultiplier = 100;
 
     void Start()
     {
@@ -32,8 +33,8 @@ public class PushPullAction : MonoBehaviour, IAction<float> {
         _object = target;
     }
 
-    public void Do(float temp)
+    public void OnActionUse(float temp)
     {
-        _object.physicsData.AddForce(temp * Vector2.right);
+        _object.physicsData.AddForce(temp * tempMultiplier * Vector2.right);
     }
 }

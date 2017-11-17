@@ -34,7 +34,7 @@ public class AttackState : IState
         EnemyActionInfo<float> actionToDo = ChooseAction();
         if(actionToDo != null)
         {
-            actionToDo.Action.Do(actionToDo.Argument);
+            actionToDo.Action.OnActionUse(actionToDo.Argument);
             Debug.Log(StateMachineController.gameObject.name + " usou a ação " + actionToDo.Description);
         }
         DoingAction = false;

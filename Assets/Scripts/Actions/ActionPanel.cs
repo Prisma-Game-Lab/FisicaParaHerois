@@ -81,7 +81,7 @@ public class ActionPanel : MonoBehaviour {
     {
         _chosenAction.SetTarget(_physicsObject);
         OnCancel(); //despausa o jogo
-        _chosenAction.Do(_chosenValue);
+        _chosenAction.OnActionUse(_chosenValue);
     }
 
     /// <summary>

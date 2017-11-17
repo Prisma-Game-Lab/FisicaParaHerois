@@ -10,7 +10,7 @@ using UnityEngine;
 
 public interface IAction<T> {
     
-    void Do(T parameter);
+    void OnActionUse(T parameter);
     void SetTarget(PhysicsObject target);
     string GetActionName();
     float GetCurrentValue();

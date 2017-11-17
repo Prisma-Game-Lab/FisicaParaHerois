@@ -16,6 +16,8 @@ public class PlayerInfo : MonoBehaviour {
     public float PaceSpeed = 20.0f;
     [Tooltip("Velocidade com que o player realiza o pulo")]
     public float JumpSpeed = 60.0f;
+    [Tooltip("Distância máxima para o player poder usar ações como Push/Pull em um objeto")]
+    public float MaxDistanceToNearbyObject = 1.5f;
 
     private bool _receiveDamage;
     private float _damageNumber;
@@ -101,6 +103,42 @@ public class PlayerInfo : MonoBehaviour {
     {
         print("JUMP" +  Vector2.up * JumpSpeed);
         _rb.AddForce(Vector2.up * JumpSpeed);
+    }
+
+    // Métodos Auxiliares
+    public PhysicsObject FindNearestPhysicsObject()
+    {
+        Collider2D[] objectsFound = Physics2D.OverlapCircleAll(transform.position, MaxDistanceToNearbyObject);
+
+        PhysicsObject nearestPhysicsObj = null;
+        float distanceToNearestPhysicsObj = Mathf.Infinity;
+        PhysicsObject playerPhysicsObject = GetComponent<PhysicsObject>(); //usado para não retornar o próprio player
+
+        //Busca o PhysicsObject mais próximo
+        foreach(Collider2D objFound in objectsFound)
+        {
+            PhysicsObject curObj = objFound.gameObject.GetComponent<PhysicsObject>();
+            
+            if(curObj != null && curObj != playerPhysicsObject)
+            {
+                float distanceToCurObj = Vector3.Distance(objFound.transform.position, transform.position);
+
+                if(distanceToCurObj < distanceToNearestPhysicsObj)
+                {
+                    distanceToNearestPhysicsObj = distanceToCurObj;
+                    nearestPhysicsObj = curObj;
+                }
+            }
+        }
+
+        return nearestPhysicsObj;
+    }
+
+    // Métodos do Editor
+    public void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, MaxDistanceToNearbyObject);
     }
 
 }
