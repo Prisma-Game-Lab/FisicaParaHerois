@@ -12,5 +12,9 @@ public interface IState {
 
     void UpdateState();
 
-    void ChangeState(IState newState);
+    void StartState();
+
+    void ResumeState();
+
+    void StopState();
 }

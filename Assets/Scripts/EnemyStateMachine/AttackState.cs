@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[SerializeField]
+[RequireComponent(typeof(Enemy))]
 public class AttackState : IState
 {
     public Enemy StateMachineController;
@@ -68,5 +70,25 @@ public class AttackState : IState
         }
 
         return null;
+    }
+
+    void IState.ResumeState()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    void IState.StartState()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    void IState.StopState()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    void IState.UpdateState()
+    {
+        throw new System.NotImplementedException();
     }
 }
