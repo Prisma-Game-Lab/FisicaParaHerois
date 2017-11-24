@@ -15,9 +15,11 @@ public class Boss : MonoBehaviour {
     public List<EnemyActionInfo<float>> Actions = new List<EnemyActionInfo<float>>();
     public float Life = 100;
 
-    
+
 
     //States
+    //attack state cria uma nova caixa, flutua com ela até em cima do player e a derruba
+    //idle state espera n segundos e começa attack state
     [HideInInspector] public IState CurrentState;
     [HideInInspector] public BossAttackState AttackState;
     [HideInInspector] public BossIdleState IdleState;
