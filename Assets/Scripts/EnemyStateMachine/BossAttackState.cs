@@ -46,6 +46,7 @@ public class BossAttackState : MonoBehaviour, IState
         Debug.Log("Start attack state\n");
         //instancia uma nova caixa na posição de spawn position
         _spawnedBoxes.Add(Instantiate(boxPrefab, spawnPosition.transform.position, Quaternion.identity));
+        StateMachineController.OnBoxSpawn(_spawnedBoxes[_spawnedBoxes.Count - 1]);
         StartCoroutine("AttackSequence", _spawnedBoxes[_spawnedBoxes.Count - 1]);
 
     }

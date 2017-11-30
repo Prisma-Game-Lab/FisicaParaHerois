@@ -14,7 +14,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour {
     public List<EnemyActionInfo<float>> Actions = new List<EnemyActionInfo<float>>();
     public float Life = 100;
-
+    [Tooltip("Define o número máximo de caixas simultâneas na fase")] public int MaxBoxes = 5;
 
 
     //States
@@ -23,6 +23,8 @@ public class Boss : MonoBehaviour {
     [HideInInspector] public IState CurrentState;
     [HideInInspector] public BossAttackState AttackState;
     [HideInInspector] public BossIdleState IdleState;
+
+    private List<GameObject> _boxList;
 
 
     public void ChangeState(IState newState)
@@ -40,6 +42,8 @@ public class Boss : MonoBehaviour {
 
         AttackState.StateMachineController = this;
         IdleState.StateMachineController = this;
+
+        _boxList = new List<GameObject>();
 
         //Enquanto não estou conseguindo colocar as Actions para aparecer no Inspector
         //Actions.Add(new EnemyActionInfo<float>(new PushPullAction(), 0.5f, -1, "push pull action negativa"));
@@ -75,6 +79,23 @@ public class Boss : MonoBehaviour {
     void OnDeath()
     {
         Destroy(this);
+    }
+
+    /// <summary>
+    /// Define o que ocorre quando o boss spawna uma caixa
+    /// </summary>
+    /// <param name="box"></param>
+    public void OnBoxSpawn(GameObject box)
+    {
+        //registra box na lista
+        _boxList.Add(box);
+
+        //se lista tiver mais caixas que o permitido, destrói a primeira caixa e a remove da lista
+        if(_boxList.Count > MaxBoxes)
+        {
+            Destroy(_boxList[0]);
+            _boxList.Remove(_boxList[0]);
+        }
     }
 
     
