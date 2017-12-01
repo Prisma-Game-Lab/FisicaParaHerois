@@ -108,6 +108,62 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &12973068
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1094761729}
+    m_Modifications:
+    - target: {fileID: 4168608842168034, guid: 033b0992c36ac464f850f06834b99667, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 7.8137884
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168608842168034, guid: 033b0992c36ac464f850f06834b99667, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.614559
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168608842168034, guid: 033b0992c36ac464f850f06834b99667, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168608842168034, guid: 033b0992c36ac464f850f06834b99667, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168608842168034, guid: 033b0992c36ac464f850f06834b99667, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168608842168034, guid: 033b0992c36ac464f850f06834b99667, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168608842168034, guid: 033b0992c36ac464f850f06834b99667, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168608842168034, guid: 033b0992c36ac464f850f06834b99667, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491588097897722, guid: 033b0992c36ac464f850f06834b99667, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114393738934243712, guid: 033b0992c36ac464f850f06834b99667,
+        type: 2}
+      propertyPath: NextScene
+      value: TestScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 114393738934243712, guid: 033b0992c36ac464f850f06834b99667,
+        type: 2}
+      propertyPath: BeginLocked
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 033b0992c36ac464f850f06834b99667, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &109935738
 Prefab:
   m_ObjectHideFlags: 0
@@ -949,6 +1005,7 @@ Transform:
   m_Children:
   - {fileID: 250540078}
   - {fileID: 265975256}
+  - {fileID: 1641421855}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1001,6 +1058,17 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 137940452130369694, guid: 271dfa67a867100428f43bd342dc93d4,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 21691494901154754, guid: a5a35d3c4fa8bf948a782a33fa1b5e2a,
+        type: 2}
+    - target: {fileID: 114708517273266858, guid: 271dfa67a867100428f43bd342dc93d4,
+        type: 2}
+      propertyPath: Door
+      value: 
+      objectReference: {fileID: 1641421854}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 271dfa67a867100428f43bd342dc93d4, type: 2}
   m_IsPrefabParent: 0
@@ -1186,6 +1254,16 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1cbd4ee101de9bd478024e46e4a8a080, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1641421854 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1491588097897722, guid: 033b0992c36ac464f850f06834b99667,
+    type: 2}
+  m_PrefabInternal: {fileID: 12973068}
+--- !u!4 &1641421855 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4168608842168034, guid: 033b0992c36ac464f850f06834b99667,
+    type: 2}
+  m_PrefabInternal: {fileID: 12973068}
 --- !u!114 &1754244272 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114786070342135950, guid: 1cbd4ee101de9bd478024e46e4a8a080,
