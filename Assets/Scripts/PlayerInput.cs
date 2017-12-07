@@ -15,13 +15,40 @@ public class PlayerInput : MonoBehaviour {
     [Tooltip("Tempo mínimo para identificar um toque longo")]
     public float HoldTime = 0.8f;
 
-    private bool _isJumping = false;
+    public float jumpCheckDistance;
+
+
+
     private GameObject _directionBeforeJump;
+
+    private Rigidbody2D rb;
+
+    //máscara usada para ignorar o player
+    private int _layerMask;
 
     // Use this for initialization
     void Start () {
         Input.multiTouchEnabled = true;
     }
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+
+        int layerIndex = LayerMask.NameToLayer("Player");
+        if(layerIndex == -1)
+        {
+            Debug.LogWarning("Player layer mask does not exists");
+            layerIndex = 0;
+        }
+
+        //máscara só colide com player
+        _layerMask = (1 << layerIndex);
+
+        //máscara colide com tudo menos o player
+        _layerMask = ~_layerMask;
+    }
+
 
     // Update is called once per frame
     void Update () {
@@ -40,7 +67,7 @@ public class PlayerInput : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            Player.Jump();
+            if(!IsJumping()) Player.Jump();
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -57,7 +84,7 @@ public class PlayerInput : MonoBehaviour {
 #elif UNITY_IOS || UNITY_ANDROID
 
         CheckInput();
-        CheckJump();
+        //CheckJump();
 
  #endif
 
@@ -113,7 +140,7 @@ public class PlayerInput : MonoBehaviour {
         {
             if (touch.phase == TouchPhase.Began)
             {
-                Player.Jump();
+                if(!IsJumping()) Player.Jump();
             }
         } else if (HUDbnt.name == "Action")
         {
@@ -225,43 +252,57 @@ public class PlayerInput : MonoBehaviour {
         }
     }
 
-    private void CheckJump()
+    private bool IsJumping()
     {
-        BoxCollider2D playerCollider = Player.GetComponent<BoxCollider2D>();
-        Transform scene = GameObject.Find("SceneObjects").transform;
-        Transform objects = GameObject.Find("PhysicsObjects").transform;
-        bool touchingScene = false;
-        bool touchingObject = false;
-
-        for (int i = 0; i < scene.childCount; i += 1)
+        //usa raycast pra ver se há algum objeto abaixo do player, até certa distância
+        //1.0f temp para distancia mínima
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, jumpCheckDistance, _layerMask);
+        if (hit.collider == null)
         {
-            Collider2D sceneObjectCollider = scene.GetChild(i).GetComponent<Collider2D>();
-
-            if (playerCollider.IsTouching(sceneObjectCollider))
-            {
-                touchingScene = true;
-            }
+            return true;
         }
-
-        for (int i = 0; i < objects.childCount; i += 1)
-        {
-            Collider2D physicsObjectCollider = objects.GetChild(i).GetComponent<Collider2D>();
-
-            if (playerCollider.IsTouching(physicsObjectCollider))
-            {
-                touchingObject = true;
-            }
-        }
-
-        if ((touchingObject || touchingScene))
-        {
-            _isJumping = false;
-            // verificar aqui se continua a andar ou não 
-
-        } else
-        {
-            _isJumping = true;
-        }
+        else return false;
     }
+
+
+
+    //    private void CheckJump()
+    //    {
+    //        BoxCollider2D playerCollider = Player.GetComponent<BoxCollider2D>();
+    //        Transform scene = GameObject.Find("SceneObjects").transform;
+    //        Transform objects = GameObject.Find("PhysicsObjects").transform;
+    //        bool touchingScene = false;
+    //        bool touchingObject = false;
+
+    //        for (int i = 0; i < scene.childCount; i += 1)
+    //        {
+    //            Collider2D sceneObjectCollider = scene.GetChild(i).GetComponent<Collider2D>();
+
+    //            if (playerCollider.IsTouching(sceneObjectCollider))
+    //            {
+    //                touchingScene = true;
+    //            }
+    //        }
+
+    //        for (int i = 0; i < objects.childCount; i += 1)
+    //        {
+    //            Collider2D physicsObjectCollider = objects.GetChild(i).GetComponent<Collider2D>();
+
+    //            if (playerCollider.IsTouching(physicsObjectCollider))
+    //            {
+    //                touchingObject = true;
+    //            }
+    //        }
+
+    //        if ((touchingObject || touchingScene))
+    //        {
+    //            _isJumping = false;
+    //            // verificar aqui se continua a andar ou não 
+
+    //        } else
+    //        {
+    //            _isJumping = true;
+    //        }
+    //    }
 
 }
