@@ -85,7 +85,7 @@ public class PlayerInfo : MonoBehaviour {
     {
         if (_movement.x > -2)
         {
-            _movement.x = this.transform.position.x - 1 * (Time.deltaTime / 0.5f);
+            _movement.x = this.transform.position.x - 1 * (Time.deltaTime / 10f);
         }
 
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
