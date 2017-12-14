@@ -58,11 +58,11 @@ public class PlayerInput : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.A))
         {
-            Player.Move(true);
+            if(!IsJumping()) Player.Move(true);
             
         } else if (Input.GetKey(KeyCode.D))
         {
-            Player.Move(false);
+            if(!IsJumping()) Player.Move(false);
         }
 
         if (Input.GetKeyDown(KeyCode.W))
