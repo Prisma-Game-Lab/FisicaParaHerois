@@ -18,6 +18,7 @@ public class PlayerInfo : MonoBehaviour {
     public float JumpSpeed = 60.0f;
     [Tooltip("Distância máxima para o player poder usar ações como Push/Pull em um objeto")]
     public float MaxDistanceToNearbyObject = 1.5f;
+    public float MaxVelocity = 5.0f;
 
     private bool _receiveDamage;
     private float _damageNumber;
@@ -92,16 +93,23 @@ public class PlayerInfo : MonoBehaviour {
 
         if (walkLeft)
         {
-            rb.AddForce(_movement * PaceSpeed);
+            print(rb.velocity);
+            if (rb.velocity.x >= -MaxVelocity)
+            {
+                rb.AddForce(_movement * PaceSpeed);
+            }
+
         } else
         {
-            rb.AddForce(-_movement * PaceSpeed);
+            if (rb.velocity.x <= MaxVelocity)
+            {
+                rb.AddForce(-_movement * PaceSpeed);
+            }
         }
     }
 
     public void Jump()
     {
-        print("JUMP" +  Vector2.up * JumpSpeed);
         _rb.AddForce(Vector2.up * JumpSpeed);
     }
 
