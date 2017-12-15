@@ -15,16 +15,12 @@ public class PlayerInput : MonoBehaviour {
     [Tooltip("Tempo mínimo para identificar um toque longo")]
     public float HoldTime = 0.8f;
 
-    public float jumpCheckDistance;
-
-
-
     private GameObject _directionBeforeJump;
 
     private Rigidbody2D rb;
 
-    //máscara usada para ignorar o player
-    private int _layerMask;
+    //componente PlayerJump
+    private PlayerJump _playerJump;
 
     // Use this for initialization
     void Start () {
@@ -34,19 +30,8 @@ public class PlayerInput : MonoBehaviour {
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        int layerIndex = LayerMask.NameToLayer("Player");
-        if(layerIndex == -1)
-        {
-            Debug.LogWarning("Player layer mask does not exists");
-            layerIndex = 0;
-        }
-
-        //máscara só colide com player
-        _layerMask = (1 << layerIndex);
-
-        //máscara colide com tudo menos o player
-        _layerMask = ~_layerMask;
+        _playerJump = GetComponent<PlayerJump>();
+        
     }
 
 
@@ -67,7 +52,7 @@ public class PlayerInput : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            if(!IsJumping()) Player.Jump();
+            _playerJump.Jump(touch.fingerId);
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -106,14 +91,14 @@ public class PlayerInput : MonoBehaviour {
                 Touch touch = Input.GetTouch(i);
 
                     // Verifica se o toque foi em algum item da UI
-                    if (EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+                if (EventSystem.current.IsPointerOverGameObject(touch.fingerId))
                 {
-                    Debug.Log("UI is touched");
+                    //Debug.Log("UI is touched");
                     UITouch(touch);
                 }
                 else
                 {
-                    Debug.Log("UI is not touched");
+                    //Debug.Log("UI is not touched");
                     ObjectsTouch(touch);
                 }
             }
@@ -140,7 +125,11 @@ public class PlayerInput : MonoBehaviour {
         {
             if (touch.phase == TouchPhase.Began)
             {
-                if(!IsJumping()) Player.Jump();
+                //touch é passado para a função pra tratar com segurar o botão de pulo
+               
+                _playerJump.Jump(touch.fingerId);
+
+
             }
         } else if (HUDbnt.name == "Action")
         {
@@ -252,19 +241,8 @@ public class PlayerInput : MonoBehaviour {
         }
     }
 
-    private bool IsJumping()
-    {
-        //usa raycast pra ver se há algum objeto abaixo do player, até certa distância
-        //1.0f temp para distancia mínima
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, jumpCheckDistance, _layerMask);
-        if (hit.collider == null)
-        {
-            return true;
-        }
-        else return false;
-    }
 
-
+    //Esse código tava aqui antes da função acima. Não quis tirar sem ninguém ver, então comentei. Podem tirar se quiserem. (AMK)
 
     //    private void CheckJump()
     //    {

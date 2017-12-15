@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 114030663555191090}
   - component: {fileID: 114172692887732120}
   - component: {fileID: 114313061478305260}
+  - component: {fileID: 114813598612577232}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -807,7 +808,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1413990827813878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.47, y: 2.23, z: -3.08}
+  m_LocalPosition: {x: -8.47, y: -3.5399997, z: -6.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4251511561311984}
@@ -1384,7 +1385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 1.5300007
+  m_Length: 1.5299997
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4382668369209054}
   m_AttachedIK: {fileID: 0}
@@ -1401,7 +1402,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 114559763252504456}
   HoldTime: 0.8
-  jumpCheckDistance: 1
 --- !u!114 &114164962021296518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1445,7 +1445,7 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 2100000, guid: b8fe13f8672d03044ab1d0c2f0da8236, type: 2}
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Bones: []
   m_BoneTransforms:
   - {fileID: 4523127201289658}
@@ -1590,7 +1590,7 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 2100000, guid: b8fe13f8672d03044ab1d0c2f0da8236, type: 2}
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Bones: []
   m_BoneTransforms:
   - {fileID: 4853688160159154}
@@ -1608,8 +1608,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Life: 1
   PaceSpeed: 2
-  JumpSpeed: 300
   MaxDistanceToNearbyObject: 1.5
+  MaxVelocity: 5
 --- !u!114 &114672734288845020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1716,6 +1716,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Level: 0
   Time: 0
+--- !u!114 &114813598612577232
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413990827813878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5beddaa960ddda3419d49cd2a7b57405, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JumpForce: 350
+  GravityEffectTime: 0.3
+  Add_Gravity_LowJump: 3
+  Add_Gravity_Fall: 1.5
+  jumpCheckDistance: 1
 --- !u!124 &124288717281282964
 Behaviour:
   m_ObjectHideFlags: 1
@@ -1990,7 +2006,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -2035,7 +2051,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
