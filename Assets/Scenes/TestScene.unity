@@ -190,6 +190,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 0}
+  AvailableActions:
+    ChangeGravityAction: 1
+    ChangeMassAction: 1
+    PushPullAction: 1
   CanPlayerInteract: 1
 --- !u!50 &376478926
 Rigidbody2D:
@@ -490,74 +494,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1077424016362776, guid: 59922cde8abdcbf488942e6f4f2de13b, type: 2}
-      propertyPath: m_Name
-      value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 114283788689905444, guid: 59922cde8abdcbf488942e6f4f2de13b,
-        type: 2}
-      propertyPath: m_Colors.m_NormalColor.a
-      value: 0.23529412
-      objectReference: {fileID: 0}
-    - target: {fileID: 114593468436971738, guid: 59922cde8abdcbf488942e6f4f2de13b,
-        type: 2}
-      propertyPath: m_Colors.m_NormalColor.a
-      value: 0.23529412
-      objectReference: {fileID: 0}
-    - target: {fileID: 114129319057489786, guid: 59922cde8abdcbf488942e6f4f2de13b,
-        type: 2}
-      propertyPath: m_Colors.m_NormalColor.a
-      value: 0.23529412
-      objectReference: {fileID: 0}
-    - target: {fileID: 114774627180517448, guid: 59922cde8abdcbf488942e6f4f2de13b,
-        type: 2}
-      propertyPath: m_Colors.m_NormalColor.a
-      value: 0.23529412
-      objectReference: {fileID: 0}
-    - target: {fileID: 114806804259645720, guid: 59922cde8abdcbf488942e6f4f2de13b,
-        type: 2}
-      propertyPath: m_Colors.m_NormalColor.a
-      value: 0.23529412
-      objectReference: {fileID: 0}
-    - target: {fileID: 114815250268495248, guid: 59922cde8abdcbf488942e6f4f2de13b,
-        type: 2}
-      propertyPath: m_Colors.m_NormalColor.a
-      value: 0.23529412
-      objectReference: {fileID: 0}
-    - target: {fileID: 114283788689905444, guid: 59922cde8abdcbf488942e6f4f2de13b,
-        type: 2}
-      propertyPath: m_Colors.m_PressedColor.a
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 114593468436971738, guid: 59922cde8abdcbf488942e6f4f2de13b,
-        type: 2}
-      propertyPath: m_Colors.m_PressedColor.a
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 114129319057489786, guid: 59922cde8abdcbf488942e6f4f2de13b,
-        type: 2}
-      propertyPath: m_Colors.m_PressedColor.a
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 114774627180517448, guid: 59922cde8abdcbf488942e6f4f2de13b,
-        type: 2}
-      propertyPath: m_Colors.m_PressedColor.a
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 114806804259645720, guid: 59922cde8abdcbf488942e6f4f2de13b,
-        type: 2}
-      propertyPath: m_Colors.m_PressedColor.a
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 114815250268495248, guid: 59922cde8abdcbf488942e6f4f2de13b,
-        type: 2}
-      propertyPath: m_Colors.m_PressedColor.a
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 1453035809493322, guid: 59922cde8abdcbf488942e6f4f2de13b, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59922cde8abdcbf488942e6f4f2de13b, type: 2}
   m_IsPrefabParent: 0
@@ -639,6 +575,16 @@ Prefab:
     - target: {fileID: 1556055190346826, guid: e0f7bda04a393394da61b997b63af29b, type: 2}
       propertyPath: m_Name
       value: Object1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114482558399727070, guid: e0f7bda04a393394da61b997b63af29b,
+        type: 2}
+      propertyPath: AvailableActions.ChangeMassAction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114482558399727070, guid: e0f7bda04a393394da61b997b63af29b,
+        type: 2}
+      propertyPath: AvailableActions.PushPullAction
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e0f7bda04a393394da61b997b63af29b, type: 2}

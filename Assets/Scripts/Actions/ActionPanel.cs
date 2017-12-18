@@ -13,6 +13,14 @@ using UnityEngine.UI;
 public class ActionPanel : MonoBehaviour {
     public static ActionPanel Instance;
 
+    [Header("Colors")]
+    public Color AvailableButtonColor = Color.white;
+    public Color UnavailableButtonColor = Color.gray;
+
+    [Header("Actions")]
+    public List<Button> ActionButtons;
+    [Tooltip("Nome da classe de cada action, na ordem dos botões da lista acima")]public List<string> ActionNames;
+
     private PhysicsObject _physicsObject; //guarda o PhysicsObject que chamou o menu de interação
     private Image _objectSpriteHolder; //guarda o campo de imagem que contém o sprite do objeto selecionado
     private Slider _chosenValueSlider; //guarda o slider que define o valor da ação
@@ -89,9 +97,7 @@ public class ActionPanel : MonoBehaviour {
     /// </summary>
     public void OnActionCanceled()
     {
-        //Ativa o painel de escolher ação
-        transform.GetChild(0).gameObject.SetActive(true);
-        transform.GetChild(1).gameObject.SetActive(false);
+        OnChooseActionPanelActivated();
     }
 
     /// <summary>
@@ -118,8 +124,33 @@ public class ActionPanel : MonoBehaviour {
         gameObject.SetActive(true);
         Time.timeScale = 0;
 
+        OnChooseActionPanelActivated();
+    }
+
+    /// <summary>
+    /// Define o que ocorre quando o painel de escolher ação é ativado
+    /// </summary>
+    public void OnChooseActionPanelActivated()
+    {
         //Ativa o painel de escolher ação
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(false);
+
+        //Checa ações disponíveis
+        AvailableActionsData availableActions = _physicsObject.AvailableActions;
+
+        if(ActionNames.Count != ActionButtons.Count)
+        {
+            Debug.LogError("Número de botões (excluindo o cancel) não corresponde ao número de ações nomeadas no Inspector.");
+        }
+
+        for(int i = 0; i < ActionNames.Count; i++)
+        {
+            //Checa se cada ação está disponível
+            ActionButtons[i].interactable = availableActions.CheckIfActionIsAvailable(ActionNames[i]);
+
+            //Muda a cor do botão para indicar se está disponível
+            ActionButtons[i].gameObject.GetComponent<Image>().color = ActionButtons[i].interactable ? AvailableButtonColor : UnavailableButtonColor;
+        }
     }
 }

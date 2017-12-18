@@ -30,6 +30,11 @@ public class PushPullAction : MonoBehaviour, IAction<float> {
 
     public void SetTarget(PhysicsObject target)
     {
+        if (!target.AvailableActions.PushPullAction)
+        {
+            return;
+        }
+
         _object = target;
     }
 

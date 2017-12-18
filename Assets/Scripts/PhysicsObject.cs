@@ -15,6 +15,7 @@ public class PhysicsObject : MonoBehaviour {
     public Rigidbody2D physicsData;
 
     public Sprite ObjectSprite;
+    public AvailableActionsData AvailableActions;
     public bool CanPlayerInteract = true; //Define se o player pode interagir com esse objeto
 
 	// Use this for initialization
@@ -32,6 +33,13 @@ public class PhysicsObject : MonoBehaviour {
 
     void OnMouseDown()
     {
+        //Checa se o painel já está ativo
+        if (ActionPanel.Instance.gameObject.activeInHierarchy)
+        {
+            return;
+        }
+
+        //Senão, ativa com o objeto selecionado
         ActionPanel.Instance.OnPanelActivated(this);
     }
 }
