@@ -50,7 +50,7 @@ Shader "Hidden/OutlineBufferEffect" {
 		CGPROGRAM
 
 		#pragma surface surf Lambert vertex:vert nofog noshadow noambient nolightmap novertexlights noshadowmask nometa //keepalpha
-		#pragma multi_compile _ PIXELSNAP_ON
+		#pragma multi_compile _ PIXELSNAP_OFF
 
 		sampler2D _MainTex;
 		fixed4 _Color;
