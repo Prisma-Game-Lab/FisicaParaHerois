@@ -29,7 +29,6 @@ public class PlayerInfo : MonoBehaviour {
     {
         //Seta a referência do player
         PlayerInstance = this;
-        //this.GetComponent<Rigidbody>().useGravity = true;
         Actions = new List<IAction<float>>();
 
         IAction<float>[] playerActions = gameObject.GetComponents<IAction<float>>();
@@ -38,6 +37,9 @@ public class PlayerInfo : MonoBehaviour {
         {
             Actions.Add(action);
         }
+
+        this.GetComponent<BoxCollider2D>().GetComponent<PhysicsMaterial2D>().friction = 1.0f;
+
     }
 
     // Use this for initialization

@@ -17,8 +17,6 @@ public class PlayerInput : MonoBehaviour {
 
     public float jumpCheckDistance;
 
-
-
     private GameObject _directionBeforeJump;
 
     private Rigidbody2D rb;
