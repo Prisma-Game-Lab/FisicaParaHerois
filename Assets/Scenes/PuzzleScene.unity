@@ -435,7 +435,7 @@ Prefab:
     - target: {fileID: 114559763252504456, guid: 1cbd4ee101de9bd478024e46e4a8a080,
         type: 2}
       propertyPath: PaceSpeed
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 61156254093367582, guid: 1cbd4ee101de9bd478024e46e4a8a080,
         type: 2}
@@ -466,7 +466,7 @@ Prefab:
         type: 2}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6200000, guid: 1142cd8c92b1ddf4d99741fd3e6f074d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1cbd4ee101de9bd478024e46e4a8a080, type: 2}
   m_IsPrefabParent: 0
@@ -583,7 +583,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 887592614}
+  m_TargetTexture: {fileID: 1918137456}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -1068,6 +1068,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0000002, y: 1.0000002}
   m_EdgeRadius: 0
+--- !u!84 &433308696
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 1148
+  m_Height: 534
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!4 &482299966 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4550710866598950, guid: e9e8aa35e82f5694cb4c41200caa8abe,
@@ -1524,33 +1551,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4557955608577248, guid: 67c6db1fc0afa184ea5c019197dd1a23,
     type: 2}
   m_PrefabInternal: {fileID: 856188778}
---- !u!84 &887592614
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 1148
-  m_Height: 534
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &928213518
 GameObject:
   m_ObjectHideFlags: 0
@@ -2236,33 +2236,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!84 &1083544130
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 1148
-  m_Height: 534
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1094761728
 GameObject:
   m_ObjectHideFlags: 0
@@ -3748,8 +3721,8 @@ MonoBehaviour:
   sourceCamera: {fileID: 1872504838}
   outlineCamera: {fileID: 165534296}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 887592614}
-  extraRenderTexture: {fileID: 1083544130}
+  renderTexture: {fileID: 1918137456}
+  extraRenderTexture: {fileID: 433308696}
 --- !u!1 &1874850970 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1556055190346826, guid: e0f7bda04a393394da61b997b63af29b,
@@ -3883,6 +3856,33 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9d1a31d277d68e498c85d9d4a2b6d13, type: 2}
   m_IsPrefabParent: 0
+--- !u!84 &1918137456
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 1148
+  m_Height: 534
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &1942627529
 Prefab:
   m_ObjectHideFlags: 0

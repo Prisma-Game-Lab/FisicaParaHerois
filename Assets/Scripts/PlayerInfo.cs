@@ -22,7 +22,6 @@ public class PlayerInfo : MonoBehaviour {
 
     private bool _receiveDamage;
     private float _damageNumber;
-    private Vector2 _movement;
     private Rigidbody2D _rb;
 
     void Awake()
@@ -85,26 +84,20 @@ public class PlayerInfo : MonoBehaviour {
     // Movimentação
     public void Move(bool walkLeft)
     {
-        if (_movement.x > -2)
-        {
-            _movement.x = this.transform.position.x - 1 * (Time.deltaTime / 10f);
-        }
-
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
 
         if (walkLeft)
         {
-            print(rb.velocity);
             if (rb.velocity.x >= -MaxVelocity)
             {
-                rb.AddForce(_movement * PaceSpeed);
+                rb.AddForce(Vector2.left * PaceSpeed * 8.47f);
             }
 
         } else
         {
             if (rb.velocity.x <= MaxVelocity)
             {
-                rb.AddForce(-_movement * PaceSpeed);
+                rb.AddForce(Vector2.right * PaceSpeed * 8.47f);
             }
         }
     }
