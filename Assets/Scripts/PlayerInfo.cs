@@ -38,8 +38,6 @@ public class PlayerInfo : MonoBehaviour {
             Actions.Add(action);
         }
 
-        this.GetComponent<BoxCollider2D>().GetComponent<PhysicsMaterial2D>().friction = 1.0f;
-
     }
 
     // Use this for initialization
