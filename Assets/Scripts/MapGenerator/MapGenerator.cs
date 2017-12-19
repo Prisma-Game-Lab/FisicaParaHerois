@@ -11,7 +11,28 @@ using System.IO;
 [ExecuteInEditMode]
 public class MapGenerator : MonoBehaviour
 {
-	[Header("Load File")]
+    #region Tiled
+    //Os valores colocados aqui devem ser const (nunca podem ser alterados pelo programa)
+
+    //Base Layer
+    public const int TILED_FLOOR_ID = 199;
+
+    //Player Layer
+    public const int TILED_PLAYER_ID = 246;
+
+    //Objects Layer
+    public const int TILED_BOX_ID = 150;
+    public const int TILED_SEESAW_ID = 151;
+    public const int TILED_DOOR_ID = 152;
+    public const int TILED_PRESSUREPLATE_ID = 153;
+
+    //Enemy Layer
+    public const int TILED_ENEMY_ID = 300;
+    public const int TILED_BOSS_ID = 301;
+
+    #endregion
+
+    [Header("Load File")]
     public string fileName; // The name of the file that will be loaded 
 
 	[Header("Generated Prefabs")] // The prefabs that the script will Instantiate
@@ -111,9 +132,9 @@ public class MapGenerator : MonoBehaviour
 
 					if (layer.name == "Base") // The name of the layer inside the json file, and Tiled
 					{
-						switch (layer.data[i])
-						{
-							case 199:
+                        switch (layer.data[i])
+                        {
+                            case TILED_FLOOR_ID:
                                 /*
 								if (GameObject.Find("FloorTiles") == null)
 								{
@@ -133,71 +154,6 @@ public class MapGenerator : MonoBehaviour
 								TileList.Add(UnavailableTile);
                                 */
                                 break;
-							
-							case 268:
-                                /*
-								if (GameObject.Find("FloorTiles") == null)
-								{
-									var floorEmpityObj = new GameObject("FloorTiles");
-									floorEmpityObj.transform.parent = GameObject.Find(layer.name).transform;
-									floorEmpityObj.transform.position = Vector3.zero;
-									floorEmpityObj.transform.localPosition = Vector3.zero;
-									floorEmpityObj.transform.localRotation = Quaternion.identity;
-								}
-								var DefaultTile = Instantiate(CellTiles, Vector3.zero, Quaternion.identity, GameObject.Find("FloorTiles").transform) as GameObject;
-								DefaultTile.transform.localPosition = new Vector3(posX, posY, posZ);
-								DefaultTile.GetComponentInChildren<Cell>().CurrentState = Cell.State.Default;
-
-								DefaultTile.GetComponentInChildren<Cell>().Position[0] = t;
-								DefaultTile.GetComponentInChildren<Cell>().Position[1] = c;
-
-								TileList.Add(DefaultTile);
-                                */
-
-                                break;
-                            case 267:
-                                /*
-                                if (GameObject.Find("FloorTiles") == null)
-                                {
-                                    var floorEmpityObj = new GameObject("FloorTiles");
-                                    floorEmpityObj.transform.parent = GameObject.Find(layer.name).transform;
-                                    floorEmpityObj.transform.position = Vector3.zero;
-                                    floorEmpityObj.transform.localPosition = Vector3.zero;
-                                    floorEmpityObj.transform.localRotation = Quaternion.identity;
-                                }
-                                var PowerUpTile = Instantiate(CellTiles, Vector3.zero, Quaternion.identity, GameObject.Find("FloorTiles").transform) as GameObject;
-                                PowerUpTile.transform.localPosition = new Vector3(posX, posY, posZ);
-                                PowerUpTile.GetComponentInChildren<Cell>().CurrentState = Cell.State.Default;
-
-                                PowerUpTile.GetComponentInChildren<Cell>().SpawnPowerUp = true;
-                                PowerUpTile.GetComponentInChildren<Cell>().Position[0] = t;
-                                PowerUpTile.GetComponentInChildren<Cell>().Position[1] = c;
-
-                                TileList.Add(PowerUpTile);
-                                */
-
-                                break;
-                            case 269:
-                                /*
-                                if (GameObject.Find("FloorTiles") == null)
-                                {
-                                    var floorEmpityObj = new GameObject("FloorTiles");
-                                    floorEmpityObj.transform.parent = GameObject.Find(layer.name).transform;
-                                    floorEmpityObj.transform.position = Vector3.zero;
-                                    floorEmpityObj.transform.localPosition = Vector3.zero;
-                                    floorEmpityObj.transform.localRotation = Quaternion.identity;
-                                }
-                                var AltarTile = Instantiate(CellTiles, Vector3.zero, Quaternion.identity, GameObject.Find("FloorTiles").transform) as GameObject;
-                                AltarTile.transform.localPosition = new Vector3(posX, posY, posZ);
-                                AltarTile.GetComponentInChildren<Cell>().CurrentState = Cell.State.Altar;
-                                AltarTile.GetComponentInChildren<Cell>().AltarPrefab.GetComponent<Altar>().Position = AltarTile.GetComponentInChildren<Cell>();
-
-                                AltarTile.GetComponentInChildren<Cell>().Position[0] = t;
-                                AltarTile.GetComponentInChildren<Cell>().Position[1] = c;
-
-                                TileList.Add(AltarTile);
-                                */
-                                break;
                         }
 						
 					}
@@ -205,29 +161,58 @@ public class MapGenerator : MonoBehaviour
 					{
                         switch (layer.data[i])
 						{
-							case 246:
-                                /*
-								CharDataReader.NewStartCell(TileList[i].GetComponentInChildren<Cell>());
-                                */
-                                break;
-							case 247:
-                                /*
-								CharDataReader.NewStartCell(TileList[i].GetComponentInChildren<Cell>());
-                                */
-                                break;
-							case 248:
-                                /*
-								CharDataReader.NewStartCell(TileList[i].GetComponentInChildren<Cell>());
-                                */
-                                break;
-							case 249:
+							case TILED_PLAYER_ID:
                                 /*
 								CharDataReader.NewStartCell(TileList[i].GetComponentInChildren<Cell>());
                                 */
                                 break;
 						}
 					}
-				}
+
+                    else if (layer.name == "Objects")
+                    {
+                        switch (layer.data[i])
+                        {
+                            case TILED_BOX_ID:
+                                /*
+								CharDataReader.NewStartCell(TileList[i].GetComponentInChildren<Cell>());
+                                */
+                                break;
+                            case TILED_DOOR_ID:
+                                /*
+								CharDataReader.NewStartCell(TileList[i].GetComponentInChildren<Cell>());
+                                */
+                                break;
+                            case TILED_PRESSUREPLATE_ID:
+                                /*
+								CharDataReader.NewStartCell(TileList[i].GetComponentInChildren<Cell>());
+                                */
+                                break;
+                            case TILED_SEESAW_ID:
+                                /*
+								CharDataReader.NewStartCell(TileList[i].GetComponentInChildren<Cell>());
+                                */
+                                break;
+                        }
+                    }
+
+                    else if (layer.name == "Enemy")
+                    {
+                        switch (layer.data[i])
+                        {
+                            case TILED_BOSS_ID:
+                                /*
+								CharDataReader.NewStartCell(TileList[i].GetComponentInChildren<Cell>());
+                                */
+                                break;
+                            case TILED_ENEMY_ID:
+                                /*
+								CharDataReader.NewStartCell(TileList[i].GetComponentInChildren<Cell>());
+                                */
+                                break;
+                        }
+                    }
+                }
 
                 /*
                 GetComponent<Map>().CellPerSide = maxSize + 1;
