@@ -11,7 +11,7 @@ using System.IO;
 [ExecuteInEditMode]
 public class MapGenerator : MonoBehaviour
 {
-    #region Tiled
+    [Header("Tiled")]
     //Os valores colocados aqui devem ser const (nunca podem ser alterados pelo programa)
 
     //Base Layer
@@ -30,17 +30,24 @@ public class MapGenerator : MonoBehaviour
     public const int TILED_ENEMY_ID = 300;
     public const int TILED_BOSS_ID = 301;
 
-    #endregion
+
+    //Outras infos
+    [Tooltip("Tamanho do tile no Unity em relação ao Tiled")] public int TileSize;
+
 
     [Header("Load File")]
     public string fileName; // The name of the file that will be loaded 
 
-	[Header("Generated Prefabs")] // The prefabs that the script will Instantiate
-    public GameObject CellTiles;
-
-    [Header("Map Randomization")]
-    public static string MapsFolder = "StreamingAssets/jsonMaps";
-    public MapData RandomMapData;
+    [Header("Generated Prefabs")] // The prefabs that the script will Instantiate
+    [Tooltip("Inclua aqui todos os prefabs presentes em qualquer fase, por exemplo, background e canvas. Se houver uma ordem necessária de inicialização, respeite essa ordem ao incluir os itens")] public GameObject[] EssentialPrefabs;
+    public GameObject FloorPrefab;
+    public GameObject PlayerPrefab;
+    public GameObject BoxPrefab;
+    public GameObject SeesawPrefab;
+    public GameObject DoorPrefab;
+    public GameObject PressurePlatePrefab;
+    public GameObject EnemyPrefab;
+    public GameObject BossPrefab;
 
     [Space]
     
@@ -65,7 +72,7 @@ public class MapGenerator : MonoBehaviour
     {
         //prepara novo mapa
         string oldName = fileName;
-        fileName = RandomMapData.GetRandomMap();
+        //fileName = RandomMapData.GetRandomMap();
         Debug.Log("Nome do arquivo pego aleatoriamente: " + fileName);
 
         if (fileName.Length > 1)
@@ -74,15 +81,6 @@ public class MapGenerator : MonoBehaviour
             DeleteMap();
             LoadMap();
             GenerateMap();
-
-            /*
-            //Usa OnValidate nas células
-            Cell[] cells = transform.GetComponentsInChildren<Cell>();
-            foreach (Cell cell in cells)
-            {
-                cell.GenerateCell();
-            }
-            */
         }
         else
         {
@@ -99,12 +97,17 @@ public class MapGenerator : MonoBehaviour
 	/// </summary>
     public void GenerateMap()
     {
-		if (AllLayers != null)
+        if(GameObject.Find("GeneratedTiles") == null)
+        {
+            new GameObject("GeneratedTiles");
+        }
+
+        if (AllLayers != null)
 		{
 			foreach (Layer layer in AllLayers.layers) // For each layer of the AllLayers variable
 			{
 				c = 0;
-				if (GameObject.Find(layer.name) == null) // Create a new Empity object to hold the objects of that layer
+				if (GameObject.Find(layer.name) == null) // Create a new Empty object to hold the objects of that layer
 				{
 					var layerEmptyObjt = new GameObject(layer.name);					
 					layerEmptyObjt.transform.parent = GameObject.Find("GeneratedTiles").transform;					
@@ -135,24 +138,17 @@ public class MapGenerator : MonoBehaviour
                         switch (layer.data[i])
                         {
                             case TILED_FLOOR_ID:
-                                /*
-								if (GameObject.Find("FloorTiles") == null)
-								{
-									var floorEmpityObj = new GameObject("FloorTiles");
-									floorEmpityObj.transform.parent = GameObject.Find(layer.name).transform;
-									floorEmpityObj.transform.position = Vector3.zero;
-									floorEmpityObj.transform.localPosition = Vector3.zero;
-									floorEmpityObj.transform.localRotation = Quaternion.identity;
-								}
-								var UnavailableTile = Instantiate(CellTiles,Vector3.zero, Quaternion.identity, GameObject.Find("FloorTiles").transform) as GameObject;
-								UnavailableTile.transform.localPosition = new Vector3 (posX, posY, posZ);
-								UnavailableTile.GetComponentInChildren<Cell>().CurrentState = Cell.State.Unavailable;
+                                if (GameObject.Find("FloorTiles") == null)
+                                {
+                                    var floorEmptyObj = new GameObject("FloorTiles");
+                                    floorEmptyObj.transform.parent = GameObject.Find("GeneratedTiles").transform;
+                                    floorEmptyObj.transform.position = Vector3.zero;
+                                    floorEmptyObj.transform.localPosition = Vector3.zero;
+                                    floorEmptyObj.transform.localRotation = Quaternion.identity;
+                                }
 
-								UnavailableTile.GetComponentInChildren<Cell>().Position[0] = t;
-								UnavailableTile.GetComponentInChildren<Cell>().Position[1] = c;
-
-								TileList.Add(UnavailableTile);
-                                */
+                                GameObject InstantiatedPrefab = Instantiate(FloorPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("FloorTiles").transform);
+                                InstantiatedPrefab.transform.localPosition = new Vector3(posX, posY, posZ);
                                 break;
                         }
 						
@@ -162,61 +158,91 @@ public class MapGenerator : MonoBehaviour
                         switch (layer.data[i])
 						{
 							case TILED_PLAYER_ID:
-                                /*
-								CharDataReader.NewStartCell(TileList[i].GetComponentInChildren<Cell>());
-                                */
+                                GameObject InstantiatedPrefab = Instantiate(PlayerPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("GeneratedTiles").transform);
+                                InstantiatedPrefab.transform.localPosition = new Vector3(posX, posY, posZ);
                                 break;
 						}
 					}
 
                     else if (layer.name == "Objects")
                     {
+                        GameObject InstantiatedPrefab;
                         switch (layer.data[i])
                         {
                             case TILED_BOX_ID:
-                                /*
-								CharDataReader.NewStartCell(TileList[i].GetComponentInChildren<Cell>());
-                                */
+                                if (GameObject.Find("Objects") == null)
+                                {
+                                    var objectsEmptyObj = new GameObject("Objects");
+                                    objectsEmptyObj.transform.parent = GameObject.Find("GeneratedTiles").transform;
+                                    objectsEmptyObj.transform.position = Vector3.zero;
+                                    objectsEmptyObj.transform.localPosition = Vector3.zero;
+                                    objectsEmptyObj.transform.localRotation = Quaternion.identity;
+                                }
+
+                                InstantiatedPrefab = Instantiate(BoxPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Objects").transform);
+                                InstantiatedPrefab.transform.localPosition = new Vector3(posX, posY, posZ);
                                 break;
+
                             case TILED_DOOR_ID:
-                                /*
-								CharDataReader.NewStartCell(TileList[i].GetComponentInChildren<Cell>());
-                                */
+                                if (GameObject.Find("Objects") == null)
+                                {
+                                    var objectsEmptyObj = new GameObject("Objects");
+                                    objectsEmptyObj.transform.parent = GameObject.Find("GeneratedTiles").transform;
+                                    objectsEmptyObj.transform.position = Vector3.zero;
+                                    objectsEmptyObj.transform.localPosition = Vector3.zero;
+                                    objectsEmptyObj.transform.localRotation = Quaternion.identity;
+                                }
+
+                                InstantiatedPrefab = Instantiate(DoorPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Objects").transform);
+                                InstantiatedPrefab.transform.localPosition = new Vector3(posX, posY, posZ);
                                 break;
+
                             case TILED_PRESSUREPLATE_ID:
-                                /*
-								CharDataReader.NewStartCell(TileList[i].GetComponentInChildren<Cell>());
-                                */
+                                if (GameObject.Find("Objects") == null)
+                                {
+                                    var objectsEmptyObj = new GameObject("Objects");
+                                    objectsEmptyObj.transform.parent = GameObject.Find("GeneratedTiles").transform;
+                                    objectsEmptyObj.transform.position = Vector3.zero;
+                                    objectsEmptyObj.transform.localPosition = Vector3.zero;
+                                    objectsEmptyObj.transform.localRotation = Quaternion.identity;
+                                }
+
+                                InstantiatedPrefab = Instantiate(PressurePlatePrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Objects").transform);
+                                InstantiatedPrefab.transform.localPosition = new Vector3(posX, posY, posZ);
                                 break;
+
                             case TILED_SEESAW_ID:
-                                /*
-								CharDataReader.NewStartCell(TileList[i].GetComponentInChildren<Cell>());
-                                */
+                                if (GameObject.Find("Objects") == null)
+                                {
+                                    var objectsEmptyObj = new GameObject("Objects");
+                                    objectsEmptyObj.transform.parent = GameObject.Find("GeneratedTiles").transform;
+                                    objectsEmptyObj.transform.position = Vector3.zero;
+                                    objectsEmptyObj.transform.localPosition = Vector3.zero;
+                                    objectsEmptyObj.transform.localRotation = Quaternion.identity;
+                                }
+
+                                InstantiatedPrefab = Instantiate(SeesawPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Objects").transform);
+                                InstantiatedPrefab.transform.localPosition = new Vector3(posX, posY, posZ);
                                 break;
                         }
                     }
 
                     else if (layer.name == "Enemy")
                     {
+                        GameObject InstantiatedPrefab;
                         switch (layer.data[i])
                         {
                             case TILED_BOSS_ID:
-                                /*
-								CharDataReader.NewStartCell(TileList[i].GetComponentInChildren<Cell>());
-                                */
+                                InstantiatedPrefab = Instantiate(BossPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("GeneratedTiles").transform);
+                                InstantiatedPrefab.transform.localPosition = new Vector3(posX, posY, posZ);
                                 break;
                             case TILED_ENEMY_ID:
-                                /*
-								CharDataReader.NewStartCell(TileList[i].GetComponentInChildren<Cell>());
-                                */
+                                InstantiatedPrefab = Instantiate(EnemyPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("GeneratedTiles").transform);
+                                InstantiatedPrefab.transform.localPosition = new Vector3(posX, posY, posZ);
                                 break;
                         }
                     }
                 }
-
-                /*
-                GetComponent<Map>().CellPerSide = maxSize + 1;
-                */
 			}			
 		}
 		Debug.Log("Tile count" + TileList.Count);
