@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4954615474085752}
   - component: {fileID: 212244964215594226}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: obj_gangorraBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114777224007103120}
   - component: {fileID: 61357587722777234}
   - component: {fileID: 233343653515715780}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gangorra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4793664241138430}
   - component: {fileID: 212908920934677784}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: obj_gangorra 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4319895201005480}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gangorra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,8 +99,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1614589425483384}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.89, y: -3.22, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.600747, y: -1.9130183, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4133465921440416}
@@ -231,6 +231,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 0}
+  AvailableActions:
+    ChangeGravityAction: 1
+    ChangeMassAction: 1
+    PushPullAction: 1
   CanPlayerInteract: 0
 --- !u!212 &212244964215594226
 SpriteRenderer:
