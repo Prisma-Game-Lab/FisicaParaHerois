@@ -10,6 +10,11 @@ public class SceneManaging : MonoBehaviour {
         SceneManager.LoadScene(s);
     }
 
+    public void RestartScene()
+    {
+        LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     /// <summary>
     /// Usada no botão de iniciar
     /// </summary>
@@ -49,11 +54,31 @@ public class SceneManaging : MonoBehaviour {
     /// <summary>
     /// Usada no botão da cena de customização
     /// </summary>
-    public void CustomizationSceneOkButton(string scene)
+    public void CustomizationSceneOkButton(string cutsceneScene, string mapScene)
     {
-        //Salva em um arquivo gerado pelo Unity que o personagem já foi criado
-        PlayerPrefs.SetInt("CharacterCreated", 1);
+        if (PlayerPrefs.GetInt("CharacterCreated", 0) == 0) //Personagem ainda não foi setado
+        {
+            //Salva em um arquivo gerado pelo Unity que o personagem já foi criado
+            PlayerPrefs.SetInt("CharacterCreated", 1);
+            LoadScene(cutsceneScene);
+        }
 
-        LoadScene(scene);
+        else
+        {
+            LoadScene(mapScene);
+        }
+    }
+
+    /// <summary>
+    /// Usada no botão da cena de customização
+    /// </summary>
+    /// <param name="scenes">Nome das cenas separado por vírgula</param>
+    public void CustomizationSceneOkButton(string scenes)
+    {
+        //Separa a string passada em 2 (o inspector não aceita métodos com 2 variáveis)
+        string cutsceneScene = scenes.Substring(0, scenes.IndexOf(','));
+        string mapScene = scenes.Substring(scenes.IndexOf(',') + 1);
+
+        CustomizationSceneOkButton(cutsceneScene, mapScene);
     }
 }

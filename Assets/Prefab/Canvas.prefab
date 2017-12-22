@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 114157346873665988}
   - component: {fileID: 114933540084616592}
   - component: {fileID: 114572163325701252}
+  - component: {fileID: 114785105200923282}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -965,8 +966,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114933540084616592}
-        m_MethodName: OnQuit
+      - m_Target: {fileID: 114785105200923282}
+        m_MethodName: RestartScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2058,15 +2059,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114933540084616592}
-        m_MethodName: OnQuit
-        m_Mode: 1
+      - m_Target: {fileID: 114785105200923282}
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Mapa
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2547,6 +2548,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114785105200923282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1077424016362776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8239d0cd2af747547a824619689ec75e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114805545285488646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2866,6 +2878,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967f77574f0761248bcca568d85f0fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AvailableButtonColor: {r: 1, g: 1, b: 1, a: 1}
+  UnavailableButtonColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   ActionButtons:
   - {fileID: 114825986368456830}
   - {fileID: 114313476893111780}
