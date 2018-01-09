@@ -15,16 +15,16 @@ public class MapGenerator : MonoBehaviour
     //Os valores colocados aqui devem ser const (nunca podem ser alterados pelo programa)
 
     //Base Layer
-    public const int TILED_FLOOR_ID = 199;
+    public const int TILED_FLOOR_ID = 0;
 
     //Player Layer
-    public const int TILED_PLAYER_ID = 246;
+    public const int TILED_PLAYER_ID = 3;
 
     //Objects Layer
-    public const int TILED_BOX_ID = 150;
-    public const int TILED_SEESAW_ID = 151;
-    public const int TILED_DOOR_ID = 152;
-    public const int TILED_PRESSUREPLATE_ID = 153;
+    public const int TILED_BOX_ID = 2;
+    public const int TILED_SEESAW_ID = 1;
+    public const int TILED_DOOR_ID = 4;
+    public const int TILED_PRESSUREPLATE_ID = 5;
 
     //Enemy Layer
     public const int TILED_ENEMY_ID = 300;
