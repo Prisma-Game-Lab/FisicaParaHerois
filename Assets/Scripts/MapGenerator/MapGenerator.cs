@@ -15,16 +15,16 @@ public class MapGenerator : MonoBehaviour
     //Os valores colocados aqui devem ser const (nunca podem ser alterados pelo programa)
 
     //Base Layer
-    public const int TILED_FLOOR_ID = 0;
+    public const int TILED_FLOOR_ID = 113;
 
     //Player Layer
-    public const int TILED_PLAYER_ID = 3;
+    public const int TILED_PLAYER_ID = 116;
 
     //Objects Layer
-    public const int TILED_BOX_ID = 2;
-    public const int TILED_SEESAW_ID = 1;
-    public const int TILED_DOOR_ID = 4;
-    public const int TILED_PRESSUREPLATE_ID = 5;
+    public const int TILED_BOX_ID = 115;
+    public const int TILED_SEESAW_ID = 114;
+    public const int TILED_DOOR_ID = 117;
+    public const int TILED_PRESSUREPLATE_ID = 118;
 
     //Enemy Layer
     public const int TILED_ENEMY_ID = 300;
@@ -117,11 +117,11 @@ public class MapGenerator : MonoBehaviour
 				}
 				for (int i = 0; i < layer.data.Length; i++)
                 {
-                    if (i % layer.height == 0 && i != 0)
+                    if (i % layer.width == 0 && i != 0)
 					{
 						c++;
 					}
-					t = (i % layer.height) - layer.width;
+					t = (i % layer.width) - layer.height;
 
                     if(c > maxSize)
                     {
@@ -133,8 +133,10 @@ public class MapGenerator : MonoBehaviour
 					posZ = -0.55f;
 					posY = (-1.1f * c);
 
-					if (layer.name == "Base") // The name of the layer inside the json file, and Tiled
+					if (layer.name == "Player")
 					{
+                        GameObject instantiatedPrefab;
+
                         switch (layer.data[i])
                         {
                             case TILED_FLOOR_ID:
@@ -147,28 +149,15 @@ public class MapGenerator : MonoBehaviour
                                     floorEmptyObj.transform.localRotation = Quaternion.identity;
                                 }
 
-                                GameObject InstantiatedPrefab = Instantiate(FloorPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("FloorTiles").transform);
-                                InstantiatedPrefab.transform.position = new Vector3(posX*TileSize, posY*TileSize, posZ);
+                                instantiatedPrefab = Instantiate(FloorPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("FloorTiles").transform);
+                                instantiatedPrefab.transform.position = new Vector3(posX * TileSize, posY * TileSize, posZ);
                                 break;
-                        }
-						
-					}
-					else if (layer.name == "Player")
-					{
-                        switch (layer.data[i])
-						{
-							case TILED_PLAYER_ID:
-                                GameObject InstantiatedPrefab = Instantiate(PlayerPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("GeneratedTiles").transform);
-                                InstantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
-                                break;
-						}
-					}
 
-                    else if (layer.name == "Objects")
-                    {
-                        GameObject InstantiatedPrefab;
-                        switch (layer.data[i])
-                        {
+                            case TILED_PLAYER_ID:
+                                instantiatedPrefab = Instantiate(PlayerPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("GeneratedTiles").transform);
+                                instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
+                                break;
+
                             case TILED_BOX_ID:
                                 if (GameObject.Find("Objects") == null)
                                 {
@@ -179,8 +168,8 @@ public class MapGenerator : MonoBehaviour
                                     objectsEmptyObj.transform.localRotation = Quaternion.identity;
                                 }
 
-                                InstantiatedPrefab = Instantiate(BoxPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Objects").transform);
-                                InstantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
+                                instantiatedPrefab = Instantiate(BoxPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Objects").transform);
+                                instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
                                 break;
 
                             case TILED_DOOR_ID:
@@ -193,8 +182,8 @@ public class MapGenerator : MonoBehaviour
                                     objectsEmptyObj.transform.localRotation = Quaternion.identity;
                                 }
 
-                                InstantiatedPrefab = Instantiate(DoorPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Objects").transform);
-                                InstantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
+                                instantiatedPrefab = Instantiate(DoorPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Objects").transform);
+                                instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
                                 break;
 
                             case TILED_PRESSUREPLATE_ID:
@@ -207,8 +196,8 @@ public class MapGenerator : MonoBehaviour
                                     objectsEmptyObj.transform.localRotation = Quaternion.identity;
                                 }
 
-                                InstantiatedPrefab = Instantiate(PressurePlatePrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Objects").transform);
-                                InstantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
+                                instantiatedPrefab = Instantiate(PressurePlatePrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Objects").transform);
+                                instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
                                 break;
 
                             case TILED_SEESAW_ID:
@@ -221,24 +210,17 @@ public class MapGenerator : MonoBehaviour
                                     objectsEmptyObj.transform.localRotation = Quaternion.identity;
                                 }
 
-                                InstantiatedPrefab = Instantiate(SeesawPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Objects").transform);
-                                InstantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
+                                instantiatedPrefab = Instantiate(SeesawPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Objects").transform);
+                                instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
                                 break;
-                        }
-                    }
 
-                    else if (layer.name == "Enemy")
-                    {
-                        GameObject InstantiatedPrefab;
-                        switch (layer.data[i])
-                        {
                             case TILED_BOSS_ID:
-                                InstantiatedPrefab = Instantiate(BossPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("GeneratedTiles").transform);
-                                InstantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
+                                instantiatedPrefab = Instantiate(BossPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("GeneratedTiles").transform);
+                                instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
                                 break;
                             case TILED_ENEMY_ID:
-                                InstantiatedPrefab = Instantiate(EnemyPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("GeneratedTiles").transform);
-                                InstantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
+                                instantiatedPrefab = Instantiate(EnemyPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("GeneratedTiles").transform);
+                                instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
                                 break;
                         }
                     }
