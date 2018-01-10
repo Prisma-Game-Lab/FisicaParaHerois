@@ -18,6 +18,7 @@ public class PlayerInput : MonoBehaviour {
     public float jumpCheckDistance;
 
     private GameObject _directionBeforeJump;
+   // private float _friction;
 
     private Rigidbody2D rb;
 
@@ -27,6 +28,9 @@ public class PlayerInput : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Input.multiTouchEnabled = true;
+
+        //_friction = Player.GetComponent<BoxCollider2D>().sharedMaterial.friction;
+
     }
 
     void Awake()
@@ -51,16 +55,26 @@ public class PlayerInput : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
+        // Fazer algo pra melhorar o movimento emcima da gangorra aqui!
+        if (PlayerTouchingSeesaw())
+        {
+           // Player.GetComponent<BoxCollider2D>().sharedMaterial.friction = 0.1f;
+            //print(Player.GetComponent<BoxCollider2D>().sharedMaterial.friction);
+        } else
+        {
+            //Player.GetComponent<BoxCollider2D>().sharedMaterial.friction = _friction;
+        }
+
         // Verifica se está rodando o jogo no unity caso contrário será em algum mobile
 #if UNITY_STANDALONE || UNITY_WEBPLAYER
 
         if (Input.GetKey(KeyCode.A))
         {
-            if(!IsJumping()) Player.Move(true);
+            /*if(!IsJumping())*/ Player.Move(true);
             
         } else if (Input.GetKey(KeyCode.D))
         {
-            if(!IsJumping()) Player.Move(false);
+            /*if(!IsJumping())*/ Player.Move(false);
         }
 
         if (Input.GetKeyDown(KeyCode.W))
@@ -262,6 +276,24 @@ public class PlayerInput : MonoBehaviour {
         else return false;
     }
 
+    // verifica se está tocando a gangorra e diminui o atrito
+    private bool PlayerTouchingSeesaw()
+    {
+
+        BoxCollider2D playerCollider = Player.GetComponent<BoxCollider2D>();
+        Transform seesaw = GameObject.Find("PhysicsObjects").transform.Find("Gangorra").transform.Find("Gangorra");
+
+        // Verifica somente a barra da gangorra
+        Collider2D physicsSeesawCollider = seesaw.GetComponent<Collider2D>();
+
+
+        if (playerCollider.IsTouching(physicsSeesawCollider))
+        {
+             return true;
+        }
+
+        return false;
+    }
 
 
     //    private void CheckJump()
