@@ -182,6 +182,12 @@ public class MapGenerator : MonoBehaviour
                                     objectsEmptyObj.transform.localRotation = Quaternion.identity;
                                 }
 
+                                //Tile não deve ser instanciado
+                                if (!CheckRepeatedTiles(layer, i, 1, 2))
+                                {
+                                    break;
+                                }
+
                                 instantiatedPrefab = Instantiate(DoorPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Objects").transform);
                                 instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
                                 break;
@@ -208,6 +214,12 @@ public class MapGenerator : MonoBehaviour
                                     objectsEmptyObj.transform.position = Vector3.zero;
                                     objectsEmptyObj.transform.localPosition = Vector3.zero;
                                     objectsEmptyObj.transform.localRotation = Quaternion.identity;
+                                }
+
+                                //Tile não deve ser instanciado
+                                if (!CheckRepeatedTiles(layer, i, 4, 1))
+                                {
+                                    break;
                                 }
 
                                 instantiatedPrefab = Instantiate(SeesawPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Objects").transform);
@@ -240,10 +252,57 @@ public class MapGenerator : MonoBehaviour
 		CharDataReader.ResetStartCells();
         */
     }
+
 	public bool CheckChildZero()
 	{
 		return (transform.childCount == 0);
 	}
+
+    /// <summary>
+    /// Checa se há um determinado número de tiles repetidos na vertical ou na horizontal
+    /// </summary>
+    /// <param name="layer">Layer atual</param>
+    /// <param name="i">Posição atual do layer que está sendo percorrido</param>
+    /// <param name="horizontal">Número de tiles repetidos horizontalmente para o objeto. 1 se não houver repetição nesta direção.</param>
+    /// <param name="vertical">Número de tiles repetidos verticalmente para o objeto. 1 se não houver repetição nesta direção.</param>
+    /// <returns>True, se o objeto deve ser instanciado e false, caso contrário.</returns>
+    public bool CheckRepeatedTiles(Layer layer, int i, int horizontal, int vertical)
+    {
+        if(horizontal == 0 || vertical == 0)
+        {
+            Debug.LogError("A função CheckRepeatedTiles não deve receber 0");
+        }
+
+        int repetidosHorizontal = 0, repetidosVertical = 0;
+
+        //Checa repetição horizontal
+        for(int j = 0; j < horizontal || (layer.data[i - j] == layer.data[i]); j++)
+        {
+            if(layer.data[i-j] != layer.data[i])
+            {
+                //Tile atual ainda faz parte da repetição de um tile, não spawnar
+                return false;
+            }
+            repetidosHorizontal++;
+        }
+
+        //Checa repetição vertical
+        for (int j = 0; j < vertical || (layer.data[i - layer.width*j] == layer.data[i]); j++)
+        {
+            if (layer.data[i - layer.width*j] != layer.data[i])
+            {
+                //Tile atual ainda faz parte da repetição de um tile, não spawnar
+                return false;
+            }
+            repetidosVertical++;
+        }
+
+        /*Retorna o fato de o número de tiles repetidos ser o múltiplo de tiles 
+         * que devem ser repetidos em uma das direções, ou seja, diz se o tile atual está no meio
+         * das repetições de um tile anterior e, portanto, não deve ser instanciado*/
+        return ((repetidosVertical % vertical == 0) && (repetidosHorizontal % horizontal == 0));
+    }
+
 	/// <summary>
 	/// Function that loads the map file, and dumps it to the AllLayers variable
 	/// </summary>
