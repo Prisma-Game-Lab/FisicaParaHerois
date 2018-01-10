@@ -107,14 +107,6 @@ public class MapGenerator : MonoBehaviour
 			foreach (Layer layer in AllLayers.layers) // For each layer of the AllLayers variable
 			{
 				c = 0;
-				if (GameObject.Find(layer.name) == null) // Create a new Empty object to hold the objects of that layer
-				{
-					var layerEmptyObjt = new GameObject(layer.name);					
-					layerEmptyObjt.transform.parent = GameObject.Find("GeneratedTiles").transform;					
-					layerEmptyObjt.transform.position = Vector3.zero;
-					layerEmptyObjt.transform.localPosition = Vector3.zero;
-					layerEmptyObjt.transform.localRotation = Quaternion.identity;
-				}
 				for (int i = 0; i < layer.data.Length; i++)
                 {
                     if (i % layer.width == 0 && i != 0)
@@ -156,19 +148,20 @@ public class MapGenerator : MonoBehaviour
                             case TILED_PLAYER_ID:
                                 instantiatedPrefab = Instantiate(PlayerPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("GeneratedTiles").transform);
                                 instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
+                                instantiatedPrefab.name = "Player";
                                 break;
 
                             case TILED_BOX_ID:
-                                if (GameObject.Find("Objects") == null)
+                                if (GameObject.Find("PhysicsObjects") == null)
                                 {
-                                    var objectsEmptyObj = new GameObject("Objects");
+                                    var objectsEmptyObj = new GameObject("PhysicsObjects");
                                     objectsEmptyObj.transform.parent = GameObject.Find("GeneratedTiles").transform;
                                     objectsEmptyObj.transform.position = Vector3.zero;
                                     objectsEmptyObj.transform.localPosition = Vector3.zero;
                                     objectsEmptyObj.transform.localRotation = Quaternion.identity;
                                 }
 
-                                instantiatedPrefab = Instantiate(BoxPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Objects").transform);
+                                instantiatedPrefab = Instantiate(BoxPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("PhysicsObjects").transform);
                                 instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
                                 break;
 
@@ -207,9 +200,9 @@ public class MapGenerator : MonoBehaviour
                                 break;
 
                             case TILED_SEESAW_ID:
-                                if (GameObject.Find("Objects") == null)
+                                if (GameObject.Find("PhysicsObjects") == null)
                                 {
-                                    var objectsEmptyObj = new GameObject("Objects");
+                                    var objectsEmptyObj = new GameObject("PhysicsObjects");
                                     objectsEmptyObj.transform.parent = GameObject.Find("GeneratedTiles").transform;
                                     objectsEmptyObj.transform.position = Vector3.zero;
                                     objectsEmptyObj.transform.localPosition = Vector3.zero;
@@ -222,8 +215,9 @@ public class MapGenerator : MonoBehaviour
                                     break;
                                 }
 
-                                instantiatedPrefab = Instantiate(SeesawPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Objects").transform);
+                                instantiatedPrefab = Instantiate(SeesawPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("PhysicsObjects").transform);
                                 instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize - 1.18f, posY * TileSize + 0.29f, posZ);
+                                instantiatedPrefab.name = "Gangorra"; //Correção de bug no PlayerInput
                                 break;
 
                             case TILED_BOSS_ID:
@@ -237,7 +231,7 @@ public class MapGenerator : MonoBehaviour
                         }
                     }
                 }
-			}			
+            }			
 		}
 		Debug.Log("Tile count" + TileList.Count);
 	}
