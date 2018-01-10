@@ -189,7 +189,7 @@ public class MapGenerator : MonoBehaviour
                                 }
 
                                 instantiatedPrefab = Instantiate(DoorPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Objects").transform);
-                                instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
+                                instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize + 0.22f, posY * TileSize + 0.53f, posZ);
                                 break;
 
                             case TILED_PRESSUREPLATE_ID:
@@ -223,7 +223,7 @@ public class MapGenerator : MonoBehaviour
                                 }
 
                                 instantiatedPrefab = Instantiate(SeesawPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Objects").transform);
-                                instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
+                                instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize - 1.18f, posY * TileSize + 0.29f, posZ);
                                 break;
 
                             case TILED_BOSS_ID:
