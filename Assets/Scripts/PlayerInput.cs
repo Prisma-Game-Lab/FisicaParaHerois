@@ -14,7 +14,7 @@ public class PlayerInput : MonoBehaviour {
     public PlayerInfo Player;
     [Tooltip("Tempo mínimo para identificar um toque longo")]
     public float HoldTime = 0.8f;
-
+    public bool realJump;
     public float jumpCheckDistance;
 
     private GameObject _directionBeforeJump;
@@ -70,11 +70,24 @@ public class PlayerInput : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.A))
         {
-            /*if(!IsJumping())*/ Player.Move(true);
+            if (realJump)
+            {
+                if (!IsJumping()) Player.Move(true);
+            } else
+            {
+                Player.Move(true);
+            }
             
         } else if (Input.GetKey(KeyCode.D))
         {
-            /*if(!IsJumping())*/ Player.Move(false);
+            if (realJump)
+            {
+                if (!IsJumping()) Player.Move(false);
+            } else
+            {
+                Player.Move(false);
+            }
+           
         }
 
         if (Input.GetKeyDown(KeyCode.W))
@@ -141,11 +154,25 @@ public class PlayerInput : MonoBehaviour {
 
         if (HUDbnt.name == "LeftDir")
         {
-            Player.Move(true);
+            if (realJump)
+            {
+                if (!IsJumping()) Player.Move(true);
+            }
+            else
+            {
+                Player.Move(true);
+            }
 
         } else if (HUDbnt.name == "RightDir")
         {
-            Player.Move(false);
+            if (realJump)
+            {
+                if (!IsJumping()) Player.Move(false);
+            }
+            else
+            {
+                Player.Move(false);
+            }
         }
 
         if (HUDbnt.name == "Jump")
@@ -268,8 +295,15 @@ public class PlayerInput : MonoBehaviour {
     {
         //usa raycast pra ver se há algum objeto abaixo do player, até certa distância
         //1.0f temp para distancia mínima
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, jumpCheckDistance, _layerMask);
-        if (hit.collider == null)
+        Vector2 posMin = new Vector2(transform.position.x - Player.GetComponent<BoxCollider2D>().size.x/2 - 1, transform.position.y);
+        Vector2 posMid = new Vector2(transform.position.x, transform.position.y);
+        Vector2 posMax = new Vector2(transform.position.x + Player.GetComponent<BoxCollider2D>().size.x/2 + 1, transform.position.y);
+
+        RaycastHit2D hitMin = Physics2D.Raycast(posMin, Vector2.down, jumpCheckDistance, _layerMask);
+        RaycastHit2D hitMid = Physics2D.Raycast(posMid, Vector2.down, jumpCheckDistance, _layerMask);
+        RaycastHit2D hitMax = Physics2D.Raycast(posMax, Vector2.down, jumpCheckDistance, _layerMask);
+
+        if (hitMin.collider == null && hitMid.collider == null && hitMax.collider == null)
         {
             return true;
         }
