@@ -295,9 +295,9 @@ public class PlayerInput : MonoBehaviour {
     {
         //usa raycast pra ver se há algum objeto abaixo do player, até certa distância
         //1.0f temp para distancia mínima
-        Vector2 posMin = new Vector2(transform.position.x - Player.GetComponent<BoxCollider2D>().size.x/2 - 1, transform.position.y);
+        Vector2 posMin = new Vector2(transform.position.x - Player.GetComponent<BoxCollider2D>().size.x/2 - 0.1f, transform.position.y);
         Vector2 posMid = new Vector2(transform.position.x, transform.position.y);
-        Vector2 posMax = new Vector2(transform.position.x + Player.GetComponent<BoxCollider2D>().size.x/2 + 1, transform.position.y);
+        Vector2 posMax = new Vector2(transform.position.x + Player.GetComponent<BoxCollider2D>().size.x/2 + 0.1f, transform.position.y);
 
         RaycastHit2D hitMin = Physics2D.Raycast(posMin, Vector2.down, jumpCheckDistance, _layerMask);
         RaycastHit2D hitMid = Physics2D.Raycast(posMid, Vector2.down, jumpCheckDistance, _layerMask);
