@@ -69,6 +69,7 @@ public class ActionPanel : MonoBehaviour {
 
         _chosenAction = PlayerInfo.PlayerInstance.Actions[action];
         _actionNameText.text = _chosenAction.GetActionName();
+		_chosenAction.SetTarget(_physicsObject);
         _chosenValueSlider.value = _chosenAction.GetCurrentValue();
     }
 
@@ -87,7 +88,7 @@ public class ActionPanel : MonoBehaviour {
     /// </summary>
     public void OnActionConfirm()
     {
-        _chosenAction.SetTarget(_physicsObject);
+        //_chosenAction.SetTarget(_physicsObject);
         OnCancel(); //despausa o jogo
         _chosenAction.OnActionUse(_chosenValue);
     }
