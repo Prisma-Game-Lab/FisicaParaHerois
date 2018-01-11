@@ -68,27 +68,6 @@ public class MapGenerator : MonoBehaviour
     
     Layers AllLayers;
 
-    private void Awake()
-    {
-        //prepara novo mapa
-        string oldName = fileName;
-        //fileName = RandomMapData.GetRandomMap();
-        Debug.Log("Nome do arquivo pego aleatoriamente: " + fileName);
-
-        if (fileName.Length > 1)
-        {
-            DeleteMap();
-            DeleteMap();
-            LoadMap();
-            GenerateMap();
-        }
-        else
-        {
-            fileName = oldName;
-        }
-
-        c = 0;
-    }
     void Start()
     {
     }
