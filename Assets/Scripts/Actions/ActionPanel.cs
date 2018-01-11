@@ -71,6 +71,17 @@ public class ActionPanel : MonoBehaviour {
         _actionNameText.text = _chosenAction.GetActionName();
 		_chosenAction.SetTarget(_physicsObject);
         _chosenValueSlider.value = _chosenAction.GetCurrentValue();
+
+		switch (action) {
+		case 0:
+			_chosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeGravityActionMinValue;
+			_chosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeGravityActionMaxValue;
+			break;
+		case 1:
+			_chosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeMassActionMinValue;
+			_chosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeMassActionMaxValue;
+			break;
+		}
     }
 
     /// <summary>

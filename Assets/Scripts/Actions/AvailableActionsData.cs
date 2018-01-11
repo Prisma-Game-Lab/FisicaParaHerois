@@ -7,7 +7,11 @@ using UnityEngine;
 public class AvailableActionsData {
     //Acrescentar actions conforme forem acrescentadas (usar o nome da classe)
     public bool ChangeGravityAction = true;
-    public bool ChangeMassAction = true;
+	public float ChangeGravityActionMinValue = -5;
+	public float ChangeGravityActionMaxValue = 5;
+	public bool ChangeMassAction = true;
+	public float ChangeMassActionMinValue = -5;
+	public float ChangeMassActionMaxValue = 5;
     public bool PushPullAction = true;
 
     /// <summary>

@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface IAction<T> {
-    
     void OnActionUse(T parameter);
     void SetTarget(PhysicsObject target);
     string GetActionName();
