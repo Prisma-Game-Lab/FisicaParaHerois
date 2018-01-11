@@ -69,7 +69,19 @@ public class ActionPanel : MonoBehaviour {
 
         _chosenAction = PlayerInfo.PlayerInstance.Actions[action];
         _actionNameText.text = _chosenAction.GetActionName();
+		_chosenAction.SetTarget(_physicsObject);
         _chosenValueSlider.value = _chosenAction.GetCurrentValue();
+
+		switch (action) {
+		case 0:
+			_chosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeGravityActionMinValue;
+			_chosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeGravityActionMaxValue;
+			break;
+		case 1:
+			_chosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeMassActionMinValue;
+			_chosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeMassActionMaxValue;
+			break;
+		}
     }
 
     /// <summary>
@@ -87,7 +99,7 @@ public class ActionPanel : MonoBehaviour {
     /// </summary>
     public void OnActionConfirm()
     {
-        _chosenAction.SetTarget(_physicsObject);
+        //_chosenAction.SetTarget(_physicsObject);
         OnCancel(); //despausa o jogo
         _chosenAction.OnActionUse(_chosenValue);
     }
