@@ -68,38 +68,44 @@ public class PlayerInput : MonoBehaviour {
         // Verifica se está rodando o jogo no unity caso contrário será em algum mobile
 #if UNITY_STANDALONE || UNITY_WEBPLAYER
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            if (realJump)
-            {
-                if (!IsJumping()) Player.Move(true);
-            } else
-            {
-                Player.Move(true);
-            }
-            
-        } else if (Input.GetKey(KeyCode.D))
-        {
-            if (realJump)
-            {
-                if (!IsJumping()) Player.Move(false);
-            } else
-            {
-                Player.Move(false);
-            }
-           
-        }
+		// Não permite que o player clique no botão enquanto tiver no pause
+		if (!GameManager.IsPaused && !ActionPanel.Instance.isActiveAndEnabled) {
+			
+			if (Input.GetKey(KeyCode.A))
+			{
+				if (realJump)
+				{
+					if (!IsJumping()) Player.Move(true);
+				} else
+				{
+					Player.Move(true);
+				}
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            if(!IsJumping()) Player.Jump();
-        }
+			} else if (Input.GetKey(KeyCode.D))
+			{
+				if (realJump)
+				{
+					if (!IsJumping()) Player.Move(false);
+				} else
+				{
+					Player.Move(false);
+				}
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            GameManager.ReloadScene();
-           
-        } else if (Input.GetKeyDown(KeyCode.P))
+			}
+
+			if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+			{
+				if(!IsJumping()) Player.Jump();
+			}
+		}
+
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			GameManager.ReloadScene();
+
+		}
+
+		if (Input.GetKeyDown(KeyCode.P))
         {
             GameManager.Instance.OnPause();
         }
@@ -152,59 +158,64 @@ public class PlayerInput : MonoBehaviour {
         //GameObject HUDbntLast = EventSystem.current.lastSelectedGameObject;
         TouchPhase phase = touch.phase;
 
-        if (HUDbnt.name == "LeftDir")
-        {
-            if (realJump)
-            {
-                if (!IsJumping()) Player.Move(true);
-            }
-            else
-            {
-                Player.Move(true);
-            }
+		// Não permite que o player clique no botão enquanto tiver no pause
+		if (!GameManager.IsPaused && !ActionPanel.Instance.isActiveAndEnabled) {
+			
+			if (HUDbnt.name == "LeftDir")
+			{
+				if (realJump)
+				{
+					if (!IsJumping()) Player.Move(true);
+				}
+				else
+				{
+					Player.Move(true);
+				}
 
-        } else if (HUDbnt.name == "RightDir")
-        {
-            if (realJump)
-            {
-                if (!IsJumping()) Player.Move(false);
-            }
-            else
-            {
-                Player.Move(false);
-            }
-        }
+			} else if (HUDbnt.name == "RightDir")
+			{
+				if (realJump)
+				{
+					if (!IsJumping()) Player.Move(false);
+				}
+				else
+				{
+					Player.Move(false);
+				}
+			}
 
-        if (HUDbnt.name == "Jump")
-        {
-            if (touch.phase == TouchPhase.Began)
-            {
-                if(!IsJumping()) Player.Jump();
-            }
-        } else if (HUDbnt.name == "Action")
-        {
-            if (touch.phase == TouchPhase.Began)
-            {
-                print("Action");
+			if (HUDbnt.name == "Jump")
+			{
+				if (touch.phase == TouchPhase.Began)
+				{
+					if(!IsJumping()) Player.Jump();
+				}
+			} else if (HUDbnt.name == "Action")
+			{
+				if (touch.phase == TouchPhase.Began)
+				{
+					print("Action");
 
-                IAction<float> action = Player.Actions.Find(x => x.GetActionName().Equals("Push/Pull"));
-                if(action != null)
-                {
-                    PhysicsObject target = Player.FindNearestPhysicsObject();
-                    action.SetTarget(target);
-                    action.OnActionUse(Mathf.Sign(target.transform.position.x - Player.transform.position.x)); //O argumento será 1 ou -1, dependendo de se o player está antes ou depois do target.
-                }
+					IAction<float> action = Player.Actions.Find(x => x.GetActionName().Equals("Push/Pull"));
+					if(action != null)
+					{
+						PhysicsObject target = Player.FindNearestPhysicsObject();
+						action.SetTarget(target);
+						action.OnActionUse(Mathf.Sign(target.transform.position.x - Player.transform.position.x)); //O argumento será 1 ou -1, dependendo de se o player está antes ou depois do target.
+					}
 
-                else
-                {
-                    Debug.LogError("Player não contém nenhuma action de Push/Pull");
-                }
-            }
-            else if (touch.phase == TouchPhase.Stationary)
-            {
-                print("Change Objects Properties");
-            }
-        }
+					else
+					{
+						Debug.LogError("Player não contém nenhuma action de Push/Pull");
+					}
+				}
+				else if (touch.phase == TouchPhase.Stationary)
+				{
+					print("Change Objects Properties");
+				}
+			}
+
+		}
 
         if (HUDbnt.name == "Restart")
         {
@@ -299,9 +310,11 @@ public class PlayerInput : MonoBehaviour {
         Vector2 posMid = new Vector2(transform.position.x, transform.position.y);
         Vector2 posMax = new Vector2(transform.position.x + Player.GetComponent<BoxCollider2D>().size.x/2 + 0.1f, transform.position.y);
 
-        RaycastHit2D hitMin = Physics2D.Raycast(posMin, Vector2.down, jumpCheckDistance, _layerMask);
-        RaycastHit2D hitMid = Physics2D.Raycast(posMid, Vector2.down, jumpCheckDistance, _layerMask);
-        RaycastHit2D hitMax = Physics2D.Raycast(posMax, Vector2.down, jumpCheckDistance, _layerMask);
+		float alturaPlayer = Player.GetComponent<BoxCollider2D> ().bounds.size.y;
+		//jumpCheckDistance
+		RaycastHit2D hitMin = Physics2D.Raycast(posMin, Vector2.down, alturaPlayer/2 + 0.1f, _layerMask);
+		RaycastHit2D hitMid = Physics2D.Raycast(posMid, Vector2.down, alturaPlayer/2 + 0.1f, _layerMask);
+		RaycastHit2D hitMax = Physics2D.Raycast(posMax, Vector2.down, alturaPlayer/2 + 0.1f, _layerMask);
 
         if (hitMin.collider == null && hitMid.collider == null && hitMax.collider == null)
         {

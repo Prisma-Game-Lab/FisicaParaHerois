@@ -41,6 +41,7 @@ public class MapGenerator : MonoBehaviour
     [Header("Generated Prefabs")] // The prefabs that the script will Instantiate
     [Tooltip("Inclua aqui todos os prefabs presentes em qualquer fase, por exemplo, background e canvas. Se houver uma ordem necessária de inicialização, respeite essa ordem ao incluir os itens")] public GameObject[] EssentialPrefabs;
     public GameObject FloorPrefab;
+	public GameObject FloorWithEdgePrefab;
     public GameObject PlayerPrefab;
     public GameObject BoxPrefab;
     public GameObject SeesawPrefab;
@@ -68,27 +69,6 @@ public class MapGenerator : MonoBehaviour
     
     Layers AllLayers;
 
-    private void Awake()
-    {
-        //prepara novo mapa
-        string oldName = fileName;
-        //fileName = RandomMapData.GetRandomMap();
-        Debug.Log("Nome do arquivo pego aleatoriamente: " + fileName);
-
-        if (fileName.Length > 1)
-        {
-            DeleteMap();
-            DeleteMap();
-            LoadMap();
-            GenerateMap();
-        }
-        else
-        {
-            fileName = oldName;
-        }
-
-        c = 0;
-    }
     void Start()
     {
     }
@@ -131,22 +111,25 @@ public class MapGenerator : MonoBehaviour
 
                         switch (layer.data[i])
                         {
-                            case TILED_FLOOR_ID:
-                                if (GameObject.Find("FloorTiles") == null)
-                                {
-                                    var floorEmptyObj = new GameObject("FloorTiles");
-                                    floorEmptyObj.transform.parent = GameObject.Find("GeneratedTiles").transform;
-                                    floorEmptyObj.transform.position = Vector3.zero;
-                                    floorEmptyObj.transform.localPosition = Vector3.zero;
-                                    floorEmptyObj.transform.localRotation = Quaternion.identity;
-                                }
+							case TILED_FLOOR_ID:
+								if (GameObject.Find ("FloorTiles") == null) {
+									var floorEmptyObj = new GameObject ("FloorTiles");
+									floorEmptyObj.transform.parent = GameObject.Find ("GeneratedTiles").transform;
+									floorEmptyObj.transform.position = Vector3.zero;
+									floorEmptyObj.transform.localPosition = Vector3.zero;
+									floorEmptyObj.transform.localRotation = Quaternion.identity;
+								}
 
-                                instantiatedPrefab = Instantiate(FloorPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("FloorTiles").transform);
-                                instantiatedPrefab.transform.position = new Vector3(posX * TileSize, posY * TileSize, posZ);
-                                break;
+								bool shouldSpawnFloorWithEdge = CheckFloorWithEdge (layer, i); 
+								GameObject prefabToInstantiate = shouldSpawnFloorWithEdge ? FloorWithEdgePrefab : FloorPrefab;
+								Vector2 correctPosition = shouldSpawnFloorWithEdge ? new Vector2(0,0.46f) : new Vector2(0,0);
 
-                            case TILED_PLAYER_ID:
-                                instantiatedPrefab = Instantiate(PlayerPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("GeneratedTiles").transform);
+								instantiatedPrefab = Instantiate(prefabToInstantiate, Vector3.zero, Quaternion.identity, GameObject.Find("FloorTiles").transform);
+                            	instantiatedPrefab.transform.position = new Vector3(posX * TileSize - correctPosition.x, posY * TileSize - correctPosition.y, posZ);
+                            	break;
+
+                        	case TILED_PLAYER_ID:
+                             	instantiatedPrefab = Instantiate(PlayerPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("GeneratedTiles").transform);
                                 instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
                                 instantiatedPrefab.name = "Player";
                                 break;
@@ -227,8 +210,7 @@ public class MapGenerator : MonoBehaviour
                             case TILED_ENEMY_ID:
                                 instantiatedPrefab = Instantiate(EnemyPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("GeneratedTiles").transform);
                                 instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
-                                break;
-                        }
+                                break;                        }
                     }
                 }
             }			
@@ -250,6 +232,24 @@ public class MapGenerator : MonoBehaviour
 	public bool CheckChildZero()
 	{
 		return (transform.childCount == 0);
+	}
+
+	/// <summary>
+	/// Checa se o chão deve ter borda
+	/// </summary>
+	/// <returns><c>true</c>, se deve ter borda, <c>false</c> caso contrário.</returns>
+	/// <param name="layer">Layer atual</param>
+	/// <param name="i">Posição atual do layer que está sendo percorrido</param>
+	public bool CheckFloorWithEdge(Layer layer, int i){
+		if (i - layer.width < 0) {
+			return true;
+		}
+
+		if (layer.data [i - layer.width] == layer.data [i]) {
+			return false;
+		}
+
+		return true;
 	}
 
     /// <summary>
