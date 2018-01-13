@@ -11,57 +11,11 @@ public class Chain : MonoBehaviour {
             }
     }
 
-    [SerializeField]
-    [HideInInspector]
-    private Vector3 _linkScale;
-    [SerializeField]
-    [HideInInspector]
-    private float _linkMass;
-    [SerializeField]
-    [HideInInspector]
-    private float _linkBreakForce;
-
-    
-    public Vector3 LinkScale
-    {
-        get { return _linkScale; }
-        set
-        {
-            _links.ForEach((GameObject obj) => obj.transform.localScale = value);
-            _linkScale = value;
-        }
-    }
-
-    public float LinkMass
-    {
-        get { return _linkMass; }
-        set
-        {
-            _links.ForEach((GameObject obj) => obj.GetComponent<Rigidbody2D>().mass = value);
-            _linkMass = value;
-        }
-    }
-
-    public float LinkBreakForce
-    {
-        get { return _linkBreakForce; }
-        set
-        {
-            _links.ForEach(delegate (GameObject obj)
-            {
-                HingeJoint2D hj = obj.GetComponent<HingeJoint2D>();
-                //check for null necessary because hinge may have been broken
-                if (hj != null) hj.breakForce = value;
-            });
-            _linkBreakForce = value;
-        }
-    }
 
     public GameObject LinkPrefab;
 
-    //public float AnchorOffset;
-    //public float ConnectedAnchorOffset;
-
+    public float AnchorOffset;
+    
     [SerializeField]
     [HideInInspector]
     private List<GameObject> _links = new List<GameObject>();
@@ -72,8 +26,8 @@ public class Chain : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void LateUpdate () {
+		//check if bizarre bug
 	}
 
     public void AddLink()
@@ -84,6 +38,7 @@ public class Chain : MonoBehaviour {
             //adiciona na posição do pai
             GameObject link = CreateLink();
             HingeJoint2D hj =  link.GetComponent<HingeJoint2D>();
+            link.transform.localPosition = Vector3.zero;
 
             //customizar primeira hingejoint
             //se o objeto pai tem um rigidbody, conecta a ele
@@ -92,9 +47,9 @@ public class Chain : MonoBehaviour {
             //ajusta posição das âncoras
             //(âncora do primeiro deve ficar na pontinha dele
 
-            hj.autoConfigureConnectedAnchor = false;
-            hj.anchor = Vector2.up;
-            hj.connectedAnchor = link.transform.position + link.transform.up;
+            hj.autoConfigureConnectedAnchor = true;
+            hj.anchor = new Vector3(0, AnchorOffset);
+            //hj.connectedAnchor = new Vector3(0, AnchorOffset);
 
             _links.Add(link);
             return;
@@ -103,6 +58,7 @@ public class Chain : MonoBehaviour {
         //adiciona um link
         GameObject newLink = CreateLink();
         HingeJoint2D joint = newLink.GetComponent<HingeJoint2D>();
+        newLink.transform.localPosition = _links[_links.Count - 1].transform.localPosition + new Vector3(0, 2 * AnchorOffset);
 
         //customizar joint
         //conecta no rigidbody do link imediatamente anterior
@@ -112,8 +68,8 @@ public class Chain : MonoBehaviour {
         //anchor deve ficar na pontinha do proprio link
         //connected anchor deve ficar na pontinha do link anterior
         joint.autoConfigureConnectedAnchor = false;
-        joint.anchor = newLink.transform.up;
-        joint.connectedAnchor = - newLink.transform.up;
+        joint.anchor = new Vector3(0, AnchorOffset);
+        joint.connectedAnchor = - new Vector3(0, AnchorOffset);
 
 
 
@@ -125,22 +81,16 @@ public class Chain : MonoBehaviour {
     public void RemoveLink()
     {
 
-        if(_links.Count > 2)
-        {
-            DestroyImmediate(_links[_links.Count - 1]);
-            _links.RemoveAt(_links.Count - 1);
-        }
+               
+        DestroyImmediate(_links[_links.Count - 1]);
+        _links.RemoveAt(_links.Count - 1);
+        
     }
 
     //creates a link and sets the desired individual attributes
     private GameObject CreateLink()
     {
         GameObject link = GameObject.Instantiate(LinkPrefab, this.gameObject.transform);
-        link.transform.localScale = _linkScale;
-        link.GetComponent<Rigidbody2D>().mass = _linkMass;
-        HingeJoint2D hj = link.AddComponent<HingeJoint2D>();
-        hj.breakForce = _linkBreakForce;
-
         return link;
     }
 

@@ -21,11 +21,6 @@ public class ChainEditor : Editor {
             c.RemoveLink();
         }
 
-        EditorGUILayout.LabelField("Values below are reproduced in every link in the chain");
-        c.LinkScale = EditorGUILayout.Vector3Field("Scale", c.LinkScale);
-        c.LinkMass = EditorGUILayout.FloatField("Mass", c.LinkMass);
-        c.LinkBreakForce = EditorGUILayout.FloatField("Link break force", c.LinkBreakForce);
-
 
         DrawDefaultInspector();
 
