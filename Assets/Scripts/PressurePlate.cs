@@ -23,8 +23,6 @@ public class PressurePlate : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collider: " + collision.collider.gameObject);
-        Debug.Log("Other Collider: " + collision.otherCollider.gameObject);
         if (collision.collider.gameObject == PlayerInfo.PlayerInstance.gameObject 
             || collision.otherCollider.gameObject == PlayerInfo.PlayerInstance.gameObject
             || collision.collider.tag == "Box"
