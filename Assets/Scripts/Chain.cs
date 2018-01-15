@@ -6,32 +6,82 @@ public class Chain : MonoBehaviour {
 
     public int LinkQuantity
     {
-        get {
-                return _links.Count;
+        get
+        {
+            if (_links == null)
+            {
+                _links = new List<GameObject>();
             }
+            return _links.Count;
+        }
     }
 
 
     public GameObject LinkPrefab;
 
     public float AnchorOffset;
+    public float LinkInitialDistance;
+    public float DistanceTolerance;
+
+    //usada pra informar se a corda já foi quebrada por código
+    private bool _broken;
     
     [SerializeField]
     [HideInInspector]
-    private List<GameObject> _links = new List<GameObject>();
+    private List<GameObject> _links;
 
     // Use this for initialization
     void Awake () {
-
+        _broken = false;
     }
 	
 	// Update is called once per frame
 	void LateUpdate () {
 		//check if bizarre bug
+        //checa se dois links estão distantes demais entre si: testa os primeiros links, os últimos e uns do meio
+
+        if (_links.Count >= 2)
+        {
+            if (Vector3.Distance(_links[0].transform.position + _links[0].transform.up * AnchorOffset, _links[1].transform.position + _links[1].transform.up * AnchorOffset) > DistanceTolerance)
+            {
+                BreakRope();
+                Debug.Log("bug bizarro!");
+            }
+
+            int n = _links.Count;
+            if (Vector3.Distance(_links[n - 1].transform.position + _links[n-1].transform.up * AnchorOffset, _links[n-2].transform.position + _links[n-2].transform.up * AnchorOffset) > DistanceTolerance)
+            {
+                BreakRope();
+                Debug.Log("bug bizarro!");
+            }
+            n = 1 + _links.Count / 2;
+            if (Vector3.Distance(_links[n - 1].transform.position + _links[n - 1].transform.up * AnchorOffset, _links[n - 2].transform.position + _links[n - 2].transform.up * AnchorOffset) > DistanceTolerance)
+            {
+                BreakRope();
+                Debug.Log("bug bizarro!");
+            }
+
+
+        }
+
 	}
+
+    private void BreakRope()
+    {
+        if (_broken) return;
+        else _broken = true;
+        
+        //percorre todos os links e quebra seu hingejoint2d
+        _links.ForEach(delegate(GameObject obj)
+        {
+            Destroy(obj.GetComponent<HingeJoint2D>());
+        });
+    }
 
     public void AddLink()
     {
+        
+        
         //caso: adicionando primeiro link
         if (_links.Count == 0)
         {
@@ -58,7 +108,7 @@ public class Chain : MonoBehaviour {
         //adiciona um link
         GameObject newLink = CreateLink();
         HingeJoint2D joint = newLink.GetComponent<HingeJoint2D>();
-        newLink.transform.localPosition = _links[_links.Count - 1].transform.localPosition + new Vector3(0, 2 * AnchorOffset);
+        newLink.transform.localPosition = _links[_links.Count - 1].transform.localPosition - _links[_links.Count - 1].transform.up * 2 * LinkInitialDistance;
 
         //customizar joint
         //conecta no rigidbody do link imediatamente anterior
