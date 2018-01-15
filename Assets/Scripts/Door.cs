@@ -27,9 +27,6 @@ public class Door : MonoBehaviour {
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collider: " + collision.collider.gameObject);
-        Debug.Log("Other Collider: " + collision.otherCollider.gameObject);
-        Debug.Log(collision.collider == PlayerInfo.PlayerInstance.gameObject);
         if (collision.collider.gameObject == PlayerInfo.PlayerInstance.gameObject || collision.otherCollider.gameObject == PlayerInfo.PlayerInstance.gameObject)
         {
             if(_isLocked == false)
