@@ -135,6 +135,10 @@ public class MapGenerator : MonoBehaviour
                              	instantiatedPrefab = Instantiate(PlayerPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("GeneratedTiles").transform);
                                 instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
                                 instantiatedPrefab.name = "Player";
+
+                                //Seta ActionMenu
+                                GameObject ActionMenu = GameObject.Find("ActionPanel");
+                                instantiatedPrefab.GetComponent<PlayerInput>().ActionMenu = ActionMenu;
                                 break;
 
 							case TILED_BOX_ID:
