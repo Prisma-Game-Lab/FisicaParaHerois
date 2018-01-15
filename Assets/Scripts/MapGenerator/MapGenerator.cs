@@ -15,20 +15,21 @@ public class MapGenerator : MonoBehaviour
     //Os valores colocados aqui devem ser const (nunca podem ser alterados pelo programa)
 
     //Base Layer
-    public const int TILED_FLOOR_ID = 113;
+	public const int StartCountingFrom = 112;
+    public const int TILED_FLOOR_ID = 1;
 
     //Player Layer
-    public const int TILED_PLAYER_ID = 116;
+    public const int TILED_PLAYER_ID = 4;
 
     //Objects Layer
-    public const int TILED_BOX_ID = 115;
-    public const int TILED_SEESAW_ID = 114;
-    public const int TILED_DOOR_ID = 117;
-    public const int TILED_PRESSUREPLATE_ID = 118;
+    public const int TILED_BOX_ID = 3;
+    public const int TILED_SEESAW_ID = 2;
+    public const int TILED_DOOR_ID = 5;
+    public const int TILED_PRESSUREPLATE_ID = 6;
 
     //Enemy Layer
-    public const int TILED_ENEMY_ID = 300;
-    public const int TILED_BOSS_ID = 301;
+    public const int TILED_ENEMY_ID = 188;
+    public const int TILED_BOSS_ID = 189;
 
 
     //Outras infos
@@ -112,6 +113,7 @@ public class MapGenerator : MonoBehaviour
                         switch (layer.data[i])
                         {
 							case TILED_FLOOR_ID:
+							case TILED_FLOOR_ID + StartCountingFrom:
 								if (GameObject.Find ("FloorTiles") == null) {
 									var floorEmptyObj = new GameObject ("FloorTiles");
 									floorEmptyObj.transform.parent = GameObject.Find ("GeneratedTiles").transform;
@@ -128,13 +130,19 @@ public class MapGenerator : MonoBehaviour
                             	instantiatedPrefab.transform.position = new Vector3(posX * TileSize - correctPosition.x, posY * TileSize - correctPosition.y, posZ);
                             	break;
 
-                        	case TILED_PLAYER_ID:
+							case TILED_PLAYER_ID:
+							case TILED_PLAYER_ID + StartCountingFrom:
                              	instantiatedPrefab = Instantiate(PlayerPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("GeneratedTiles").transform);
                                 instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
                                 instantiatedPrefab.name = "Player";
+
+                                //Seta ActionMenu
+                                GameObject ActionMenu = GameObject.Find("ActionPanel");
+                                instantiatedPrefab.GetComponent<PlayerInput>().ActionMenu = ActionMenu;
                                 break;
 
-                            case TILED_BOX_ID:
+							case TILED_BOX_ID:
+							case TILED_BOX_ID + StartCountingFrom:
                                 if (GameObject.Find("PhysicsObjects") == null)
                                 {
                                     var objectsEmptyObj = new GameObject("PhysicsObjects");
@@ -148,7 +156,8 @@ public class MapGenerator : MonoBehaviour
                                 instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
                                 break;
 
-                            case TILED_DOOR_ID:
+							case TILED_DOOR_ID:
+							case TILED_DOOR_ID + StartCountingFrom:
                                 if (GameObject.Find("Objects") == null)
                                 {
                                     var objectsEmptyObj = new GameObject("Objects");
@@ -168,7 +177,8 @@ public class MapGenerator : MonoBehaviour
                                 instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize + 0.22f, posY * TileSize + 0.53f, posZ);
                                 break;
 
-                            case TILED_PRESSUREPLATE_ID:
+							case TILED_PRESSUREPLATE_ID:
+							case TILED_PRESSUREPLATE_ID + StartCountingFrom:
                                 if (GameObject.Find("Objects") == null)
                                 {
                                     var objectsEmptyObj = new GameObject("Objects");
@@ -182,7 +192,8 @@ public class MapGenerator : MonoBehaviour
                                 instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
                                 break;
 
-                            case TILED_SEESAW_ID:
+							case TILED_SEESAW_ID:
+							case TILED_SEESAW_ID + StartCountingFrom:
                                 if (GameObject.Find("PhysicsObjects") == null)
                                 {
                                     var objectsEmptyObj = new GameObject("PhysicsObjects");
@@ -203,11 +214,13 @@ public class MapGenerator : MonoBehaviour
                                 instantiatedPrefab.name = "Gangorra"; //Correção de bug no PlayerInput
                                 break;
 
-                            case TILED_BOSS_ID:
+							case TILED_BOSS_ID:
+							case TILED_BOSS_ID + StartCountingFrom:
                                 instantiatedPrefab = Instantiate(BossPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("GeneratedTiles").transform);
                                 instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
                                 break;
-                            case TILED_ENEMY_ID:
+							case TILED_ENEMY_ID:
+							case TILED_ENEMY_ID + StartCountingFrom:
                                 instantiatedPrefab = Instantiate(EnemyPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("GeneratedTiles").transform);
                                 instantiatedPrefab.transform.localPosition = new Vector3(posX * TileSize, posY * TileSize, posZ);
                                 break;                        }

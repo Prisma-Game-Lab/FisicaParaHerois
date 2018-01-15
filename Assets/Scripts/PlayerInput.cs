@@ -12,10 +12,13 @@ using UnityEngine.EventSystems;
 
 public class PlayerInput : MonoBehaviour {
     public PlayerInfo Player;
+    public GameObject ActionMenu;
     [Tooltip("Tempo mínimo para identificar um toque longo")]
     public float HoldTime = 0.8f;
     public bool realJump;
     public float jumpCheckDistance;
+    private Vector3 _cameraOrigin;
+    private Vector3 _mouseOrigin;
 
     private GameObject _directionBeforeJump;
    // private float _friction;
@@ -31,6 +34,7 @@ public class PlayerInput : MonoBehaviour {
 
         //_friction = Player.GetComponent<BoxCollider2D>().sharedMaterial.friction;
 
+        _cameraOrigin = Camera.main.transform.position; 
     }
 
     void Awake()
@@ -110,6 +114,25 @@ public class PlayerInput : MonoBehaviour {
             GameManager.Instance.OnPause();
         }
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            _mouseOrigin = Input.mousePosition;
+        }
+
+        else if (!Input.GetMouseButton(0))
+        {
+            //Volta a câmera para a posição original
+            Vector3 curPos = Camera.main.transform.position;
+            MoveCamera(new Vector2(_cameraOrigin.x - curPos.x, _cameraOrigin.y - curPos.y));
+        }
+
+        else
+        {
+            Debug.Log("MoveCamera");
+            Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - _mouseOrigin);
+            Vector2 move = new Vector2(pos.x, pos.y);
+            MoveCamera(move);
+        }
        
         // Verifica se está jogando com iOS ou Android
 #elif UNITY_IOS || UNITY_ANDROID
@@ -280,6 +303,9 @@ public class PlayerInput : MonoBehaviour {
                     Debug.Log("Move Slider");
                     float y = touch.deltaPosition.y;
                     hit.transform.position = touch.position;
+
+                    Debug.Log("Move Camera");
+                    MoveCamera(new Vector2(touch.deltaPosition.x, touch.deltaPosition.y));
                 }
 
             } else if (hit.collider.name == "physicsProperty")
@@ -328,7 +354,15 @@ public class PlayerInput : MonoBehaviour {
     {
 
         BoxCollider2D playerCollider = Player.GetComponent<BoxCollider2D>();
-        Transform seesaw = GameObject.Find("PhysicsObjects").transform.Find("Gangorra").transform.Find("Gangorra");
+        Transform seesaw;
+
+        if (GameObject.Find("Gangorra") == null)
+        {
+            return false;
+        }
+
+        seesaw = GameObject.Find("PhysicsObjects").transform.Find("Gangorra").transform.Find("Gangorra");
+
 
         // Verifica somente a barra da gangorra
         Collider2D physicsSeesawCollider = seesaw.GetComponent<Collider2D>();
@@ -340,6 +374,16 @@ public class PlayerInput : MonoBehaviour {
         }
 
         return false;
+    }
+
+    private void MoveCamera(Vector2 translation)
+    {
+        if (ActionMenu.activeInHierarchy)
+        {
+            return;
+        }
+
+        Camera.main.transform.Translate(translation.x, translation.y, 0);
     }
 
 
