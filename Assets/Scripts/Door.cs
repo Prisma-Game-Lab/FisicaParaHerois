@@ -45,4 +45,9 @@ public class Door : AffectedByPressurePlate {
     {
         _isLocked = false;
     }
+
+    public override void OnUnpressed()
+    {
+        _isLocked = true;
+    }
 }

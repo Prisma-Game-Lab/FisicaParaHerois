@@ -11,6 +11,14 @@ using UnityEngine;
 public class PressurePlate : MonoBehaviour {
     public AffectedByPressurePlate ObjectAffected;
 
+    [Header("Pressure Plate")]
+    [Tooltip("Guarda a massa mínima que o pressure plate necessita para ser ativado")]public float MinMass = 2;
+
+    [Header("Lever")]
+    [Tooltip("Indica se é uma alavanca, ou seja, se uma vez pressionada não volta ao estado original")]public bool IsLever = false;
+
+    private bool _isActive = false;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -23,13 +31,42 @@ public class PressurePlate : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.gameObject == PlayerInfo.PlayerInstance.gameObject 
+        float objectMass;
+        bool objectIsValid = collision.collider.gameObject == PlayerInfo.PlayerInstance.gameObject 
             || collision.otherCollider.gameObject == PlayerInfo.PlayerInstance.gameObject
             || collision.collider.tag == "Box"
-            || collision.otherCollider.tag == "Box")
+            || collision.otherCollider.tag == "Box";
+
+        //Objeto não é um player ou caixa (ou já está ativo), nada acontece
+        if(!objectIsValid || _isActive){
+            return;
+        }
+        
+        objectMass = collision.collider.gameObject.GetComponent<PhysicsObject>().physicsData.mass;
+
+        //Não faz o efeito da pressure plate a menos que o peso seja maior que o mínimo necessário (ou o objeto seja uma lever)
+        if ((MinMass > objectMass) && !IsLever)
         {
-            Debug.Log("Porta aberta");
-            ObjectAffected.OnPressed();
+            return;
+        }
+
+        Debug.Log("Porta aberta");
+        ObjectAffected.OnPressed();
+        _isActive = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        bool objectIsValid = collision.collider.gameObject == PlayerInfo.PlayerInstance.gameObject
+            || collision.otherCollider.gameObject == PlayerInfo.PlayerInstance.gameObject
+            || collision.collider.tag == "Box"
+            || collision.otherCollider.tag == "Box";
+
+        if (objectIsValid && !IsLever && _isActive)
+        {
+            Debug.Log("Porta fechada");
+            ObjectAffected.OnUnpressed();
+            _isActive = false;
         }
     }
 }
