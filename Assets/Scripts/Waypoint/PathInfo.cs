@@ -56,6 +56,11 @@ public class PathInfo
     [SerializeField]
     private List<Vector3> _controlPoints;
 
+    
+    [SerializeField] // o tempo de espera para cada control point(opcional)
+    private List<float> _waitTime;
+
+
     [SerializeField]
     [Tooltip("Amount of points per curve segment, when using bezier")]
     [Range(1, 1000)]
@@ -201,7 +206,10 @@ public class PathInfo
     public PathPoint GetNextPathPoint(PathPoint pathpoint, WaypointFollower wf)
     {
         if (_sampledPoints == null) CalculateSampledPoints();
-        
+
+       //se for necessário esperar, espera-se
+       MaybeWait(pathpoint._index, wf);
+
         switch(wf.followdirection)
         {
             case FollowDirection.Forward:
@@ -210,6 +218,7 @@ public class PathInfo
                     switch(wf.repetitionType)
                     {
                         case RepetitionType.Cycle:
+                            
                             return FirstPathPoint;
                             
                         case RepetitionType.One_way:
@@ -253,6 +262,25 @@ public class PathInfo
 
         }        
         return pathpoint;
+    }
+
+    private void MaybeWait(int PathPointIndex, WaypointFollower wf)
+    {
+        //checa se o índice é exatamente um control point
+        //meio roubado e estranho, mas: se é reta, todo ponto é control point
+        // se é bezier, todo ponto múltiplo de _samplingAmount é control point
+        if (ctype == CurveType.Straight)
+        {
+            //todo ponto é control point: checa se há alguma espera para este point
+            if (_waitTime != null && _waitTime.Count - 1 >= PathPointIndex)
+            {
+                //espera
+                wf.StartCoroutine(wf.Wait(_waitTime[PathPointIndex]));
+                
+            }
+        }
+
+        return;
     }
 
     public PathPoint getPreviousPathPoint(PathPoint pathpoint)

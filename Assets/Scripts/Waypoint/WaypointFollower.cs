@@ -106,5 +106,15 @@ public class WaypointFollower : MonoBehaviour {
 
         transform.Translate(DirectionToNext.normalized * speed/* + DirectionToLine.normalized * stickySpeed*/);
     }
+
+    public IEnumerator Wait(float seconds)
+    {
+        float temp = speed;
+        speed = 0.0f;
+        yield return new WaitForSeconds(seconds);
+        speed = temp;
+        yield return null;
+
+    }
     
 }
