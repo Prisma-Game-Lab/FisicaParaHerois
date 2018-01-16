@@ -10,4 +10,5 @@ public abstract class AffectedByPressurePlate : MonoBehaviour
     /// Ativa quando a pressure plate ou alavanca é pressionado.
     /// </summary>
     public abstract void OnPressed();
+    public abstract void OnUnpressed();
 }

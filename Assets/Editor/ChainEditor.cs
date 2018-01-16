@@ -11,6 +11,8 @@ public class ChainEditor : Editor {
     {
         Chain c = (Chain)target;
 
+        PrefabUtility.DisconnectPrefabInstance(c);
+
         EditorGUILayout.LabelField("Link quantity: " + c.LinkQuantity.ToString());
         if (GUILayout.Button("+"))
         {
