@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PressurePlate : MonoBehaviour {
-    public Door DoorToOpen;
+    public AffectedByPressurePlate ObjectAffected;
 
 	// Use this for initialization
 	void Start () {
@@ -29,7 +29,7 @@ public class PressurePlate : MonoBehaviour {
             || collision.otherCollider.tag == "Box")
         {
             Debug.Log("Porta aberta");
-            DoorToOpen.Unlock();
+            ObjectAffected.OnPressed();
         }
     }
 }

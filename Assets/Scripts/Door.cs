@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Door : MonoBehaviour {
+public class Door : AffectedByPressurePlate {
     private bool _isLocked;
     public bool BeginLocked;
     public string NextScene;
@@ -41,7 +41,8 @@ public class Door : MonoBehaviour {
         SceneManager.LoadScene(NextScene);
     }
 
-    public void Unlock() {
+    public override void OnPressed()
+    {
         _isLocked = false;
     }
 }
