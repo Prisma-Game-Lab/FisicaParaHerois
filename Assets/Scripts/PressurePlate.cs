@@ -37,14 +37,10 @@ public class PressurePlate : MonoBehaviour {
             || collision.collider.tag == "Box"
             || collision.otherCollider.tag == "Box";
 
-        Debug.Log("Colisão detectada");
-
         //Objeto não é um player ou caixa (ou já está ativo), nada acontece
         if(!objectIsValid || _isActive){
             return;
         }
-
-        Debug.Log("Objeto é válido");
         
         objectMass = collision.collider.gameObject.GetComponent<PhysicsObject>().physicsData.mass;
 
