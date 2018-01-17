@@ -16,6 +16,7 @@ public class WaypointFollower : MonoBehaviour {
 
     private WaypointManager _wpm;
     private PathInfo _path;
+	private Rigidbody2D rb;
 
     //the last visited and next to visit path points
     private PathPoint next;
@@ -45,7 +46,7 @@ public class WaypointFollower : MonoBehaviour {
         
 
         //inicialization expects that pathname is set
-
+		rb = this.GetComponent<Rigidbody2D>();
         _wpm = FindObjectOfType<WaypointManager>();
 
         if(_wpm == null)
@@ -105,7 +106,8 @@ public class WaypointFollower : MonoBehaviour {
         //não tá funcionando ainda
 
         transform.Translate(DirectionToNext.normalized * speed/* + DirectionToLine.normalized * stickySpeed*/);
-    }
+		//rb.AddForce(DirectionToNext.normalized * speed);
+	}
 
     public IEnumerator Wait(float seconds)
     {
