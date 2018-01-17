@@ -42,4 +42,8 @@ public class PhysicsObject : MonoBehaviour {
         //Senão, ativa com o objeto selecionado
         ActionPanel.Instance.OnPanelActivated(this);
     }
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        physicsData.AddForce(-collision.relativeVelocity);
+    }
 }

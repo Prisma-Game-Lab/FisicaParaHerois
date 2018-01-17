@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50312137473794982}
   - component: {fileID: 61315194395132250}
   - component: {fileID: 114613545289644384}
+  - component: {fileID: 114150104580223190}
   m_Layer: 0
   m_Name: PressurePlate
   m_TagString: Untagged
@@ -130,6 +131,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.99999994, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114150104580223190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1396254976303852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569de5793067cb246b4897702b6cb9f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  physicsData: {fileID: 0}
+  ObjectSprite: {fileID: 0}
+  AvailableActions:
+    ChangeGravityAction: 1
+    ChangeGravityActionMinValue: -5
+    ChangeGravityActionMaxValue: 5
+    ChangeMassAction: 1
+    ChangeMassActionMinValue: -5
+    ChangeMassActionMaxValue: 5
+    PushPullAction: 1
+  CanPlayerInteract: 0
 --- !u!114 &114613545289644384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,3 +165,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectAffected: {fileID: 0}
+  MinMass: 2
+  IsLever: 0

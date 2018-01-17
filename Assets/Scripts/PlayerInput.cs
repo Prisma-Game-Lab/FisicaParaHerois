@@ -111,14 +111,7 @@ public class PlayerInput : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            IAction<float> action = Player.Actions.Find(x => x.GetActionName().Equals("Push/Pull"));
-            if (action != null)
-            {
-                PhysicsObject target = Player.FindNearestPhysicsObject();
-                action.SetTarget(target);
-                action.OnActionUse(Mathf.Sign(target.transform.position.x - Player.transform.position.x)); //O argumento será 1 ou -1, dependendo de se o player está antes ou depois do target.
-            }
-
+            ActionButton();
         }
 
 		if (Input.GetKeyDown(KeyCode.P))
@@ -159,6 +152,20 @@ public class PlayerInput : MonoBehaviour {
     void FixedUpdate()
     {
 
+    }
+
+    public void ActionButton()
+    {
+        IAction<float> action = Player.Actions.Find(x => x.GetActionName().Equals("Push/Pull"));
+        if (action != null)
+        {
+            PhysicsObject target = Player.FindNearestPhysicsObject();
+            action.SetTarget(target);
+            if (target != null)
+            {
+                action.OnActionUse(Mathf.Sign(target.transform.position.x - Player.transform.position.x)); //O argumento será 1 ou -1, dependendo de se o player está antes ou depois do target.
+            }
+        }
     }
 
     public void CheckInput()
@@ -231,18 +238,7 @@ public class PlayerInput : MonoBehaviour {
 				{
 					print("Action");
 
-					IAction<float> action = Player.Actions.Find(x => x.GetActionName().Equals("Push/Pull"));
-					if(action != null)
-					{
-						PhysicsObject target = Player.FindNearestPhysicsObject();
-						action.SetTarget(target);
-						action.OnActionUse(Mathf.Sign(target.transform.position.x - Player.transform.position.x)); //O argumento será 1 ou -1, dependendo de se o player está antes ou depois do target.
-					}
-
-					else
-					{
-						Debug.LogError("Player não contém nenhuma action de Push/Pull");
-					}
+                    ActionButton();
 				}
 				else if (touch.phase == TouchPhase.Stationary)
 				{
