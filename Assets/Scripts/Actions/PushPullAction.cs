@@ -30,7 +30,7 @@ public class PushPullAction : MonoBehaviour, IAction<float> {
 
     public void SetTarget(PhysicsObject target)
     {
-        if (!target.AvailableActions.PushPullAction)
+        if (target != null && !target.AvailableActions.PushPullAction)
         {
             return;
         }
@@ -41,5 +41,6 @@ public class PushPullAction : MonoBehaviour, IAction<float> {
     public void OnActionUse(float temp)
     {
         _object.physicsData.AddForce(temp * tempMultiplier * Vector2.right);
+        _object.SendMessage("OnPushPullActionUsed", null, SendMessageOptions.DontRequireReceiver);
     }
 }

@@ -4581,6 +4581,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 649519864}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &651693765 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1453035809493322, guid: 59922cde8abdcbf488942e6f4f2de13b,
+    type: 2}
+  m_PrefabInternal: {fileID: 707879235}
 --- !u!1 &671932553
 GameObject:
   m_ObjectHideFlags: 0
@@ -10216,6 +10221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1536117000}
+  ActionMenu: {fileID: 651693765}
   HoldTime: 0.8
   realJump: 0
   jumpCheckDistance: 1
@@ -16104,7 +16110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6372d414f0af844419283c6484d1aafb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorToOpen: {fileID: 0}
+  ObjectAffected: {fileID: 0}
+  MinMass: 2
+  IsLever: 0
 --- !u!61 &1923147821
 BoxCollider2D:
   m_ObjectHideFlags: 0
