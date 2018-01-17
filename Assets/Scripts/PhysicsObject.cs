@@ -80,7 +80,6 @@ public class PhysicsObject : MonoBehaviour {
 
     public void OnPushPullActionUsed()
     {
-        Debug.Log("AAAAAAAAAAAAA");
         _pushPullAction = true;
     }
 }
