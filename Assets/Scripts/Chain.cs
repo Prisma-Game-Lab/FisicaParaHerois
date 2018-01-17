@@ -44,7 +44,6 @@ public class Chain : MonoBehaviour {
 
         if (_links.Count >= 2)
         {
-            Debug.Log("late:"  + _links.Count.ToString());
             if (Vector3.Distance(_links[0].transform.position + _links[0].transform.up * AnchorOffset, _links[1].transform.position + _links[1].transform.up * AnchorOffset) > DistanceTolerance)
             {
                 BreakRope();

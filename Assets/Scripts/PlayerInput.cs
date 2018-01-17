@@ -109,6 +109,18 @@ public class PlayerInput : MonoBehaviour {
 
 		}
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            IAction<float> action = Player.Actions.Find(x => x.GetActionName().Equals("Push/Pull"));
+            if (action != null)
+            {
+                PhysicsObject target = Player.FindNearestPhysicsObject();
+                action.SetTarget(target);
+                action.OnActionUse(Mathf.Sign(target.transform.position.x - Player.transform.position.x)); //O argumento será 1 ou -1, dependendo de se o player está antes ou depois do target.
+            }
+
+        }
+
 		if (Input.GetKeyDown(KeyCode.P))
         {
             GameManager.Instance.OnPause();

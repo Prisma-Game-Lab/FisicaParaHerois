@@ -38,14 +38,14 @@ public class PressurePlate : MonoBehaviour {
             || collision.otherCollider.tag == "Box";
 
         //Objeto não é um player ou caixa (ou já está ativo), nada acontece
-        if(!objectIsValid || _isActive){
+        if(!objectIsValid || _isActive || IsLever){
             return;
         }
         
         objectMass = collision.collider.gameObject.GetComponent<PhysicsObject>().physicsData.mass;
 
         //Não faz o efeito da pressure plate a menos que o peso seja maior que o mínimo necessário (ou o objeto seja uma lever)
-        if ((MinMass > objectMass) && !IsLever)
+        if (MinMass > objectMass)
         {
             return;
         }
@@ -69,4 +69,23 @@ public class PressurePlate : MonoBehaviour {
             _isActive = false;
         }
     }
+
+    public void OnPushPullActionUsed()
+    {
+        if (!IsLever || _isActive)
+        {
+            return;
+        }
+
+        Debug.Log("Porta aberta");
+
+        if (ObjectAffected != null)
+        {
+            ObjectAffected.OnPressed();
+        }
+
+        _isActive = true;
+    }
+
+
 }
