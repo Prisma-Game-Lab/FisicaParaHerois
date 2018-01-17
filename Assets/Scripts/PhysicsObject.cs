@@ -18,6 +18,9 @@ public class PhysicsObject : MonoBehaviour {
     public AvailableActionsData AvailableActions;
     public bool CanPlayerInteract = true; //Define se o player pode interagir com esse objeto
 
+    private bool _pushPullAction = false;
+    public float _timeLeftToDeactivatePushPullAction = 1;
+
 	// Use this for initialization
 	void Start () {
     }
@@ -29,6 +32,19 @@ public class PhysicsObject : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        if (_pushPullAction)
+        {
+            if (_timeLeftToDeactivatePushPullAction > 0)
+            {
+                _timeLeftToDeactivatePushPullAction -= Time.deltaTime;
+            }
+
+            else
+            {
+                _timeLeftToDeactivatePushPullAction = 1;
+                _pushPullAction = false;
+            }
+        }
     }
 
     void OnMouseDown()
@@ -42,8 +58,29 @@ public class PhysicsObject : MonoBehaviour {
         //Senão, ativa com o objeto selecionado
         ActionPanel.Instance.OnPanelActivated(this);
     }
+
     void OnCollisionStay2D(Collision2D collision)
     {
-        physicsData.AddForce(-collision.relativeVelocity);
+        //Se player não estiver envolvido na colisão, não faça nada
+        if (collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject)
+        {
+            return;
+        }
+
+        if (!_pushPullAction)
+        {
+            physicsData.velocity = new Vector2(0, 0);
+        }
+
+        else
+        {
+            physicsData.AddForce(new Vector2(PlayerInfo.PlayerInstance.ForceToApplyOnObject,0));
+        }
+    }
+
+    public void OnPushPullActionUsed()
+    {
+        Debug.Log("AAAAAAAAAAAAA");
+        _pushPullAction = true;
     }
 }

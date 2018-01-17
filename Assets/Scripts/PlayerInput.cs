@@ -17,6 +17,7 @@ public class PlayerInput : MonoBehaviour {
     public float HoldTime = 0.8f;
     public bool realJump;
     public float jumpCheckDistance;
+
     private Vector3 _cameraOrigin;
     private Vector3 _mouseOrigin;
 
@@ -109,7 +110,7 @@ public class PlayerInput : MonoBehaviour {
 
 		}
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKey(KeyCode.E))
         {
             ActionButton();
         }
@@ -163,7 +164,8 @@ public class PlayerInput : MonoBehaviour {
             action.SetTarget(target);
             if (target != null)
             {
-                action.OnActionUse(Mathf.Sign(target.transform.position.x - Player.transform.position.x)); //O argumento será 1 ou -1, dependendo de se o player está antes ou depois do target.
+                PlayerInfo.PlayerInstance.ForceToApplyOnObject = Mathf.Sign(target.transform.position.x - Player.transform.position.x) * 100;
+                action.OnActionUse(Mathf.Sign(target.transform.position.x - Player.transform.position.x)); //O ARGUMENTO NÃO AFETA MAIS! old: O argumento será 1 ou -1, dependendo de se o player está antes ou depois do target.
             }
         }
     }

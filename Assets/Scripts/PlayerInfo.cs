@@ -20,6 +20,8 @@ public class PlayerInfo : MonoBehaviour {
     public float MaxDistanceToNearbyObject = 1.5f;
     public float MaxVelocity = 5.0f;
 
+    [HideInInspector] public float ForceToApplyOnObject;
+
     private bool _receiveDamage;
     private float _damageNumber;
     private Rigidbody2D _rb;
