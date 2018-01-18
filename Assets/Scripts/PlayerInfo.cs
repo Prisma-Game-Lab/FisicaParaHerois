@@ -88,20 +88,36 @@ public class PlayerInfo : MonoBehaviour {
     {
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
 
+        //Reseta a posição da câmera
+        Vector3 cameraDistToPlayer = transform.position - Camera.main.transform.position;
+        Debug.Log(cameraDistToPlayer);
+        MoveCamera(new Vector2(cameraDistToPlayer.x, cameraDistToPlayer.y));
+
         if (walkLeft)
         {
             if (rb.velocity.x >= -MaxVelocity)
             {
-                rb.AddForce(Vector2.left * PaceSpeed * 8.47f);
+                Vector2 movement = Vector2.left * PaceSpeed * 8.47f;
+                rb.AddForce(movement);
             }
 
         } else
         {
             if (rb.velocity.x <= MaxVelocity)
             {
-                rb.AddForce(Vector2.right * PaceSpeed * 8.47f);
+                Vector2 movement = Vector2.right * PaceSpeed * 8.47f;
+                rb.AddForce(movement);
             }
         }
+
+
+
+
+    }
+
+    public void MoveCamera(Vector2 translation)
+    {
+        Camera.main.transform.Translate(translation.x, translation.y, 0);
     }
 
     public void Jump()
