@@ -126,14 +126,7 @@ public class PlayerInput : MonoBehaviour {
             _mouseOrigin = Input.mousePosition;
         }
 
-        else if (!Input.GetMouseButton(0))
-        {
-            //Volta a câmera para a posição original
-            Vector3 curPos = Camera.main.transform.position;
-            MoveCamera(new Vector2(_cameraOrigin.x - curPos.x, _cameraOrigin.y - curPos.y));
-        }
-
-        else
+        else if(Input.GetMouseButton(0))
         {
             Debug.Log("MoveCamera");
             Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - _mouseOrigin);
