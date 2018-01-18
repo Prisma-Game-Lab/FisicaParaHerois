@@ -19,6 +19,8 @@ public class PlayerInfo : MonoBehaviour {
     [Tooltip("Distância máxima para o player poder usar ações como Push/Pull em um objeto")]
     public float MaxDistanceToNearbyObject = 1.5f;
     public float MaxVelocity = 5.0f;
+	public AudioClip jump;
+
 
     [HideInInspector] public float ForceToApplyOnObject;
 
@@ -123,6 +125,7 @@ public class PlayerInfo : MonoBehaviour {
     public void Jump()
     {
         _rb.AddForce(Vector2.up * JumpSpeed);
+		AudioSource.PlayClipAtPoint (jump, transform.position);
     }
 
     // Métodos Auxiliares
