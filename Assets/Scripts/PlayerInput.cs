@@ -17,6 +17,7 @@ public class PlayerInput : MonoBehaviour {
     public float HoldTime = 0.8f;
     public bool realJump;
     public float jumpCheckDistance;
+    public float CameraTouchSpeed = 0.01f;
 
     private Vector3 _cameraOrigin;
     private Vector3 _mouseOrigin;
@@ -125,14 +126,7 @@ public class PlayerInput : MonoBehaviour {
             _mouseOrigin = Input.mousePosition;
         }
 
-        else if (!Input.GetMouseButton(0))
-        {
-            //Volta a câmera para a posição original
-            Vector3 curPos = Camera.main.transform.position;
-            MoveCamera(new Vector2(_cameraOrigin.x - curPos.x, _cameraOrigin.y - curPos.y));
-        }
-
-        else
+        else if(Input.GetMouseButton(0))
         {
             Debug.Log("MoveCamera");
             Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - _mouseOrigin);
@@ -313,9 +307,6 @@ public class PlayerInput : MonoBehaviour {
                     Debug.Log("Move Slider");
                     float y = touch.deltaPosition.y;
                     hit.transform.position = touch.position;
-
-                    Debug.Log("Move Camera");
-                    MoveCamera(new Vector2(touch.deltaPosition.x, touch.deltaPosition.y));
                 }
 
             } else if (hit.collider.name == "physicsProperty")
@@ -334,7 +325,12 @@ public class PlayerInput : MonoBehaviour {
                         Debug.Log("Change heat");
                     }
                 }
-            } 
+            }
+            else
+            {
+               Debug.Log("Move Camera");
+               MoveCamera(new Vector2(-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));
+            }
         }
     }
 
