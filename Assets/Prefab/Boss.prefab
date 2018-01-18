@@ -424,9 +424,15 @@ MonoBehaviour:
   ObjectSprite: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
+    ChangeGravityActionMinValue: -5
+    ChangeGravityActionMaxValue: 5
     ChangeMassAction: 1
+    ChangeMassActionMinValue: -5
+    ChangeMassActionMaxValue: 5
     PushPullAction: 1
   CanPlayerInteract: 1
+  _timeLeftToDeactivatePushPullAction: 1
+  _hasChain: 0
 --- !u!114 &114690904261488768
 MonoBehaviour:
   m_ObjectHideFlags: 1
