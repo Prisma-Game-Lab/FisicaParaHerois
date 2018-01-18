@@ -10,10 +10,8 @@ public class Chain : MonoBehaviour {
         {
             if (_links == null)
             {
-                Debug.Log("new list");
                 _links = new List<GameObject>();
             }
-            Debug.Log("prop:" + _links.Count.ToString());
             return _links.Count;
         }
     }
@@ -24,12 +22,13 @@ public class Chain : MonoBehaviour {
     public float AnchorOffset;
     public float LinkInitialDistance;
     public float DistanceTolerance;
+    public float BreakForce;
 
     //usada pra informar se a corda já foi quebrada por código
     private bool _broken;
     
     [SerializeField]
-    //[HideInInspector]
+    [HideInInspector]
     public List<GameObject> _links;
 
     // Use this for initialization
@@ -65,10 +64,18 @@ public class Chain : MonoBehaviour {
 
 	}
 
-    private void BreakRope()
+    public void BreakRope()
     {
         if (_broken) return;
         else _broken = true;
+
+        Debug.Log("break rope");
+
+        //quebra o distance joint do primeiro link:
+        FirstLink fl = _links[0].GetComponent<FirstLink>();
+        if (fl != null) Destroy(fl);
+        DistanceJoint2D dj = _links[0].GetComponent<DistanceJoint2D>();
+        if (dj != null) Destroy(dj);
         
         //percorre todos os links e quebra seu hingejoint2d
         _links.ForEach(delegate(GameObject obj)
@@ -102,13 +109,16 @@ public class Chain : MonoBehaviour {
             hj.autoConfigureConnectedAnchor = true;
             hj.anchor = new Vector3(0, AnchorOffset);
             //hj.connectedAnchor = new Vector3(0, AnchorOffset);
+            //hj.breakForce = Mathf.Infinity???;
 
-            SpringJoint2D sj = link.GetComponent<SpringJoint2D>();
-            if (sj != null)
-           {
-                sj.autoConfigureConnectedAnchor = true;
-                sj.anchor = new Vector3(0, AnchorOffset);
-            }
+            //adiciona um distance joint
+            DistanceJoint2D dj2 = link.AddComponent<DistanceJoint2D>();
+            dj2.maxDistanceOnly = true;
+            dj2.breakForce = BreakForce;
+
+            //adiciona o script especifico do primeiro link:
+            link.AddComponent<FirstLink>();
+
 
             _links.Add(link);
             return;
@@ -117,7 +127,6 @@ public class Chain : MonoBehaviour {
         //adiciona um link
         GameObject newLink = CreateLink();
         HingeJoint2D joint = newLink.GetComponent<HingeJoint2D>();
-        SpringJoint2D sjoint = newLink.GetComponent<SpringJoint2D>();
         
         newLink.transform.localPosition = _links[_links.Count - 1].transform.localPosition - _links[_links.Count - 1].transform.up * 2 * LinkInitialDistance;
 
@@ -132,16 +141,15 @@ public class Chain : MonoBehaviour {
         joint.autoConfigureConnectedAnchor = false;
         joint.anchor = new Vector3(0, AnchorOffset);
         joint.connectedAnchor = - new Vector3(0, AnchorOffset);
+        joint.breakForce = BreakForce;
 
-        //*********
-        if (sjoint != null)
-        {
-            sjoint.connectedBody = _links[_links.Count - 1].GetComponent<Rigidbody2D>();
-            sjoint.autoConfigureConnectedAnchor = false;
-            sjoint.anchor = new Vector3(0, AnchorOffset);
-            sjoint.connectedAnchor = -new Vector3(0, AnchorOffset);
-        }
-        
+        //conecta o distancejoint2d do primeiro link neste link
+        DistanceJoint2D dj = _links[0].GetComponent<DistanceJoint2D>();
+        dj.connectedBody = newLink.GetComponent<Rigidbody2D>();
+        dj.anchor = new Vector3(0, AnchorOffset);
+        dj.connectedAnchor = - new Vector3(0, AnchorOffset);
+        dj.autoConfigureDistance = true;
+
         _links.Add(newLink);
 
         return;
@@ -150,10 +158,13 @@ public class Chain : MonoBehaviour {
     public void RemoveLink()
     {
 
-               
-        DestroyImmediate(_links[_links.Count - 1]);
-        _links.RemoveAt(_links.Count - 1);
-        
+        if(_links != null && _links.Count > 0)
+        {
+            DestroyImmediate(_links[_links.Count - 1]);
+            _links.RemoveAt(_links.Count - 1);
+
+        }
+
     }
 
     //creates a link and sets the desired individual attributes
