@@ -17,12 +17,43 @@ public class Chain : MonoBehaviour {
     }
 
 
+    private HingeJoint2D firstlinkHJ;
+    private DistanceJoint2D firstlinkDJ;
+
+    public float ForceExerted
+    {
+        get
+        {
+            if (firstlinkHJ != null && firstlinkDJ != null)
+            {
+                Vector2 force = firstlinkHJ.GetReactionForce(Time.deltaTime) + firstlinkDJ.GetReactionForce(Time.deltaTime);
+                return force.magnitude;
+            }
+            else return 0;
+        }
+    }
+
+
     public GameObject LinkPrefab;
 
     public float AnchorOffset;
     public float LinkInitialDistance;
     public float DistanceTolerance;
-    public float BreakForce;
+
+    [HideInInspector]
+    [SerializeField]
+    private float _breakForce;
+    public float BreakForce
+    {
+        get { return _breakForce; }
+        set { if (value >= 0)
+            {
+                _breakForce = value;
+                //reset values
+                ResetValues();
+            }
+        }
+    }
 
     //usada pra informar se a corda já foi quebrada por código
     private bool _broken;
@@ -34,6 +65,12 @@ public class Chain : MonoBehaviour {
     // Use this for initialization
     void Awake () {
         _broken = false;
+        if(_links != null && _links.Count > 0)
+        {
+            firstlinkHJ = _links[0].GetComponent<HingeJoint2D>();
+            firstlinkDJ = _links[0].GetComponent<DistanceJoint2D>();
+        }
+        
     }
 	
 	// Update is called once per frame
@@ -174,4 +211,23 @@ public class Chain : MonoBehaviour {
         return link;
     }
 
+    //resets values for:
+    //break force
+    private void ResetValues()
+    {
+        if(_links != null && _links.Count > 0)
+        {
+            //break force do distance joint
+            DistanceJoint2D dj = _links[0].GetComponent<DistanceJoint2D>();
+            if(dj != null) dj.breakForce = _breakForce;
+
+            _links.ForEach(delegate (GameObject obj)
+                {
+                    HingeJoint2D hj = obj.GetComponent<HingeJoint2D>();
+                    if(hj != null) hj.breakForce = _breakForce;
+                });
+        }
+
+
+    }
 }
