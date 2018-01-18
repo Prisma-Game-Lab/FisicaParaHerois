@@ -20,9 +20,14 @@ public class PhysicsObject : MonoBehaviour {
 
     private bool _pushPullAction = false;
     public float _timeLeftToDeactivatePushPullAction = 1;
+    [HideInInspector] public bool _hasChain = false;
 
 	// Use this for initialization
 	void Start () {
+        if(gameObject.GetComponent<HingeJoint2D>() != null)
+        {
+            _hasChain = true;
+        }
     }
 
     void Awake()
@@ -80,6 +85,11 @@ public class PhysicsObject : MonoBehaviour {
 
     public void OnPushPullActionUsed()
     {
+        if (_hasChain)
+        {
+            return;
+        }
+
         _pushPullAction = true;
     }
 }

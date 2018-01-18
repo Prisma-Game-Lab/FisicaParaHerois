@@ -382,14 +382,14 @@ public class PlayerInput : MonoBehaviour {
         return false;
     }
 
-    private void MoveCamera(Vector2 translation)
+    public void MoveCamera(Vector2 translation)
     {
         if (ActionMenu.activeInHierarchy)
         {
             return;
         }
 
-        Camera.main.transform.Translate(translation.x, translation.y, 0);
+        PlayerInfo.PlayerInstance.MoveCamera(translation);
     }
 
 
