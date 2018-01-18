@@ -77,7 +77,23 @@ Mesh:
     shapes: []
     channels: []
     fullWeights: []
-  m_BindPose: []
+  m_BindPose:
+  - e00: 0.000000221331
+    e01: -1.8566592
+    e02: 0
+    e03: 1.3698452
+    e10: 1.8566592
+    e11: 0.000000221331
+    e12: 0
+    e13: 0.16878578
+    e20: 0
+    e21: 0
+    e22: 0.33420563
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
   m_BoneNameHashes: 
   m_RootBoneNameHash: 0
   m_MeshCompression: 0
@@ -86,7 +102,7 @@ Mesh:
   m_KeepIndices: 1
   m_IndexBuffer: 000001000200020001000300
   m_Skin:
-  - weight[0]: 0
+  - weight[0]: 1
     weight[1]: 0
     weight[2]: 0
     weight[3]: 0
@@ -94,7 +110,7 @@ Mesh:
     boneIndex[1]: 0
     boneIndex[2]: 0
     boneIndex[3]: 0
-  - weight[0]: 0
+  - weight[0]: 1
     weight[1]: 0
     weight[2]: 0
     weight[3]: 0
@@ -102,7 +118,7 @@ Mesh:
     boneIndex[1]: 0
     boneIndex[2]: 0
     boneIndex[3]: 0
-  - weight[0]: 0
+  - weight[0]: 1
     weight[1]: 0
     weight[2]: 0
     weight[3]: 0
@@ -110,7 +126,7 @@ Mesh:
     boneIndex[1]: 0
     boneIndex[2]: 0
     boneIndex[3]: 0
-  - weight[0]: 0
+  - weight[0]: 1
     weight[1]: 0
     weight[2]: 0
     weight[3]: 0
@@ -232,7 +248,39 @@ MonoBehaviour:
   - {x: 910, y: 135}
   - {x: 866, y: 110}
   - {x: 910, y: 110}
-  m_BoneWeights: []
+  m_BoneWeights:
+  - weight0: 1
+    weight1: 0
+    weight2: 0
+    weight3: 0
+    boneIndex0: 0
+    boneIndex1: -1
+    boneIndex2: -1
+    boneIndex3: -1
+  - weight0: 1
+    weight1: 0
+    weight2: 0
+    weight3: 0
+    boneIndex0: 0
+    boneIndex1: -1
+    boneIndex2: -1
+    boneIndex3: -1
+  - weight0: 1
+    weight1: 0
+    weight2: 0
+    weight3: 0
+    boneIndex0: 0
+    boneIndex1: -1
+    boneIndex2: -1
+    boneIndex3: -1
+  - weight0: 1
+    weight1: 0
+    weight2: 0
+    weight3: 0
+    boneIndex0: 0
+    boneIndex1: -1
+    boneIndex2: -1
+    boneIndex3: -1
   m_Edges:
   - index1: 0
     index2: 1
@@ -244,5 +292,27 @@ MonoBehaviour:
     index2: 3
   m_Holes: []
   m_Indices: 000000000100000002000000020000000100000003000000
-  m_BindPoses: []
+  m_BindPoses:
+  - bindPose:
+      e00: 0.000000221331
+      e01: -1.8566592
+      e02: 0
+      e03: 1.3698452
+      e10: 1.8566592
+      e11: 0.000000221331
+      e12: 0
+      e13: 0.16878578
+      e20: 0
+      e21: 0
+      e22: 0.33420563
+      e23: 0.09960938
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    boneLength: 1
+    path: perna2/perna2_2
+    name: perna2_2
+    color: {r: 1, g: 0, b: 0, a: 1}
+    zOrder: 0
   m_Blendshapes: []
