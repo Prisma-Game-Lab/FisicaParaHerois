@@ -20,6 +20,7 @@ public class PlayerInfo : MonoBehaviour {
     public float MaxDistanceToNearbyObject = 1.5f;
     public float MaxVelocity = 5.0f;
 
+    [HideInInspector] public PhysicsObject ObjectColliding;
     [HideInInspector] public float ForceToApplyOnObject;
 
     private bool _receiveDamage;
@@ -90,7 +91,6 @@ public class PlayerInfo : MonoBehaviour {
 
         //Reseta a posição da câmera
         Vector3 cameraDistToPlayer = transform.position - Camera.main.transform.position;
-        Debug.Log(cameraDistToPlayer);
         MoveCamera(new Vector2(cameraDistToPlayer.x, cameraDistToPlayer.y));
 
         if (walkLeft)
@@ -99,6 +99,14 @@ public class PlayerInfo : MonoBehaviour {
             {
                 Vector2 movement = Vector2.left * PaceSpeed * 8.47f;
                 rb.AddForce(movement);
+                if (ObjectColliding)
+                {
+                    Rigidbody2D objRb = ObjectColliding.gameObject.GetComponent<Rigidbody2D>();
+                    if (objRb)
+                    {
+                        objRb.AddForce(movement);
+                    }
+                }
             }
 
         } else
@@ -107,6 +115,14 @@ public class PlayerInfo : MonoBehaviour {
             {
                 Vector2 movement = Vector2.right * PaceSpeed * 8.47f;
                 rb.AddForce(movement);
+                if (ObjectColliding)
+                {
+                    Rigidbody objRb = ObjectColliding.gameObject.GetComponent<Rigidbody>();
+                    if (objRb)
+                    {
+                        objRb.AddForce(movement);
+                    }
+                }
             }
         }
 
