@@ -8033,12 +8033,12 @@ Prefab:
     - target: {fileID: 224286470696679982, guid: 59922cde8abdcbf488942e6f4f2de13b,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 100
+      value: 599
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 59922cde8abdcbf488942e6f4f2de13b,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 269.5
+      value: 337
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 59922cde8abdcbf488942e6f4f2de13b,
         type: 2}
@@ -14889,8 +14889,8 @@ MonoBehaviour:
     ChangeGravityActionMinValue: -5
     ChangeGravityActionMaxValue: 5
     ChangeMassAction: 1
-    ChangeMassActionMinValue: -5
-    ChangeMassActionMaxValue: 5
+    ChangeMassActionMinValue: 1
+    ChangeMassActionMaxValue: 10
     PushPullAction: 1
   CanPlayerInteract: 1
   _timeLeftToDeactivatePushPullAction: 1
@@ -26767,7 +26767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectAffected: {fileID: 1694173296}
-  MinMass: 5
+  MinMass: 1
   IsLever: 0
 --- !u!61 &1492601277
 BoxCollider2D:
@@ -26781,7 +26781,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.22}
+  m_Offset: {x: 0, y: -0.19}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -26792,7 +26792,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.99999994, y: 1}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &1492601278
 Rigidbody2D:
@@ -29267,7 +29267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BeginLocked: 1
-  NextScene: Playtest2
+  NextScene: BossBatlle
 --- !u!50 &1694173297
 Rigidbody2D:
   serializedVersion: 4
@@ -30066,7 +30066,7 @@ MonoBehaviour:
     ChangeGravityActionMinValue: -5
     ChangeGravityActionMaxValue: 5
     ChangeMassAction: 1
-    ChangeMassActionMinValue: -5
+    ChangeMassActionMinValue: 1
     ChangeMassActionMaxValue: 5
     PushPullAction: 1
   CanPlayerInteract: 1
@@ -33387,7 +33387,7 @@ MonoBehaviour:
     ChangeGravityActionMinValue: -5
     ChangeGravityActionMaxValue: 5
     ChangeMassAction: 1
-    ChangeMassActionMinValue: -5
+    ChangeMassActionMinValue: 1
     ChangeMassActionMaxValue: 5
     PushPullAction: 1
   CanPlayerInteract: 1
