@@ -358,13 +358,13 @@ public class PlayerInput : MonoBehaviour {
         BoxCollider2D playerCollider = Player.GetComponent<BoxCollider2D>();
         Transform seesaw;
 
-        if (GameObject.Find("Gangorra") == null)
+		if (GameObject.FindWithTag("Gangorra") == null)
         {
             return false;
         }
 
-        seesaw = GameObject.Find("PhysicsObjects").transform.Find("Gangorra").transform.Find("Gangorra");
-
+        //seesaw = GameObject.Find("PhysicsObjects").transform.Find("Gangorra").transform.Find("Gangorra");
+		seesaw = GameObject.FindWithTag("Gangorra").transform.Find("Gangorra");
 
         // Verifica somente a barra da gangorra
         Collider2D physicsSeesawCollider = seesaw.GetComponent<Collider2D>();
