@@ -19,10 +19,15 @@ public class PhysicsObject : MonoBehaviour {
     public bool CanPlayerInteract = true; //Define se o player pode interagir com esse objeto
 
     private bool _pushPullAction = false;
-    public float _timeLeftToDeactivatePushPullAction = 1;
+    public float _timeLeftToDeactivatePushPullAction = 0.5f;
+    [HideInInspector] public bool _hasChain = false;
 
 	// Use this for initialization
 	void Start () {
+        if(gameObject.GetComponent<HingeJoint2D>() != null)
+        {
+            _hasChain = true;
+        }
     }
 
     void Awake()
@@ -41,8 +46,11 @@ public class PhysicsObject : MonoBehaviour {
 
             else
             {
-                _timeLeftToDeactivatePushPullAction = 1;
                 _pushPullAction = false;
+                if(PlayerInfo.PlayerInstance.ObjectColliding == this)
+                {
+                    PlayerInfo.PlayerInstance.ObjectColliding = null;
+                }
             }
         }
     }
@@ -57,6 +65,23 @@ public class PhysicsObject : MonoBehaviour {
 
         //Senão, ativa com o objeto selecionado
         ActionPanel.Instance.OnPanelActivated(this);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Se player não estiver envolvido na colisão, não faça nada
+        if (collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject)
+        {
+            return;
+        }
+
+        if (!_pushPullAction)
+        {
+            physicsData.velocity = new Vector2(0, 0);
+        }
+
+        PlayerInfo.PlayerInstance.ObjectColliding = this;
+
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -74,12 +99,19 @@ public class PhysicsObject : MonoBehaviour {
 
         else
         {
-            physicsData.AddForce(new Vector2(PlayerInfo.PlayerInstance.ForceToApplyOnObject,0));
+            PlayerInfo.PlayerInstance.ObjectColliding = this;
+            //physicsData.AddForce(new Vector2(PlayerInfo.PlayerInstance.ForceToApplyOnObject,0));
         }
     }
 
     public void OnPushPullActionUsed()
     {
+        if (_hasChain)
+        {
+            return;
+        }
+
         _pushPullAction = true;
+        _timeLeftToDeactivatePushPullAction = 0.5f;
     }
 }

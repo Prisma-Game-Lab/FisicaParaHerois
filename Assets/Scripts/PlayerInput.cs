@@ -230,15 +230,11 @@ public class PlayerInput : MonoBehaviour {
 				}
 			} else if (HUDbnt.name == "Action")
 			{
-				if (touch.phase == TouchPhase.Began)
+				if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
 				{
 					print("Action");
 
                     ActionButton();
-				}
-				else if (touch.phase == TouchPhase.Stationary)
-				{
-					print("Change Objects Properties");
 				}
 			}
 

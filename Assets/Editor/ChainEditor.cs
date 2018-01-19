@@ -9,7 +9,10 @@ public class ChainEditor : Editor {
 
     public override void OnInspectorGUI()
     {
+        EditorUtility.SetDirty(target);
         Chain c = (Chain)target;
+
+
 
         PrefabUtility.DisconnectPrefabInstance(c);
 
@@ -23,6 +26,8 @@ public class ChainEditor : Editor {
             c.RemoveLink();
         }
 
+        EditorGUILayout.LabelField("Force exerted: " + c.ForceExerted);
+        c.BreakForce = EditorGUILayout.FloatField("Break force", c.BreakForce);
 
         DrawDefaultInspector();
 
