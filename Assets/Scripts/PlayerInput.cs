@@ -26,6 +26,7 @@ public class PlayerInput : MonoBehaviour {
    // private float _friction;
 
     private Rigidbody2D rb;
+    private Animator _playerAnim;
 
     //máscara usada para ignorar o player
     private int _layerMask;
@@ -42,6 +43,7 @@ public class PlayerInput : MonoBehaviour {
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        _playerAnim = this.GetComponent<Animator>();
 
         int layerIndex = LayerMask.NameToLayer("Player");
         if(layerIndex == -1)
@@ -346,9 +348,14 @@ public class PlayerInput : MonoBehaviour {
 
         if (hitMin.collider == null && hitMid.collider == null && hitMax.collider == null)
         {
+            _playerAnim.SetBool("onFloor", false);
             return true;
         }
-        else return false;
+        else
+        {
+            _playerAnim.SetBool("onFloor", true);
+            return false;
+        }
     }
 
     // verifica se está tocando a gangorra e diminui o atrito
