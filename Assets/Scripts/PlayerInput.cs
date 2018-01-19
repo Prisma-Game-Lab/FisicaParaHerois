@@ -186,6 +186,10 @@ public class PlayerInput : MonoBehaviour {
                 {
                     Debug.Log("UI is not touched");
 					ObjectsTouch (touch);
+
+					Debug.Log("Move Camera");
+					MoveCamera(new Vector2(-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));
+
                 }
             }
 
@@ -309,11 +313,11 @@ public class PlayerInput : MonoBehaviour {
 					}
 				}
 			}
-		} else {
+		} /*else {
 			Debug.Log("Move Camera");
 			MoveCamera(new Vector2(-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));
 
-		}
+		}*/
     }
 
     private bool IsJumping()
