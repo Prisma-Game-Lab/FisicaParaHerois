@@ -49,6 +49,7 @@ public class PhysicsObject : MonoBehaviour {
                 _pushPullAction = false;
                 if(PlayerInfo.PlayerInstance.ObjectColliding == this)
                 {
+                    Debug.Log("Desativando");
                     PlayerInfo.PlayerInstance.ObjectColliding = null;
                 }
             }
@@ -78,6 +79,7 @@ public class PhysicsObject : MonoBehaviour {
         if (!_pushPullAction)
         {
             physicsData.velocity = new Vector2(0, 0);
+            return;
         }
 
         PlayerInfo.PlayerInstance.ObjectColliding = this;
@@ -87,7 +89,8 @@ public class PhysicsObject : MonoBehaviour {
     void OnCollisionStay2D(Collision2D collision)
     {
         //Se player não estiver envolvido na colisão, não faça nada
-        if (collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject)
+        if ((collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject
+            || collision.otherCollider.gameObject != PlayerInfo.PlayerInstance.gameObject) || this.gameObject == PlayerInfo.PlayerInstance.gameObject)
         {
             return;
         }
