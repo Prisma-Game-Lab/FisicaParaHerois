@@ -4035,13 +4035,13 @@ MonoBehaviour:
   physicsData: {fileID: 331280687}
   ObjectSprite: {fileID: 0}
   AvailableActions:
-    ChangeGravityAction: 1
-    ChangeGravityActionMinValue: -5
-    ChangeGravityActionMaxValue: 5
-    ChangeMassAction: 1
-    ChangeMassActionMinValue: -5
-    ChangeMassActionMaxValue: 5
-    PushPullAction: 1
+    ChangeGravityAction: 0
+    ChangeGravityActionMinValue: 1
+    ChangeGravityActionMaxValue: 1
+    ChangeMassAction: 0
+    ChangeMassActionMinValue: 1
+    ChangeMassActionMaxValue: 1
+    PushPullAction: 0
   CanPlayerInteract: 0
   _timeLeftToDeactivatePushPullAction: 1
   _hasChain: 0
@@ -8033,12 +8033,12 @@ Prefab:
     - target: {fileID: 224286470696679982, guid: 59922cde8abdcbf488942e6f4f2de13b,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 599
+      value: 353
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 59922cde8abdcbf488942e6f4f2de13b,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 337
+      value: 198.5
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 59922cde8abdcbf488942e6f4f2de13b,
         type: 2}
@@ -30067,7 +30067,7 @@ MonoBehaviour:
     ChangeGravityActionMaxValue: 5
     ChangeMassAction: 1
     ChangeMassActionMinValue: 1
-    ChangeMassActionMaxValue: 5
+    ChangeMassActionMaxValue: 10
     PushPullAction: 1
   CanPlayerInteract: 1
   _timeLeftToDeactivatePushPullAction: 1
@@ -33388,7 +33388,7 @@ MonoBehaviour:
     ChangeGravityActionMaxValue: 5
     ChangeMassAction: 1
     ChangeMassActionMinValue: 1
-    ChangeMassActionMaxValue: 5
+    ChangeMassActionMaxValue: 10
     PushPullAction: 1
   CanPlayerInteract: 1
   _timeLeftToDeactivatePushPullAction: 1
