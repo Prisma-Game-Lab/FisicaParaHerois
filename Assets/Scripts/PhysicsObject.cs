@@ -112,6 +112,6 @@ public class PhysicsObject : MonoBehaviour {
         }
 
         _pushPullAction = true;
-        _timeLeftToDeactivatePushPullAction = 0.5f;
+        _timeLeftToDeactivatePushPullAction = 0.2f;
     }
 }
