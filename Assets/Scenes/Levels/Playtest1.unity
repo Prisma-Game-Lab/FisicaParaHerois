@@ -3961,6 +3961,7 @@ GameObject:
   - component: {fileID: 331280681}
   - component: {fileID: 331280680}
   - component: {fileID: 331280679}
+  - component: {fileID: 331280690}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -4180,6 +4181,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 331280677}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &331280690
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 331280677}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 03e19d269eff9554a9d17130fd179ed3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &332940059
 GameObject:
   m_ObjectHideFlags: 0
@@ -8033,12 +8051,12 @@ Prefab:
     - target: {fileID: 224286470696679982, guid: 59922cde8abdcbf488942e6f4f2de13b,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 353
+      value: 599
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 59922cde8abdcbf488942e6f4f2de13b,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 198.5
+      value: 337
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 59922cde8abdcbf488942e6f4f2de13b,
         type: 2}
