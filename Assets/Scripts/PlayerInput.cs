@@ -63,6 +63,12 @@ public class PlayerInput : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
+        if(IsJumping())
+            _playerAnim.SetBool("onFloor", false);
+        else
+            _playerAnim.SetBool("onFloor", true);
+
+
         // Fazer algo pra melhorar o movimento emcima da gangorra aqui!
         if (PlayerTouchingSeesaw())
         {
@@ -336,14 +342,9 @@ public class PlayerInput : MonoBehaviour {
 
         if (hitMin.collider == null && hitMid.collider == null && hitMax.collider == null)
         {
-            _playerAnim.SetBool("onFloor", false);
             return true;
         }
-        else
-        {
-            _playerAnim.SetBool("onFloor", true);
-            return false;
-        }
+        else return false;
     }
 
     // verifica se está tocando a gangorra e diminui o atrito
