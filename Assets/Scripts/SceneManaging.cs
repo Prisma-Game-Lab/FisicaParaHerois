@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneManaging : MonoBehaviour {
+	public float StartButtonAnimationTime;
+	public Animator StartButtonAnimation;
 
 	public void LoadScene(string s)
     {
@@ -20,20 +22,7 @@ public class SceneManaging : MonoBehaviour {
     /// </summary>
     public void StartGameButton(string customizationScene, string mapScene)
     {
-        //Lê de um arquivo gerado pelo Unity se o personagem já foi criado
-        int characterCreated = PlayerPrefs.GetInt("CharacterCreated", 0);
-
-        //Se não, vai para a cena de customização
-        if(characterCreated == 0)
-        {
-            LoadScene(customizationScene);
-        }
-
-        //Se foi, vai para a cena do mapa
-        else
-        {
-            LoadScene(mapScene);
-        }
+		StartCoroutine ("StartButtonDelay", new string[] {customizationScene, mapScene});
 
         return;
     }
@@ -50,6 +39,26 @@ public class SceneManaging : MonoBehaviour {
 
         StartGameButton(customizationScene, mapScene);
     }
+
+	public IEnumerator StartButtonDelay(string[] scenes){
+		//Lê de um arquivo gerado pelo Unity se o personagem já foi criado
+		int characterCreated = PlayerPrefs.GetInt("CharacterCreated", 0);
+		StartButtonAnimation.Play ("scaleAnim");
+
+		yield return new WaitForSeconds (StartButtonAnimationTime);
+
+		//Se não, vai para a cena de customização
+		if(characterCreated == 0)
+		{
+			LoadScene(scenes[0]);
+		}
+
+		//Se foi, vai para a cena do mapa
+		else
+		{
+			LoadScene(scenes[1]);
+		}
+	}
 
     /// <summary>
     /// Usada no botão da cena de customização
