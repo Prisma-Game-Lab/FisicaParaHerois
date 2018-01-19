@@ -28,6 +28,7 @@ public class PlayerInfo : MonoBehaviour {
     private bool _receiveDamage;
     private float _damageNumber;
     private Rigidbody2D _rb;
+    private Animator _playerAnim;
 
     void Awake()
     {
@@ -49,6 +50,7 @@ public class PlayerInfo : MonoBehaviour {
 
         _damageNumber = 0.0f;
         _rb = this.GetComponent<Rigidbody2D>();
+        _playerAnim = this.GetComponent<Animator>();
 
     }
 
@@ -94,9 +96,11 @@ public class PlayerInfo : MonoBehaviour {
         //Reseta a posição da câmera
         Vector3 cameraDistToPlayer = transform.position - Camera.main.transform.position;
         MoveCamera(new Vector2(cameraDistToPlayer.x, cameraDistToPlayer.y));
+        _playerAnim.SetInteger("velocity", (int)(rb.velocity.x));
 
         if (walkLeft)
         {
+            _playerAnim.SetBool("mirror", true);
             if (rb.velocity.x >= -MaxVelocity)
             {
                 Vector2 movement = Vector2.left * PaceSpeed * 8.47f;
@@ -113,6 +117,7 @@ public class PlayerInfo : MonoBehaviour {
 
         } else
         {
+            _playerAnim.SetBool("mirror", false);
             if (rb.velocity.x <= MaxVelocity)
             {
                 Vector2 movement = Vector2.right * PaceSpeed * 8.47f;
