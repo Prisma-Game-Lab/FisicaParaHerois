@@ -95,7 +95,7 @@ public class PlayerInfo : MonoBehaviour {
 
         //Reseta a posição da câmera
         Vector3 cameraDistToPlayer = transform.position - Camera.main.transform.position;
-        MoveCamera(new Vector2(cameraDistToPlayer.x, cameraDistToPlayer.y));
+        //MoveCamera(new Vector2(cameraDistToPlayer.x, cameraDistToPlayer.y));
         _playerAnim.SetInteger("velocity", (int)(rb.velocity.x));
 
         if (walkLeft)
