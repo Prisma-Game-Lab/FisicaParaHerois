@@ -185,7 +185,11 @@ public class PlayerInput : MonoBehaviour {
                 else
                 {
                     Debug.Log("UI is not touched");
-                    ObjectsTouch(touch);
+					ObjectsTouch (touch);
+
+					Debug.Log("Move Camera");
+					MoveCamera(new Vector2(-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));
+
                 }
             }
 
@@ -267,69 +271,53 @@ public class PlayerInput : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), -Vector2.up);
         TouchPhase phase = touch.phase;
 
-        if (hit.collider != null)
-        {
-            print(hit.collider.name);
+		if (hit.collider != null) {
+			print (hit.collider.name);
 
-            if (hit.transform.name == "physicsObject")
-            {
-                Debug.Log(hit.transform.name);
+			if (hit.transform.name == "physicsObject") {
+				Debug.Log (hit.transform.name);
 
-                if(touch.phase == TouchPhase.Began)
-                {
+				if (touch.phase == TouchPhase.Began) {
 
-                } else if (touch.phase == TouchPhase.Stationary)
-                {
-                    if (touch.deltaTime == HoldTime)
-                    {
-                        // Long tap
-                        Debug.Log("Change Objects Properties");
-                    }
+				} else if (touch.phase == TouchPhase.Stationary) {
+					if (touch.deltaTime == HoldTime) {
+						// Long tap
+						Debug.Log ("Change Objects Properties");
+					}
 
-                } else if (touch.phase == TouchPhase.Moved)
-                {
-                    Debug.Log("Drag Object");
-                    hit.transform.position = touch.position;
+				} else if (touch.phase == TouchPhase.Moved) {
+					Debug.Log ("Drag Object");
+					hit.transform.position = touch.position;
 
-                } else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
-                {
-                    // Velocidade do drag do objeto
-                   // float touchSpeed = touch.deltaPosition.magnitude / touch.deltaTime;
-                    Debug.Log("Throw Object");
-                }
+				} else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled) {
+					// Velocidade do drag do objeto
+					// float touchSpeed = touch.deltaPosition.magnitude / touch.deltaTime;
+					Debug.Log ("Throw Object");
+				}
 
-            } else if (hit.collider.name == "slider")
-            {
-                if (touch.phase == TouchPhase.Moved)
-                {
-                    Debug.Log("Move Slider");
-                    float y = touch.deltaPosition.y;
-                    hit.transform.position = touch.position;
-                }
+			} else if (hit.collider.name == "slider") {
+				if (touch.phase == TouchPhase.Moved) {
+					Debug.Log ("Move Slider");
+					float y = touch.deltaPosition.y;
+					hit.transform.position = touch.position;
+				}
 
-            } else if (hit.collider.name == "physicsProperty")
-            {
-                if (touch.phase == TouchPhase.Began)
-                {
-                    if (hit.transform.name == "gravity")
-                    {
-                        Debug.Log("Change gravity");
-                    } else if (hit.transform.name == "mass")
-                    {
-                        Debug.Log("Change mass");
-                    }
-                    else if (hit.transform.name == "heat")
-                    {
-                        Debug.Log("Change heat");
-                    }
-                }
-            }
-            else
-            {
-               Debug.Log("Move Camera");
-               MoveCamera(new Vector2(-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));
-            }
-        }
+			} else if (hit.collider.name == "physicsProperty") {
+				if (touch.phase == TouchPhase.Began) {
+					if (hit.transform.name == "gravity") {
+						Debug.Log ("Change gravity");
+					} else if (hit.transform.name == "mass") {
+						Debug.Log ("Change mass");
+					} else if (hit.transform.name == "heat") {
+						Debug.Log ("Change heat");
+					}
+				}
+			}
+		} /*else {
+			Debug.Log("Move Camera");
+			MoveCamera(new Vector2(-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));
+
+		}*/
     }
 
     private bool IsJumping()
