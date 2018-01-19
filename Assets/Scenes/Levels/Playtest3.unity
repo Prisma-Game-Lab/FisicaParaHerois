@@ -19446,12 +19446,12 @@ Prefab:
     - target: {fileID: 224286470696679982, guid: 59922cde8abdcbf488942e6f4f2de13b,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 356.5
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 59922cde8abdcbf488942e6f4f2de13b,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 200.5
+      value: 269.5
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 59922cde8abdcbf488942e6f4f2de13b,
         type: 2}
@@ -26638,7 +26638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BeginLocked: 1
-  NextScene: BossBatlle
+  NextScene: TestScene
 --- !u!50 &950461332
 Rigidbody2D:
   serializedVersion: 4
@@ -44496,6 +44496,7 @@ MonoBehaviour:
   MaxDistanceToNearbyObject: 1.5
   MaxVelocity: 3.5
   jump: {fileID: 8300000, guid: ae1b5aa20a8a94e528e90979c04287da, type: 3}
+  ObjectColliding: {fileID: 0}
   ForceToApplyOnObject: 0
 --- !u!61 &2078607167
 BoxCollider2D:
