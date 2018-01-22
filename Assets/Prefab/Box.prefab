@@ -99,7 +99,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 4
   m_Material: {fileID: 6200000, guid: a1bdcf326b53a4e90a32b1db2ff7b43a, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -145,10 +145,12 @@ MonoBehaviour:
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
   AvailableActions:
     ChangeGravityAction: 1
-    ChangeGravityActionMinValue: -5
-    ChangeGravityActionMaxValue: 5
+    ChangeGravityActionMinValue: -8
+    ChangeGravityActionMaxValue: 8
     ChangeMassAction: 1
-    ChangeMassActionMinValue: -5
-    ChangeMassActionMaxValue: 5
+    ChangeMassActionMinValue: 1
+    ChangeMassActionMaxValue: 10
     PushPullAction: 1
   CanPlayerInteract: 1
+  _timeLeftToDeactivatePushPullAction: 0.5
+  _hasChain: 0
