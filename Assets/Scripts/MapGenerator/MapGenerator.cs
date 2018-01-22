@@ -95,7 +95,7 @@ public class MapGenerator : MonoBehaviour
                 bool[,] colliderMatrix = new bool[layer.width, layer.height];
                 for (int i = 0; i < layer.width; i++)
                 {
-                    for (int j = 0; j < layer.width; j++)
+                    for (int j = 0; j < layer.height; j++)
                     {
                         colliderMatrix[i, j] = false;
                     }
