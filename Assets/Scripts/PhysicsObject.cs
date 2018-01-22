@@ -65,7 +65,9 @@ public class PhysicsObject : MonoBehaviour {
         }
 
         //Senão, ativa com o objeto selecionado
-        ActionPanel.Instance.OnPanelActivated(this);
+		if (CanPlayerInteract) {
+			ActionPanel.Instance.OnPanelActivated(this);
+		}
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
