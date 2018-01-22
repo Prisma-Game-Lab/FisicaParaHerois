@@ -71,14 +71,19 @@ public class PlayerInfo : MonoBehaviour {
 
     }
 
+    //Checa se o player está olhando para a esquerda ou direita
     void FixedUpdate()
     {
+        _playerAnim.SetInteger("velocity", (int)(_rb.velocity.x));
+
         float h = Input.GetAxis("Horizontal");
         if (h > 0 && !facingRight)
             Flip();
         else if (h < 0 && facingRight)
             Flip();
     }
+
+    //Flip no player
     void Flip()
     {
         facingRight = !facingRight;
@@ -113,7 +118,6 @@ public class PlayerInfo : MonoBehaviour {
         //Reseta a posição da câmera
         Vector3 cameraDistToPlayer = transform.position - Camera.main.transform.position;
         //MoveCamera(new Vector2(cameraDistToPlayer.x, cameraDistToPlayer.y));
-        _playerAnim.SetInteger("velocity", (int)(rb.velocity.x));
 
         if (walkLeft)
         {

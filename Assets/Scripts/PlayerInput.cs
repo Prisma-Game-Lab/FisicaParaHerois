@@ -1,5 +1,9 @@
 ﻿
-/*  * Copyright (c) Rio PUC Games * RPG Programming Team 2017 * */
+/* 
+* Copyright (c) Rio PUC Games
+* RPG Programming Team 2017
+*
+*/
 
 using System.Collections;
 using System.Collections.Generic;
@@ -61,8 +65,6 @@ public class PlayerInput : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
-		Debug.Log (_isJumping + "JUMPING");
 
 	    if (_isJumping)
 			_playerAnim.SetBool("onFloor", false);
@@ -320,7 +322,11 @@ public class PlayerInput : MonoBehaviour {
 					}
 				}
 			}
-		}  /*else { 			Debug.Log("Move Camera"); 			MoveCamera(new Vector2(-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));  		} */
+		}  /*else {
+			Debug.Log("Move Camera");
+			MoveCamera(new Vector2(-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));
+
+		} */
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
