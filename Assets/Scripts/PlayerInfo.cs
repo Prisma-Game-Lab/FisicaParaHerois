@@ -20,6 +20,7 @@ public class PlayerInfo : MonoBehaviour {
     public float MaxDistanceToNearbyObject = 1.5f;
     public float MaxVelocity = 5.0f;
 	public AudioClip jump;
+    public bool facingRight = true;
 
 
     [HideInInspector] public PhysicsObject ObjectColliding;
@@ -68,6 +69,22 @@ public class PlayerInfo : MonoBehaviour {
             OnDeath();
         }
 
+    }
+
+    void FixedUpdate()
+    {
+        float h = Input.GetAxis("Horizontal");
+        if (h > 0 && !facingRight)
+            Flip();
+        else if (h < 0 && facingRight)
+            Flip();
+    }
+    void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 
     /// <summary>
