@@ -73,14 +73,16 @@ public class PhysicsObject : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Se player não estiver envolvido na colisão, não faça nada
-        if (collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject)
-        {
-            return;
-        }
+		if (collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject) {
+			return;
+		} else {
+			//Physics2D.GetIgnoreCollision(collision.collider.gameObject, this.GetComponent<Collider2D>(),true)
+			Debug.Log ("TOCO NO PLAYER");
+		}
 
         if (!_pushPullAction)
         {
-            physicsData.velocity = new Vector2(0, 0);
+           // physicsData.velocity = new Vector2(0, 0);
             return;
         }
 
