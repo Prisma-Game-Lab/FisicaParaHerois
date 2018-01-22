@@ -91,7 +91,17 @@ public class MapGenerator : MonoBehaviour
 		{
 			foreach (Layer layer in AllLayers.layers) // For each layer of the AllLayers variable
 			{
-				c = 0;
+                //Criando e inicializando matriz de collider
+                bool[,] colliderMatrix = new bool[layer.width, layer.height];
+                for (int i = 0; i < layer.width; i++)
+                {
+                    for (int j = 0; j < layer.width; j++)
+                    {
+                        colliderMatrix[i, j] = false;
+                    }
+                }
+
+                c = 0;
 				for (int i = 0; i < layer.data.Length; i++)
                 {
                     if (i % layer.width == 0 && i != 0)
@@ -258,6 +268,80 @@ public class MapGenerator : MonoBehaviour
 	{
 		return (transform.childCount == 0);
 	}
+
+    public void CreateFloorCollider(Layer layer, int i, int j, GameObject startFloor, bool[,] colliderMatrix)
+    {
+        //Checa matriz de collider
+        if (colliderMatrix[i, j] == true)
+        {
+            return;
+        }
+
+        //Cria lista de pontos
+        List<Vector2> edges = new List<Vector2>();
+
+        //Cria emptyGameObj de colliders se ainda não houver
+        var collidersEmptyObj = GameObject.Find("Colliders");
+        if (collidersEmptyObj == null)
+        {
+            collidersEmptyObj = new GameObject("Colliders");
+            collidersEmptyObj.transform.parent = GameObject.Find("GeneratedTiles").transform;
+            collidersEmptyObj.transform.position = Vector3.zero;
+            collidersEmptyObj.transform.localPosition = Vector3.zero;
+            collidersEmptyObj.transform.localRotation = Quaternion.identity;
+        }
+
+        //Cria collider
+        EdgeCollider2D collider = collidersEmptyObj.AddComponent<EdgeCollider2D>();
+        Collider2D floorCollider = startFloor.GetComponent<Collider2D>();
+        collider.bounds.SetMinMax(floorCollider.bounds.min, floorCollider.bounds.max);
+        edges.Add(floorCollider.bounds.min);
+
+        //Modifica colliderMatrix
+        colliderMatrix[i, j] = true;
+        
+
+        //Checa blocos em volta
+        for (int v = j; v < layer.height; v++)
+        {
+            //Checa blocos anteriores
+            for (int h = i - 1; h >= 0; h--)
+            {
+                //Cria edge se não houver blocos em volta
+                if (layer.data[v * layer.width + h] != layer.data[j * layer.width + i])
+                {
+                    Vector2 pos = floorCollider.bounds.min - (j - v + 1) * (floorCollider.bounds.max - floorCollider.bounds.min); //posição estimada
+                    edges.Add(pos);
+                    break;
+                }
+
+                //Modifica blocos afetados pelo collider na colliderMatrix
+                colliderMatrix[v, h] = true;
+            }
+
+            //Checa blocos posteriores
+            for (int h = i + 1; h < layer.width; h++)
+            {
+                //Cria edge se não houver blocos em volta
+                if (layer.data[v * layer.width + h] != layer.data[j * layer.width + i])
+                {
+                    Vector2 pos = floorCollider.bounds.max + (v-1-j)*(floorCollider.bounds.max - floorCollider.bounds.min); //posição estimada
+                    edges.Add(pos);
+                    break;
+                }
+
+                //Modifica blocos afetados pelo collider na colliderMatrix
+                colliderMatrix[v, h] = true;
+            }
+        }
+
+
+        //Deleta collider original do chão
+        //Destroy(floorCollider);
+
+        //Passa lista de pontos para o EdgeCollider2D
+        collider.points = edges.ToArray();
+    }
 
 	/// <summary>
 	/// Checa se o chão deve ter borda
