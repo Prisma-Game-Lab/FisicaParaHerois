@@ -64,7 +64,7 @@ public class PlayerInput : MonoBehaviour {
 
 		Debug.Log (_isJumping + "JUMPING");
 
-		/*if (!IsJumping())*/ if (!_isJumping)
+	    if (_isJumping)
 			_playerAnim.SetBool("onFloor", false);
 		else
 			_playerAnim.SetBool("onFloor", true);
@@ -90,7 +90,7 @@ public class PlayerInput : MonoBehaviour {
 			{
 				if (realJump)
 				{
-					/*if (!IsJumping())*/ if (!_isJumping) Player.Move(true);
+			    	if (!_isJumping) Player.Move(true);
 				}  else
 				{
 					Player.Move(true);
@@ -100,7 +100,7 @@ public class PlayerInput : MonoBehaviour {
 			{
 				if (realJump)
 				{
-					/*if (!IsJumping())*/ if (!_isJumping) Player.Move(false);
+					if (!_isJumping) Player.Move(false);
 				}  else
 				{
 					Player.Move(false);
@@ -110,7 +110,7 @@ public class PlayerInput : MonoBehaviour {
 
 			if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
 			{
-				/*if (!IsJumping())*/ if (!_isJumping) Player.Jump();
+				if (!_isJumping) Player.Jump();
 			}
 		}
 
@@ -216,7 +216,7 @@ public class PlayerInput : MonoBehaviour {
 			{
 				if (realJump)
 				{
-					/*if (!IsJumping())*/ if (!_isJumping) Player.Move(true);
+					if (!_isJumping) Player.Move(true);
 				}
 				else
 				{
@@ -227,7 +227,7 @@ public class PlayerInput : MonoBehaviour {
 			{
 				if (realJump)
 				{
-					/*if (!IsJumping())*/ if (!_isJumping) Player.Move(false);
+					if (!_isJumping) Player.Move(false);
 				}
 				else
 				{
@@ -239,7 +239,7 @@ public class PlayerInput : MonoBehaviour {
 			{
 				if (touch.phase == TouchPhase.Began)
 				{
-					/*if (!IsJumping())*/ if (!_isJumping) Player.Jump();
+					if (!_isJumping) Player.Jump();
 				}
 			}  else if (HUDbnt.name == "Action")
 			{
@@ -341,7 +341,7 @@ public class PlayerInput : MonoBehaviour {
 		_isJumping = true;
 	}
 
-	private bool IsJumping()
+	/*private bool IsJumping()
 	{
 		//usa raycast pra ver se hálgum objeto abaixo do player, atéerta distâcia
 		//1.0f temp para distancia míima
@@ -360,7 +360,7 @@ public class PlayerInput : MonoBehaviour {
 			return true;
 		}
 		else return false;
-	}
+	}*/
 
 	// verifica se estáocando a gangorra e diminui o atrito
 	private bool PlayerTouchingSeesaw()
