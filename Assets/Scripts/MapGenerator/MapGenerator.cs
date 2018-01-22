@@ -35,6 +35,9 @@ public class MapGenerator : MonoBehaviour
     //Outras infos
     [Tooltip("Tamanho do tile no Unity em relação ao Tiled")] public int TileSize;
 
+    [Header("Floor Tiles")]
+    public Sprite top_left;
+    public Sprite top_right;
 
     [Header("Load File")]
     public string fileName; // The name of the file that will be loaded 
@@ -73,6 +76,7 @@ public class MapGenerator : MonoBehaviour
     void Start()
     {
     }
+
 	/// <summary>
 	/// Function that generates the map, it goes through the All layers list and Instatiate every object
 	/// </summary>
@@ -124,10 +128,17 @@ public class MapGenerator : MonoBehaviour
 
 								bool shouldSpawnFloorWithEdge = CheckFloorWithEdge (layer, i); 
 								GameObject prefabToInstantiate = shouldSpawnFloorWithEdge ? FloorWithEdgePrefab : FloorPrefab;
-								Vector2 correctPosition = shouldSpawnFloorWithEdge ? new Vector2(0,0.46f) : new Vector2(0,0);
+								Vector2 correctPosition = shouldSpawnFloorWithEdge ? new Vector2(0,-0.023f) : new Vector2(0,0);
 
 								instantiatedPrefab = Instantiate(prefabToInstantiate, Vector3.zero, Quaternion.identity, GameObject.Find("FloorTiles").transform);
                             	instantiatedPrefab.transform.position = new Vector3(posX * TileSize - correctPosition.x, posY * TileSize - correctPosition.y, posZ);
+                                //instantiatedPrefab.transform.localScale = new Vector3(0.23f, 0.23f, 1);
+
+                                if (shouldSpawnFloorWithEdge)
+                                {
+                                    ChangeFloorTile(instantiatedPrefab, CheckFloorDirection(layer, i));
+                                }
+
                             	break;
 
 							case TILED_PLAYER_ID:
@@ -230,6 +241,7 @@ public class MapGenerator : MonoBehaviour
 		}
 		Debug.Log("Tile count" + TileList.Count);
 	}
+
     public void DeleteMap() // Deletes the map that was loaded 
     {
 		foreach (Transform child in GameObject.Find("GeneratedTiles").transform)
@@ -308,6 +320,64 @@ public class MapGenerator : MonoBehaviour
          * que devem ser repetidos em uma das direções, ou seja, diz se o tile atual está no meio
          * das repetições de um tile anterior e, portanto, não deve ser instanciado*/
         return ((repetidosVertical % vertical == 0) && (repetidosHorizontal % horizontal == 0));
+    }
+
+    /// <summary>
+    /// Checa se o chão atual é uma borda
+    /// </summary>
+    /// <returns>null se não for borda, e o nome da direção a ser passada para o ChangeFloorTile caso contrário.</returns>
+    public string CheckFloorDirection(Layer layer, int i)
+    {
+        //Checa se é o primeiro tile da linha
+        if (i % layer.width == 0)
+        {
+            return "top_left";
+        }
+
+        //Checa se é o último tile da linha
+        if (i % layer.width == (layer.width - 1))
+        {
+            return "top_right";
+        }
+
+        //Checa se o tile a esquerda é diferente
+        if ((layer.data[i - 1] != layer.data[i]) && (layer.data[i + 1] == layer.data[i]))
+        {
+            return "top_left";
+        }
+
+        //Checa se o tile a direita é diferente
+        if ((layer.data[i + 1] != layer.data[i]) && (layer.data[i - 1] == layer.data[i]))
+        {
+            return "top_right";
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Modifica o sprite do chão
+    /// </summary>
+    /// <param name="floor">O objeto que terá o sprite modificado</param>
+    /// <param name="direction">A direção do chão. Valores válidos são top_right e top_left.</param>
+    public void ChangeFloorTile(GameObject floor, string direction)
+    {
+        //Pega sprite renderer do floor
+        SpriteRenderer rend = floor.transform.GetChild(1).GetComponent<SpriteRenderer>();
+
+        //Muda ele para o sprite desejado
+        switch (direction)
+        {
+            case "top_right":
+                rend.sprite = top_right;
+                break;
+            case "top_left":
+                rend.sprite = top_left;
+                break;
+            default:
+                Debug.LogError("Valor inválido passado para o método ChangeFloorTile");
+                break;
+        }
     }
 
 	/// <summary>
