@@ -1,8 +1,5 @@
-﻿/* 
-* Copyright (c) Rio PUC Games
-* RPG Programming Team 2017
-*
-*/
+﻿
+/*  * Copyright (c) Rio PUC Games * RPG Programming Team 2017 * */
 
 using System.Collections;
 using System.Collections.Generic;
@@ -11,96 +8,100 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class PlayerInput : MonoBehaviour {
-    public PlayerInfo Player;
-    public GameObject ActionMenu;
-    [Tooltip("Tempo mínimo para identificar um toque longo")]
-    public float HoldTime = 0.8f;
-    public bool realJump;
-    public float jumpCheckDistance;
-    public float CameraTouchSpeed = 0.01f;
+	public PlayerInfo Player;
+	public GameObject ActionMenu;
+	[Tooltip("Tempo míimo para identificar um toque longo")]
+	public float HoldTime = 0.8f;
+	public bool realJump;
+	public float jumpCheckDistance;
+	public float CameraTouchSpeed = 0.01f;
 
-    private Vector3 _cameraOrigin;
-    private Vector3 _mouseOrigin;
+	private Vector3 _cameraOrigin;
+	private Vector3 _mouseOrigin;
 
-    private GameObject _directionBeforeJump;
-   // private float _friction;
+	private GameObject _directionBeforeJump;
+	// private float _friction;
 
-    private Rigidbody2D rb;
-    private Animator _playerAnim;
+	private Rigidbody2D rb;
+	private Animator _playerAnim;
 
-    //máscara usada para ignorar o player
-    private int _layerMask;
+	//mácara usada para ignorar o player
+	private int _layerMask;
 
-    // Use this for initialization
-    void Start () {
-        Input.multiTouchEnabled = true;
+	private bool _isJumping;
 
-        //_friction = Player.GetComponent<BoxCollider2D>().sharedMaterial.friction;
+	// Use this for initialization
+	void Start () {
+		Input.multiTouchEnabled = true;
 
-        _cameraOrigin = Camera.main.transform.position; 
-    }
+		//_friction = Player.GetComponent<BoxCollider2D>().sharedMaterial.friction;
 
-    void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        _playerAnim = this.GetComponent<Animator>();
+		_cameraOrigin = Camera.main.transform.position; 
+	}
 
-        int layerIndex = LayerMask.NameToLayer("Player");
-        if(layerIndex == -1)
-        {
-            Debug.LogWarning("Player layer mask does not exists");
-            layerIndex = 0;
-        }
+	void Awake()
+	{
+		rb = GetComponent<Rigidbody2D>();
+		_playerAnim = this.GetComponent<Animator>();
 
-        //máscara só colide com player
-        _layerMask = (1 << layerIndex);
+		int layerIndex = LayerMask.NameToLayer("Player");
+		if(layerIndex == -1)
+		{
+			Debug.LogWarning("Player layer mask does not exists");
+			layerIndex = 0;
+		}
 
-        //máscara colide com tudo menos o player
-        _layerMask = ~_layerMask;
-    }
+		//mácara sóolide com player
+		_layerMask = (1 << layerIndex);
 
-
-    // Update is called once per frame
-    void Update () {
-
-        if(IsJumping())
-            _playerAnim.SetBool("onFloor", false);
-        else
-            _playerAnim.SetBool("onFloor", true);
+		//mácara colide com tudo menos o player
+		_layerMask = ~_layerMask;
+	}
 
 
-        // Fazer algo pra melhorar o movimento emcima da gangorra aqui!
-        if (PlayerTouchingSeesaw())
-        {
-           // Player.GetComponent<BoxCollider2D>().sharedMaterial.friction = 0.1f;
-            //print(Player.GetComponent<BoxCollider2D>().sharedMaterial.friction);
-        } else
-        {
-            //Player.GetComponent<BoxCollider2D>().sharedMaterial.friction = _friction;
-        }
+	// Update is called once per frame
+	void Update () {
 
-        // Verifica se está rodando o jogo no unity caso contrário será em algum mobile
-#if UNITY_STANDALONE || UNITY_WEBPLAYER
+		Debug.Log (_isJumping + "JUMPING");
 
-		// Não permite que o player clique no botão enquanto tiver no pause
+		/*if (!IsJumping())*/ if (!_isJumping)
+			_playerAnim.SetBool("onFloor", false);
+		else
+			_playerAnim.SetBool("onFloor", true);
+
+
+		// Fazer algo pra melhorar o movimento emcima da gangorra aqui!
+		if (PlayerTouchingSeesaw())
+		{
+			// Player.GetComponent<BoxCollider2D>().sharedMaterial.friction = 0.1f;
+			//print(Player.GetComponent<BoxCollider2D>().sharedMaterial.friction);
+		} else
+		{
+			//Player.GetComponent<BoxCollider2D>().sharedMaterial.friction = _friction;
+		}
+
+		// Verifica se estáodando o jogo no unity caso contráio serám algum mobile
+		#if UNITY_STANDALONE || UNITY_WEBPLAYER
+
+		// Nã permite que o player clique no botã enquanto tiver no pause
 		if (!GameManager.IsPaused && !ActionPanel.Instance.isActiveAndEnabled) {
-			
+
 			if (Input.GetKey(KeyCode.A))
 			{
 				if (realJump)
 				{
-					if (!IsJumping()) Player.Move(true);
-				} else
+					/*if (!IsJumping())*/ if (!_isJumping) Player.Move(true);
+				}  else
 				{
 					Player.Move(true);
 				}
 
-			} else if (Input.GetKey(KeyCode.D))
+			}  else if (Input.GetKey(KeyCode.D))
 			{
 				if (realJump)
 				{
-					if (!IsJumping()) Player.Move(false);
-				} else
+					/*if (!IsJumping())*/ if (!_isJumping) Player.Move(false);
+				}  else
 				{
 					Player.Move(false);
 				}
@@ -109,7 +110,7 @@ public class PlayerInput : MonoBehaviour {
 
 			if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
 			{
-				if(!IsJumping()) Player.Jump();
+				/*if (!IsJumping())*/ if (!_isJumping) Player.Jump();
 			}
 		}
 
@@ -119,114 +120,114 @@ public class PlayerInput : MonoBehaviour {
 
 		}
 
-        if (Input.GetKey(KeyCode.E))
-        {
-            ActionButton();
-        }
+		if (Input.GetKey(KeyCode.E))
+		{
+			ActionButton();
+		}
 
 		if (Input.GetKeyDown(KeyCode.P))
-        {
-            GameManager.Instance.OnPause();
-        }
+		{
+			GameManager.Instance.OnPause();
+		}
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            _mouseOrigin = Input.mousePosition;
-        }
+		if (Input.GetMouseButtonDown(0))
+		{
+			_mouseOrigin = Input.mousePosition;
+		}
 
-        else if(Input.GetMouseButton(0))
-        {
-            Debug.Log("MoveCamera");
-            Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - _mouseOrigin);
-            Vector2 move = new Vector2(pos.x, pos.y);
-            MoveCamera(move);
-        }
-       
-        // Verifica se está jogando com iOS ou Android
-#elif UNITY_IOS || UNITY_ANDROID
+		else if(Input.GetMouseButton(0))
+		{
+			Debug.Log("MoveCamera");
+			Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - _mouseOrigin);
+			Vector2 move = new Vector2(pos.x, pos.y);
+			MoveCamera(move);
+		}
 
-        CheckInput();
-        //CheckJump();
+		// Verifica se estáogando com iOS ou Android
+		#elif UNITY_IOS || UNITY_ANDROID
 
- #endif
+		CheckInput();
+		//CheckJump();
 
-    }
+		#endif
 
-    void FixedUpdate()
-    {
+	}
 
-    }
+	void FixedUpdate()
+	{
 
-    public void ActionButton()
-    {
-        IAction<float> action = Player.Actions.Find(x => x.GetActionName().Equals("Push/Pull"));
-        if (action != null)
-        {
-            PhysicsObject target = Player.FindNearestPhysicsObject();
-            action.SetTarget(target);
-            if (target != null)
-            {
-                PlayerInfo.PlayerInstance.ForceToApplyOnObject = Mathf.Sign(target.transform.position.x - Player.transform.position.x) * 100;
-                action.OnActionUse(Mathf.Sign(target.transform.position.x - Player.transform.position.x)); //O ARGUMENTO NÃO AFETA MAIS! old: O argumento será 1 ou -1, dependendo de se o player está antes ou depois do target.
-            }
-        }
-    }
+	}
 
-    public void CheckInput()
-    {
-        int touches = Input.touchCount;
+	public void ActionButton()
+	{
+		IAction<float> action = Player.Actions.Find(x => x.GetActionName().Equals("Push/Pull"));
+		if (action != null)
+		{
+			PhysicsObject target = Player.FindNearestPhysicsObject();
+			action.SetTarget(target);
+			if (target != null)
+			{
+				PlayerInfo.PlayerInstance.ForceToApplyOnObject = Mathf.Sign(target.transform.position.x - Player.transform.position.x) * 100;
+				action.OnActionUse(Mathf.Sign(target.transform.position.x - Player.transform.position.x)); //O ARGUMENTO NÃ AFETA MAIS! old: O argumento será ou -1, dependendo de se o player estántes ou depois do target.
+			}
+		}
+	}
 
-        if (touches > 0)
-        {
-            for (int i = 0; i < touches; i++)
-            {
-                Touch touch = Input.GetTouch(i);
+	public void CheckInput()
+	{
+		int touches = Input.touchCount;
 
-                    // Verifica se o toque foi em algum item da UI
-                    if (EventSystem.current.IsPointerOverGameObject(touch.fingerId))
-                {
-                    Debug.Log("UI is touched");
-                    UITouch(touch);
-                }
-                else
-                {
-                    Debug.Log("UI is not touched");
+		if (touches > 0)
+		{
+			for (int i = 0; i < touches; i++)
+			{
+				Touch touch = Input.GetTouch(i);
+
+				// Verifica se o toque foi em algum item da UI
+				if (EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+				{
+					Debug.Log("UI is touched");
+					UITouch(touch);
+				}
+				else
+				{
+					Debug.Log("UI is not touched");
 					ObjectsTouch (touch);
 
 					Debug.Log("Move Camera");
 					MoveCamera(new Vector2(-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));
 
-                }
-            }
+				}
+			}
 
-        }
-    }
+		}
+	}
 
-    private void UITouch(Touch touch)
-    {
-        GameObject HUDbnt = EventSystem.current.currentSelectedGameObject;
-        //GameObject HUDbntLast = EventSystem.current.lastSelectedGameObject;
-        TouchPhase phase = touch.phase;
+	private void UITouch(Touch touch)
+	{
+		GameObject HUDbnt = EventSystem.current.currentSelectedGameObject;
+		//GameObject HUDbntLast = EventSystem.current.lastSelectedGameObject;
+		TouchPhase phase = touch.phase;
 
-		// Não permite que o player clique no botão enquanto tiver no pause
+		// Nã permite que o player clique no botã enquanto tiver no pause
 		if (!GameManager.IsPaused && !ActionPanel.Instance.isActiveAndEnabled) {
-			
+
 			if (HUDbnt.name == "LeftDir")
 			{
 				if (realJump)
 				{
-					if (!IsJumping()) Player.Move(true);
+					/*if (!IsJumping())*/ if (!_isJumping) Player.Move(true);
 				}
 				else
 				{
 					Player.Move(true);
 				}
 
-			} else if (HUDbnt.name == "RightDir")
+			}  else if (HUDbnt.name == "RightDir")
 			{
 				if (realJump)
 				{
-					if (!IsJumping()) Player.Move(false);
+					/*if (!IsJumping())*/ if (!_isJumping) Player.Move(false);
 				}
 				else
 				{
@@ -238,44 +239,44 @@ public class PlayerInput : MonoBehaviour {
 			{
 				if (touch.phase == TouchPhase.Began)
 				{
-					if(!IsJumping()) Player.Jump();
+					/*if (!IsJumping())*/ if (!_isJumping) Player.Jump();
 				}
-			} else if (HUDbnt.name == "Action")
+			}  else if (HUDbnt.name == "Action")
 			{
 				if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
 				{
 					print("Action");
 
-                    ActionButton();
+					ActionButton();
 				}
 			}
 
 		}
 
-        if (HUDbnt.name == "Restart")
-        {
-            if (touch.phase == TouchPhase.Began)
-            {
-                GameManager.ReloadScene();
-            }
-        }
+		if (HUDbnt.name == "Restart")
+		{
+			if (touch.phase == TouchPhase.Began)
+			{
+				GameManager.ReloadScene();
+			}
+		}
 
-        if (HUDbnt.name == "Menu")
-        {
-            // Por enquanto só pausa o jogo
-            if (touch.phase == TouchPhase.Began)
-            {
-                GameManager.Instance.OnPause();
-                print("Menu");
-            }
-        }
+		if (HUDbnt.name == "Menu")
+		{
+			// Por enquanto sóausa o jogo
+			if (touch.phase == TouchPhase.Began)
+			{
+				GameManager.Instance.OnPause();
+				print("Menu");
+			}
+		}
 
-    }
+	}
 
-    private void ObjectsTouch(Touch touch)
-    {
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), -Vector2.up);
-        TouchPhase phase = touch.phase;
+	private void ObjectsTouch(Touch touch)
+	{
+		RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), -Vector2.up);
+		TouchPhase phase = touch.phase;
 
 		if (hit.collider != null) {
 			print (hit.collider.name);
@@ -285,54 +286,68 @@ public class PlayerInput : MonoBehaviour {
 
 				if (touch.phase == TouchPhase.Began) {
 
-				} else if (touch.phase == TouchPhase.Stationary) {
+				}  else if (touch.phase == TouchPhase.Stationary) {
 					if (touch.deltaTime == HoldTime) {
 						// Long tap
 						Debug.Log ("Change Objects Properties");
 					}
 
-				} else if (touch.phase == TouchPhase.Moved) {
+				}  else if (touch.phase == TouchPhase.Moved) {
 					Debug.Log ("Drag Object");
 					hit.transform.position = touch.position;
 
-				} else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled) {
+				}  else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled) {
 					// Velocidade do drag do objeto
 					// float touchSpeed = touch.deltaPosition.magnitude / touch.deltaTime;
 					Debug.Log ("Throw Object");
 				}
 
-			} else if (hit.collider.name == "slider") {
+			}  else if (hit.collider.name == "slider") {
 				if (touch.phase == TouchPhase.Moved) {
 					Debug.Log ("Move Slider");
 					float y = touch.deltaPosition.y;
 					hit.transform.position = touch.position;
 				}
 
-			} else if (hit.collider.name == "physicsProperty") {
+			}  else if (hit.collider.name == "physicsProperty") {
 				if (touch.phase == TouchPhase.Began) {
 					if (hit.transform.name == "gravity") {
 						Debug.Log ("Change gravity");
-					} else if (hit.transform.name == "mass") {
+					}  else if (hit.transform.name == "mass") {
 						Debug.Log ("Change mass");
-					} else if (hit.transform.name == "heat") {
+					}  else if (hit.transform.name == "heat") {
 						Debug.Log ("Change heat");
 					}
 				}
 			}
-		} /*else {
-			Debug.Log("Move Camera");
-			MoveCamera(new Vector2(-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));
+		}  /*else { 			Debug.Log("Move Camera"); 			MoveCamera(new Vector2(-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));  		} */
+	}
 
-		}*/
-    }
+	void OnTriggerEnter2D(Collider2D other){
 
-    private bool IsJumping()
-    {
-        //usa raycast pra ver se há algum objeto abaixo do player, até certa distância
-        //1.0f temp para distancia mínima
-        Vector2 posMin = new Vector2(transform.position.x - Player.GetComponent<BoxCollider2D>().size.x/2 - 0.1f, transform.position.y);
-        Vector2 posMid = new Vector2(transform.position.x, transform.position.y);
-        Vector2 posMax = new Vector2(transform.position.x + Player.GetComponent<BoxCollider2D>().size.x/2 + 0.1f, transform.position.y);
+
+		_isJumping = false;
+	}
+
+	void OnTriggerStay2D(Collider2D other){
+
+		_isJumping = false;
+
+	}
+
+	void OnTriggerExit2D(Collider2D other){
+
+
+		_isJumping = true;
+	}
+
+	private bool IsJumping()
+	{
+		//usa raycast pra ver se hálgum objeto abaixo do player, atéerta distâcia
+		//1.0f temp para distancia míima
+		Vector2 posMin = new Vector2(transform.position.x - Player.GetComponent<BoxCollider2D>().size.x/2 - 0.1f, transform.position.y);
+		Vector2 posMid = new Vector2(transform.position.x, transform.position.y);
+		Vector2 posMax = new Vector2(transform.position.x + Player.GetComponent<BoxCollider2D>().size.x/2 + 0.1f, transform.position.y);
 
 		float alturaPlayer = Player.GetComponent<BoxCollider2D> ().bounds.size.y;
 		//jumpCheckDistance
@@ -340,88 +355,88 @@ public class PlayerInput : MonoBehaviour {
 		RaycastHit2D hitMid = Physics2D.Raycast(posMid, Vector2.down, alturaPlayer/2 + 0.1f, _layerMask);
 		RaycastHit2D hitMax = Physics2D.Raycast(posMax, Vector2.down, alturaPlayer/2 + 0.1f, _layerMask);
 
-        if (hitMin.collider == null && hitMid.collider == null && hitMax.collider == null)
-        {
-            return true;
-        }
-        else return false;
-    }
+		if (hitMin.collider == null && hitMid.collider == null && hitMax.collider == null)
+		{
+			return true;
+		}
+		else return false;
+	}
 
-    // verifica se está tocando a gangorra e diminui o atrito
-    private bool PlayerTouchingSeesaw()
-    {
+	// verifica se estáocando a gangorra e diminui o atrito
+	private bool PlayerTouchingSeesaw()
+	{
 
-        BoxCollider2D playerCollider = Player.GetComponent<BoxCollider2D>();
-        Transform seesaw;
+		BoxCollider2D playerCollider = Player.GetComponent<BoxCollider2D>();
+		Transform seesaw;
 
 		if (GameObject.FindWithTag("Gangorra") == null)
-        {
-            return false;
-        }
+		{
+			return false;
+		}
 
-        //seesaw = GameObject.Find("PhysicsObjects").transform.Find("Gangorra").transform.Find("Gangorra");
+		//seesaw = GameObject.Find("PhysicsObjects").transform.Find("Gangorra").transform.Find("Gangorra");
 		seesaw = GameObject.FindWithTag("Gangorra").transform.Find("Gangorra");
 
-        // Verifica somente a barra da gangorra
-        Collider2D physicsSeesawCollider = seesaw.GetComponent<Collider2D>();
+		// Verifica somente a barra da gangorra
+		Collider2D physicsSeesawCollider = seesaw.GetComponent<Collider2D>();
 
 
-        if (playerCollider.IsTouching(physicsSeesawCollider))
-        {
-             return true;
-        }
+		if (playerCollider.IsTouching(physicsSeesawCollider))
+		{
+			return true;
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    public void MoveCamera(Vector2 translation)
-    {
-        if (ActionMenu.activeInHierarchy)
-        {
-            return;
-        }
+	public void MoveCamera(Vector2 translation)
+	{
+		if (ActionMenu.activeInHierarchy)
+		{
+			return;
+		}
 
-        PlayerInfo.PlayerInstance.MoveCamera(translation);
-    }
+		PlayerInfo.PlayerInstance.MoveCamera(translation);
+	}
 
 
-    //    private void CheckJump()
-    //    {
-    //        BoxCollider2D playerCollider = Player.GetComponent<BoxCollider2D>();
-    //        Transform scene = GameObject.Find("SceneObjects").transform;
-    //        Transform objects = GameObject.Find("PhysicsObjects").transform;
-    //        bool touchingScene = false;
-    //        bool touchingObject = false;
+	//    private void CheckJump()
+	//    {
+	//        BoxCollider2D playerCollider = Player.GetComponent<BoxCollider2D>();
+	//        Transform scene = GameObject.Find("SceneObjects").transform;
+	//        Transform objects = GameObject.Find("PhysicsObjects").transform;
+	//        bool touchingScene = false;
+	//        bool touchingObject = false;
 
-    //        for (int i = 0; i < scene.childCount; i += 1)
-    //        {
-    //            Collider2D sceneObjectCollider = scene.GetChild(i).GetComponent<Collider2D>();
+	//        for (int i = 0; i < scene.childCount; i += 1)
+	//        {
+	//            Collider2D sceneObjectCollider = scene.GetChild(i).GetComponent<Collider2D>();
 
-    //            if (playerCollider.IsTouching(sceneObjectCollider))
-    //            {
-    //                touchingScene = true;
-    //            }
-    //        }
+	//            if (playerCollider.IsTouching(sceneObjectCollider))
+	//            {
+	//                touchingScene = true;
+	//            }
+	//        }
 
-    //        for (int i = 0; i < objects.childCount; i += 1)
-    //        {
-    //            Collider2D physicsObjectCollider = objects.GetChild(i).GetComponent<Collider2D>();
+	//        for (int i = 0; i < objects.childCount; i += 1)
+	//        {
+	//            Collider2D physicsObjectCollider = objects.GetChild(i).GetComponent<Collider2D>();
 
-    //            if (playerCollider.IsTouching(physicsObjectCollider))
-    //            {
-    //                touchingObject = true;
-    //            }
-    //        }
+	//            if (playerCollider.IsTouching(physicsObjectCollider))
+	//            {
+	//                touchingObject = true;
+	//            }
+	//        }
 
-    //        if ((touchingObject || touchingScene))
-    //        {
-    //            _isJumping = false;
-    //            // verificar aqui se continua a andar ou não 
+	//        if ((touchingObject || touchingScene))
+	//        {
+	//            _isJumping = false;
+	//            // verificar aqui se continua a andar ou nã 
 
-    //        } else
-    //        {
-    //            _isJumping = true;
-    //        }
-    //    }
+	//        } else
+	//        {
+	//            _isJumping = true;
+	//        }
+	//    }
 
 }
