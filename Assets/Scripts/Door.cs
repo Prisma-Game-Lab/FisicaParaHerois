@@ -12,8 +12,10 @@ using UnityEngine.SceneManagement;
 
 public class Door : AffectedByPressurePlate {
     private bool _isLocked;
+    private int _buttonsPressed;
     public bool BeginLocked;
     public string NextScene;
+    public int ButtonsNeededToUnlock = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -43,11 +45,24 @@ public class Door : AffectedByPressurePlate {
 
     public override void OnPressed()
     {
-        _isLocked = false;
+        _buttonsPressed++;
+
+        if (_buttonsPressed >= ButtonsNeededToUnlock)
+        {
+            Debug.Log("Porta destrancada");
+            _isLocked = false;
+        }
     }
 
     public override void OnUnpressed()
     {
-        _isLocked = true;
+        _buttonsPressed--;
+
+
+        if (_buttonsPressed < ButtonsNeededToUnlock)
+        {
+            Debug.Log("Porta trancada");
+            _isLocked = true;
+        }
     }
 }
