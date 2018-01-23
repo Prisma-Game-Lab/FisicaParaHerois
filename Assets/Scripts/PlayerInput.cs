@@ -67,11 +67,9 @@ public class PlayerInput : MonoBehaviour {
 	void Update () {
 
 		if (_isJumping) {
-			Debug.Log(" NAO TOCANdO CHAO");
 			_playerAnim.SetBool ("onFloor", false);
 
 		} else {
-			Debug.Log("TOCANdO CHAO");
 			_playerAnim.SetBool("onFloor", true);
 
 		}
@@ -152,7 +150,6 @@ public class PlayerInput : MonoBehaviour {
 		// Verifica se estáogando com iOS ou Android
 		#elif UNITY_IOS || UNITY_ANDROID
 
-		CheckInput();
 		//CheckJump();
 
 
@@ -188,7 +185,6 @@ public class PlayerInput : MonoBehaviour {
 
 			Touch touch = Input.GetTouch (1);
 
-			Debug.Log("Move Camera");
 			MoveCamera(new Vector2(-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));
 
 		} else if (touches > 0)
@@ -256,7 +252,6 @@ public class PlayerInput : MonoBehaviour {
 				if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
 				{
 					print("Action");
-
 					ActionButton();
 				}
 			}
@@ -289,7 +284,6 @@ public class PlayerInput : MonoBehaviour {
 		TouchPhase phase = touch.phase;
 
 		if (hit.collider != null) {
-			print (hit.collider.name);
 
 			if (hit.transform.name == "physicsObject") {
 				Debug.Log (hit.transform.name);
@@ -330,10 +324,6 @@ public class PlayerInput : MonoBehaviour {
 					}
 				}
 			}
-		}  else {
-			Debug.Log("Move Camera");
-			MoveCamera(new Vector2(-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));
-
 		} 
 	}
 
