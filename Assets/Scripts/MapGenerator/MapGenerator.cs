@@ -146,8 +146,13 @@ public class MapGenerator : MonoBehaviour
 
                                 if (shouldSpawnFloorWithEdge)
                                 {
+                                    Debug.Log(CheckFloorDirection(layer, i));
                                     ChangeFloorTile(instantiatedPrefab, CheckFloorDirection(layer, i));
                                 }
+
+                                int coluna = i % layer.width; //i
+                                int linha = i/layer.width; //j;
+                                //CreateFloorCollider(layer, coluna, linha, instantiatedPrefab, colliderMatrix);
 
                             	break;
 
@@ -293,14 +298,31 @@ public class MapGenerator : MonoBehaviour
 
         //Cria collider
         EdgeCollider2D collider = collidersEmptyObj.AddComponent<EdgeCollider2D>();
-        Collider2D floorCollider = startFloor.GetComponent<Collider2D>();
+        Collider2D floorCollider;
+
+        switch (startFloor.name)
+        {
+            case "Floor_MapGenerator(Clone)":
+            case "Floor_MapGenerator":
+                floorCollider = startFloor.GetComponent<Collider2D>();
+                break;
+            case "Floor_Borda_MapGenerator(Clone)":
+            case "Floor_Borda_MapGenerator":
+                floorCollider = startFloor.transform.Find("Floor_Collider").GetComponent<Collider2D>();
+                break;
+            default:
+                floorCollider = null;
+                Debug.LogError(startFloor.name + " não está configurado em MapGenerator.cs");
+                break;
+        }
+        
         collider.bounds.SetMinMax(floorCollider.bounds.min, floorCollider.bounds.max);
         edges.Add(floorCollider.bounds.min);
 
         //Modifica colliderMatrix
         colliderMatrix[i, j] = true;
         
-
+        /*
         //Checa blocos em volta
         for (int v = j; v < layer.height; v++)
         {
@@ -316,7 +338,7 @@ public class MapGenerator : MonoBehaviour
                 }
 
                 //Modifica blocos afetados pelo collider na colliderMatrix
-                colliderMatrix[v, h] = true;
+                colliderMatrix[h, v] = true;
             }
 
             //Checa blocos posteriores
@@ -325,22 +347,94 @@ public class MapGenerator : MonoBehaviour
                 //Cria edge se não houver blocos em volta
                 if (layer.data[v * layer.width + h] != layer.data[j * layer.width + i])
                 {
-                    Vector2 pos = floorCollider.bounds.max + (v-1-j)*(floorCollider.bounds.max - floorCollider.bounds.min); //posição estimada
+                    Vector2 pos = (new Vector2(floorCollider.bounds.max.x, floorCollider.bounds.min.y)) + (Vector2)((v-1-j)*(floorCollider.bounds.max - floorCollider.bounds.min)); //posição estimada
                     edges.Add(pos);
                     break;
                 }
 
                 //Modifica blocos afetados pelo collider na colliderMatrix
-                colliderMatrix[v, h] = true;
+                colliderMatrix[h, v] = true;
             }
         }
+         */
+
+        //Checa blocos em volta
+        for (int v = j; v < layer.height; v++)
+        {
+            //Checa blocos anteriores
+            for (int h = i - 1; h >= 0; h--)
+            {
+                AddEdgeToCollider(layer, i, j, h, v, floorCollider, edges, colliderMatrix);
+            }
+
+            //Checa próximos blocos
+            for (int h = i; h < layer.width; h++)
+            {
+                AddEdgeToCollider(layer, i, j, h, v, floorCollider, edges, colliderMatrix);
+            }
+        }
+           
 
 
         //Deleta collider original do chão
         //Destroy(floorCollider);
 
         //Passa lista de pontos para o EdgeCollider2D
+        edges.Add(floorCollider.bounds.min);
         collider.points = edges.ToArray();
+    }
+
+    public void AddEdgeToCollider(Layer layer, int i, int j, int h, int v, Collider2D floorCollider, List<Vector2> edges, bool[,] colliderMatrix)
+    {                
+        //Checa tiles vizinhos
+        Vector2 dif = new Vector2((h - 1 - i) * (floorCollider.bounds.max.x - floorCollider.bounds.min.x), (v - 1 - j) * (floorCollider.bounds.max.y - floorCollider.bounds.min.y));
+        Vector2 initPos = new Vector2();
+        bool tileEsq = false, tileDir = false, tileAcima = false, tileAbaixo = false;
+        if (v - 1 > 0)
+        {
+            tileAcima = (layer.data[v * layer.width + h] == layer.data[(v - 1) * layer.width + h]);
+        }
+        if (v + 1 < layer.height)
+        {
+            tileAbaixo = (layer.data[v * layer.width + h] == layer.data[(v + 1) * layer.width + h]);
+        }
+        if (h + 1 < layer.width)
+        {
+            tileDir = (layer.data[v * layer.width + h] == layer.data[v * layer.width + h + 1]);
+        }
+        if (h - 1 > 0)
+        {
+            tileEsq = (layer.data[v * layer.width + h] == layer.data[v * layer.width + h - 1]);
+        }
+
+        //Descobre posição do edge
+        if (!tileEsq && !tileAcima)
+        {
+            initPos = (Vector2)floorCollider.bounds.min; //posição estimada
+        }
+
+        if (!tileEsq && !tileAbaixo)
+        {
+            initPos = new Vector2(floorCollider.bounds.min.x, floorCollider.bounds.max.y); //posição estimada
+
+        }
+
+        if (!tileDir && !tileAcima)
+        {
+            initPos = new Vector2(floorCollider.bounds.max.x, floorCollider.bounds.min.y); //posição estimada
+        }
+
+        if (!tileDir && !tileAbaixo)
+        {
+            initPos = floorCollider.bounds.max;
+        }
+
+        //Adiciona edge
+        Vector2 pos = initPos + dif; //posição estimada
+        edges.Add(pos);
+
+        //Modifica blocos afetados pelo collider na colliderMatrix
+        colliderMatrix[h, v] = true;
     }
 
 	/// <summary>
@@ -436,7 +530,10 @@ public class MapGenerator : MonoBehaviour
             return "top_right";
         }
 
-        return null;
+        else
+        {
+            return "top";
+        }
     }
 
     /// <summary>
@@ -457,6 +554,8 @@ public class MapGenerator : MonoBehaviour
                 break;
             case "top_left":
                 rend.sprite = top_left;
+                break;
+            case "top":
                 break;
             default:
                 Debug.LogError("Valor inválido passado para o método ChangeFloorTile");

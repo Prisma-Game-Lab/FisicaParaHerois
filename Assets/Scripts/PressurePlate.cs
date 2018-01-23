@@ -29,19 +29,20 @@ public class PressurePlate : MonoBehaviour {
 		
 	}
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         float objectMass;
-        bool objectIsValid = collision.collider.gameObject == PlayerInfo.PlayerInstance.gameObject 
+        bool objectIsValid = collision.collider.gameObject == PlayerInfo.PlayerInstance.gameObject
             || collision.otherCollider.gameObject == PlayerInfo.PlayerInstance.gameObject
             || collision.collider.tag == "Box"
             || collision.otherCollider.tag == "Box";
 
         //Objeto não é um player ou caixa (ou já está ativo), nada acontece
-        if(!objectIsValid || _isActive || IsLever){
+        if (!objectIsValid || _isActive || IsLever)
+        {
             return;
         }
-        
+
         objectMass = collision.collider.gameObject.GetComponent<PhysicsObject>().physicsData.mass;
 
         //Não faz o efeito da pressure plate a menos que o peso seja maior que o mínimo necessário (ou o objeto seja uma lever)
@@ -50,7 +51,7 @@ public class PressurePlate : MonoBehaviour {
             return;
         }
 
-        Debug.Log("Porta aberta");
+        Debug.Log("Botão pressionado");
         ObjectAffected.OnPressed();
         _isActive = true;
     }
@@ -64,7 +65,7 @@ public class PressurePlate : MonoBehaviour {
 
         if (objectIsValid && !IsLever && _isActive)
         {
-            Debug.Log("Porta fechada");
+            Debug.Log("Botão solto");
             ObjectAffected.OnUnpressed();
             _isActive = false;
         }
@@ -77,7 +78,7 @@ public class PressurePlate : MonoBehaviour {
             return;
         }
 
-        Debug.Log("Porta aberta");
+        Debug.Log("Botão pressionado");
 
         if (ObjectAffected != null)
         {
