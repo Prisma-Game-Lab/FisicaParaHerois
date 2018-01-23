@@ -14,7 +14,7 @@ using UnityEngine.EventSystems;
 public class PlayerInput : MonoBehaviour {
 	public PlayerInfo Player;
 	public GameObject ActionMenu;
-	[Tooltip("Tempo míimo para identificar um toque longo")]
+	[Tooltip("Tempo mínimo para identificar um toque longo")]
 	public float HoldTime = 0.8f;
 	public bool realJump;
 	public float jumpCheckDistance;
@@ -66,11 +66,13 @@ public class PlayerInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-	    if (_isJumping)
-			_playerAnim.SetBool("onFloor", false);
-		else
+		if (_isJumping) {
+			_playerAnim.SetBool ("onFloor", false);
+
+		} else {
 			_playerAnim.SetBool("onFloor", true);
 
+		}
 
 		// Fazer algo pra melhorar o movimento emcima da gangorra aqui!
 		if (PlayerTouchingSeesaw())
@@ -148,16 +150,16 @@ public class PlayerInput : MonoBehaviour {
 		// Verifica se estáogando com iOS ou Android
 		#elif UNITY_IOS || UNITY_ANDROID
 
-		CheckInput();
 		//CheckJump();
 
-		#endif
+
 
 	}
 
 	void FixedUpdate()
 	{
-
+		CheckInput();
+		#endif
 	}
 
 	public void ActionButton()
@@ -179,7 +181,13 @@ public class PlayerInput : MonoBehaviour {
 	{
 		int touches = Input.touchCount;
 
-		if (touches > 0)
+		if (touches == 2) {
+
+			Touch touch = Input.GetTouch (1);
+
+			MoveCamera(new Vector2(-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));
+
+		} else if (touches > 0)
 		{
 			for (int i = 0; i < touches; i++)
 			{
@@ -195,9 +203,6 @@ public class PlayerInput : MonoBehaviour {
 				{
 					Debug.Log("UI is not touched");
 					ObjectsTouch (touch);
-
-					Debug.Log("Move Camera");
-					MoveCamera(new Vector2(-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));
 
 				}
 			}
@@ -222,6 +227,7 @@ public class PlayerInput : MonoBehaviour {
 				}
 				else
 				{
+					Debug.Log ("moveu");
 					Player.Move(true);
 				}
 
@@ -239,16 +245,13 @@ public class PlayerInput : MonoBehaviour {
 
 			if (HUDbnt.name == "Jump")
 			{
-				if (touch.phase == TouchPhase.Began)
-				{
-					if (!_isJumping) Player.Jump();
-				}
+				if (!_isJumping) Player.Jump ();
+
 			}  else if (HUDbnt.name == "Action")
 			{
 				if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
 				{
 					print("Action");
-
 					ActionButton();
 				}
 			}
@@ -281,7 +284,6 @@ public class PlayerInput : MonoBehaviour {
 		TouchPhase phase = touch.phase;
 
 		if (hit.collider != null) {
-			print (hit.collider.name);
 
 			if (hit.transform.name == "physicsObject") {
 				Debug.Log (hit.transform.name);
@@ -322,11 +324,7 @@ public class PlayerInput : MonoBehaviour {
 					}
 				}
 			}
-		}  /*else {
-			Debug.Log("Move Camera");
-			MoveCamera(new Vector2(-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));
-
-		} */
+		} 
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
