@@ -273,7 +273,8 @@ public class MapGenerator : MonoBehaviour
 	{
 		return (transform.childCount == 0);
 	}
-
+    
+    /* Não está funcionando
     public void CreateFloorCollider(Layer layer, int i, int j, GameObject startFloor, bool[,] colliderMatrix)
     {
         //Checa matriz de collider
@@ -338,7 +339,7 @@ public class MapGenerator : MonoBehaviour
                 AddEdgeToCollider(layer, i, j, h, v, floorCollider, edges, colliderMatrix);
             }
         }
-         * */
+         * *//*
          
 
         //Checa blocos em volta
@@ -380,6 +381,11 @@ public class MapGenerator : MonoBehaviour
             foundEdge = AddEdgeToCollider(layer, i, j, h, v, floorCollider, edges, colliderMatrix);
         }
 
+        if (h < 0 || h >= layer.width || v < 0 || v >= layer.height || colliderMatrix[h, v] == true)
+        {
+            return;
+        }
+
         //verifica se é a posição inicial
         if ((h == i && v == j))
         {
@@ -387,21 +393,51 @@ public class MapGenerator : MonoBehaviour
         }
 
         //se não, tenta ir para os outros lados
-        if (layer.data[v * layer.width + h] == layer.data[(v - 1) * layer.width + h])
+        //up
+        bool enterSide = (v <= 0);
+        if (!enterSide)
         {
-            PathToWalkFindingEdges(layer, i, j, h, v, floorCollider, edges, colliderMatrix, "up");
+            enterSide = layer.data[v * layer.width + h] == layer.data[(v - 1) * layer.width + h];
         }
-        if (layer.data[v * layer.width + h] == layer.data[(v + 1) * layer.width + h])
+
+        if (enterSide)
         {
-            PathToWalkFindingEdges(layer, i, j, h, v, floorCollider, edges, colliderMatrix, "down");
+            PathToWalkFindingEdges(layer, i, j, h, v - 1, floorCollider, edges, colliderMatrix, "up");
         }
-        if (layer.data[v * layer.width + h] == layer.data[v * layer.width + h - 1])
+
+        //down
+        enterSide = (v >= layer.height - 1);
+        if (!enterSide)
         {
-            PathToWalkFindingEdges(layer, i, j, h, v, floorCollider, edges, colliderMatrix, "left");
+            enterSide = layer.data[v * layer.width + h] == layer.data[(v + 1) * layer.width + h];
         }
-        if (layer.data[v * layer.width + h] == layer.data[v * layer.width + h + 1])
+
+        if (enterSide)
         {
-            PathToWalkFindingEdges(layer, i, j, h, v, floorCollider, edges, colliderMatrix, "right");
+            PathToWalkFindingEdges(layer, i, j, h, v + 1, floorCollider, edges, colliderMatrix, "down");
+        }
+
+        //left
+        enterSide = (h <= 0);
+        if (!enterSide)
+        {
+            enterSide = layer.data[v * layer.width + h] == layer.data[v * layer.width + h - 1];
+        }
+
+        if (enterSide)
+        {
+            PathToWalkFindingEdges(layer, i, j, h - 1, v, floorCollider, edges, colliderMatrix, "left");
+        }
+
+        //right
+        enterSide = (h >= layer.width - 1);
+        if(!enterSide){
+            enterSide = layer.data[v * layer.width + h] == layer.data[v * layer.width + h + 1];
+        }
+
+        if (enterSide)
+        {
+            PathToWalkFindingEdges(layer, i, j, h + 1, v, floorCollider, edges, colliderMatrix, "right");
         }
 
         return;
@@ -413,9 +449,9 @@ public class MapGenerator : MonoBehaviour
     /// <returns>Se o chão é um vértice do collider</returns>
     public bool AddEdgeToCollider(Layer layer, int i, int j, int h, int v, Collider2D floorCollider, List<Vector2> edges, bool[,] colliderMatrix)
     {
-        if (colliderMatrix[h, v] == true)
+        if (h < 0 || h >= layer.width || v < 0 || v >= layer.height || colliderMatrix[h, v] == true)
         {
-            return false;
+            return true;
         }
         
         //Checa tiles vizinhos
@@ -476,6 +512,7 @@ public class MapGenerator : MonoBehaviour
         colliderMatrix[h, v] = true;
         return hasEdge;
     }
+              * */
 
 	/// <summary>
 	/// Checa se o chão deve ter borda
