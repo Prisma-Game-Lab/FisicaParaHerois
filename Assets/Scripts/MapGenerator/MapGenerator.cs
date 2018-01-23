@@ -321,43 +321,8 @@ public class MapGenerator : MonoBehaviour
 
         //Modifica colliderMatrix
         colliderMatrix[i, j] = true;
-        
+
         /*
-        //Checa blocos em volta
-        for (int v = j; v < layer.height; v++)
-        {
-            //Checa blocos anteriores
-            for (int h = i - 1; h >= 0; h--)
-            {
-                //Cria edge se não houver blocos em volta
-                if (layer.data[v * layer.width + h] != layer.data[j * layer.width + i])
-                {
-                    Vector2 pos = floorCollider.bounds.min - (j - v + 1) * (floorCollider.bounds.max - floorCollider.bounds.min); //posição estimada
-                    edges.Add(pos);
-                    break;
-                }
-
-                //Modifica blocos afetados pelo collider na colliderMatrix
-                colliderMatrix[h, v] = true;
-            }
-
-            //Checa blocos posteriores
-            for (int h = i + 1; h < layer.width; h++)
-            {
-                //Cria edge se não houver blocos em volta
-                if (layer.data[v * layer.width + h] != layer.data[j * layer.width + i])
-                {
-                    Vector2 pos = (new Vector2(floorCollider.bounds.max.x, floorCollider.bounds.min.y)) + (Vector2)((v-1-j)*(floorCollider.bounds.max - floorCollider.bounds.min)); //posição estimada
-                    edges.Add(pos);
-                    break;
-                }
-
-                //Modifica blocos afetados pelo collider na colliderMatrix
-                colliderMatrix[h, v] = true;
-            }
-        }
-         */
-
         //Checa blocos em volta
         for (int v = j; v < layer.height; v++)
         {
@@ -373,6 +338,13 @@ public class MapGenerator : MonoBehaviour
                 AddEdgeToCollider(layer, i, j, h, v, floorCollider, edges, colliderMatrix);
             }
         }
+         * */
+         
+
+        //Checa blocos em volta
+        int h = i + 1;
+        int v = j;
+        PathToWalkFindingEdges(layer, i, j, h, v, floorCollider, edges, colliderMatrix, "left");
            
 
 
@@ -384,9 +356,70 @@ public class MapGenerator : MonoBehaviour
         collider.points = edges.ToArray();
     }
 
-    public void AddEdgeToCollider(Layer layer, int i, int j, int h, int v, Collider2D floorCollider, List<Vector2> edges, bool[,] colliderMatrix)
-    {                
+    public void PathToWalkFindingEdges(Layer layer, int i, int j, int h, int v, Collider2D floorCollider, List<Vector2> edges, bool[,] colliderMatrix, string direction)
+    {
+        //percorre até encontrar edge
+        bool foundEdge = AddEdgeToCollider(layer, i, j, h, v, floorCollider, edges, colliderMatrix);
+        while (!foundEdge)
+        {
+            switch (direction)
+            {
+                case "right":
+                    h++;
+                    break;
+                case "down":
+                    v++;
+                    break;
+                case "left":
+                    h--;
+                    break;
+                case "up":
+                    v--;
+                    break;
+            }
+            foundEdge = AddEdgeToCollider(layer, i, j, h, v, floorCollider, edges, colliderMatrix);
+        }
+
+        //verifica se é a posição inicial
+        if ((h == i && v == j))
+        {
+            return;
+        }
+
+        //se não, tenta ir para os outros lados
+        if (layer.data[v * layer.width + h] == layer.data[(v - 1) * layer.width + h])
+        {
+            PathToWalkFindingEdges(layer, i, j, h, v, floorCollider, edges, colliderMatrix, "up");
+        }
+        if (layer.data[v * layer.width + h] == layer.data[(v + 1) * layer.width + h])
+        {
+            PathToWalkFindingEdges(layer, i, j, h, v, floorCollider, edges, colliderMatrix, "down");
+        }
+        if (layer.data[v * layer.width + h] == layer.data[v * layer.width + h - 1])
+        {
+            PathToWalkFindingEdges(layer, i, j, h, v, floorCollider, edges, colliderMatrix, "left");
+        }
+        if (layer.data[v * layer.width + h] == layer.data[v * layer.width + h + 1])
+        {
+            PathToWalkFindingEdges(layer, i, j, h, v, floorCollider, edges, colliderMatrix, "right");
+        }
+
+        return;
+    }
+
+    /// <summary>
+    /// Adiciona edge ao collider caso seja um vértice
+    /// </summary>
+    /// <returns>Se o chão é um vértice do collider</returns>
+    public bool AddEdgeToCollider(Layer layer, int i, int j, int h, int v, Collider2D floorCollider, List<Vector2> edges, bool[,] colliderMatrix)
+    {
+        if (colliderMatrix[h, v] == true)
+        {
+            return false;
+        }
+        
         //Checa tiles vizinhos
+        bool hasEdge = false;
         Vector2 dif = new Vector2((h - 1 - i) * (floorCollider.bounds.max.x - floorCollider.bounds.min.x), (v - 1 - j) * (floorCollider.bounds.max.y - floorCollider.bounds.min.y));
         Vector2 initPos = new Vector2();
         bool tileEsq = false, tileDir = false, tileAcima = false, tileAbaixo = false;
@@ -411,30 +444,37 @@ public class MapGenerator : MonoBehaviour
         if (!tileEsq && !tileAcima)
         {
             initPos = (Vector2)floorCollider.bounds.min; //posição estimada
+            hasEdge = true;
         }
 
         if (!tileEsq && !tileAbaixo)
         {
             initPos = new Vector2(floorCollider.bounds.min.x, floorCollider.bounds.max.y); //posição estimada
-
+            hasEdge = true;
         }
 
         if (!tileDir && !tileAcima)
         {
             initPos = new Vector2(floorCollider.bounds.max.x, floorCollider.bounds.min.y); //posição estimada
+            hasEdge = true;
         }
 
         if (!tileDir && !tileAbaixo)
         {
             initPos = floorCollider.bounds.max;
+            hasEdge = true;
         }
 
         //Adiciona edge
-        Vector2 pos = initPos + dif; //posição estimada
-        edges.Add(pos);
+        if (hasEdge)
+        {
+            Vector2 pos = initPos + dif; //posição estimada
+            edges.Add(pos);
+        }
 
         //Modifica blocos afetados pelo collider na colliderMatrix
         colliderMatrix[h, v] = true;
+        return hasEdge;
     }
 
 	/// <summary>
