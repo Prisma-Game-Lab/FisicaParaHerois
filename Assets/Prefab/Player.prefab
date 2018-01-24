@@ -360,6 +360,7 @@ GameObject:
   - component: {fileID: 114557087688975826}
   - component: {fileID: 95077998219508594}
   - component: {fileID: 61533388040710422}
+  - component: {fileID: 114418965992029794}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1326,7 +1327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Life: 1
   PaceSpeed: 3.2
-  JumpSpeed: 600
+  JumpForce: 650
   MaxDistanceToNearbyObject: 1.5
   MaxVelocity: 3.5
   jump: {fileID: 8300000, guid: ae1b5aa20a8a94e528e90979c04287da, type: 3}
@@ -1354,6 +1355,20 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4935175504575756}
   - {fileID: 4007233746882638}
+--- !u!114 &114418965992029794
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1532169268261826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f38189470bfe49b9910cf3503d96933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurOffset: {x: 0, y: 0, z: 0}
+  TimeLeft: 0
+  CameraSpeed: 5
 --- !u!114 &114431266912965068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1571,6 +1586,7 @@ MonoBehaviour:
   realJump: 0
   jumpCheckDistance: 1
   CameraTouchSpeed: 0.01
+  MinDistanceToMoveCamera: 3
 --- !u!114 &114729445186823394
 MonoBehaviour:
   m_ObjectHideFlags: 1

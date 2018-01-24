@@ -19,6 +19,7 @@ public class PlayerInput : MonoBehaviour {
 	public bool realJump;
 	public float jumpCheckDistance;
 	public float CameraTouchSpeed = 0.01f;
+    public float MinDistanceToMoveCamera = 0.3f;
 
 	private Vector3 _cameraOrigin;
 	private Vector3 _mouseOrigin;
@@ -105,6 +106,10 @@ public class PlayerInput : MonoBehaviour {
 				{
 					Player.Move(true);
 					info.CheckInputFlip("A");
+			    	if (!_isJumping) Player.Move(true, MinDistanceToMoveCamera);
+				}  else
+				{
+					Player.Move(true, MinDistanceToMoveCamera);
 				}
 
 			}  else if (Input.GetKey(KeyCode.D))
@@ -112,15 +117,14 @@ public class PlayerInput : MonoBehaviour {
 				if (realJump)
 				{
 					if (!_isJumping) {
-						Player.Move(false);
+						Player.Move(false, MinDistanceToMoveCamera);
 						info.CheckInputFlip("D");
 					}
 				}  else
 				{
-					Player.Move(false);
+					Player.Move(false, MinDistanceToMoveCamera);
 					info.CheckInputFlip("D");
-				}
-
+				} 
 			}
 
 			if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
@@ -264,11 +268,11 @@ public class PlayerInput : MonoBehaviour {
 
 				if (realJump){
 					if (!_isJumping) {
-						Player.Move (true);
+						Player.Move(true, MinDistanceToMoveCamera);
 						info.CheckInputFlip("LeftDir");
 					}
 				} else {
-					Player.Move (true);
+					Player.Move(true, MinDistanceToMoveCamera);
 					info.CheckInputFlip("LeftDir");
 				}
 
@@ -276,11 +280,11 @@ public class PlayerInput : MonoBehaviour {
 
 				if (realJump) {
 					if (!_isJumping) {
-						Player.Move (false);
+						Player.Move(false, MinDistanceToMoveCamera);
 						info.CheckInputFlip("RightDir");
 					}
 				} else {
-					Player.Move(false);
+					Player.Move(false, MinDistanceToMoveCamera);
 					info.CheckInputFlip("RightDir");
 				}
 			}
@@ -436,14 +440,14 @@ public class PlayerInput : MonoBehaviour {
 		return false;
 	}
 
-	public void MoveCamera(Vector2 translation)
+	public void MoveCamera(Vector2 offset)
 	{
 		if (ActionMenu.activeInHierarchy)
 		{
 			return;
 		}
 
-		PlayerInfo.PlayerInstance.MoveCamera(translation);
+		PlayerInfo.PlayerInstance.MoveCamera(offset, MinDistanceToMoveCamera, true);
 	}
 
 
