@@ -91,10 +91,21 @@ public class PlayerInput : MonoBehaviour {
 		// Nã permite que o player clique no botã enquanto tiver no pause
 		if (!GameManager.IsPaused && !ActionPanel.Instance.isActiveAndEnabled) {
 
+			PlayerInfo info = Player.GetComponent<PlayerInfo> ();
+
 			if (Input.GetKey(KeyCode.A))
 			{
 				if (realJump)
 				{
+					if (!_isJumping){
+
+						Player.Move(true);
+						info.CheckInputFlip("A");
+					}
+				} else
+				{
+					Player.Move(true);
+					info.CheckInputFlip("A");
 			    	if (!_isJumping) Player.Move(true, MinDistanceToMoveCamera);
 				}  else
 				{
@@ -105,12 +116,15 @@ public class PlayerInput : MonoBehaviour {
 			{
 				if (realJump)
 				{
-                    if (!_isJumping) Player.Move(false, MinDistanceToMoveCamera);
+					if (!_isJumping) {
+						Player.Move(false, MinDistanceToMoveCamera);
+						info.CheckInputFlip("D");
+					}
 				}  else
 				{
-                    Player.Move(false, MinDistanceToMoveCamera);
-				}
-
+					Player.Move(false, MinDistanceToMoveCamera);
+					info.CheckInputFlip("D");
+				} 
 			}
 
 			if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
@@ -151,6 +165,8 @@ public class PlayerInput : MonoBehaviour {
 		// Verifica se estáogando com iOS ou Android
 		#elif UNITY_IOS || UNITY_ANDROID
 
+		//CheckInput();
+
 		//CheckJump();
 
 
@@ -160,8 +176,8 @@ public class PlayerInput : MonoBehaviour {
 	void FixedUpdate()
 	{
 		CheckInput();
-		#endif
 	}
+	#endif
 
 	public void ActionButton()
 	{
@@ -184,12 +200,6 @@ public class PlayerInput : MonoBehaviour {
 
 		if (touches == 2) {
 
-			Touch touch = Input.GetTouch (1);
-
-			MoveCamera(new Vector2(-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));
-
-		} else if (touches > 0)
-		{
 			for (int i = 0; i < touches; i++)
 			{
 				Touch touch = Input.GetTouch(i);
@@ -197,55 +207,91 @@ public class PlayerInput : MonoBehaviour {
 				// Verifica se o toque foi em algum item da UI
 				if (EventSystem.current.IsPointerOverGameObject(touch.fingerId))
 				{
-					Debug.Log("UI is touched");
-					UITouch(touch);
+					GameObject HUDbnt = EventSystem.current.currentSelectedGameObject;
+
+					Debug.Log("Dois botões sendo apertados");
+
+
+					Debug.Log ("BOTAO APERTADO " + touch.phase + " NOME DO BOTAO " + HUDbnt.name);
+					//if (touch.phase == TouchPhase.Began) {
+						UITouch(touch);
+					//}
 				}
 				else
 				{
-					Debug.Log("UI is not touched");
-					ObjectsTouch (touch);
+					Debug.Log ("Move Camera");
+					MoveCamera(new Vector2(-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));
+				}
 
+			}
+				
+		} else if (touches > 0)
+		{
+			for (int i = 0; i < touches; i++)
+			{
+				Touch touch = Input.GetTouch(i);
+														
+				// Verifica se o toque foi em algum item da UI (IsPointerOver pega apenas o toque no UI, 
+				// mas precisa do outro código para não perder uma referencia)
+				if (EventSystem.current.IsPointerOverGameObject (touch.fingerId) && IsPointerOverUIObject()) {
+					Debug.Log ("UI is touched");
+					UITouch (touch);
+				} else {
+					Debug.Log ("UI is not touched");
+					ObjectsTouch (touch);
 				}
 			}
-
 		}
+	}
+		
+	private bool IsPointerOverUIObject() {
+		PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+
+		eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+
+		List<RaycastResult> results = new List<RaycastResult>();
+		EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+
+		return results.Count > 0;
 	}
 
 	private void UITouch(Touch touch)
 	{
 		GameObject HUDbnt = EventSystem.current.currentSelectedGameObject;
-		//GameObject HUDbntLast = EventSystem.current.lastSelectedGameObject;
+		PlayerInfo info = Player.GetComponent<PlayerInfo> ();
 		TouchPhase phase = touch.phase;
 
 		// Nã permite que o player clique no botã enquanto tiver no pause
 		if (!GameManager.IsPaused && !ActionPanel.Instance.isActiveAndEnabled) {
 
-			if (HUDbnt.name == "LeftDir")
-			{
-				if (realJump)
-				{
-                    if (!_isJumping) Player.Move(true, MinDistanceToMoveCamera);
-				}
-				else
-				{
-					Debug.Log ("moveu");
-                    Player.Move(true, MinDistanceToMoveCamera);
+			if (HUDbnt.name == "LeftDir") {
+
+				if (realJump){
+					if (!_isJumping) {
+						Player.Move(true, MinDistanceToMoveCamera);
+						info.CheckInputFlip("LeftDir");
+					}
+				} else {
+					Player.Move(true, MinDistanceToMoveCamera);
+					info.CheckInputFlip("LeftDir");
 				}
 
-			}  else if (HUDbnt.name == "RightDir")
-			{
-				if (realJump)
-				{
-                    if (!_isJumping) Player.Move(false, MinDistanceToMoveCamera);
-				}
-				else
-				{
-                    Player.Move(false, MinDistanceToMoveCamera);
+			} else if (HUDbnt.name == "RightDir") {
+
+				if (realJump) {
+					if (!_isJumping) {
+						Player.Move(false, MinDistanceToMoveCamera);
+						info.CheckInputFlip("RightDir");
+					}
+				} else {
+					Player.Move(false, MinDistanceToMoveCamera);
+					info.CheckInputFlip("RightDir");
 				}
 			}
 
 			if (HUDbnt.name == "Jump")
 			{
+				Debug.Log ("Pulou");
 				if (!_isJumping) Player.Jump ();
 
 			}  else if (HUDbnt.name == "Action")
@@ -269,7 +315,7 @@ public class PlayerInput : MonoBehaviour {
 
 		if (HUDbnt.name == "Menu")
 		{
-			// Por enquanto sóausa o jogo
+			// Por enquanto só pausa o jogo
 			if (touch.phase == TouchPhase.Began)
 			{
 				GameManager.Instance.OnPause();
