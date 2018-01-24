@@ -765,7 +765,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!23 &73790737
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16032,7 +16032,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!23 &1119396812
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21598,6 +21598,7 @@ GameObject:
   - component: {fileID: 1559679600}
   - component: {fileID: 1559679599}
   - component: {fileID: 1559679598}
+  - component: {fileID: 1559679610}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -21762,7 +21763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Life: 1
   PaceSpeed: 3.2
-  JumpSpeed: 700
+  JumpForce: 700
   MaxDistanceToNearbyObject: 1.5
   MaxVelocity: 3.5
   jump: {fileID: 8300000, guid: ae1b5aa20a8a94e528e90979c04287da, type: 3}
@@ -21821,6 +21822,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1559679596}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1559679610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1559679596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f38189470bfe49b9910cf3503d96933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurOffset: {x: 0, y: 0, z: 0}
+  TimeLeft: 0
+  CameraSpeed: 5
 --- !u!1 &1567032236
 GameObject:
   m_ObjectHideFlags: 0
