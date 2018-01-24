@@ -36,7 +36,7 @@ public class ActionPanel : MonoBehaviour {
         _actionNameText = transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>();
         _chosenValueSlider = transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Slider>();
         _chosenValueText = transform.GetChild(1).GetChild(0).GetChild(2).GetComponent<Text>();
-        _objectSpriteHolder = transform.GetChild(2).GetChild(0).GetComponent<Image>();
+       // _objectSpriteHolder = transform.GetChild(2).GetChild(0).GetComponent<Image>();
         gameObject.SetActive(false);
     }
 
@@ -132,7 +132,7 @@ public class ActionPanel : MonoBehaviour {
         _physicsObject = clicked;
 
         //Ativa o painel de ação
-        _objectSpriteHolder.sprite = _physicsObject.ObjectSprite;
+        //_objectSpriteHolder.sprite = _physicsObject.ObjectSprite;
         gameObject.SetActive(true);
         Time.timeScale = 0;
 
