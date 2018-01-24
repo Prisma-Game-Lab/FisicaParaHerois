@@ -99,17 +99,14 @@ public class PlayerInput : MonoBehaviour {
 				{
 					if (!_isJumping){
 
-						Player.Move(true);
+						Player.Move(true, MinDistanceToMoveCamera);
 						info.CheckInputFlip("A");
 					}
 				} else
 				{
-					Player.Move(true);
+					Player.Move(true, MinDistanceToMoveCamera);
 					info.CheckInputFlip("A");
 			    	if (!_isJumping) Player.Move(true, MinDistanceToMoveCamera);
-				}  else
-				{
-					Player.Move(true, MinDistanceToMoveCamera);
 				}
 
 			}  else if (Input.GetKey(KeyCode.D))
@@ -176,8 +173,8 @@ public class PlayerInput : MonoBehaviour {
 	void FixedUpdate()
 	{
 		CheckInput();
-	}
-	#endif
+    #endif
+    }
 
 	public void ActionButton()
 	{

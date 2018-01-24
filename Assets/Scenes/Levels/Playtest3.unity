@@ -7743,12 +7743,12 @@ Prefab:
     - target: {fileID: 224225941817044180, guid: a060453ba0132ef4a9e4430de4cc558a,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 565
+      value: 547
       objectReference: {fileID: 0}
     - target: {fileID: 224225941817044180, guid: a060453ba0132ef4a9e4430de4cc558a,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 267.5
+      value: 268
       objectReference: {fileID: 0}
     - target: {fileID: 224225941817044180, guid: a060453ba0132ef4a9e4430de4cc558a,
         type: 2}
@@ -21599,6 +21599,7 @@ GameObject:
   - component: {fileID: 1559679599}
   - component: {fileID: 1559679598}
   - component: {fileID: 1559679610}
+  - component: {fileID: 1559679611}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -21768,8 +21769,7 @@ MonoBehaviour:
   MaxVelocity: 3.5
   jump: {fileID: 8300000, guid: ae1b5aa20a8a94e528e90979c04287da, type: 3}
   facingRight: 1
-  ObjectColliding: {fileID: 0}
-  ForceToApplyOnObject: 0
+  PushPullJoint: {fileID: 1559679611}
 --- !u!61 &1559679607
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21836,6 +21836,23 @@ MonoBehaviour:
   CurOffset: {x: 0, y: 0, z: 0}
   TimeLeft: 0
   CameraSpeed: 5
+--- !u!255 &1559679611
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1559679596}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -13.96, y: -9.9800005}
+  m_DampingRatio: 0
+  m_Frequency: 0
 --- !u!1 &1567032236
 GameObject:
   m_ObjectHideFlags: 0

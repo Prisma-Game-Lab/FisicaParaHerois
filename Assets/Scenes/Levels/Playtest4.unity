@@ -44174,6 +44174,7 @@ GameObject:
   - component: {fileID: 2078607160}
   - component: {fileID: 2078607171}
   - component: {fileID: 2078607172}
+  - component: {fileID: 2078607173}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -44307,8 +44308,7 @@ MonoBehaviour:
   MaxVelocity: 3.5
   jump: {fileID: 8300000, guid: ae1b5aa20a8a94e528e90979c04287da, type: 3}
   facingRight: 1
-  ObjectColliding: {fileID: 0}
-  ForceToApplyOnObject: 0
+  PushPullJoint: {fileID: 2078607173}
 --- !u!61 &2078607167
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44426,6 +44426,23 @@ MonoBehaviour:
   CurOffset: {x: 0, y: 0, z: 0}
   TimeLeft: 0
   CameraSpeed: 5
+--- !u!255 &2078607173
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2078607158}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -16.32, y: -5.25}
+  m_DampingRatio: 0
+  m_Frequency: 0
 --- !u!1 &2079811893
 GameObject:
   m_ObjectHideFlags: 0
