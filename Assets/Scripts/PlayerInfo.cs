@@ -163,7 +163,6 @@ public class PlayerInfo : MonoBehaviour {
     {
         if (!forceCamera && (minDistanceToMoveCamera > offset.magnitude))
         {
-            Debug.Log("MoveCamera: " + offset + " (" + offset.magnitude + ")");
             return;
         }
 
