@@ -77,7 +77,7 @@ public class PhysicsObject : MonoBehaviour {
 			return;
 		} else {
 			//Physics2D.GetIgnoreCollision(collision.collider.gameObject, this.GetComponent<Collider2D>(),true)
-			Debug.Log ("TOCO NO PLAYER");
+			//Debug.Log ("TOCO NO PLAYER");
 		}
 
         if (!_pushPullAction)

@@ -74,14 +74,19 @@ public class PlayerInfo : MonoBehaviour {
     //Checa se o player está olhando para a esquerda ou direita
     void FixedUpdate()
     {
-        _playerAnim.SetInteger("velocity", (int)(_rb.velocity.x));
-
-        float h = Input.GetAxis("Horizontal");
-        if (h > 0 && !facingRight)
-            Flip();
-        else if (h < 0 && facingRight)
-            Flip();
+       
     }
+
+	public void CheckInputFlip(string btn) {
+
+		_playerAnim.SetInteger("velocity", (int)(_rb.velocity.x));
+
+		if ((btn == "D" || btn == "RightDir") && !facingRight)
+			Flip();
+		else if ((btn == "A" || btn == "LeftDir") && facingRight)
+			Flip();
+
+	}
 
     //Flip no player
     void Flip()
