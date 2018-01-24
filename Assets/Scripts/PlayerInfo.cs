@@ -111,13 +111,13 @@ public class PlayerInfo : MonoBehaviour {
     }
 
     // Movimentação
-    public void Move(bool walkLeft)
+    public void Move(bool walkLeft, float minDistanceToMoveCamera)
     {
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
 
         //Reseta a posição da câmera
         Vector3 cameraDistToPlayer = transform.position - Camera.main.transform.position;
-        //MoveCamera(new Vector2(cameraDistToPlayer.x, cameraDistToPlayer.y));
+        MoveCamera(new Vector2(cameraDistToPlayer.x, cameraDistToPlayer.y), minDistanceToMoveCamera);
 
         if (walkLeft)
         {
@@ -159,9 +159,15 @@ public class PlayerInfo : MonoBehaviour {
 
     }
 
-    public void MoveCamera(Vector2 translation)
+    public void MoveCamera(Vector2 offset, float minDistanceToMoveCamera, bool forceCamera = false)
     {
-        Camera.main.transform.Translate(translation.x, translation.y, 0);
+        if (!forceCamera && (minDistanceToMoveCamera > offset.magnitude))
+        {
+            Debug.Log("MoveCamera: " + offset + " (" + offset.magnitude + ")");
+            return;
+        }
+
+        Camera.main.transform.Translate(offset.x, offset.y, 0);
     }
 
     public void Jump()

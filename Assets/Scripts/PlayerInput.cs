@@ -19,6 +19,7 @@ public class PlayerInput : MonoBehaviour {
 	public bool realJump;
 	public float jumpCheckDistance;
 	public float CameraTouchSpeed = 0.01f;
+    public float MinDistanceToMoveCamera = 0.3f;
 
 	private Vector3 _cameraOrigin;
 	private Vector3 _mouseOrigin;
@@ -94,20 +95,20 @@ public class PlayerInput : MonoBehaviour {
 			{
 				if (realJump)
 				{
-			    	if (!_isJumping) Player.Move(true);
+			    	if (!_isJumping) Player.Move(true, MinDistanceToMoveCamera);
 				}  else
 				{
-					Player.Move(true);
+					Player.Move(true, MinDistanceToMoveCamera);
 				}
 
 			}  else if (Input.GetKey(KeyCode.D))
 			{
 				if (realJump)
 				{
-					if (!_isJumping) Player.Move(false);
+                    if (!_isJumping) Player.Move(false, MinDistanceToMoveCamera);
 				}  else
 				{
-					Player.Move(false);
+                    Player.Move(false, MinDistanceToMoveCamera);
 				}
 
 			}
@@ -223,23 +224,23 @@ public class PlayerInput : MonoBehaviour {
 			{
 				if (realJump)
 				{
-					if (!_isJumping) Player.Move(true);
+                    if (!_isJumping) Player.Move(true, MinDistanceToMoveCamera);
 				}
 				else
 				{
 					Debug.Log ("moveu");
-					Player.Move(true);
+                    Player.Move(true, MinDistanceToMoveCamera);
 				}
 
 			}  else if (HUDbnt.name == "RightDir")
 			{
 				if (realJump)
 				{
-					if (!_isJumping) Player.Move(false);
+                    if (!_isJumping) Player.Move(false, MinDistanceToMoveCamera);
 				}
 				else
 				{
-					Player.Move(false);
+                    Player.Move(false, MinDistanceToMoveCamera);
 				}
 			}
 
@@ -393,14 +394,14 @@ public class PlayerInput : MonoBehaviour {
 		return false;
 	}
 
-	public void MoveCamera(Vector2 translation)
+	public void MoveCamera(Vector2 offset)
 	{
 		if (ActionMenu.activeInHierarchy)
 		{
 			return;
 		}
 
-		PlayerInfo.PlayerInstance.MoveCamera(translation);
+		PlayerInfo.PlayerInstance.MoveCamera(offset, MinDistanceToMoveCamera, true);
 	}
 
 
