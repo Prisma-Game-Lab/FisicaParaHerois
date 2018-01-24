@@ -21,10 +21,7 @@ public class PlayerInfo : MonoBehaviour {
     public float MaxVelocity = 5.0f;
 	public AudioClip jump;
     public bool facingRight = true;
-
-
-    [HideInInspector] public PhysicsObject ObjectColliding;
-    [HideInInspector] public float ForceToApplyOnObject;
+    public FixedJoint2D PushPullJoint;
 
     private bool _receiveDamage;
     private float _damageNumber;
@@ -126,14 +123,6 @@ public class PlayerInfo : MonoBehaviour {
             {
                 Vector2 movement = Vector2.left * PaceSpeed * 8.47f;
                 rb.AddForce(movement);
-                if (ObjectColliding)
-                {
-                    Rigidbody2D objRb = ObjectColliding.gameObject.GetComponent<Rigidbody2D>();
-                    if (objRb)
-                    {
-                        objRb.AddForce(movement);
-                    }
-                }
             }
 
         } else
@@ -143,14 +132,6 @@ public class PlayerInfo : MonoBehaviour {
             {
                 Vector2 movement = Vector2.right * PaceSpeed * 8.47f;
                 rb.AddForce(movement);
-                if (ObjectColliding)
-                {
-                    Rigidbody objRb = ObjectColliding.gameObject.GetComponent<Rigidbody>();
-                    if (objRb)
-                    {
-                        objRb.AddForce(movement);
-                    }
-                }
             }
         }
 

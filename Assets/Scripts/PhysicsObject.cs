@@ -19,6 +19,7 @@ public class PhysicsObject : MonoBehaviour {
     public bool CanPlayerInteract = true; //Define se o player pode interagir com esse objeto
 
     private bool _pushPullAction = false;
+    private float _realMass;
     public float _timeLeftToDeactivatePushPullAction = 0.5f;
     [HideInInspector] public bool _hasChain = false;
 
@@ -47,11 +48,17 @@ public class PhysicsObject : MonoBehaviour {
             else
             {
                 _pushPullAction = false;
-                if(PlayerInfo.PlayerInstance.ObjectColliding == this)
+
+                //if(PlayerInfo.PlayerInstance.ObjectColliding == this)
+                if (PlayerInfo.PlayerInstance.PushPullJoint.connectedBody == physicsData)
                 {
                     Debug.Log("Desativando");
-                    PlayerInfo.PlayerInstance.ObjectColliding = null;
+                    PlayerInfo.PlayerInstance.PushPullJoint.connectedBody = null;
+                    PlayerInfo.PlayerInstance.PushPullJoint.enabled = false;
+                    //PlayerInfo.PlayerInstance.ObjectColliding = null;
+                    physicsData.mass = _realMass;
                 }
+                 
             }
         }
     }
@@ -73,7 +80,7 @@ public class PhysicsObject : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Se player não estiver envolvido na colisão, não faça nada
-		if (collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject) {
+		if ((collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject) && (collision.otherCollider.gameObject != PlayerInfo.PlayerInstance.gameObject)) {
 			return;
 		} else {
 			//Physics2D.GetIgnoreCollision(collision.collider.gameObject, this.GetComponent<Collider2D>(),true)
@@ -82,19 +89,16 @@ public class PhysicsObject : MonoBehaviour {
 
         if (!_pushPullAction)
         {
-           // physicsData.velocity = new Vector2(0, 0);
+            physicsData.velocity = new Vector2(0, 0);
             return;
         }
-
-        PlayerInfo.PlayerInstance.ObjectColliding = this;
 
     }
 
     void OnCollisionStay2D(Collision2D collision)
     {
         //Se player não estiver envolvido na colisão, não faça nada
-        if ((collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject
-            || collision.otherCollider.gameObject != PlayerInfo.PlayerInstance.gameObject) || this.gameObject == PlayerInfo.PlayerInstance.gameObject)
+        if (((collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject && (collision.otherCollider.gameObject != PlayerInfo.PlayerInstance.gameObject)) || this.gameObject == PlayerInfo.PlayerInstance.gameObject))
         {
             return;
         }
@@ -106,7 +110,7 @@ public class PhysicsObject : MonoBehaviour {
 
         else
         {
-            PlayerInfo.PlayerInstance.ObjectColliding = this;
+            //PlayerInfo.PlayerInstance.ObjectColliding = this;
             //physicsData.AddForce(new Vector2(PlayerInfo.PlayerInstance.ForceToApplyOnObject,0));
         }
     }
@@ -120,5 +124,12 @@ public class PhysicsObject : MonoBehaviour {
 
         _pushPullAction = true;
         _timeLeftToDeactivatePushPullAction = 0.2f;
+        PlayerInfo.PlayerInstance.PushPullJoint.enabled = true;
+        PlayerInfo.PlayerInstance.PushPullJoint.connectedBody = physicsData;
+        if (physicsData.mass > 0.001)
+        {
+            _realMass = physicsData.mass;
+        }
+        physicsData.mass = 0;
     }
 }

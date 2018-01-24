@@ -172,7 +172,7 @@ public class PlayerInput : MonoBehaviour {
 			action.SetTarget(target);
 			if (target != null)
 			{
-				PlayerInfo.PlayerInstance.ForceToApplyOnObject = Mathf.Sign(target.transform.position.x - Player.transform.position.x) * 100;
+				//PlayerInfo.PlayerInstance.ForceToApplyOnObject = Mathf.Sign(target.transform.position.x - Player.transform.position.x) * 100;
 				action.OnActionUse(Mathf.Sign(target.transform.position.x - Player.transform.position.x)); //O ARGUMENTO NÃ AFETA MAIS! old: O argumento será ou -1, dependendo de se o player estántes ou depois do target.
 			}
 		}
