@@ -14,8 +14,8 @@ public class PlayerInfo : MonoBehaviour {
     public List<IAction<float>> Actions;
     [Tooltip("Velocidade com que o player se move")]
     public float PaceSpeed = 20.0f;
-    [Tooltip("Velocidade com que o player realiza o pulo")]
-    public float JumpSpeed = 60.0f;
+    [Tooltip("Antigo JumpSpeed. Influencia em velocidade e altura com que o player realiza o pulo")]
+    public float JumpForce = 60.0f;
     [Tooltip("Distância máxima para o player poder usar ações como Push/Pull em um objeto")]
     public float MaxDistanceToNearbyObject = 1.5f;
     public float MaxVelocity = 5.0f;
@@ -163,16 +163,21 @@ public class PlayerInfo : MonoBehaviour {
     {
         if (!forceCamera && (minDistanceToMoveCamera > offset.magnitude))
         {
-            Debug.Log("MoveCamera: " + offset + " (" + offset.magnitude + ")");
             return;
         }
 
-        Camera.main.transform.Translate(offset.x, offset.y, 0);
+        CameraController camera = GetComponent<CameraController>();
+        if (camera == null)
+        {
+            Debug.LogError("Player está sem CameraController");
+            return;
+        }
+        camera.Move(new Vector3(offset.x, offset.y, 0));
     }
 
     public void Jump()
     {
-        _rb.AddForce(Vector2.up * JumpSpeed);
+        _rb.AddForce(Vector2.up * JumpForce);
 		AudioSource.PlayClipAtPoint (jump, transform.position);
     }
 
