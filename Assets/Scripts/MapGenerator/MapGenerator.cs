@@ -150,9 +150,24 @@ public class MapGenerator : MonoBehaviour
                                     ChangeFloorTile(instantiatedPrefab, CheckFloorDirection(layer, i));
                                 }
 
+                                //Collider unificado
                                 int coluna = i % layer.width; //i
                                 int linha = i/layer.width; //j;
                                 //CreateFloorCollider(layer, coluna, linha, instantiatedPrefab, colliderMatrix);
+
+                                //Collider separado
+                                GameObject colliderEmptyObj = GameObject.Find("Colliders");
+                                if (colliderEmptyObj == null)
+                                {
+                                    colliderEmptyObj = new GameObject("Colliders");
+                                    colliderEmptyObj.transform.parent = GameObject.Find("GeneratedTiles").transform;
+                                    colliderEmptyObj.transform.position = Vector3.zero;
+                                    colliderEmptyObj.transform.localPosition = Vector3.zero;
+                                    colliderEmptyObj.transform.localRotation = Quaternion.identity;
+                                }
+
+                                Transform floor_Collider = instantiatedPrefab.transform.Find("Floor_Collider");
+                                floor_Collider.parent = colliderEmptyObj.transform;
 
                             	break;
 
