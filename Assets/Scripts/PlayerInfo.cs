@@ -167,7 +167,13 @@ public class PlayerInfo : MonoBehaviour {
             return;
         }
 
-        Camera.main.transform.Translate(offset.x, offset.y, 0);
+        CameraController camera = GetComponent<CameraController>();
+        if (camera == null)
+        {
+            Debug.LogError("Player está sem CameraController");
+            return;
+        }
+        camera.Move(new Vector3(offset.x, offset.y, 0));
     }
 
     public void Jump()
