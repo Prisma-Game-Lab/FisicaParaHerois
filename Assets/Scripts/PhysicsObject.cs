@@ -21,6 +21,7 @@ public class PhysicsObject : MonoBehaviour {
     private bool _pushPullAction = false;
     private float _realMass;
     public float _timeLeftToDeactivatePushPullAction = 0.5f;
+    public float MassWhenPushed = 0.001f;
     [HideInInspector] public bool _hasChain = false;
 
 	// Use this for initialization
@@ -126,10 +127,10 @@ public class PhysicsObject : MonoBehaviour {
         _timeLeftToDeactivatePushPullAction = 0.2f;
         PlayerInfo.PlayerInstance.PushPullJoint.enabled = true;
         PlayerInfo.PlayerInstance.PushPullJoint.connectedBody = physicsData;
-        if (physicsData.mass > 0.001)
+        if (physicsData.mass > MassWhenPushed)
         {
             _realMass = physicsData.mass;
         }
-        physicsData.mass = 0;
+        physicsData.mass = MassWhenPushed;
     }
 }
