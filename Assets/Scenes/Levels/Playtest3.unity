@@ -5132,6 +5132,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.884491, y: 5.070381}
   m_EdgeRadius: 0
+--- !u!114 &415558373 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114882453480992780, guid: a060453ba0132ef4a9e4430de4cc558a,
+    type: 2}
+  m_PrefabInternal: {fileID: 555898519}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &416783077
 GameObject:
   m_ObjectHideFlags: 0
@@ -6569,6 +6575,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &495862482 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114160685845851756, guid: a060453ba0132ef4a9e4430de4cc558a,
+    type: 2}
+  m_PrefabInternal: {fileID: 555898519}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &496333739
 GameObject:
   m_ObjectHideFlags: 0
@@ -7144,6 +7156,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &515676302 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114732870105752042, guid: a060453ba0132ef4a9e4430de4cc558a,
+    type: 2}
+  m_PrefabInternal: {fileID: 555898519}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &530405564
 GameObject:
   m_ObjectHideFlags: 0
@@ -7743,12 +7761,12 @@ Prefab:
     - target: {fileID: 224225941817044180, guid: a060453ba0132ef4a9e4430de4cc558a,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 547
+      value: 724
       objectReference: {fileID: 0}
     - target: {fileID: 224225941817044180, guid: a060453ba0132ef4a9e4430de4cc558a,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 268
+      value: 337
       objectReference: {fileID: 0}
     - target: {fileID: 224225941817044180, guid: a060453ba0132ef4a9e4430de4cc558a,
         type: 2}
@@ -21738,6 +21756,10 @@ MonoBehaviour:
   jumpCheckDistance: 1
   CameraTouchSpeed: 0.01
   MinDistanceToMoveCamera: 0.3
+  Left: {fileID: 1737277719}
+  Right: {fileID: 495862482}
+  Jump: {fileID: 415558373}
+  Action: {fileID: 515676302}
 --- !u!114 &1559679605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24438,6 +24460,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1731416486}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1737277719 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114630790885004716, guid: a060453ba0132ef4a9e4430de4cc558a,
+    type: 2}
+  m_PrefabInternal: {fileID: 555898519}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1751661136
 GameObject:
   m_ObjectHideFlags: 0

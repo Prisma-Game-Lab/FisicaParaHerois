@@ -74,7 +74,7 @@ public class PlayerInfo : MonoBehaviour {
        
     }
 
-	public void CheckInputFlip(string btn) {
+	public void CheckInputFlip(string btn, float velocity) {
 
 		_playerAnim.SetInteger("velocity", (int)(_rb.velocity.x));
 
