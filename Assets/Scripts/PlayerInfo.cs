@@ -115,6 +115,7 @@ public class PlayerInfo : MonoBehaviour {
     // Movimentação
     public void Move(bool walkLeft, float minDistanceToMoveCamera)
     {
+
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
 
         //Reseta a posição da câmera
@@ -126,6 +127,7 @@ public class PlayerInfo : MonoBehaviour {
             _playerAnim.SetBool("mirror", true);
             if (rb.velocity.x >= -MaxVelocity)
             {
+
                 Vector2 movement = Vector2.left * PaceSpeed * 8.47f;
                 rb.AddForce(movement);
             }
@@ -135,6 +137,7 @@ public class PlayerInfo : MonoBehaviour {
             _playerAnim.SetBool("mirror", false);
             if (rb.velocity.x <= MaxVelocity)
             {
+				
                 Vector2 movement = Vector2.right * PaceSpeed * 8.47f;
                 rb.AddForce(movement);
             }
@@ -161,9 +164,16 @@ public class PlayerInfo : MonoBehaviour {
         camera.Move(new Vector3(offset.x, offset.y, 0));
     }
 
-    public void Jump()
+	public void Jump(/*float velocity*/)
     {
         _rb.AddForce(Vector2.up * JumpForce);
+		/*if (velocity > 0) {
+
+			if (!facingRight)
+				_rb.AddForce (Vector2.left * velocity);
+			else
+				_rb.AddForce (Vector2.right * velocity);
+		}*/
 		AudioSource.PlayClipAtPoint (jump, transform.position);
     }
 
