@@ -370,6 +370,7 @@ GameObject:
   - component: {fileID: 222788247007489618}
   - component: {fileID: 114368992513193926}
   - component: {fileID: 114923838422127344}
+  - component: {fileID: 95519043495642914}
   m_Layer: 5
   m_Name: ActionPanel
   m_TagString: Untagged
@@ -437,7 +438,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224695346081133756}
-  - component: {fileID: 95687530158178612}
   m_Layer: 5
   m_Name: ConfirmActionMenu
   m_TagString: Untagged
@@ -722,7 +722,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224674007544165654}
-  - component: {fileID: 95910363961679578}
   m_Layer: 5
   m_Name: ChooseActionMenu
   m_TagString: Untagged
@@ -984,35 +983,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95687530158178612
+--- !u!95 &95519043495642914
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1526772161565616}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95910363961679578
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1727279703712732}
+  m_GameObject: {fileID: 1453035809493322}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 9ac4c1cb10acd0c4da512650c583f051, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -3609,6 +3591,7 @@ RectTransform:
   m_Children:
   - {fileID: 224674007544165654}
   - {fileID: 224695346081133756}
+  - {fileID: 224158561561439534}
   m_Father: {fileID: 224286470696679982}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3666,8 +3649,8 @@ RectTransform:
   m_Children:
   - {fileID: 224617522569040654}
   - {fileID: 224452767509035748}
-  m_Father: {fileID: 224674007544165654}
-  m_RootOrder: 3
+  m_Father: {fileID: 224120134277849966}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4107,7 +4090,6 @@ RectTransform:
   - {fileID: 224829390972272158}
   - {fileID: 224723731429517564}
   - {fileID: 224298513411800376}
-  - {fileID: 224158561561439534}
   m_Father: {fileID: 224120134277849966}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
