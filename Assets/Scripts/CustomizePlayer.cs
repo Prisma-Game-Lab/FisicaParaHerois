@@ -12,7 +12,7 @@ public class CustomizePlayer : MonoBehaviour {
 	public Button[] Categories;
 	public Button[] Color;
 
-	private Text _textoGenerico;
+    [Tooltip("Primeiro e único filho da imagem que é o texto genérico")] public Text TextoGenerico;
 	private int _NumInText = 0;
 	private int _NumInSymbol = 0;
 	private string[] _Symbols = {"", "!", "@", "#", "$", "%", "ˆ", "&", "*", "(", ")"};
@@ -35,10 +35,6 @@ public class CustomizePlayer : MonoBehaviour {
 			int index = i;
 			Color [i].onClick.AddListener (() => ColorButton(index));
 		}
-
-		// Pega o primeiro e único filho da imagem que é o texto genérico 
-		_textoGenerico = gameObject.transform.GetChild (0).GetComponent<Text>();
-		
 	}
 	
 	// Update is called once per frame
@@ -52,7 +48,7 @@ public class CustomizePlayer : MonoBehaviour {
 		
 		_NumInText += 1;
 
-		_textoGenerico.text = originalText + " " + _NumInText + " " + _Symbols[_NumInSymbol];
+		TextoGenerico.text = originalText + " " + _NumInText + " " + _Symbols[_NumInSymbol];
 		Debug.Log("Up");
 	}
 
@@ -63,7 +59,7 @@ public class CustomizePlayer : MonoBehaviour {
 			_NumInText -= 1;
 		}
 
-		_textoGenerico.text = originalText + " " + _NumInText + " " + _Symbols[_NumInSymbol];
+		TextoGenerico.text = originalText + " " + _NumInText + " " + _Symbols[_NumInSymbol];
 		Debug.Log("Down");
 	}
 
@@ -74,7 +70,7 @@ public class CustomizePlayer : MonoBehaviour {
 			_NumInSymbol -= 1;
 		}
 
-		_textoGenerico.text = originalText + " " + _NumInText + " " + _Symbols[_NumInSymbol];
+		TextoGenerico.text = originalText + " " + _NumInText + " " + _Symbols[_NumInSymbol];
 		Debug.Log("Left");
 	}
 
@@ -85,7 +81,7 @@ public class CustomizePlayer : MonoBehaviour {
 			_NumInSymbol += 1;
 		}
 
-		_textoGenerico.text = originalText + " " + _NumInText + " " + _Symbols[_NumInSymbol];
+		TextoGenerico.text = originalText + " " + _NumInText + " " + _Symbols[_NumInSymbol];
 		Debug.Log("Right");
 	}
 
@@ -98,7 +94,7 @@ public class CustomizePlayer : MonoBehaviour {
 	// Muda os cor do texto
 	void ColorButton(int index) {
 		
-		_textoGenerico.color = Color [index].GetComponent<Image> ().color;
+		TextoGenerico.color = Color [index].GetComponent<Image> ().color;
 		Debug.Log("Cor");
 	}
 

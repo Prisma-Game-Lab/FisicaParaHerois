@@ -21,11 +21,15 @@ public class ActionPanel : MonoBehaviour {
     public List<Button> ActionButtons;
     [Tooltip("Nome da classe de cada action, na ordem dos botões da lista acima")]public List<string> ActionNames;
 
+    [Header("Components")]
+    [Tooltip("Slider que define o valor da ação")] public Slider ChosenValueSlider;
+    [Tooltip("Texto que mostra o valor da ação")] public Text ChosenValueText;
+    [Tooltip("Texto que contem o nome da ação")] public Text ActionNameText;
+    [Tooltip("Menu onde a ação é escolhida")] public Transform ChooseActionMenu;
+    [Tooltip("Menu onde a ação é configurada")] public Transform ConfirmActionMenu;
+
     private PhysicsObject _physicsObject; //guarda o PhysicsObject que chamou o menu de interação
     private Image _objectSpriteHolder; //guarda o campo de imagem que contém o sprite do objeto selecionado
-    private Slider _chosenValueSlider; //guarda o slider que define o valor da ação
-    private Text _chosenValueText; //guarda o texto que mostra o valor da ação
-    private Text _actionNameText; //guarda o texto que contem o nome da ação
 
     private IAction<float> _chosenAction; //ação selecionada no ActionPanel
     private float _chosenValue; //guarda o valor setado no slider
@@ -33,9 +37,6 @@ public class ActionPanel : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        _actionNameText = transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>();
-        _chosenValueSlider = transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Slider>();
-        _chosenValueText = transform.GetChild(1).GetChild(0).GetChild(2).GetComponent<Text>();
        // _objectSpriteHolder = transform.GetChild(2).GetChild(0).GetComponent<Image>();
         gameObject.SetActive(false);
     }
@@ -58,8 +59,8 @@ public class ActionPanel : MonoBehaviour {
     public void OnActionChosen(int action)
     {
         //Ativa o painel de confirmar ação
-        transform.GetChild(0).gameObject.SetActive(false);
-        transform.GetChild(1).gameObject.SetActive(true);
+        ChooseActionMenu.gameObject.SetActive(false);
+        ConfirmActionMenu.gameObject.SetActive(true);
 
         if (PlayerInfo.PlayerInstance.Actions.Count < action)
         {
@@ -69,19 +70,19 @@ public class ActionPanel : MonoBehaviour {
 
 		switch (action) {
 		case 0:
-			_chosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeGravityActionMinValue;
-			_chosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeGravityActionMaxValue;
+			ChosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeGravityActionMinValue;
+			ChosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeGravityActionMaxValue;
 			break;
 		case 1:
-			_chosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeMassActionMinValue;
-			_chosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeMassActionMaxValue;
+			ChosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeMassActionMinValue;
+			ChosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeMassActionMaxValue;
 			break;
 		}
 
         _chosenAction = PlayerInfo.PlayerInstance.Actions[action];
-        _actionNameText.text = _chosenAction.GetActionName();
+        ActionNameText.text = _chosenAction.GetActionName();
         _chosenAction.SetTarget(_physicsObject);
-        _chosenValueSlider.value = _chosenAction.GetCurrentValue();
+        ChosenValueSlider.value = _chosenAction.GetCurrentValue();
     }
 
     /// <summary>
@@ -90,8 +91,8 @@ public class ActionPanel : MonoBehaviour {
     /// <param name="value"></param>
     public void OnActionValueChanged()
     {
-        _chosenValue = _chosenValueSlider.value;
-        _chosenValueText.text = _chosenValue.ToString();
+        _chosenValue = ChosenValueSlider.value;
+        ChosenValueText.text = _chosenValue.ToString();
     }
 
     /// <summary>
@@ -145,8 +146,8 @@ public class ActionPanel : MonoBehaviour {
     public void OnChooseActionPanelActivated()
     {
         //Ativa o painel de escolher ação
-        transform.GetChild(0).gameObject.SetActive(true);
-        transform.GetChild(1).gameObject.SetActive(false);
+        ChooseActionMenu.gameObject.SetActive(true);
+        ConfirmActionMenu.gameObject.SetActive(false);
 
         //Checa ações disponíveis
         AvailableActionsData availableActions = _physicsObject.AvailableActions;
