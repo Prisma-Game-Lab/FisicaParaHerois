@@ -636,7 +636,7 @@ public class MapGenerator : MonoBehaviour
     public void ChangeFloorTile(GameObject floor, string direction)
     {
         //Pega sprite renderer do floor
-        SpriteRenderer rend = floor.transform.GetChild(1).GetComponent<SpriteRenderer>();
+        SpriteRenderer rend = floor.transform.Find("wall_midle").GetComponent<SpriteRenderer>();
 
         //Muda ele para o sprite desejado
         switch (direction)
