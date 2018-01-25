@@ -202,17 +202,17 @@ public class PlayerInput : MonoBehaviour {
     }
 		
 
-	void JumpFunction() {
-		if (!_isJumping) Player.Jump ();
+	public void JumpFunction() {
+		if (!_isJumping) Player.Jump (/*_lastVelocity*/);
 	}
 
-	void ActionFunction() {
+	public void ActionFunction() {
 		print("Action");
 		ActionButton();
 	}
 
 
-	void LeftFunction() {
+	public void LeftFunction() {
 
 		Debug.Log ("LEFT");
 		
@@ -228,7 +228,7 @@ public class PlayerInput : MonoBehaviour {
 
 	}
 
-	void RightFunction() {
+	public void RightFunction() {
 
 		Debug.Log ("RIGHT");
 
@@ -279,7 +279,7 @@ public class PlayerInput : MonoBehaviour {
 						Debug.Log ("Botão anterior " + _lastBntSelected + " botão atual " + HUDbnt.name);
 
 						if (_lastBntSelected != HUDbnt.name) {
-							//UITouch (touch);
+							UITouch (touch);
 						}
 
 						//Debug.Log ("BOTAO APERTADO " + touch.phase + " NOME DO BOTAO " + HUDbnt.name);
@@ -300,8 +300,8 @@ public class PlayerInput : MonoBehaviour {
 					// Verifica se o toque foi em algum item da UI (IsPointerOver pega apenas o toque no UI, 
 					// mas precisa do outro código para não perder uma referencia)
 					if (EventSystem.current.IsPointerOverGameObject (touch.fingerId) && IsPointerOverUIObject()) {
-						Debug.Log ("UI is touched");
-						//UITouch (touch);
+						//Debug.Log ("UI is touched");
+						UITouch (touch);
 					} else {
 						Debug.Log ("UI is not touched");
 						ObjectsTouch (touch);
