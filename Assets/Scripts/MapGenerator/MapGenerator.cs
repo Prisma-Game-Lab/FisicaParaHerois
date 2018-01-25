@@ -38,6 +38,9 @@ public class MapGenerator : MonoBehaviour
     [Header("Floor Tiles")]
     public Sprite top_left;
     public Sprite top_right;
+    public Sprite single;
+    public Sprite single_line_left;
+    public Sprite single_line_right;
 
     [Header("Load File")]
     public string fileName; // The name of the file that will be loaded 
@@ -641,6 +644,15 @@ public class MapGenerator : MonoBehaviour
         //Muda ele para o sprite desejado
         switch (direction)
         {
+            case "single":
+                rend.sprite = single;
+                break;
+            case "single_line_right":
+                rend.sprite = single_line_right;
+                break;
+            case "single_line_left":
+                rend.sprite = single_line_left;
+                break;
             case "top_right":
                 rend.sprite = top_right;
                 break;
