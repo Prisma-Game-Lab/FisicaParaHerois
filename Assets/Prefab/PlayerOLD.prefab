@@ -2400,6 +2400,7 @@ MonoBehaviour:
     PushPullAction: 1
   CanPlayerInteract: 0
   _timeLeftToDeactivatePushPullAction: 1
+  MassWhenPushed: 0.001
   _hasChain: 0
 --- !u!114 &114096999507849864
 MonoBehaviour:
@@ -2704,13 +2705,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Life: 1
   PaceSpeed: 3.2
-  JumpSpeed: 600
+  JumpForce: 60
   MaxDistanceToNearbyObject: 1.5
   MaxVelocity: 3.5
   jump: {fileID: 8300000, guid: ae1b5aa20a8a94e528e90979c04287da, type: 3}
   facingRight: 1
-  ObjectColliding: {fileID: 0}
-  ForceToApplyOnObject: 0
+  PushPullJoint: {fileID: 0}
 --- !u!114 &114391857339426056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2942,6 +2942,11 @@ MonoBehaviour:
   realJump: 0
   jumpCheckDistance: 1
   CameraTouchSpeed: 0.01
+  MinDistanceToMoveCamera: 0.3
+  Left: {fileID: 0}
+  Right: {fileID: 0}
+  Jump: {fileID: 0}
+  Action: {fileID: 0}
 --- !u!114 &114568642613428428
 MonoBehaviour:
   m_ObjectHideFlags: 1

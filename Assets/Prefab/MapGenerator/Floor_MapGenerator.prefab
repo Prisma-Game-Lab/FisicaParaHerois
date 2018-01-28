@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33776909328385024}
   - component: {fileID: 23353751818531176}
   - component: {fileID: 50041301895340808}
+  - component: {fileID: 114972400199890136}
   m_Layer: 0
   m_Name: Floor_MapGenerator
   m_TagString: Floor
@@ -188,6 +189,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114972400199890136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1513399734466154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a22356a40de886448b73873add8f7b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rend: {fileID: 212727392762756828}
 --- !u!212 &212727392762756828
 SpriteRenderer:
   m_ObjectHideFlags: 1
