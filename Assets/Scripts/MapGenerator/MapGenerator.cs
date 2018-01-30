@@ -38,6 +38,8 @@ public class MapGenerator : MonoBehaviour
     [Header("Floor Tiles")]
     public Sprite top_left;
     public Sprite top_right;
+    public Sprite top;
+    public Sprite middle_right;
     public Sprite single;
     public Sprite single_line_left;
     public Sprite single_line_right;
@@ -291,246 +293,6 @@ public class MapGenerator : MonoBehaviour
 	{
 		return (transform.childCount == 0);
 	}
-    
-    /* Não está funcionando
-    public void CreateFloorCollider(Layer layer, int i, int j, GameObject startFloor, bool[,] colliderMatrix)
-    {
-        //Checa matriz de collider
-        if (colliderMatrix[i, j] == true)
-        {
-            return;
-        }
-
-        //Cria lista de pontos
-        List<Vector2> edges = new List<Vector2>();
-
-        //Cria emptyGameObj de colliders se ainda não houver
-        var collidersEmptyObj = GameObject.Find("Colliders");
-        if (collidersEmptyObj == null)
-        {
-            collidersEmptyObj = new GameObject("Colliders");
-            collidersEmptyObj.transform.parent = GameObject.Find("GeneratedTiles").transform;
-            collidersEmptyObj.transform.position = Vector3.zero;
-            collidersEmptyObj.transform.localPosition = Vector3.zero;
-            collidersEmptyObj.transform.localRotation = Quaternion.identity;
-        }
-
-        //Cria collider
-        EdgeCollider2D collider = collidersEmptyObj.AddComponent<EdgeCollider2D>();
-        Collider2D floorCollider;
-
-        switch (startFloor.name)
-        {
-            case "Floor_MapGenerator(Clone)":
-            case "Floor_MapGenerator":
-                floorCollider = startFloor.GetComponent<Collider2D>();
-                break;
-            case "Floor_Borda_MapGenerator(Clone)":
-            case "Floor_Borda_MapGenerator":
-                floorCollider = startFloor.transform.Find("Floor_Collider").GetComponent<Collider2D>();
-                break;
-            default:
-                floorCollider = null;
-                Debug.LogError(startFloor.name + " não está configurado em MapGenerator.cs");
-                break;
-        }
-        
-        collider.bounds.SetMinMax(floorCollider.bounds.min, floorCollider.bounds.max);
-        edges.Add(floorCollider.bounds.min);
-
-        //Modifica colliderMatrix
-        colliderMatrix[i, j] = true;
-
-        /*
-        //Checa blocos em volta
-        for (int v = j; v < layer.height; v++)
-        {
-            //Checa blocos anteriores
-            for (int h = i - 1; h >= 0; h--)
-            {
-                AddEdgeToCollider(layer, i, j, h, v, floorCollider, edges, colliderMatrix);
-            }
-
-            //Checa próximos blocos
-            for (int h = i; h < layer.width; h++)
-            {
-                AddEdgeToCollider(layer, i, j, h, v, floorCollider, edges, colliderMatrix);
-            }
-        }
-         * *//*
-         
-
-        //Checa blocos em volta
-        int h = i + 1;
-        int v = j;
-        PathToWalkFindingEdges(layer, i, j, h, v, floorCollider, edges, colliderMatrix, "left");
-           
-
-
-        //Deleta collider original do chão
-        //Destroy(floorCollider);
-
-        //Passa lista de pontos para o EdgeCollider2D
-        edges.Add(floorCollider.bounds.min);
-        collider.points = edges.ToArray();
-    }
-
-    public void PathToWalkFindingEdges(Layer layer, int i, int j, int h, int v, Collider2D floorCollider, List<Vector2> edges, bool[,] colliderMatrix, string direction)
-    {
-        //percorre até encontrar edge
-        bool foundEdge = AddEdgeToCollider(layer, i, j, h, v, floorCollider, edges, colliderMatrix);
-        while (!foundEdge)
-        {
-            switch (direction)
-            {
-                case "right":
-                    h++;
-                    break;
-                case "down":
-                    v++;
-                    break;
-                case "left":
-                    h--;
-                    break;
-                case "up":
-                    v--;
-                    break;
-            }
-            foundEdge = AddEdgeToCollider(layer, i, j, h, v, floorCollider, edges, colliderMatrix);
-        }
-
-        if (h < 0 || h >= layer.width || v < 0 || v >= layer.height || colliderMatrix[h, v] == true)
-        {
-            return;
-        }
-
-        //verifica se é a posição inicial
-        if ((h == i && v == j))
-        {
-            return;
-        }
-
-        //se não, tenta ir para os outros lados
-        //up
-        bool enterSide = (v <= 0);
-        if (!enterSide)
-        {
-            enterSide = layer.data[v * layer.width + h] == layer.data[(v - 1) * layer.width + h];
-        }
-
-        if (enterSide)
-        {
-            PathToWalkFindingEdges(layer, i, j, h, v - 1, floorCollider, edges, colliderMatrix, "up");
-        }
-
-        //down
-        enterSide = (v >= layer.height - 1);
-        if (!enterSide)
-        {
-            enterSide = layer.data[v * layer.width + h] == layer.data[(v + 1) * layer.width + h];
-        }
-
-        if (enterSide)
-        {
-            PathToWalkFindingEdges(layer, i, j, h, v + 1, floorCollider, edges, colliderMatrix, "down");
-        }
-
-        //left
-        enterSide = (h <= 0);
-        if (!enterSide)
-        {
-            enterSide = layer.data[v * layer.width + h] == layer.data[v * layer.width + h - 1];
-        }
-
-        if (enterSide)
-        {
-            PathToWalkFindingEdges(layer, i, j, h - 1, v, floorCollider, edges, colliderMatrix, "left");
-        }
-
-        //right
-        enterSide = (h >= layer.width - 1);
-        if(!enterSide){
-            enterSide = layer.data[v * layer.width + h] == layer.data[v * layer.width + h + 1];
-        }
-
-        if (enterSide)
-        {
-            PathToWalkFindingEdges(layer, i, j, h + 1, v, floorCollider, edges, colliderMatrix, "right");
-        }
-
-        return;
-    }
-
-    /// <summary>
-    /// Adiciona edge ao collider caso seja um vértice
-    /// </summary>
-    /// <returns>Se o chão é um vértice do collider</returns>
-    public bool AddEdgeToCollider(Layer layer, int i, int j, int h, int v, Collider2D floorCollider, List<Vector2> edges, bool[,] colliderMatrix)
-    {
-        if (h < 0 || h >= layer.width || v < 0 || v >= layer.height || colliderMatrix[h, v] == true)
-        {
-            return true;
-        }
-        
-        //Checa tiles vizinhos
-        bool hasEdge = false;
-        Vector2 dif = new Vector2((h - 1 - i) * (floorCollider.bounds.max.x - floorCollider.bounds.min.x), (v - 1 - j) * (floorCollider.bounds.max.y - floorCollider.bounds.min.y));
-        Vector2 initPos = new Vector2();
-        bool tileEsq = false, tileDir = false, tileAcima = false, tileAbaixo = false;
-        if (v - 1 > 0)
-        {
-            tileAcima = (layer.data[v * layer.width + h] == layer.data[(v - 1) * layer.width + h]);
-        }
-        if (v + 1 < layer.height)
-        {
-            tileAbaixo = (layer.data[v * layer.width + h] == layer.data[(v + 1) * layer.width + h]);
-        }
-        if (h + 1 < layer.width)
-        {
-            tileDir = (layer.data[v * layer.width + h] == layer.data[v * layer.width + h + 1]);
-        }
-        if (h - 1 > 0)
-        {
-            tileEsq = (layer.data[v * layer.width + h] == layer.data[v * layer.width + h - 1]);
-        }
-
-        //Descobre posição do edge
-        if (!tileEsq && !tileAcima)
-        {
-            initPos = (Vector2)floorCollider.bounds.min; //posição estimada
-            hasEdge = true;
-        }
-
-        if (!tileEsq && !tileAbaixo)
-        {
-            initPos = new Vector2(floorCollider.bounds.min.x, floorCollider.bounds.max.y); //posição estimada
-            hasEdge = true;
-        }
-
-        if (!tileDir && !tileAcima)
-        {
-            initPos = new Vector2(floorCollider.bounds.max.x, floorCollider.bounds.min.y); //posição estimada
-            hasEdge = true;
-        }
-
-        if (!tileDir && !tileAbaixo)
-        {
-            initPos = floorCollider.bounds.max;
-            hasEdge = true;
-        }
-
-        //Adiciona edge
-        if (hasEdge)
-        {
-            Vector2 pos = initPos + dif; //posição estimada
-            edges.Add(pos);
-        }
-
-        //Modifica blocos afetados pelo collider na colliderMatrix
-        colliderMatrix[h, v] = true;
-        return hasEdge;
-    }
-              * */
 
 	/// <summary>
 	/// Checa se o chão deve ter borda
@@ -542,6 +304,11 @@ public class MapGenerator : MonoBehaviour
 		if (i - layer.width < 0) {
 			return true;
 		}
+
+        if (layer.data[i + 1] != layer.data[i])
+        {
+            return true;
+        }
 
 		if (layer.data [i - layer.width] == layer.data [i]) {
 			return false;
@@ -601,33 +368,73 @@ public class MapGenerator : MonoBehaviour
     /// <returns>null se não for borda, e o nome da direção a ser passada para o ChangeFloorTile caso contrário.</returns>
     public string CheckFloorDirection(Layer layer, int i)
     {
-        //Checa se é o primeiro tile da linha
-        if (i % layer.width == 0)
-        {
-            return "top_left";
+        //Checa se não é a primeira ou a última linha
+        if (((i - layer.width) >= 0) && ((i + layer.width) < layer.data.Length))
+        {    
+            //Checa se não há tiles em cima ou embaixo
+            if ((layer.data[i - layer.width] != layer.data[i]) && (layer.data[i + layer.width] != layer.data[i]))
+            {
+                //Checa se não há tiles nas laterais  
+                if ((layer.data[i + 1] != layer.data[i]) && (layer.data[i - 1] != layer.data[i]))
+                {
+                    return "single";
+                }
+
+                //Checa se não há tiles em cima ou embaixo e é o último tile da linha
+                if ((i % layer.width == (layer.width - 1)) || (layer.data[i + 1] != layer.data[i]))
+                {
+                    return "single_line_right";
+                }
+
+                //Checa se não há tiles em cima ou embaixo e é o primeiro tile da linha
+                if (i % layer.width == 0 || (layer.data[i - 1] != layer.data[i]))
+                {
+                    return "single_line_left";
+                }
+
+                else
+                {
+                    return "top";
+                }
+            }
         }
 
-        //Checa se é o último tile da linha
-        if (i % layer.width == (layer.width - 1))
+        //Checa se é um tile do topo
+        if ((i - layer.width < 0) || (layer.data[i - layer.width] != layer.data[i]))
         {
-            return "top_right";
-        }
+            //Checa se é o primeiro tile da linha
+            if (i % layer.width == 0)
+            {
+                return "top_left";
+            }
 
-        //Checa se o tile a esquerda é diferente
-        if ((layer.data[i - 1] != layer.data[i]) && (layer.data[i + 1] == layer.data[i]))
-        {
-            return "top_left";
-        }
+            //Checa se é o último tile da linha
+            if (i % layer.width == (layer.width - 1))
+            {
+                return "top_right";
+            }
 
-        //Checa se o tile a direita é diferente
-        if ((layer.data[i + 1] != layer.data[i]) && (layer.data[i - 1] == layer.data[i]))
-        {
-            return "top_right";
+            //Checa se o tile a esquerda é diferente
+            if ((layer.data[i - 1] != layer.data[i]) && (layer.data[i + 1] == layer.data[i]))
+            {
+                return "top_left";
+            }
+
+            //Checa se o tile a direita é diferente
+            if ((layer.data[i + 1] != layer.data[i]) && (layer.data[i - 1] == layer.data[i]))
+            {
+                return "top_right";
+            }
+
+            else
+            {
+                return "top";
+            }
         }
 
         else
         {
-            return "top";
+            return "middle_right";
         }
     }
 
@@ -660,6 +467,10 @@ public class MapGenerator : MonoBehaviour
                 rend.sprite = top_left;
                 break;
             case "top":
+                rend.sprite = top;
+                break;
+            case "middle_right":
+                rend.sprite = middle_right;
                 break;
             default:
                 Debug.LogError("Valor inválido passado para o método ChangeFloorTile");
