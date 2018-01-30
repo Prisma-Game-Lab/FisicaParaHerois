@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 61315194395132250}
   - component: {fileID: 114613545289644384}
   - component: {fileID: 114150104580223190}
+  - component: {fileID: 95038962445488730}
   m_Layer: 9
   m_Name: PressurePlate
   m_TagString: Untagged
@@ -71,8 +72,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1434343669532004}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.29, z: 0}
-  m_LocalScale: {x: 0.19358023, y: 0.32465482, z: 0.33078107}
+  m_LocalPosition: {x: 0, y: 0.48, z: 0}
+  m_LocalScale: {x: 0.1935802, y: 0.32465482, z: 0.3307811}
   m_Children: []
   m_Father: {fileID: 4619167905867300}
   m_RootOrder: 0
@@ -84,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1396254976303852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.8099241, y: -0.7041099, z: 0}
   m_LocalScale: {x: 1.7087542, y: 1.0188701, z: 1}
   m_Children:
   - {fileID: 4427275254354078}
@@ -99,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1028892741722938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.255, z: 0}
+  m_LocalPosition: {x: 0, y: -0.65, z: 0}
   m_LocalScale: {x: 0.1935802, y: 0.3246548, z: 1}
   m_Children: []
   m_Father: {fileID: 4619167905867300}
@@ -191,6 +192,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.99999994, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &95038962445488730
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1396254976303852}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9fe54b54c3292d14ba485b0641c2eefd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114150104580223190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -214,6 +232,7 @@ MonoBehaviour:
     PushPullAction: 1
   CanPlayerInteract: 0
   _timeLeftToDeactivatePushPullAction: 0.5
+  MassWhenPushed: 0.001
   _hasChain: 0
 --- !u!114 &114613545289644384
 MonoBehaviour:
