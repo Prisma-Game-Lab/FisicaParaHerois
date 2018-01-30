@@ -6602,8 +6602,8 @@ MonoBehaviour:
     ChangeMassActionMaxValue: 10
     PushPullAction: 1
   CanPlayerInteract: 1
+  OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
-  MassWhenPushed: 0.001
   _hasChain: 0
 --- !u!50 &604171302
 Rigidbody2D:
@@ -9838,8 +9838,8 @@ MonoBehaviour:
     ChangeMassActionMaxValue: 10
     PushPullAction: 1
   CanPlayerInteract: 1
+  OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
-  MassWhenPushed: 0.001
   _hasChain: 0
 --- !u!50 &866525034
 Rigidbody2D:
@@ -15831,12 +15831,12 @@ Prefab:
     - target: {fileID: 224225941817044180, guid: a060453ba0132ef4a9e4430de4cc558a,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 148
+      value: 356.5
       objectReference: {fileID: 0}
     - target: {fileID: 224225941817044180, guid: a060453ba0132ef4a9e4430de4cc558a,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 83.5
+      value: 200.5
       objectReference: {fileID: 0}
     - target: {fileID: 1945114813722288, guid: a060453ba0132ef4a9e4430de4cc558a, type: 2}
       propertyPath: m_IsActive
@@ -22679,7 +22679,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 62a6759ac500947bba49528527155dd8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d1c5e8d4846784c0c9da47caf51c67f4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -23363,8 +23363,8 @@ MonoBehaviour:
     ChangeMassActionMaxValue: 10
     PushPullAction: 1
   CanPlayerInteract: 1
+  OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
-  MassWhenPushed: 0.001
   _hasChain: 0
 --- !u!50 &1934504237
 Rigidbody2D:
