@@ -33,11 +33,13 @@ public class ActionPanel : MonoBehaviour {
 
     private IAction<float> _chosenAction; //ação selecionada no ActionPanel
     private float _chosenValue; //guarda o valor setado no slider
+    private Animator _actionAnim; // Animator do ActionPanel
 
     // Use this for initialization
     void Start ()
     {
-       // _objectSpriteHolder = transform.GetChild(2).GetChild(0).GetComponent<Image>();
+        // _objectSpriteHolder = transform.GetChild(2).GetChild(0).GetComponent<Image>();
+        _actionAnim = gameObject.GetComponent<Animator>();
         gameObject.SetActive(false);
     }
 
@@ -118,10 +120,11 @@ public class ActionPanel : MonoBehaviour {
     /// </summary>
     public void OnCancel()
     {
-        gameObject.SetActive(false);
-        Time.timeScale = 1;
+        StartCoroutine(CancelButtonDelay(1.15f));
+        //gameObject.SetActive(false);
+        //Time.timeScale = 1;
 
-        _physicsObject = null;
+        //_physicsObject = null;
     }
 
     /// <summary>
@@ -165,5 +168,17 @@ public class ActionPanel : MonoBehaviour {
             //Muda a cor do botão para indicar se está disponível
             ActionButtons[i].gameObject.GetComponent<Image>().color = ActionButtons[i].interactable ? AvailableButtonColor : UnavailableButtonColor;
         }
+    }
+
+    public IEnumerator CancelButtonDelay (float tempo)
+    {
+        _actionAnim.SetTrigger("exit");
+
+        yield return new WaitForSecondsRealtime (tempo);
+
+        gameObject.SetActive(false);
+        Time.timeScale = 1;
+
+        _physicsObject = null;
     }
 }
