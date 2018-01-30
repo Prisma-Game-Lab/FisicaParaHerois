@@ -9,26 +9,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c10c0be6d28fe4d539c4a39822fe301c, type: 3}
-  m_Name: "pers_pe\u03012"
+  m_Name: "pers_p\xE91"
   m_EditorClassIdentifier: 
   m_ApiVersion: 3
-  m_Sprite: {fileID: 21300000, guid: 8a798ec39bf25e242a474eef8c5df566, type: 3}
-  m_SharedMesh: {fileID: 43668276693878624}
+  m_Sprite: {fileID: 21300000, guid: 1a4edeb1e59a95342831968e682ea62b, type: 3}
+  m_SharedMesh: {fileID: 43598207549538976}
   m_SharedMaterials:
-  - {fileID: 21868199870250504}
+  - {fileID: 21862604064178156}
   pivotPoint: {x: 0, y: 0}
   texVertices: []
   edges: []
   holes: []
   indices: 
   bindPoses: []
---- !u!21 &21868199870250504
+--- !u!21 &21862604064178156
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: "pers_p\xE92_0"
+  m_Name: "pers_p\xE91_0"
   m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -45,7 +45,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 8a798ec39bf25e242a474eef8c5df566, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1a4edeb1e59a95342831968e682ea62b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -55,12 +55,12 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!43 &43668276693878624
+--- !u!43 &43598207549538976
 Mesh:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: "pers_p\xE92"
+  m_Name: "pers_p\xE91"
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -81,11 +81,11 @@ Mesh:
   - e00: 0.00000011920929
     e01: -1.0000001
     e02: 0
-    e03: 1.5300001
+    e03: 1.5300002
     e10: 1.0000001
     e11: 0.00000011920929
     e12: 0
-    e13: -0.07000028
+    e13: 0.06999974
     e20: 0
     e21: 0
     e22: 1
@@ -231,7 +231,7 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
---- !u!114 &114306035581088906
+--- !u!114 &114264798942716024
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e715ea371f114f4a8d2584ad476634d, type: 3}
-  m_Name: "pers_p\xE92_Data"
+  m_Name: "pers_p\xE91_Data"
   m_EditorClassIdentifier: 
   m_PivotPoint: {x: 28, y: 12}
   m_Vertices:
@@ -297,11 +297,11 @@ MonoBehaviour:
       e00: 0.00000011920929
       e01: -1.0000001
       e02: 0
-      e03: 1.5300001
+      e03: 1.5300002
       e10: 1.0000001
       e11: 0.00000011920929
       e12: 0
-      e13: -0.07000028
+      e13: 0.06999974
       e20: 0
       e21: 0
       e22: 1
@@ -311,7 +311,7 @@ MonoBehaviour:
       e32: 0
       e33: 1
     boneLength: 1
-    path: perna1/perna2_2
+    path: perna2/perna2_2
     name: perna2_2
     color: {r: 1, g: 0, b: 0, a: 1}
     zOrder: 0
