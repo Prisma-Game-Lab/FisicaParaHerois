@@ -17,7 +17,9 @@ public class PhysicsObject : MonoBehaviour {
     public Sprite ObjectSprite;
     public AvailableActionsData AvailableActions;
     public bool CanPlayerInteract = true; //Define se o player pode interagir com esse objeto
-    [HideInInspector] public Vector3 OldPosition = Vector3.negativeInfinity;
+
+    private Vector3 _oldPosition = Vector3.negativeInfinity;
+    private Vector3 _playerOldPosition;
 
     private bool _pushPullAction = false;
     private float _realMass;
@@ -39,6 +41,8 @@ public class PhysicsObject : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        _playerOldPosition = PlayerInfo.PlayerInstance.transform.position;
+
         if (_pushPullAction)
         {
             if (_timeLeftToDeactivatePushPullAction > 0)
@@ -108,20 +112,20 @@ public class PhysicsObject : MonoBehaviour {
         {
             physicsData.velocity = new Vector2(0, 0);
 
-            if (OldPosition.x != Mathf.NegativeInfinity)
+            if (_oldPosition.x != Mathf.NegativeInfinity)
             {
-                physicsData.position = OldPosition;
+                physicsData.position = _oldPosition;
             }
 
             else
             {
-                OldPosition = physicsData.position;
+                _oldPosition = physicsData.position;
             }
         }
 
         else
         {
-            OldPosition = physicsData.position;
+            _oldPosition = physicsData.position;
             //PlayerInfo.PlayerInstance.ObjectColliding = this;
             //physicsData.AddForce(new Vector2(PlayerInfo.PlayerInstance.ForceToApplyOnObject,0));
         }
@@ -129,7 +133,7 @@ public class PhysicsObject : MonoBehaviour {
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        OldPosition = physicsData.position;
+        _oldPosition = physicsData.position;
     }
 
     public void OnPushPullActionUsed()
