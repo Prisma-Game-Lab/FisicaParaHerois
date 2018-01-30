@@ -17,11 +17,11 @@ public class PhysicsObject : MonoBehaviour {
     public Sprite ObjectSprite;
     public AvailableActionsData AvailableActions;
     public bool CanPlayerInteract = true; //Define se o player pode interagir com esse objeto
+    [HideInInspector] public Vector3 OldPosition = Vector3.negativeInfinity;
 
     private bool _pushPullAction = false;
     private float _realMass;
     public float _timeLeftToDeactivatePushPullAction = 0.5f;
-    public float MassWhenPushed = 0.001f;
     [HideInInspector] public bool _hasChain = false;
 
 	// Use this for initialization
@@ -107,13 +107,29 @@ public class PhysicsObject : MonoBehaviour {
         if (!_pushPullAction)
         {
             physicsData.velocity = new Vector2(0, 0);
+
+            if (OldPosition.x != Mathf.NegativeInfinity)
+            {
+                physicsData.position = OldPosition;
+            }
+
+            else
+            {
+                OldPosition = physicsData.position;
+            }
         }
 
         else
         {
+            OldPosition = physicsData.position;
             //PlayerInfo.PlayerInstance.ObjectColliding = this;
             //physicsData.AddForce(new Vector2(PlayerInfo.PlayerInstance.ForceToApplyOnObject,0));
         }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        OldPosition = physicsData.position;
     }
 
     public void OnPushPullActionUsed()
@@ -127,10 +143,5 @@ public class PhysicsObject : MonoBehaviour {
         _timeLeftToDeactivatePushPullAction = 0.2f;
         PlayerInfo.PlayerInstance.PushPullJoint.enabled = true;
         PlayerInfo.PlayerInstance.PushPullJoint.connectedBody = physicsData;
-        if (physicsData.mass > MassWhenPushed)
-        {
-            _realMass = physicsData.mass;
-        }
-        physicsData.mass = MassWhenPushed;
     }
 }
