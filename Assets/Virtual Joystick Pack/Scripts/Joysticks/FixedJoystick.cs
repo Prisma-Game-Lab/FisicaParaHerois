@@ -8,10 +8,19 @@ public class FixedJoystick : Joystick
     public PlayerInfo Player;
     public float MinDistanceToMoveCamera = 0.3f;
     Vector2 joystickPosition = Vector2.zero;
-    private Camera cam = new Camera();
+
+	private Camera cam = new Camera ();
+	private PlayerInfo _info;
+	private PlayerInput _input;
+	private bool _realJump;
+	private bool _isJumping;
 
     void Start()
     {
+		_info = Player.GetComponent<PlayerInfo> ();
+		_input = Player.GetComponent<PlayerInput> ();
+		_realJump = _input.realJump;
+		_isJumping = _input._isJumping;
         joystickPosition = RectTransformUtility.WorldToScreenPoint(cam, background.position);
     }
 
@@ -22,10 +31,28 @@ public class FixedJoystick : Joystick
         inputVector = (direction.magnitude > background.sizeDelta.x / 2f) ? direction.normalized : direction / (background.sizeDelta.x / 2f);
         handle.anchoredPosition = (inputVector * background.sizeDelta.x / 2f) * handleLimit;
 
-        if(inputVector.x > 0)
-            Player.Move(false, 1f);
-        else if (inputVector.x < 0)
-            Player.Move(true, 1f);
+		if (inputVector.x > 0) {
+			
+			if (_realJump) {
+				if (!_isJumping) {
+					Player.Move (false, MinDistanceToMoveCamera);
+					_info.CheckInputFlip ("RightDir");
+				}
+			} else {
+				Player.Move (false, MinDistanceToMoveCamera);
+				_info.CheckInputFlip ("RightDir");
+			}
+		} else if (inputVector.x < 0) {
+			if (_realJump) {
+				if (!_isJumping) {
+					Player.Move (true, MinDistanceToMoveCamera);
+					_info.CheckInputFlip ("LeftDir");
+				}
+			} else {
+				Player.Move (true, MinDistanceToMoveCamera);
+				_info.CheckInputFlip ("LeftDir");
+			}
+		}
     }
 
     public override void OnPointerDown(PointerEventData eventData)

@@ -41,7 +41,7 @@ public class PlayerInput : MonoBehaviour {
 	//mácara usada para ignorar o player
 	private int _layerMask;
 
-	private bool _isJumping;
+	public bool _isJumping;
 
 	private string _lastBntSelected;
 
