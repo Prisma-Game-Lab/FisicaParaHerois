@@ -280,6 +280,14 @@ public class PlayerInput : MonoBehaviour {
 					// Nao funciona e a altura e largura é 84 de todos
 					Debug.Log("Altura Right " + Right.transform.position.x + Left.GetComponent<RectTransform> ().rect.height);
 
+					if (Input.GetTouch (0).position.x >= Left.transform.position.x - (Left.GetComponent<RectTransform> ().rect.width / 2)
+					    && Input.GetTouch (0).position.x <= Left.transform.position.x + (Left.GetComponent<RectTransform> ().rect.width / 2)) {
+						if (Input.GetTouch (0).position.y >= Left.transform.position.y - (Left.GetComponent<RectTransform> ().rect.height / 2)
+							&& Input.GetTouch (0).position.y <= Left.transform.position.y + (Left.GetComponent<RectTransform> ().rect.height / 2)) {
+							Debug.Log("ta dentro do left");
+						}
+					}
+
 					// Verifica se o toque foi em algum item da UI
 					if (EventSystem.current.IsPointerOverGameObject (touch.fingerId)) {
 						GameObject HUDbnt = EventSystem.current.currentSelectedGameObject;
