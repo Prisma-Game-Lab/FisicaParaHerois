@@ -74,7 +74,7 @@ public class PlayerInfo : MonoBehaviour {
 		_playerAnim.SetInteger("velocity", (int)(_rb.velocity.x));
     }
 
-	public void CheckInputFlip(string btn, float velocity) {
+	public void CheckInputFlip(string btn) {
 
 		if ((btn == "D" || btn == "RightDir") && !facingRight)
 			Flip();
