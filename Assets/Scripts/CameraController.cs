@@ -7,6 +7,10 @@ public class CameraController : MonoBehaviour {
     [HideInInspector] public float TimeLeft = 0;
     public float CameraSpeed = 5f;
 
+    [Header("Limits for camera movement")]
+    public Vector2 Limit1;
+    public Vector2 Limit2;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -19,6 +23,28 @@ public class CameraController : MonoBehaviour {
             Vector3 curMove = (Time.deltaTime / TimeLeft) * CurOffset;
             CurOffset -= curMove;
             TimeLeft -= Time.deltaTime;
+
+            //limits x axis
+            if (Camera.main.transform.position.x + curMove.x > Mathf.Max(Limit1.x, Limit2.x))
+            {
+                curMove.x = Mathf.Max(Limit1.x, Limit2.x) - Camera.main.transform.position.x;
+            }
+            else if (Camera.main.transform.position.x + curMove.x < Mathf.Min(Limit1.x, Limit2.x))
+            {
+                curMove.x = Mathf.Min(Limit1.x, Limit2.x) - Camera.main.transform.position.x;
+            }
+
+            //limits y axis
+            if (Camera.main.transform.position.y + curMove.y > Mathf.Max(Limit1.y, Limit2.y))
+            {
+                curMove.y = Mathf.Max(Limit1.y, Limit2.y) - Camera.main.transform.position.y;
+            }
+            else if (Camera.main.transform.position.y + curMove.y < Mathf.Min(Limit1.y, Limit2.y))
+            {
+                curMove.y = Mathf.Min(Limit1.y, Limit2.y) - Camera.main.transform.position.y;
+            }
+
+            
             Camera.main.transform.Translate(curMove);
         }
 

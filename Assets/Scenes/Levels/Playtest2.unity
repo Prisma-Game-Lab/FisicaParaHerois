@@ -3368,7 +3368,7 @@ Prefab:
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 263
+      value: 262.5
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
@@ -4888,6 +4888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 0}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -5
@@ -4900,6 +4901,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 1
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &547478856
 Rigidbody2D:
   serializedVersion: 4
@@ -6659,6 +6661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -6671,6 +6674,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &676188072
 Rigidbody2D:
   serializedVersion: 4
@@ -14871,6 +14875,26 @@ Prefab:
       propertyPath: JumpForce
       value: 650
       objectReference: {fileID: 0}
+    - target: {fileID: 114418965992029794, guid: b48bbaa0bcf85d942a750cc866f74e5a,
+        type: 2}
+      propertyPath: Limit1.x
+      value: -4.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418965992029794, guid: b48bbaa0bcf85d942a750cc866f74e5a,
+        type: 2}
+      propertyPath: Limit1.y
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418965992029794, guid: b48bbaa0bcf85d942a750cc866f74e5a,
+        type: 2}
+      propertyPath: Limit2.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418965992029794, guid: b48bbaa0bcf85d942a750cc866f74e5a,
+        type: 2}
+      propertyPath: Limit2.y
+      value: -7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b48bbaa0bcf85d942a750cc866f74e5a, type: 2}
   m_IsPrefabParent: 0
@@ -19347,6 +19371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -19359,6 +19384,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &1847786314
 Rigidbody2D:
   serializedVersion: 4
