@@ -21,6 +21,7 @@ public class PlayerInput : MonoBehaviour {
 	public float CameraTouchSpeed = 0.01f;
     public float MinDistanceToMoveCamera = 0.3f;
 
+	public Vector3 vel;
 
 	public Button Left;
 	public Button Right;
@@ -91,6 +92,8 @@ public class PlayerInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		vel = Player.GetComponent<Rigidbody2D> ().velocity;
+
 		if (_isJumping) {
 			_playerAnim.SetBool ("onFloor", false);
 
@@ -128,7 +131,6 @@ public class PlayerInput : MonoBehaviour {
 				{
 					Player.Move(true, MinDistanceToMoveCamera);
 					_info.CheckInputFlip("A",_lastVelocity);
-			    	if (!_isJumping) Player.Move(true, MinDistanceToMoveCamera);
 				}
 
 			}  else if (Input.GetKey(KeyCode.D))
@@ -188,7 +190,7 @@ public class PlayerInput : MonoBehaviour {
 
 		//CheckJump();
 
-
+		#endif
 
 
 
@@ -196,10 +198,42 @@ public class PlayerInput : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		_lastVelocity = Player.GetComponent<Rigidbody2D> ().velocity.x;
+		#if UNITY_IOS || UNITY_ANDROID
 		CheckInput();
-    #endif
+   		#endif
+
+		_lastVelocity = Player.GetComponent<Rigidbody2D> ().velocity.x;
+
+		//NormalizeSlope ();
     }
+
+
+	void NormalizeSlope () {
+
+		// Attempt vertical normalization
+		if (PlayerTouchingSeesaw() /*grounded*/) {
+
+			Debug.Log ("AAA");
+
+			RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1f, _layerMask/*, whatIsGround*/);
+
+			if (hit.rigidbody.name == "Gangorra") {
+
+				if (hit.collider != null && Mathf.Abs(hit.normal.x) > 0.1f) {
+					Rigidbody2D body = GetComponent<Rigidbody2D>();
+					// Apply the opposite force against the slope force 
+					// You will need to provide your own slopeFriction to stabalize movement
+					body.velocity = new Vector2(body.velocity.x - (hit.normal.x * 0.1f), body.velocity.y);
+
+					//Move Player up or down to compensate for the slope below them
+					/*Vector3 pos = transform.position;
+					pos.y += -hit.normal.x * Mathf.Abs(body.velocity.x) * Time.deltaTime * (body.velocity.x - hit.normal.x > 0 ? 1 : -1);
+					transform.position = pos;*/
+				}
+
+			}
+		}
+	}
 		
 
 	public void JumpFunction() {

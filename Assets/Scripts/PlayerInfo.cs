@@ -71,12 +71,10 @@ public class PlayerInfo : MonoBehaviour {
     //Checa se o player está olhando para a esquerda ou direita
     void FixedUpdate()
     {
-       
+		_playerAnim.SetInteger("velocity", (int)(_rb.velocity.x));
     }
 
 	public void CheckInputFlip(string btn, float velocity) {
-
-		_playerAnim.SetInteger("velocity", (int)(_rb.velocity.x));
 
 		if ((btn == "D" || btn == "RightDir") && !facingRight)
 			Flip();
@@ -113,7 +111,7 @@ public class PlayerInfo : MonoBehaviour {
     }
 
     // Movimentação
-    public void Move(bool walkLeft, float minDistanceToMoveCamera)
+	public void Move(bool walkLeft, float minDistanceToMoveCamera/*, bool extraForce*/)
     {
 
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
@@ -127,9 +125,9 @@ public class PlayerInfo : MonoBehaviour {
             _playerAnim.SetBool("mirror", true);
             if (rb.velocity.x >= -MaxVelocity)
             {
-
-                Vector2 movement = Vector2.left * PaceSpeed * 8.47f;
-                rb.AddForce(movement);
+				rb.velocity = Vector2.left * PaceSpeed /* 8.47f*/; 
+                //Vector2 movement = Vector2.left * PaceSpeed * 8.47f;
+                //rb.AddForce(movement);
             }
 
         } else
@@ -137,9 +135,10 @@ public class PlayerInfo : MonoBehaviour {
             _playerAnim.SetBool("mirror", false);
             if (rb.velocity.x <= MaxVelocity)
             {
+				rb.velocity = Vector2.right * PaceSpeed /* 8.47f*/; 
 				
-                Vector2 movement = Vector2.right * PaceSpeed * 8.47f;
-                rb.AddForce(movement);
+                //Vector2 movement = Vector2.right * PaceSpeed * 8.47f;
+                //rb.AddForce(movement);
             }
         }
 
