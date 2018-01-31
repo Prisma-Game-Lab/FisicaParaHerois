@@ -61,8 +61,9 @@ public class ActionPanel : MonoBehaviour {
     public void OnActionChosen(int action)
     {
         //Ativa o painel de confirmar ação
-        ChooseActionMenu.gameObject.SetActive(false);
         ConfirmActionMenu.gameObject.SetActive(true);
+        //ChooseActionMenu.gameObject.SetActive(false);
+
 
         if (PlayerInfo.PlayerInstance.Actions.Count < action)
         {
@@ -72,10 +73,12 @@ public class ActionPanel : MonoBehaviour {
 
 		switch (action) {
 		case 0:
+            _actionAnim.SetBool("button2", true);
 			ChosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeGravityActionMinValue;
 			ChosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeGravityActionMaxValue;
 			break;
 		case 1:
+            _actionAnim.SetBool("button1", true);
 			ChosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeMassActionMinValue;
 			ChosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeMassActionMaxValue;
 			break;
@@ -85,6 +88,10 @@ public class ActionPanel : MonoBehaviour {
         ActionNameText.text = _chosenAction.GetActionName();
         _chosenAction.SetTarget(_physicsObject);
         ChosenValueSlider.value = _chosenAction.GetCurrentValue();
+
+        StartCoroutine(ButtonAnimDelay(1.45f));
+
+        ChooseActionMenu.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -104,6 +111,7 @@ public class ActionPanel : MonoBehaviour {
     {
         //_chosenAction.SetTarget(_physicsObject);
         _chosenAction.OnActionUse(_chosenValue);
+        StartCoroutine(ButtonAnimDelay(1.45f));
         OnChooseActionPanelActivated();
     }
 
@@ -112,6 +120,7 @@ public class ActionPanel : MonoBehaviour {
     /// </summary>
     public void OnActionCanceled()
     {
+        StartCoroutine(ButtonAnimDelay(1.45f));
         OnChooseActionPanelActivated();
     }
 
@@ -181,4 +190,13 @@ public class ActionPanel : MonoBehaviour {
 
         _physicsObject = null;
     }
+
+    public IEnumerator ButtonAnimDelay(float tempo)
+    {
+        _actionAnim.SetTrigger("go");
+
+        yield return new WaitForSecondsRealtime(tempo);
+    }
 }
+
+

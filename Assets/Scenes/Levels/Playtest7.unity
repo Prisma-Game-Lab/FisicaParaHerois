@@ -609,6 +609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -621,6 +622,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &44428429
 Rigidbody2D:
   serializedVersion: 4
@@ -804,6 +806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -816,6 +819,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &51874820
 Rigidbody2D:
   serializedVersion: 4
@@ -1351,6 +1355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -1363,6 +1368,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &106127627
 Rigidbody2D:
   serializedVersion: 4
@@ -1623,6 +1629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 0}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -5
@@ -1635,6 +1642,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 1
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &130536289
 Rigidbody2D:
   serializedVersion: 4
@@ -1866,6 +1874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 0}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -5
@@ -1878,6 +1887,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 1
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &151409179
 Rigidbody2D:
   serializedVersion: 4
@@ -3288,12 +3298,12 @@ Prefab:
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 569
+      value: 317.5
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 263
+      value: 178.5
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
@@ -5045,6 +5055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -5057,6 +5068,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &510794698
 Rigidbody2D:
   serializedVersion: 4
@@ -5579,6 +5591,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -5591,6 +5604,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &536051364
 Rigidbody2D:
   serializedVersion: 4
@@ -5892,6 +5906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -5904,6 +5919,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &584848247
 Rigidbody2D:
   serializedVersion: 4
@@ -6592,6 +6608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 0}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -5
@@ -6604,6 +6621,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 1
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &624508872
 Rigidbody2D:
   serializedVersion: 4
@@ -7825,6 +7843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 0}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -5
@@ -7837,6 +7856,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 1
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &737508467
 Rigidbody2D:
   serializedVersion: 4
@@ -9736,6 +9756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 0}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -5
@@ -9748,6 +9769,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 1
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &864083695
 Rigidbody2D:
   serializedVersion: 4
@@ -11428,6 +11450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 1055755417}
   ObjectSprite: {fileID: 0}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 0
     ChangeGravityActionMinValue: -5
@@ -11440,6 +11463,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!114 &1055755413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11458,6 +11482,7 @@ MonoBehaviour:
   jumpCheckDistance: 1
   CameraTouchSpeed: 0.01
   MinDistanceToMoveCamera: 0.3
+  vel: {x: 0, y: 0, z: 0}
   Left: {fileID: 0}
   Right: {fileID: 0}
   Jump: {fileID: 0}
@@ -11488,7 +11513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Life: 1
   PaceSpeed: 3.2
-  JumpForce: 60
+  JumpForce: 650
   MaxDistanceToNearbyObject: 1.5
   MaxVelocity: 3.5
   jump: {fileID: 8300000, guid: ae1b5aa20a8a94e528e90979c04287da, type: 3}
@@ -12969,6 +12994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -12981,6 +13007,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &1151742562
 Rigidbody2D:
   serializedVersion: 4
@@ -13113,6 +13140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -13125,6 +13153,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &1153882246
 Rigidbody2D:
   serializedVersion: 4
@@ -14484,6 +14513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -14496,6 +14526,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &1213907233
 Rigidbody2D:
   serializedVersion: 4
@@ -15970,6 +16001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -15982,6 +16014,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &1374747538
 Rigidbody2D:
   serializedVersion: 4
@@ -17190,6 +17223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 0}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -5
@@ -17202,6 +17236,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 1
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &1467093135
 Rigidbody2D:
   serializedVersion: 4
@@ -17334,6 +17369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -17346,6 +17382,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &1467374261
 Rigidbody2D:
   serializedVersion: 4
@@ -17946,6 +17983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -17958,6 +17996,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &1518871392
 Rigidbody2D:
   serializedVersion: 4
@@ -19207,6 +19246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -19219,6 +19259,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &1676427602
 Rigidbody2D:
   serializedVersion: 4
@@ -19548,6 +19589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -19560,6 +19602,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &1730859329
 Rigidbody2D:
   serializedVersion: 4
@@ -20188,6 +20231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 0}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -5
@@ -20200,6 +20244,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 1
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &1785674119
 Rigidbody2D:
   serializedVersion: 4
@@ -20515,6 +20560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -20527,6 +20573,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &1806338500
 Rigidbody2D:
   serializedVersion: 4
@@ -22501,6 +22548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -22513,6 +22561,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &1943568451
 Rigidbody2D:
   serializedVersion: 4
@@ -24556,6 +24605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -24568,6 +24618,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!50 &2143092975
 Rigidbody2D:
   serializedVersion: 4
