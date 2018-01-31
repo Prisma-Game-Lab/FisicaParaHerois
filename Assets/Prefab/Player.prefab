@@ -1649,6 +1649,7 @@ MonoBehaviour:
   jumpCheckDistance: 1
   CameraTouchSpeed: 0.01
   MinDistanceToMoveCamera: 0.3
+  vel: {x: 0, y: 0, z: 0}
   Left: {fileID: 0}
   Right: {fileID: 0}
   Jump: {fileID: 0}
@@ -1788,6 +1789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 50417449540055940}
   ObjectSprite: {fileID: 0}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 0
     ChangeGravityActionMinValue: -5
@@ -1800,6 +1802,7 @@ MonoBehaviour:
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
+  PhysicsVisionIsReady: 0
 --- !u!114 &114959493440092682
 MonoBehaviour:
   m_ObjectHideFlags: 1
