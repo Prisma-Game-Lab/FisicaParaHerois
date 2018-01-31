@@ -181,4 +181,14 @@ public class PhysicsObject : MonoBehaviour {
         PlayerInfo.PlayerInstance.PushPullJoint.enabled = true;
         PlayerInfo.PlayerInstance.PushPullJoint.connectedBody = physicsData;
     }
+
+    public void OnPhysicsVisionActivated()
+    {
+        _halo.enabled = true;
+    }
+
+    public void OnPhysicsVisionDeActivated()
+    {
+        _halo.enabled = false;
+    }
 }

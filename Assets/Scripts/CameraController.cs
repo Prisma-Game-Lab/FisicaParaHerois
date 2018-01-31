@@ -1,11 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PostProcessing;
 
 public class CameraController : MonoBehaviour {
     [HideInInspector] public Vector3 CurOffset = Vector3.zero;
     [HideInInspector] public float TimeLeft = 0;
     public float CameraSpeed = 5f;
+    public PostProcessingBehaviour PhysicsVisionPostProcessing;
+
+    void OnValidate()
+    {
+        if (PhysicsVisionPostProcessing == null)
+        {
+            PhysicsVisionPostProcessing = Camera.main.GetComponent<PostProcessingBehaviour>();
+        }
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -32,5 +42,21 @@ public class CameraController : MonoBehaviour {
     {
         CurOffset = offset;
         TimeLeft = 1/CameraSpeed;
+    }
+
+    public void OnPhysicsVisionActivated()
+    {
+        if (PhysicsVisionPostProcessing != null)
+        {
+            PhysicsVisionPostProcessing.enabled = true;
+        }
+    }
+
+    public void OnPhysicsVisionDeactivated()
+    {
+        if (PhysicsVisionPostProcessing != null)
+        {
+            PhysicsVisionPostProcessing.enabled = false;
+        }
     }
 }
