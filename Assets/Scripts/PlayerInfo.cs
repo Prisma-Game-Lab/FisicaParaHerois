@@ -27,6 +27,8 @@ public class PlayerInfo : MonoBehaviour {
     private float _damageNumber;
     private Rigidbody2D _rb;
     private Animator _playerAnim;
+    private bool _physicsVisionActivated = false;
+    private PhysicsObject[] _physicsObjects;
 
     void Awake()
     {
@@ -41,6 +43,7 @@ public class PlayerInfo : MonoBehaviour {
             Actions.Add(action);
         }
 
+        _physicsObjects = GameObject.Find("PhysicsObjects").transform.GetComponentsInChildren<PhysicsObject>();
     }
 
     // Use this for initialization
@@ -206,6 +209,27 @@ public class PlayerInfo : MonoBehaviour {
         }
 
         return nearestPhysicsObj;
+    }
+
+    public void ChangePhysicsVisionStatus()
+    {
+        _physicsVisionActivated = !_physicsVisionActivated;
+
+        switch (_physicsVisionActivated)
+        {
+            case true:
+                foreach (PhysicsObject p in _physicsObjects)
+                {
+                    p.OnPhysicsVisionActivated();
+                }
+                break;
+            default:
+                foreach (PhysicsObject p in _physicsObjects)
+                {
+                    p.OnPhysicsVisionDeActivated();
+                }
+                break;
+        }
     }
 
     // Métodos do Editor

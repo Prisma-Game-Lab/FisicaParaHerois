@@ -169,6 +169,12 @@ public class PlayerInput : MonoBehaviour {
 			GameManager.Instance.OnPause();
 		}
 
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            Debug.Log("VISÃO FÍSICA EXPERIMENTAL");
+            PlayerInfo.PlayerInstance.ChangePhysicsVisionStatus();
+        }
+
 		if (Input.GetMouseButtonDown(0))
 		{
 			_mouseOrigin = Input.mousePosition;
