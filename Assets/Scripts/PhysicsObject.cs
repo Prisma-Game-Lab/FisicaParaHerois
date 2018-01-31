@@ -184,11 +184,19 @@ public class PhysicsObject : MonoBehaviour {
 
     public void OnPhysicsVisionActivated()
     {
+        if (_halo == null)
+        {
+            return;
+        }
         _halo.enabled = true;
     }
 
     public void OnPhysicsVisionDeActivated()
     {
+        if (_halo == null)
+        {
+            return;
+        }
         _halo.enabled = false;
     }
 }
