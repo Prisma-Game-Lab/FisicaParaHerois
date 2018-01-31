@@ -57,8 +57,8 @@ public class PlayerInput : MonoBehaviour {
 		#if UNITY_IOS || UNITY_ANDROID
 
 		Jump.onClick.AddListener (JumpFunction);
-		Left.onClick.AddListener (LeftFunction);
-		Right.onClick.AddListener (RightFunction);
+		//Left.onClick.AddListener (LeftFunction);
+		//Right.onClick.AddListener (RightFunction);
 		Action.onClick.AddListener (ActionFunction);
 
 		#endif
@@ -271,6 +271,15 @@ public class PlayerInput : MonoBehaviour {
 				for (int i = 0; i < touches; i++) {
 					Touch touch = Input.GetTouch (i);
 
+					Debug.Log ("Touch 1 " + Input.GetTouch (0).position + " Touch 2 " + Input.GetTouch (1).position);
+					Debug.Log ("Left " + Left.transform.position);
+					Debug.Log ("Right " + Right.transform.position);
+					Debug.Log ("Jump " + Jump.transform.position);
+					Debug.Log ("Action " + Action.transform.position);
+
+					// Nao funciona e a altura e largura é 84 de todos
+					Debug.Log("Altura Right " + Right.transform.position.x + Left.GetComponent<RectTransform> ().rect.height);
+
 					// Verifica se o toque foi em algum item da UI
 					if (EventSystem.current.IsPointerOverGameObject (touch.fingerId)) {
 						GameObject HUDbnt = EventSystem.current.currentSelectedGameObject;
@@ -280,7 +289,7 @@ public class PlayerInput : MonoBehaviour {
 						Debug.Log ("Botão anterior " + _lastBntSelected + " botão atual " + HUDbnt.name);
 
 						if (_lastBntSelected != HUDbnt.name) {
-							UITouch (touch);
+							//UITouch (touch);
 						}
 
 						//Debug.Log ("BOTAO APERTADO " + touch.phase + " NOME DO BOTAO " + HUDbnt.name);
@@ -301,7 +310,7 @@ public class PlayerInput : MonoBehaviour {
 					// Verifica se o toque foi em algum item da UI (IsPointerOver pega apenas o toque no UI, 
 					// mas precisa do outro código para não perder uma referencia)
 					if (EventSystem.current.IsPointerOverGameObject (touch.fingerId) && IsPointerOverUIObject()) {
-						//Debug.Log ("UI is touched");
+						Debug.Log ("UI is touched");
 						UITouch (touch);
 					} else {
 						Debug.Log ("UI is not touched");
