@@ -125,7 +125,8 @@ public class PlayerInfo : MonoBehaviour {
             _playerAnim.SetBool("mirror", true);
             if (rb.velocity.x >= -MaxVelocity)
             {
-				rb.velocity = Vector2.left * PaceSpeed /* 8.47f*/; 
+				Vector2 vel = new Vector2 (-1*PaceSpeed, _rb.velocity.y);
+				rb.velocity = vel; 
                 //Vector2 movement = Vector2.left * PaceSpeed * 8.47f;
                 //rb.AddForce(movement);
             }
@@ -135,7 +136,9 @@ public class PlayerInfo : MonoBehaviour {
             _playerAnim.SetBool("mirror", false);
             if (rb.velocity.x <= MaxVelocity)
             {
-				rb.velocity = Vector2.right * PaceSpeed /* 8.47f*/; 
+				Vector2 vel = new Vector2 (PaceSpeed, _rb.velocity.y);
+
+				rb.velocity = vel; 
 				
                 //Vector2 movement = Vector2.right * PaceSpeed * 8.47f;
                 //rb.AddForce(movement);
