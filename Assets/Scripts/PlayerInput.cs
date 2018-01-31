@@ -44,7 +44,6 @@ public class PlayerInput : MonoBehaviour {
 	private bool _isJumping;
 
 	private string _lastBntSelected;
-	private float _lastVelocity;
 
 
 	private PlayerInfo _info;
@@ -125,12 +124,12 @@ public class PlayerInput : MonoBehaviour {
 					if (!_isJumping){
 
 						Player.Move(true, MinDistanceToMoveCamera);
-						_info.CheckInputFlip("A",_lastVelocity);
+						_info.CheckInputFlip("A");
 					}
 				} else
 				{
 					Player.Move(true, MinDistanceToMoveCamera);
-					_info.CheckInputFlip("A",_lastVelocity);
+					_info.CheckInputFlip("A");
 				}
 
 			}  else if (Input.GetKey(KeyCode.D))
@@ -139,12 +138,12 @@ public class PlayerInput : MonoBehaviour {
 				{
 					if (!_isJumping) {
 						Player.Move(false, MinDistanceToMoveCamera);
-						_info.CheckInputFlip("D",_lastVelocity);
+						_info.CheckInputFlip("D");
 					}
 				}  else
 				{
 					Player.Move(false, MinDistanceToMoveCamera);
-					_info.CheckInputFlip("D",_lastVelocity);
+					_info.CheckInputFlip("D");
 				} 
 			}
 
@@ -202,42 +201,10 @@ public class PlayerInput : MonoBehaviour {
 		CheckInput();
    		#endif
 
-		_lastVelocity = Player.GetComponent<Rigidbody2D> ().velocity.x;
-
-		//NormalizeSlope ();
     }
 
-
-	void NormalizeSlope () {
-
-		// Attempt vertical normalization
-		if (PlayerTouchingSeesaw() /*grounded*/) {
-
-			Debug.Log ("AAA");
-
-			RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1f, _layerMask/*, whatIsGround*/);
-
-			if (hit.rigidbody.name == "Gangorra") {
-
-				if (hit.collider != null && Mathf.Abs(hit.normal.x) > 0.1f) {
-					Rigidbody2D body = GetComponent<Rigidbody2D>();
-					// Apply the opposite force against the slope force 
-					// You will need to provide your own slopeFriction to stabalize movement
-					body.velocity = new Vector2(body.velocity.x - (hit.normal.x * 0.1f), body.velocity.y);
-
-					//Move Player up or down to compensate for the slope below them
-					/*Vector3 pos = transform.position;
-					pos.y += -hit.normal.x * Mathf.Abs(body.velocity.x) * Time.deltaTime * (body.velocity.x - hit.normal.x > 0 ? 1 : -1);
-					transform.position = pos;*/
-				}
-
-			}
-		}
-	}
-		
-
 	public void JumpFunction() {
-		if (!_isJumping) Player.Jump (/*_lastVelocity*/);
+		if (!_isJumping) Player.Jump ();
 	}
 
 	public void ActionFunction() {
@@ -253,11 +220,11 @@ public class PlayerInput : MonoBehaviour {
 		if (realJump){
 			if (!_isJumping) {
 				Player.Move(true, MinDistanceToMoveCamera);
-				_info.CheckInputFlip("LeftDir", _lastVelocity);
+				_info.CheckInputFlip("LeftDir");
 			}
 		} else {
 			Player.Move(true, MinDistanceToMoveCamera);
-			_info.CheckInputFlip("LeftDir", _lastVelocity);
+			_info.CheckInputFlip("LeftDir");
 		}
 
 	}
@@ -269,11 +236,11 @@ public class PlayerInput : MonoBehaviour {
 		if (realJump) {
 			if (!_isJumping) {
 				Player.Move(false, MinDistanceToMoveCamera);
-				_info.CheckInputFlip("RightDir",_lastVelocity);
+				_info.CheckInputFlip("RightDir");
 			}
 		} else {
 			Player.Move(false, MinDistanceToMoveCamera);
-			_info.CheckInputFlip("RightDir",_lastVelocity);
+			_info.CheckInputFlip("RightDir");
 		}
 	}
 
@@ -372,11 +339,11 @@ public class PlayerInput : MonoBehaviour {
 				if (realJump){
 					if (!_isJumping) {
 						Player.Move(true, MinDistanceToMoveCamera);
-						_info.CheckInputFlip("LeftDir", _lastVelocity);
+						_info.CheckInputFlip("LeftDir");
 					}
 				} else {
 					Player.Move(true, MinDistanceToMoveCamera);
-					_info.CheckInputFlip("LeftDir", _lastVelocity);
+					_info.CheckInputFlip("LeftDir");
 				}
 
 			} else if (HUDbnt.name == "RightDir") {
@@ -384,11 +351,11 @@ public class PlayerInput : MonoBehaviour {
 				if (realJump) {
 					if (!_isJumping) {
 						Player.Move(false, MinDistanceToMoveCamera);
-						_info.CheckInputFlip("RightDir",_lastVelocity);
+						_info.CheckInputFlip("RightDir");
 					}
 				} else {
 					Player.Move(false, MinDistanceToMoveCamera);
-					_info.CheckInputFlip("RightDir",_lastVelocity);
+					_info.CheckInputFlip("RightDir");
 				}
 			}
 
