@@ -220,12 +220,12 @@ Prefab:
     - target: {fileID: 224225941817044180, guid: a060453ba0132ef4a9e4430de4cc558a,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 547
+      value: 569
       objectReference: {fileID: 0}
     - target: {fileID: 224225941817044180, guid: a060453ba0132ef4a9e4430de4cc558a,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 268
+      value: 263
       objectReference: {fileID: 0}
     - target: {fileID: 224225941817044180, guid: a060453ba0132ef4a9e4430de4cc558a,
         type: 2}
@@ -472,6 +472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 0}
+  HaloPrefab: {fileID: 1687180426096842, guid: f9b3beb12b761ab4f92bea0de0dc5dde, type: 2}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -5
@@ -481,6 +482,7 @@ MonoBehaviour:
     ChangeMassActionMaxValue: 5
     PushPullAction: 1
   CanPlayerInteract: 1
+  OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   _hasChain: 0
 --- !u!50 &376478926
@@ -737,6 +739,12 @@ Prefab:
       propertyPath: AvailableActions.PushPullAction
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114482558399727070, guid: e0f7bda04a393394da61b997b63af29b,
+        type: 2}
+      propertyPath: HaloPrefab
+      value: 
+      objectReference: {fileID: 1687180426096842, guid: f9b3beb12b761ab4f92bea0de0dc5dde,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e0f7bda04a393394da61b997b63af29b, type: 2}
   m_IsPrefabParent: 0
@@ -1017,6 +1025,12 @@ Prefab:
       propertyPath: ActionMenu
       value: 
       objectReference: {fileID: 1053242532}
+    - target: {fileID: 114954749970618710, guid: b48bbaa0bcf85d942a750cc866f74e5a,
+        type: 2}
+      propertyPath: HaloPrefab
+      value: 
+      objectReference: {fileID: 1687180426096842, guid: f9b3beb12b761ab4f92bea0de0dc5dde,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b48bbaa0bcf85d942a750cc866f74e5a, type: 2}
   m_IsPrefabParent: 0
@@ -1098,6 +1112,12 @@ Prefab:
       propertyPath: speed
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 114939394257979852, guid: 6274ca956afa23946a3e466616c1252b,
+        type: 2}
+      propertyPath: HaloPrefab
+      value: 
+      objectReference: {fileID: 1687180426096842, guid: f9b3beb12b761ab4f92bea0de0dc5dde,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6274ca956afa23946a3e466616c1252b, type: 2}
   m_IsPrefabParent: 0
@@ -1211,6 +1231,12 @@ Prefab:
       propertyPath: AvailableActions.PushPullAction
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114482558399727070, guid: e0f7bda04a393394da61b997b63af29b,
+        type: 2}
+      propertyPath: HaloPrefab
+      value: 
+      objectReference: {fileID: 1687180426096842, guid: f9b3beb12b761ab4f92bea0de0dc5dde,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e0f7bda04a393394da61b997b63af29b, type: 2}
   m_IsPrefabParent: 0
