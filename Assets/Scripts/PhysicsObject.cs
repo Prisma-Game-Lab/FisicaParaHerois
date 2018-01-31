@@ -26,6 +26,8 @@ public class PhysicsObject : MonoBehaviour {
     private Behaviour _halo;
     [HideInInspector] public bool _hasChain = false;
 
+    private RigidbodyConstraints2D _defaultConstraints;
+
     [Header("DEBUG")]
     public bool PhysicsVisionIsReady = false;
 
@@ -67,6 +69,8 @@ public class PhysicsObject : MonoBehaviour {
         {
             _hasChain = true;
         }
+
+        _defaultConstraints = physicsData.constraints;
     }
 
     void Awake()
@@ -127,7 +131,7 @@ public class PhysicsObject : MonoBehaviour {
 
         if (!_pushPullAction)
         {
-            physicsData.velocity = new Vector2(0, 0);
+            physicsData.constraints = RigidbodyConstraints2D.FreezePosition;
             return;
         }
 
@@ -141,32 +145,21 @@ public class PhysicsObject : MonoBehaviour {
             return;
         }
 
-        if (!_pushPullAction)
+        if (!_pushPullAction && gameObject != PlayerInfo.PlayerInstance.gameObject)
         {
-            physicsData.velocity = new Vector2(0, 0);
-
-            if (OldPosition.x != Mathf.NegativeInfinity)
-            {
-                physicsData.position = OldPosition;
-            }
-
-            else
-            {
-                OldPosition = physicsData.position;
-            }
+            physicsData.constraints = RigidbodyConstraints2D.FreezePosition;
         }
 
         else
         {
-            OldPosition = physicsData.position;
-            //PlayerInfo.PlayerInstance.ObjectColliding = this;
-            //physicsData.AddForce(new Vector2(PlayerInfo.PlayerInstance.ForceToApplyOnObject,0));
+            physicsData.constraints = _defaultConstraints;
         }
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
         OldPosition = physicsData.position;
+        physicsData.constraints = _defaultConstraints;
     }
 
     public void OnPushPullActionUsed()
@@ -184,11 +177,19 @@ public class PhysicsObject : MonoBehaviour {
 
     public void OnPhysicsVisionActivated()
     {
+        if (_halo == null)
+        {
+            return;
+        }
         _halo.enabled = true;
     }
 
     public void OnPhysicsVisionDeActivated()
     {
+        if (_halo == null)
+        {
+            return;
+        }
         _halo.enabled = false;
     }
 }

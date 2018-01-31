@@ -41,7 +41,7 @@ public class PlayerInput : MonoBehaviour {
 	//mácara usada para ignorar o player
 	private int _layerMask;
 
-	private bool _isJumping;
+	public bool _isJumping;
 
 	private string _lastBntSelected;
 
@@ -169,6 +169,12 @@ public class PlayerInput : MonoBehaviour {
 			GameManager.Instance.OnPause();
 		}
 
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            Debug.Log("VISÃO FÍSICA EXPERIMENTAL");
+            PlayerInfo.PlayerInstance.ChangePhysicsVisionStatus();
+        }
+
 		if (Input.GetMouseButtonDown(0))
 		{
 			_mouseOrigin = Input.mousePosition;
@@ -279,6 +285,14 @@ public class PlayerInput : MonoBehaviour {
 
 					// Nao funciona e a altura e largura é 84 de todos
 					Debug.Log("Altura Right " + Right.transform.position.x + Left.GetComponent<RectTransform> ().rect.height);
+
+					if (Input.GetTouch (0).position.x >= Left.transform.position.x - (Left.GetComponent<RectTransform> ().rect.width / 2)
+					    && Input.GetTouch (0).position.x <= Left.transform.position.x + (Left.GetComponent<RectTransform> ().rect.width / 2)) {
+						if (Input.GetTouch (0).position.y >= Left.transform.position.y - (Left.GetComponent<RectTransform> ().rect.height / 2)
+							&& Input.GetTouch (0).position.y <= Left.transform.position.y + (Left.GetComponent<RectTransform> ().rect.height / 2)) {
+							Debug.Log("ta dentro do left");
+						}
+					}
 
 					// Verifica se o toque foi em algum item da UI
 					if (EventSystem.current.IsPointerOverGameObject (touch.fingerId)) {
