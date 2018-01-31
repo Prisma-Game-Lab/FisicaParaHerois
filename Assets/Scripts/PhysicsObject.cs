@@ -15,6 +15,7 @@ public class PhysicsObject : MonoBehaviour {
     public Rigidbody2D physicsData;
 
     public Sprite ObjectSprite;
+    public GameObject HaloPrefab;
     public AvailableActionsData AvailableActions;
     public bool CanPlayerInteract = true; //Define se o player pode interagir com esse objeto
     [HideInInspector] public Vector3 OldPosition = Vector3.negativeInfinity;
@@ -22,10 +23,46 @@ public class PhysicsObject : MonoBehaviour {
     private bool _pushPullAction = false;
     private float _realMass;
     public float _timeLeftToDeactivatePushPullAction = 0.5f;
+    private Behaviour _halo;
     [HideInInspector] public bool _hasChain = false;
+
+    [Header("DEBUG")]
+    public bool PhysicsVisionIsReady = false;
+
+    void OnValidate()
+    {
+        if (!PhysicsVisionIsReady)
+        {
+            return;
+        }
+
+        //Usado para a visão física
+        if (_halo == null)
+        {
+            _halo = (Behaviour)GetComponent("Halo");
+            if (HaloPrefab == null)
+            {
+                Debug.LogError("Halo não está setado no objeto " + gameObject.name);
+                return;
+            }
+
+            else
+            {
+                _halo = Instantiate(HaloPrefab, transform.position, Quaternion.identity, transform).GetComponent<Behaviour>();
+            }
+        }
+
+        _halo.enabled = false;
+    }
 
 	// Use this for initialization
 	void Start () {
+        //Pega a referência do halo
+        if (PhysicsVisionIsReady)
+        {
+            OnValidate();
+        }
+
         if(gameObject.GetComponent<HingeJoint2D>() != null)
         {
             _hasChain = true;

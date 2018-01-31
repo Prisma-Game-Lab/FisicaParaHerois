@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public void OnPause()
     {
-        Canvas cnv = GameObject.Find("Canvas").GetComponent<Canvas>();
+        Canvas cnv = (GameObject.Find("Canvas") != null) ? GameObject.Find("Canvas").GetComponent<Canvas>() : GameObject.Find("CanvasTemporaryFix").GetComponent<Canvas>();
         GameObject pause = cnv.transform.Find("Pause").GetComponent<GameObject>();
 
         if (IsPaused)
