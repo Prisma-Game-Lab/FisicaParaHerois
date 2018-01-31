@@ -94,7 +94,7 @@ public class PhysicsObject : MonoBehaviour {
                     PlayerInfo.PlayerInstance.PushPullJoint.connectedBody = null;
                     PlayerInfo.PlayerInstance.PushPullJoint.enabled = false;
                     //PlayerInfo.PlayerInstance.ObjectColliding = null;
-                    physicsData.mass = _realMass;
+                    //physicsData.mass = _realMass;
                 }
                  
             }
