@@ -122,7 +122,9 @@ public class PhysicsObject : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Se player não estiver envolvido na colisão, não faça nada
-		if ((collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject) && (collision.otherCollider.gameObject != PlayerInfo.PlayerInstance.gameObject)) {
+		if (((collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject) &&  /*player não está envolvido na colisão*/
+            (collision.otherCollider.gameObject != PlayerInfo.PlayerInstance.gameObject)) || /*player não está envolvido na colisão*/
+            (this.gameObject == PlayerInfo.PlayerInstance.gameObject) /*é o player*/) {
 			return;
 		} else {
 			//Physics2D.GetIgnoreCollision(collision.collider.gameObject, this.GetComponent<Collider2D>(),true)
