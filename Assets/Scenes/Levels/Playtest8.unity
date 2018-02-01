@@ -7201,6 +7201,9 @@ MonoBehaviour:
   CurOffset: {x: 0, y: 0, z: 0}
   TimeLeft: 0
   CameraSpeed: 5
+  PhysicsVisionPostProcessing: {fileID: 0}
+  Limit1: {x: 0, y: 0}
+  Limit2: {x: 0, y: 0}
 --- !u!61 &217571627
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7326,6 +7329,7 @@ MonoBehaviour:
   Right: {fileID: 0}
   Jump: {fileID: 0}
   Action: {fileID: 0}
+  _isJumping: 0
 --- !u!114 &217571634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12316,7 +12320,7 @@ Prefab:
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 475.5
+      value: 565
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
@@ -18023,7 +18027,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1062558365}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.26, y: -10.47, z: -0.55}
+  m_LocalPosition: {x: 3.38, y: -10.47, z: -0.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1265462991}
@@ -23013,7 +23017,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 4
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: a1bdcf326b53a4e90a32b1db2ff7b43a, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
