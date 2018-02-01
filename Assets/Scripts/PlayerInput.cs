@@ -23,11 +23,8 @@ public class PlayerInput : MonoBehaviour {
 
 	public Vector3 vel;
 
-	public Button Left;
-	public Button Right;
 	public Button Jump;
 	public Button Action;
-
 
 	private Vector3 _cameraOrigin;
 	private Vector3 _mouseOrigin;
@@ -56,14 +53,12 @@ public class PlayerInput : MonoBehaviour {
 
 		#if UNITY_IOS || UNITY_ANDROID
 
+		//Debug.Log(gameObject.transform.parent.Find("Canvas").Find("Jump").GetComponent<Button>().name + " AAAA");
+//		Debug.Log(gameObject.transform.parent.name + " AAAA");
 		Jump.onClick.AddListener (JumpFunction);
-		//Left.onClick.AddListener (LeftFunction);
-		//Right.onClick.AddListener (RightFunction);
-		Action.onClick.AddListener (ActionFunction);
+		//Action.onClick.AddListener (ActionFunction);
 
 		#endif
-
-		//_friction = Player.GetComponent<BoxCollider2D>().sharedMaterial.friction;
 
 		_cameraOrigin = Camera.main.transform.position; 
 	}
@@ -105,16 +100,6 @@ public class PlayerInput : MonoBehaviour {
 		} else {
 			_playerAnim.SetBool("onFloor", true);
 
-		}
-
-		// Fazer algo pra melhorar o movimento emcima da gangorra aqui!
-		if (PlayerTouchingSeesaw())
-		{
-			// Player.GetComponent<BoxCollider2D>().sharedMaterial.friction = 0.1f;
-			//print(Player.GetComponent<BoxCollider2D>().sharedMaterial.friction);
-		} else
-		{
-			//Player.GetComponent<BoxCollider2D>().sharedMaterial.friction = _friction;
 		}
 
 		// Verifica se estáodando o jogo no unity caso contráio serám algum mobile
@@ -194,13 +179,6 @@ public class PlayerInput : MonoBehaviour {
 			MoveCamera(move);
 		}
 
-		// Verifica se estáogando com iOS ou Android
-		#elif UNITY_IOS || UNITY_ANDROID
-
-		//CheckInput();
-
-		//CheckJump();
-
 		#endif
 
 
@@ -212,50 +190,16 @@ public class PlayerInput : MonoBehaviour {
 		#if UNITY_IOS || UNITY_ANDROID
 		CheckInput();
    		#endif
-
     }
 
 	public void JumpFunction() {
 		if (!_isJumping) Player.Jump ();
 	}
 
-	public void ActionFunction() {
-		print("Action");
+	/*public void ActionFunction() {
+		Debug.Log ("ACTION");
 		ActionButton();
-	}
-
-
-	public void LeftFunction() {
-
-		Debug.Log ("LEFT");
-		
-		if (realJump){
-			if (!_isJumping) {
-				Player.Move(true, MinDistanceToMoveCamera);
-				_info.CheckInputFlip("LeftDir");
-			}
-		} else {
-			Player.Move(true, MinDistanceToMoveCamera);
-			_info.CheckInputFlip("LeftDir");
-		}
-
-	}
-
-	public void RightFunction() {
-
-		Debug.Log ("RIGHT");
-
-		if (realJump) {
-			if (!_isJumping) {
-				Player.Move(false, MinDistanceToMoveCamera);
-				_info.CheckInputFlip("RightDir");
-			}
-		} else {
-			Player.Move(false, MinDistanceToMoveCamera);
-			_info.CheckInputFlip("RightDir");
-		}
-	}
-
+	}*/
 
 	public void ActionButton()
 	{
@@ -278,66 +222,19 @@ public class PlayerInput : MonoBehaviour {
 
 		if (touches > 0)
 		{
-			if (touches == 2) {
+			for (int i = 0; i < touches; i++)
+			{
+				Touch touch = Input.GetTouch(i);
 
-				for (int i = 0; i < touches; i++) {
-					Touch touch = Input.GetTouch (i);
-
-					Debug.Log ("Touch 1 " + Input.GetTouch (0).position + " Touch 2 " + Input.GetTouch (1).position);
-					Debug.Log ("Left " + Left.transform.position);
-					Debug.Log ("Right " + Right.transform.position);
-					Debug.Log ("Jump " + Jump.transform.position);
-					Debug.Log ("Action " + Action.transform.position);
-
-					// Nao funciona e a altura e largura é 84 de todos
-					Debug.Log("Altura Right " + Right.transform.position.x + Left.GetComponent<RectTransform> ().rect.height);
-
-					if (Input.GetTouch (0).position.x >= Left.transform.position.x - (Left.GetComponent<RectTransform> ().rect.width / 2)
-					    && Input.GetTouch (0).position.x <= Left.transform.position.x + (Left.GetComponent<RectTransform> ().rect.width / 2)) {
-						if (Input.GetTouch (0).position.y >= Left.transform.position.y - (Left.GetComponent<RectTransform> ().rect.height / 2)
-							&& Input.GetTouch (0).position.y <= Left.transform.position.y + (Left.GetComponent<RectTransform> ().rect.height / 2)) {
-							Debug.Log("ta dentro do left");
-						}
-					}
-
-					// Verifica se o toque foi em algum item da UI
-					if (EventSystem.current.IsPointerOverGameObject (touch.fingerId)) {
-						GameObject HUDbnt = EventSystem.current.currentSelectedGameObject;
-
-						Debug.Log ("Dois botões sendo apertados");
-
-						Debug.Log ("Botão anterior " + _lastBntSelected + " botão atual " + HUDbnt.name);
-
-						if (_lastBntSelected != HUDbnt.name) {
-							//UITouch (touch);
-						}
-
-						//Debug.Log ("BOTAO APERTADO " + touch.phase + " NOME DO BOTAO " + HUDbnt.name);
-						//if (touch.phase == TouchPhase.Began) {
-						//}
-					} else {
-						Debug.Log ("Move Camera");
-						MoveCamera (new Vector2 (-touch.deltaPosition.x * CameraTouchSpeed, -touch.deltaPosition.y * CameraTouchSpeed));
-					}
+				// Verifica se o toque foi em algum item da UI (IsPointerOver pega apenas o toque no UI, 
+				// mas precisa do outro código para não perder uma referencia)
+				if (EventSystem.current.IsPointerOverGameObject (touch.fingerId) && IsPointerOverUIObject()) {
+					Debug.Log ("UI is touched");
+					UITouch (touch);
+				} else {
+					Debug.Log ("UI is not touched");
+					ObjectsTouch (touch);
 				}
-			
-			} else {
-				
-				for (int i = 0; i < touches; i++)
-				{
-					Touch touch = Input.GetTouch(i);
-
-					// Verifica se o toque foi em algum item da UI (IsPointerOver pega apenas o toque no UI, 
-					// mas precisa do outro código para não perder uma referencia)
-					if (EventSystem.current.IsPointerOverGameObject (touch.fingerId) && IsPointerOverUIObject()) {
-						Debug.Log ("UI is touched");
-						UITouch (touch);
-					} else {
-						Debug.Log ("UI is not touched");
-						ObjectsTouch (touch);
-					}
-				}
-
 			}
 		}
 	}
@@ -363,44 +260,15 @@ public class PlayerInput : MonoBehaviour {
 		// Nã permite que o player clique no botã enquanto tiver no pause
 		if (!GameManager.IsPaused && !ActionPanel.Instance.isActiveAndEnabled) {
 
-			if (HUDbnt.name == "LeftDir") {
-
-				if (realJump){
-					if (!_isJumping) {
-						Player.Move(true, MinDistanceToMoveCamera);
-						_info.CheckInputFlip("LeftDir");
-					}
-				} else {
-					Player.Move(true, MinDistanceToMoveCamera);
-					_info.CheckInputFlip("LeftDir");
-				}
-
-			} else if (HUDbnt.name == "RightDir") {
-
-				if (realJump) {
-					if (!_isJumping) {
-						Player.Move(false, MinDistanceToMoveCamera);
-						_info.CheckInputFlip("RightDir");
-					}
-				} else {
-					Player.Move(false, MinDistanceToMoveCamera);
-					_info.CheckInputFlip("RightDir");
-				}
-			}
-
-			if (HUDbnt.name == "Jump")
-			{
-				if (!_isJumping) Player.Jump ();
-
-			}  else if (HUDbnt.name == "Action")
-			{
+		 	if (HUDbnt.name == "Action") {
 				if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
 				{
+				//if (touch.phase == TouchPhase.Stationary) {
 					print("Action");
-					ActionButton();
+					ActionButton();	
+				//}
 				}
 			}
-
 		}
 
 		if (HUDbnt.name == "Restart")

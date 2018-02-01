@@ -23,25 +23,24 @@ public class PhysicsObject : MonoBehaviour {
     private bool _pushPullAction = false;
     private float _realMass;
     public float _timeLeftToDeactivatePushPullAction = 0.5f;
-    private Behaviour _halo;
+    public Behaviour Halo;
     [HideInInspector] public bool _hasChain = false;
 
     private RigidbodyConstraints2D _defaultConstraints;
 
-    [Header("DEBUG")]
-    public bool PhysicsVisionIsReady = false;
+    private bool _physicsVisionIsReady = false;
 
     void OnValidate()
     {
-        if (!PhysicsVisionIsReady)
+        if (!_physicsVisionIsReady)
         {
             return;
         }
 
         //Usado para a visão física
-        if (_halo == null)
+        if (Halo == null)
         {
-            _halo = (Behaviour)GetComponent("Halo");
+            Halo = (Behaviour)GetComponent("Halo");
             if (HaloPrefab == null)
             {
                 Debug.LogError("Halo não está setado no objeto " + gameObject.name);
@@ -50,17 +49,25 @@ public class PhysicsObject : MonoBehaviour {
 
             else
             {
-                _halo = Instantiate(HaloPrefab, transform.position, Quaternion.identity, transform).GetComponent<Behaviour>();
+                Transform HaloInstance = transform.Find(HaloPrefab.name + "(Clone)");
+
+                if (HaloInstance == null)
+                {
+                    HaloInstance = Instantiate(HaloPrefab, transform.position, Quaternion.identity, transform).transform;
+                }
+
+                Halo = HaloInstance.GetComponent<Behaviour>();
             }
         }
 
-        _halo.enabled = false;
+        Halo.enabled = false;
     }
 
 	// Use this for initialization
 	void Start () {
         //Pega a referência do halo
-        if (PhysicsVisionIsReady)
+        _physicsVisionIsReady = PlayerInfo.PlayerInstance.PhysicsVisionIsReady;
+        if (_physicsVisionIsReady)
         {
             OnValidate();
         }
@@ -179,19 +186,19 @@ public class PhysicsObject : MonoBehaviour {
 
     public void OnPhysicsVisionActivated()
     {
-        if (_halo == null)
+        if (Halo == null)
         {
             return;
         }
-        _halo.enabled = true;
+        Halo.enabled = true;
     }
 
-    public void OnPhysicsVisionDeActivated()
+    public void OnPhysicsVisionDeactivated()
     {
-        if (_halo == null)
+        if (Halo == null)
         {
             return;
         }
-        _halo.enabled = false;
+        Halo.enabled = false;
     }
 }

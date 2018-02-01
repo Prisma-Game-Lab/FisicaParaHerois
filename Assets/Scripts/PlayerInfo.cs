@@ -29,6 +29,10 @@ public class PlayerInfo : MonoBehaviour {
     private Animator _playerAnim;
     private bool _physicsVisionActivated = false;
     private PhysicsObject[] _physicsObjects;
+    private CameraController _cameraController;
+
+    [Header("DEBUG")]
+    public bool PhysicsVisionIsReady = false;
 
     void Awake()
     {
@@ -43,7 +47,8 @@ public class PlayerInfo : MonoBehaviour {
             Actions.Add(action);
         }
 
-        _physicsObjects = GameObject.Find("PhysicsObjects").transform.GetComponentsInChildren<PhysicsObject>();
+        _physicsObjects = FindObjectsOfType<PhysicsObject>();
+        Debug.Log(_physicsObjects.Length);
     }
 
     // Use this for initialization
@@ -52,7 +57,7 @@ public class PlayerInfo : MonoBehaviour {
         _damageNumber = 0.0f;
         _rb = this.GetComponent<Rigidbody2D>();
         _playerAnim = this.GetComponent<Animator>();
-
+        _cameraController = PlayerInstance.GetComponent<CameraController>();
     }
 
     // Update is called once per frame
@@ -222,12 +227,14 @@ public class PlayerInfo : MonoBehaviour {
                 {
                     p.OnPhysicsVisionActivated();
                 }
+                _cameraController.OnPhysicsVisionActivated();
                 break;
             default:
                 foreach (PhysicsObject p in _physicsObjects)
                 {
-                    p.OnPhysicsVisionDeActivated();
+                    p.OnPhysicsVisionDeactivated();
                 }
+                _cameraController.OnPhysicsVisionDeactivated();
                 break;
         }
     }

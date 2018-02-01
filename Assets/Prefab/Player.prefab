@@ -862,7 +862,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1532169268261826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09, y: -1.49, z: 0}
+  m_LocalPosition: {x: -14.494813, y: -3.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4426270598163566}
@@ -1396,6 +1396,7 @@ MonoBehaviour:
   jump: {fileID: 8300000, guid: ae1b5aa20a8a94e528e90979c04287da, type: 3}
   facingRight: 1
   PushPullJoint: {fileID: 255160944354179838}
+  PhysicsVisionIsReady: 0
 --- !u!114 &114382412638908514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1502,7 +1503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 1.3000292
+  m_Length: 1.3000289
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4025932561827920}
   m_AttachedIK: {fileID: 0}
@@ -1582,7 +1583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 1.0000064
+  m_Length: 1.0000069
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4637732753763444}
   m_AttachedIK: {fileID: 0}
@@ -1653,10 +1654,8 @@ MonoBehaviour:
   realJump: 0
   jumpCheckDistance: 1
   CameraTouchSpeed: 0.01
-  MinDistanceToMoveCamera: 0.3
+  MinDistanceToMoveCamera: 1
   vel: {x: 0, y: 0, z: 0}
-  Left: {fileID: 0}
-  Right: {fileID: 0}
   Jump: {fileID: 0}
   Action: {fileID: 0}
   _isJumping: 0
@@ -1795,7 +1794,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 50417449540055940}
   ObjectSprite: {fileID: 0}
-  HaloPrefab: {fileID: 0}
+  HaloPrefab: {fileID: 1687180426096842, guid: f9b3beb12b761ab4f92bea0de0dc5dde, type: 2}
   AvailableActions:
     ChangeGravityAction: 0
     ChangeGravityActionMinValue: -5
@@ -1807,8 +1806,8 @@ MonoBehaviour:
   CanPlayerInteract: 0
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
+  Halo: {fileID: 0}
   _hasChain: 0
-  PhysicsVisionIsReady: 0
 --- !u!114 &114959493440092682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1845,7 +1844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 1.3000008
+  m_Length: 1.2999989
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4007233746882638}
   m_AttachedIK: {fileID: 0}
