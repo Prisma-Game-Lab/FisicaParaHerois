@@ -85,6 +85,12 @@ public class PlayerInput : MonoBehaviour {
 
 		//mácara colide com tudo menos o player
 		_layerMask = ~_layerMask;
+
+        //corrige instância do ActionPanel se não estiver setada
+        if (ActionPanel.Instance == null)
+        {
+            ActionPanel.Instance = ActionMenu.GetComponent<ActionPanel>();
+        }
 	}
 
 
