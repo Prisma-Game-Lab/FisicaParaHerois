@@ -28,12 +28,11 @@ public class PhysicsObject : MonoBehaviour {
 
     private RigidbodyConstraints2D _defaultConstraints;
 
-    [Header("DEBUG")]
-    public bool PhysicsVisionIsReady = false;
+    private bool _physicsVisionIsReady = false;
 
     void OnValidate()
     {
-        if (!PhysicsVisionIsReady)
+        if (!_physicsVisionIsReady)
         {
             return;
         }
@@ -50,7 +49,14 @@ public class PhysicsObject : MonoBehaviour {
 
             else
             {
-                Halo = Instantiate(HaloPrefab, transform.position, Quaternion.identity, transform).GetComponent<Behaviour>();
+                Transform HaloInstance = transform.Find(HaloPrefab.name + "(Clone)");
+
+                if (HaloInstance == null)
+                {
+                    HaloInstance = Instantiate(HaloPrefab, transform.position, Quaternion.identity, transform).transform;
+                }
+
+                Halo = HaloInstance.GetComponent<Behaviour>();
             }
         }
 
@@ -60,7 +66,8 @@ public class PhysicsObject : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //Pega a referência do halo
-        if (PhysicsVisionIsReady)
+        _physicsVisionIsReady = PlayerInfo.PlayerInstance.PhysicsVisionIsReady;
+        if (_physicsVisionIsReady)
         {
             OnValidate();
         }
@@ -186,7 +193,7 @@ public class PhysicsObject : MonoBehaviour {
         Halo.enabled = true;
     }
 
-    public void OnPhysicsVisionDeActivated()
+    public void OnPhysicsVisionDeactivated()
     {
         if (Halo == null)
         {
