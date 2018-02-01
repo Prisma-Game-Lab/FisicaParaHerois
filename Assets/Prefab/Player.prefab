@@ -1432,6 +1432,8 @@ MonoBehaviour:
   TimeLeft: 0
   CameraSpeed: 5
   PhysicsVisionPostProcessing: {fileID: 0}
+  Limit1: {x: 0, y: 0}
+  Limit2: {x: 0, y: 0}
 --- !u!114 &114431266912965068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1791,7 +1793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 50417449540055940}
   ObjectSprite: {fileID: 0}
-  HaloPrefab: {fileID: 0}
+  HaloPrefab: {fileID: 1687180426096842, guid: f9b3beb12b761ab4f92bea0de0dc5dde, type: 2}
   AvailableActions:
     ChangeGravityAction: 0
     ChangeGravityActionMinValue: -5
@@ -1803,6 +1805,7 @@ MonoBehaviour:
   CanPlayerInteract: 0
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
+  Halo: {fileID: 0}
   _hasChain: 0
   PhysicsVisionIsReady: 0
 --- !u!114 &114959493440092682

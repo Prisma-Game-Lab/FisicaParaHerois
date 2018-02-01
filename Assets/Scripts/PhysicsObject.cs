@@ -23,7 +23,7 @@ public class PhysicsObject : MonoBehaviour {
     private bool _pushPullAction = false;
     private float _realMass;
     public float _timeLeftToDeactivatePushPullAction = 0.5f;
-    private Behaviour _halo;
+    public Behaviour Halo;
     [HideInInspector] public bool _hasChain = false;
 
     private RigidbodyConstraints2D _defaultConstraints;
@@ -39,9 +39,9 @@ public class PhysicsObject : MonoBehaviour {
         }
 
         //Usado para a visão física
-        if (_halo == null)
+        if (Halo == null)
         {
-            _halo = (Behaviour)GetComponent("Halo");
+            Halo = (Behaviour)GetComponent("Halo");
             if (HaloPrefab == null)
             {
                 Debug.LogError("Halo não está setado no objeto " + gameObject.name);
@@ -50,11 +50,11 @@ public class PhysicsObject : MonoBehaviour {
 
             else
             {
-                _halo = Instantiate(HaloPrefab, transform.position, Quaternion.identity, transform).GetComponent<Behaviour>();
+                Halo = Instantiate(HaloPrefab, transform.position, Quaternion.identity, transform).GetComponent<Behaviour>();
             }
         }
 
-        _halo.enabled = false;
+        Halo.enabled = false;
     }
 
 	// Use this for initialization
@@ -179,19 +179,19 @@ public class PhysicsObject : MonoBehaviour {
 
     public void OnPhysicsVisionActivated()
     {
-        if (_halo == null)
+        if (Halo == null)
         {
             return;
         }
-        _halo.enabled = true;
+        Halo.enabled = true;
     }
 
     public void OnPhysicsVisionDeActivated()
     {
-        if (_halo == null)
+        if (Halo == null)
         {
             return;
         }
-        _halo.enabled = false;
+        Halo.enabled = false;
     }
 }
