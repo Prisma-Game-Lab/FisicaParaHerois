@@ -40,7 +40,6 @@ public class ActionPanel : MonoBehaviour {
     {
         // _objectSpriteHolder = transform.GetChild(2).GetChild(0).GetComponent<Image>();
         _actionAnim = gameObject.GetComponent<Animator>();
-        gameObject.SetActive(false);
     }
 
     void Awake()
@@ -147,8 +146,8 @@ public class ActionPanel : MonoBehaviour {
         //Ativa o painel de ação
         //_objectSpriteHolder.sprite = _physicsObject.ObjectSprite;
         gameObject.SetActive(true);
-        Time.timeScale = 0;
 
+        Time.timeScale = 0;
         OnChooseActionPanelActivated();
     }
 
