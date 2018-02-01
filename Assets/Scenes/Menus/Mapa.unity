@@ -189,10 +189,9 @@ MonoBehaviour:
   CameraTouchSpeed: 0.01
   MinDistanceToMoveCamera: 0.3
   vel: {x: 0, y: 0, z: 0}
-  Left: {fileID: 0}
-  Right: {fileID: 0}
   Jump: {fileID: 0}
   Action: {fileID: 0}
+  _isJumping: 0
 --- !u!1 &86051180
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,7 +779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &925265290
 Transform:
   m_ObjectHideFlags: 0
@@ -962,12 +961,12 @@ Prefab:
     - target: {fileID: 224330773786954354, guid: a500cc435186b3042b24f1a5335c7a30,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 239.5
+      value: 373
       objectReference: {fileID: 0}
     - target: {fileID: 224330773786954354, guid: a500cc435186b3042b24f1a5335c7a30,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 134.5
+      value: 269.5
       objectReference: {fileID: 0}
     - target: {fileID: 224330773786954354, guid: a500cc435186b3042b24f1a5335c7a30,
         type: 2}

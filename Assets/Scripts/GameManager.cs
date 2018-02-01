@@ -35,6 +35,11 @@ public class GameManager : MonoBehaviour {
         IsEnded = false;
 	}
 
+    public void Restart()
+    {
+        ReloadScene();
+    }
+
     void Awake()
     {
         //Se registra como instância de GameManager
@@ -91,6 +96,11 @@ public class GameManager : MonoBehaviour {
         }
 
         IsPaused = !IsPaused;
+    }
+
+    public void ChangeScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 
     public void OnQuit()
