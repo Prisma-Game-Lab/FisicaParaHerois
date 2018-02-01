@@ -53,6 +53,8 @@ public class PlayerInput : MonoBehaviour {
 
 		#if UNITY_IOS || UNITY_ANDROID
 
+		//Debug.Log(gameObject.transform.parent.Find("Canvas").Find("Jump").GetComponent<Button>().name + " AAAA");
+//		Debug.Log(gameObject.transform.parent.name + " AAAA");
 		Jump.onClick.AddListener (JumpFunction);
 		//Action.onClick.AddListener (ActionFunction);
 
@@ -195,7 +197,7 @@ public class PlayerInput : MonoBehaviour {
 	}
 
 	/*public void ActionFunction() {
-		print("Action");
+		Debug.Log ("ACTION");
 		ActionButton();
 	}*/
 
