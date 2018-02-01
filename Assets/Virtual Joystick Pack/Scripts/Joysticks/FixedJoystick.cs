@@ -15,8 +15,17 @@ public class FixedJoystick : Joystick
 	private bool _realJump;
 	private bool _isJumping;
 
+    void OnValidate()
+    {
+        if (Player == null)
+        {
+            Player = PlayerInfo.PlayerInstance;
+        }
+    }
+
     void Start()
     {
+        OnValidate();
 		_info = Player.GetComponent<PlayerInfo> ();
 		_input = Player.GetComponent<PlayerInput> ();
 		_realJump = _input.realJump;
