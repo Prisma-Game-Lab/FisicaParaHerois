@@ -75,6 +75,17 @@ public class PlayerInput : MonoBehaviour {
 			layerIndex = 0;
 		}
 
+        //tenta achar action menu se não estiver setado
+        if (ActionMenu == null)
+        {
+            ActionMenu = GameObject.Find("Canvas").transform.Find("ActionPanel").gameObject;
+
+            if (ActionMenu == null)
+            {
+                Debug.LogError("ActionMenu não foi setado no PlayerInput");
+            }
+        }
+
 		//mácara sóolide com player
 		_layerMask = (1 << layerIndex);
 
