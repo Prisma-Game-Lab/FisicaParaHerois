@@ -82,8 +82,8 @@ public class CameraController : MonoBehaviour {
 
     public void LateUpdate()
     {
-        Vector3 newPos = new Vector3(Mathf.Clamp(Camera.main.transform.position.x, _minX, _maxX), Mathf.Clamp(Camera.main.transform.position.y, _minY, _maxY), Camera.main.transform.position.z);
-        Camera.main.transform.SetPositionAndRotation(newPos, Camera.main.transform.rotation);
+        //Vector3 newPos = new Vector3(Mathf.Clamp(Camera.main.transform.position.x, _minX, _maxX), Mathf.Clamp(Camera.main.transform.position.y, _minY, _maxY), Camera.main.transform.position.z);
+        //Camera.main.transform.SetPositionAndRotation(newPos, Camera.main.transform.rotation);
     }
 
     public void Move(Vector3 offset)
