@@ -171,12 +171,7 @@ public class PhysicsObject : MonoBehaviour {
 
     void OnCollisionExit2D(Collision2D collision)
     {
-<<<<<<< HEAD
-        _oldPosition = physicsData.position;
-=======
-        OldPosition = physicsData.position;
         physicsData.constraints = _defaultConstraints;
->>>>>>> 7148147cec99a1b995cc7763b4e7019d5798525a
     }
 
     public void OnPushPullActionUsed()
