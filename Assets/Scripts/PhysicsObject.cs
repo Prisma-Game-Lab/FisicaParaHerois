@@ -34,6 +34,14 @@ public class PhysicsObject : MonoBehaviour {
 
     void OnValidate()
     {
+        if (gameObject.CompareTag("Box"))
+        {
+            if (gameObject.GetComponent<FreezeBox>() == null)
+            {
+                gameObject.AddComponent<FreezeBox>();
+            }
+        }
+
         if (!_physicsVisionIsReady)
         {
             return;

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50561601636771020}
   - component: {fileID: 114482558399727070}
   - component: {fileID: 61850565119047228}
+  - component: {fileID: 114086629823827988}
   m_Layer: 0
   m_Name: Physics Object
   m_TagString: Box
@@ -130,6 +131,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114086629823827988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1556055190346826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b44d7ee17541a9429b4824cde41f284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114482558399727070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
-  HaloPrefab: {fileID: 1687180426096842, guid: f9b3beb12b761ab4f92bea0de0dc5dde, type: 2}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -5
@@ -153,8 +165,6 @@ MonoBehaviour:
     ChangeMassActionMaxValue: 5
     PushPullAction: 1
   CanPlayerInteract: 1
-  OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
-  PhysicsVisionIsReady: 0
