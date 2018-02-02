@@ -176,6 +176,12 @@ public class PlayerInfo : MonoBehaviour {
 
 	public void Jump(/*float velocity*/)
     {
+        if (PushPullJoint.connectedBody != null)
+        {
+            //não pode pular enquanto segura uma caixa (argumento do Nelson: ela tem no minimo o peso do Player)
+            return;
+        }
+
         _rb.AddForce(Vector2.up * JumpForce);
 		/*if (velocity > 0) {
 
