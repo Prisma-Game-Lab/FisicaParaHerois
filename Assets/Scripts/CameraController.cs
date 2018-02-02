@@ -32,9 +32,13 @@ public class CameraController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//calculate maximum view points
+        //calculate maximum camera positions, based on limits set and some camera calculations
+        _maxY = Mathf.Max(Limit1.y, Limit2.y) - Camera.main.orthographicSize;
+        _minY = Mathf.Min(Limit1.y, Limit2.y) + Camera.main.orthographicSize;
+        _maxX = Mathf.Max(Limit1.x, Limit2.x) - Camera.main.orthographicSize * Screen.width / Screen.height;
+        _minX = Mathf.Min(Limit1.x, Limit2.x) + Camera.main.orthographicSize * Screen.width / Screen.height;
 
-	}
+    }
 	
 	// Update is called once per frame
 	public void Update () {
@@ -75,6 +79,12 @@ public class CameraController : MonoBehaviour {
             TimeLeft = 0;
         }
 	}
+
+    public void LateUpdate()
+    {
+        Vector3 newPos = new Vector3(Mathf.Clamp(Camera.main.transform.position.x, _minX, _maxX), Mathf.Clamp(Camera.main.transform.position.y, _minY, _maxY), Camera.main.transform.position.z);
+        Camera.main.transform.SetPositionAndRotation(newPos, Camera.main.transform.rotation);
+    }
 
     public void Move(Vector3 offset)
     {

@@ -195,8 +195,8 @@ MonoBehaviour:
   CanPlayerInteract: 1
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
+  Halo: {fileID: 0}
   _hasChain: 0
-  PhysicsVisionIsReady: 0
 --- !u!50 &252935
 Rigidbody2D:
   serializedVersion: 4
@@ -5681,8 +5681,8 @@ MonoBehaviour:
   CanPlayerInteract: 0
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 1
+  Halo: {fileID: 0}
   _hasChain: 0
-  PhysicsVisionIsReady: 0
 --- !u!50 &107242855
 Rigidbody2D:
   serializedVersion: 4
@@ -11203,6 +11203,11 @@ MonoBehaviour:
   CurOffset: {x: 0, y: 0, z: 0}
   TimeLeft: 0
   CameraSpeed: 5
+  PhysicsVisionPostProcessing: {fileID: 0}
+  disableScroll: 0
+  showBoundingBox: 1
+  Limit1: {x: -33.72297, y: -0.24305725, z: 0}
+  Limit2: {x: 9.968729, y: -33.24482, z: 0}
 --- !u!61 &221269197
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11303,8 +11308,8 @@ MonoBehaviour:
   CanPlayerInteract: 0
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
+  Halo: {fileID: 0}
   _hasChain: 0
-  PhysicsVisionIsReady: 0
 --- !u!114 &221269203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11324,10 +11329,9 @@ MonoBehaviour:
   CameraTouchSpeed: 0.01
   MinDistanceToMoveCamera: 0.3
   vel: {x: 0, y: 0, z: 0}
-  Left: {fileID: 0}
-  Right: {fileID: 0}
   Jump: {fileID: 0}
   Action: {fileID: 0}
+  _isJumping: 0
 --- !u!114 &221269204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11360,6 +11364,7 @@ MonoBehaviour:
   jump: {fileID: 8300000, guid: ae1b5aa20a8a94e528e90979c04287da, type: 3}
   facingRight: 1
   PushPullJoint: {fileID: 221269195}
+  PhysicsVisionIsReady: 0
 --- !u!61 &221269206
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18780,8 +18785,8 @@ MonoBehaviour:
   CanPlayerInteract: 1
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
+  Halo: {fileID: 0}
   _hasChain: 0
-  PhysicsVisionIsReady: 0
 --- !u!50 &346978034
 Rigidbody2D:
   serializedVersion: 4
@@ -19503,8 +19508,8 @@ MonoBehaviour:
   CanPlayerInteract: 1
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
+  Halo: {fileID: 0}
   _hasChain: 0
-  PhysicsVisionIsReady: 0
 --- !u!50 &357091009
 Rigidbody2D:
   serializedVersion: 4
@@ -36708,8 +36713,8 @@ MonoBehaviour:
   CanPlayerInteract: 1
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
+  Halo: {fileID: 0}
   _hasChain: 0
-  PhysicsVisionIsReady: 0
 --- !u!50 &691749087
 Rigidbody2D:
   serializedVersion: 4
@@ -62885,8 +62890,8 @@ MonoBehaviour:
   CanPlayerInteract: 1
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
+  Halo: {fileID: 0}
   _hasChain: 0
-  PhysicsVisionIsReady: 0
 --- !u!50 &1050093329
 Rigidbody2D:
   serializedVersion: 4
@@ -71239,8 +71244,8 @@ MonoBehaviour:
   CanPlayerInteract: 1
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
+  Halo: {fileID: 0}
   _hasChain: 0
-  PhysicsVisionIsReady: 0
 --- !u!50 &1213694709
 Rigidbody2D:
   serializedVersion: 4
@@ -81881,8 +81886,8 @@ MonoBehaviour:
   CanPlayerInteract: 0
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 1
+  Halo: {fileID: 0}
   _hasChain: 0
-  PhysicsVisionIsReady: 0
 --- !u!50 &1377848717
 Rigidbody2D:
   serializedVersion: 4
@@ -93380,8 +93385,8 @@ MonoBehaviour:
   CanPlayerInteract: 0
   OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 1
+  Halo: {fileID: 0}
   _hasChain: 0
-  PhysicsVisionIsReady: 0
 --- !u!50 &1566927489
 Rigidbody2D:
   serializedVersion: 4
@@ -120125,12 +120130,12 @@ Prefab:
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 475.5
+      value: 330
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 267.5
+      value: 155
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}

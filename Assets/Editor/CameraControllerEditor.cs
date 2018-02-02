@@ -23,9 +23,6 @@ public class CameraControllerEditor : Editor {
 
         
 
-        //EditorGUI.BeginChangeCheck();
-        //c.Limit1 = Handles.PositionHandle(c.Limit1, Quaternion.identity);
-        //EditorGUI.EndChangeCheck();
 
         //EditorGUI.BeginChangeCheck();
         //Vector3 newL1 = Handles.PositionHandle(c.Limit1, Quaternion.identity);
@@ -40,7 +37,18 @@ public class CameraControllerEditor : Editor {
 
     public void OnSceneGUI()
     {
-        CameraController c = (CameraController) target;
-        if(c.showBoundingBox) Handles.DrawSolidRectangleWithOutline(new Rect(c.Limit1.x, c.Limit1.y, c.Limit2.x, c.Limit2.y), new Color(0.5f, 0.5f, 0.5f, 0.2f), Color.black);
+        CameraController c = (CameraController)target;
+        if (c.showBoundingBox)
+        {
+            //draws rectangle
+            Rect drawRect = new Rect(Mathf.Min(c.Limit1.x, c.Limit2.x), Mathf.Min(c.Limit1.y, c.Limit2.y), Mathf.Abs(c.Limit1.x - c.Limit2.x), Mathf.Abs(c.Limit1.y - c.Limit2.y));
+            Handles.DrawSolidRectangleWithOutline(drawRect, new Color(0.5f, 0.5f, 0.5f, 0.2f), Color.black);
+
+            //draw handles
+            EditorGUI.BeginChangeCheck();
+            c.Limit1 = Handles.FreeMoveHandle(c.Limit1, Quaternion.identity, _size, _snap, Handles.RectangleHandleCap);
+            c.Limit2 = Handles.FreeMoveHandle(c.Limit2, Quaternion.identity, _size, _snap, Handles.RectangleHandleCap);
+            EditorGUI.EndChangeCheck();
+        }
     }
 }
