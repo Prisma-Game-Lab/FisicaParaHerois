@@ -4214,6 +4214,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 111507698}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &114053908 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1453035809493322, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
+    type: 2}
+  m_PrefabInternal: {fileID: 2061621141}
 --- !u!1 &116430072
 GameObject:
   m_ObjectHideFlags: 0
@@ -7664,8 +7669,8 @@ MonoBehaviour:
   PhysicsVisionPostProcessing: {fileID: 0}
   disableScroll: 0
   showBoundingBox: 1
-  Limit1: {x: -33.72297, y: -0.24305725, z: 0}
-  Limit2: {x: 9.968729, y: -33.24482, z: 0}
+  Limit1: {x: -32.960815, y: -0.81467247, z: 0}
+  Limit2: {x: 9.460627, y: -32.10159, z: 0}
 --- !u!61 &221269197
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7779,15 +7784,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 221269205}
-  ActionMenu: {fileID: 0}
+  ActionMenu: {fileID: 114053908}
   HoldTime: 0.8
   realJump: 0
   jumpCheckDistance: 1
   CameraTouchSpeed: 0.01
   MinDistanceToMoveCamera: 0.3
   vel: {x: 0, y: 0, z: 0}
-  Jump: {fileID: 0}
-  Action: {fileID: 0}
+  Jump: {fileID: 1599884086}
+  Action: {fileID: 598411897}
   _isJumping: 0
 --- !u!114 &221269204
 MonoBehaviour:
@@ -23410,6 +23415,12 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &598411897 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114806804259645720, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
+    type: 2}
+  m_PrefabInternal: {fileID: 2061621141}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &598939849
 GameObject:
   m_ObjectHideFlags: 0
@@ -72411,6 +72422,12 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1599884086 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114593468436971738, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
+    type: 2}
+  m_PrefabInternal: {fileID: 2061621141}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1600971987
 GameObject:
   m_ObjectHideFlags: 0
@@ -82098,7 +82115,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1872504834}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.56, y: -4.83, z: -10}
+  m_LocalPosition: {x: -23.23, y: -14.99, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -90594,12 +90611,12 @@ Prefab:
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 565
+      value: 404
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 267.5
+      value: 227.5
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
