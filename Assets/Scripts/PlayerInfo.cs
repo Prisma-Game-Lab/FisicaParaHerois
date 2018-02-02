@@ -27,6 +27,12 @@ public class PlayerInfo : MonoBehaviour {
     private float _damageNumber;
     private Rigidbody2D _rb;
     private Animator _playerAnim;
+    private bool _physicsVisionActivated = false;
+    private PhysicsObject[] _physicsObjects;
+    private CameraController _cameraController;
+
+    [Header("DEBUG")]
+    public bool PhysicsVisionIsReady = false;
 
     void Awake()
     {
@@ -41,6 +47,8 @@ public class PlayerInfo : MonoBehaviour {
             Actions.Add(action);
         }
 
+        _physicsObjects = FindObjectsOfType<PhysicsObject>();
+        Debug.Log(_physicsObjects.Length);
     }
 
     // Use this for initialization
@@ -49,7 +57,7 @@ public class PlayerInfo : MonoBehaviour {
         _damageNumber = 0.0f;
         _rb = this.GetComponent<Rigidbody2D>();
         _playerAnim = this.GetComponent<Animator>();
-
+        _cameraController = PlayerInstance.GetComponent<CameraController>();
     }
 
     // Update is called once per frame
@@ -71,12 +79,10 @@ public class PlayerInfo : MonoBehaviour {
     //Checa se o player está olhando para a esquerda ou direita
     void FixedUpdate()
     {
-       
+		_playerAnim.SetInteger("velocity", (int)(_rb.velocity.x));
     }
 
-	public void CheckInputFlip(string btn, float velocity) {
-
-		_playerAnim.SetInteger("velocity", (int)(_rb.velocity.x));
+	public void CheckInputFlip(string btn) {
 
 		if ((btn == "D" || btn == "RightDir") && !facingRight)
 			Flip();
@@ -113,7 +119,7 @@ public class PlayerInfo : MonoBehaviour {
     }
 
     // Movimentação
-    public void Move(bool walkLeft, float minDistanceToMoveCamera)
+	public void Move(bool walkLeft, float minDistanceToMoveCamera/*, bool extraForce*/)
     {
 
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
@@ -127,9 +133,10 @@ public class PlayerInfo : MonoBehaviour {
             _playerAnim.SetBool("mirror", true);
             if (rb.velocity.x >= -MaxVelocity)
             {
-
-                Vector2 movement = Vector2.left * PaceSpeed * 8.47f;
-                rb.AddForce(movement);
+				Vector2 vel = new Vector2 (-1*PaceSpeed, _rb.velocity.y);
+				rb.velocity = vel; 
+                //Vector2 movement = Vector2.left * PaceSpeed * 8.47f;
+                //rb.AddForce(movement);
             }
 
         } else
@@ -137,9 +144,12 @@ public class PlayerInfo : MonoBehaviour {
             _playerAnim.SetBool("mirror", false);
             if (rb.velocity.x <= MaxVelocity)
             {
+				Vector2 vel = new Vector2 (PaceSpeed, _rb.velocity.y);
+
+				rb.velocity = vel; 
 				
-                Vector2 movement = Vector2.right * PaceSpeed * 8.47f;
-                rb.AddForce(movement);
+                //Vector2 movement = Vector2.right * PaceSpeed * 8.47f;
+                //rb.AddForce(movement);
             }
         }
 
@@ -204,6 +214,29 @@ public class PlayerInfo : MonoBehaviour {
         }
 
         return nearestPhysicsObj;
+    }
+
+    public void ChangePhysicsVisionStatus()
+    {
+        _physicsVisionActivated = !_physicsVisionActivated;
+
+        switch (_physicsVisionActivated)
+        {
+            case true:
+                foreach (PhysicsObject p in _physicsObjects)
+                {
+                    p.OnPhysicsVisionActivated();
+                }
+                _cameraController.OnPhysicsVisionActivated();
+                break;
+            default:
+                foreach (PhysicsObject p in _physicsObjects)
+                {
+                    p.OnPhysicsVisionDeactivated();
+                }
+                _cameraController.OnPhysicsVisionDeactivated();
+                break;
+        }
     }
 
     // Métodos do Editor

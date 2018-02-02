@@ -35,6 +35,11 @@ public class GameManager : MonoBehaviour {
         IsEnded = false;
 	}
 
+    public void Restart()
+    {
+        ReloadScene();
+    }
+
     void Awake()
     {
         //Se registra como instância de GameManager
@@ -73,7 +78,7 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public void OnPause()
     {
-        Canvas cnv = GameObject.Find("Canvas").GetComponent<Canvas>();
+        Canvas cnv = (GameObject.Find("Canvas") != null) ? GameObject.Find("Canvas").GetComponent<Canvas>() : GameObject.Find("CanvasTemporaryFix").GetComponent<Canvas>();
         GameObject pause = cnv.transform.Find("Pause").GetComponent<GameObject>();
 
         if (IsPaused)
@@ -91,6 +96,11 @@ public class GameManager : MonoBehaviour {
         }
 
         IsPaused = !IsPaused;
+    }
+
+    public void ChangeScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 
     public void OnQuit()

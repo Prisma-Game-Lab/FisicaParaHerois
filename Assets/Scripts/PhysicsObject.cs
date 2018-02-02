@@ -15,6 +15,7 @@ public class PhysicsObject : MonoBehaviour {
     public Rigidbody2D physicsData;
 
     public Sprite ObjectSprite;
+    public GameObject HaloPrefab;
     public AvailableActionsData AvailableActions;
     public bool CanPlayerInteract = true; //Define se o player pode interagir com esse objeto
 
@@ -24,14 +25,61 @@ public class PhysicsObject : MonoBehaviour {
     private bool _pushPullAction = false;
     private float _realMass;
     public float _timeLeftToDeactivatePushPullAction = 0.5f;
+    public Behaviour Halo;
     [HideInInspector] public bool _hasChain = false;
+
+    private RigidbodyConstraints2D _defaultConstraints;
+
+    private bool _physicsVisionIsReady = false;
+
+    void OnValidate()
+    {
+        if (!_physicsVisionIsReady)
+        {
+            return;
+        }
+
+        //Usado para a visão física
+        if (Halo == null)
+        {
+            Halo = (Behaviour)GetComponent("Halo");
+            if (HaloPrefab == null)
+            {
+                Debug.LogError("Halo não está setado no objeto " + gameObject.name);
+                return;
+            }
+
+            else
+            {
+                Transform HaloInstance = transform.Find(HaloPrefab.name + "(Clone)");
+
+                if (HaloInstance == null)
+                {
+                    HaloInstance = Instantiate(HaloPrefab, transform.position, Quaternion.identity, transform).transform;
+                }
+
+                Halo = HaloInstance.GetComponent<Behaviour>();
+            }
+        }
+
+        Halo.enabled = false;
+    }
 
 	// Use this for initialization
 	void Start () {
+        //Pega a referência do halo
+        _physicsVisionIsReady = PlayerInfo.PlayerInstance.PhysicsVisionIsReady;
+        if (_physicsVisionIsReady)
+        {
+            OnValidate();
+        }
+
         if(gameObject.GetComponent<HingeJoint2D>() != null)
         {
             _hasChain = true;
         }
+
+        _defaultConstraints = physicsData.constraints;
     }
 
     void Awake()
@@ -61,7 +109,7 @@ public class PhysicsObject : MonoBehaviour {
                     PlayerInfo.PlayerInstance.PushPullJoint.connectedBody = null;
                     PlayerInfo.PlayerInstance.PushPullJoint.enabled = false;
                     //PlayerInfo.PlayerInstance.ObjectColliding = null;
-                    physicsData.mass = _realMass;
+                    //physicsData.mass = _realMass;
                 }
                  
             }
@@ -85,7 +133,9 @@ public class PhysicsObject : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Se player não estiver envolvido na colisão, não faça nada
-		if ((collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject) && (collision.otherCollider.gameObject != PlayerInfo.PlayerInstance.gameObject)) {
+		if (((collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject) &&  /*player não está envolvido na colisão*/
+            (collision.otherCollider.gameObject != PlayerInfo.PlayerInstance.gameObject)) || /*player não está envolvido na colisão*/
+            (this.gameObject == PlayerInfo.PlayerInstance.gameObject) /*é o player*/) {
 			return;
 		} else {
 			//Physics2D.GetIgnoreCollision(collision.collider.gameObject, this.GetComponent<Collider2D>(),true)
@@ -94,7 +144,7 @@ public class PhysicsObject : MonoBehaviour {
 
         if (!_pushPullAction)
         {
-            physicsData.velocity = new Vector2(0, 0);
+            physicsData.constraints = RigidbodyConstraints2D.FreezePosition;
             return;
         }
 
@@ -108,32 +158,25 @@ public class PhysicsObject : MonoBehaviour {
             return;
         }
 
-        if (!_pushPullAction)
+        if (!_pushPullAction && gameObject != PlayerInfo.PlayerInstance.gameObject)
         {
-            physicsData.velocity = new Vector2(0, 0);
-
-            if (_oldPosition.x != Mathf.NegativeInfinity)
-            {
-                physicsData.position = _oldPosition;
-            }
-
-            else
-            {
-                _oldPosition = physicsData.position;
-            }
+            physicsData.constraints = RigidbodyConstraints2D.FreezePosition;
         }
 
         else
         {
-            _oldPosition = physicsData.position;
-            //PlayerInfo.PlayerInstance.ObjectColliding = this;
-            //physicsData.AddForce(new Vector2(PlayerInfo.PlayerInstance.ForceToApplyOnObject,0));
+            physicsData.constraints = _defaultConstraints;
         }
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
+<<<<<<< HEAD
         _oldPosition = physicsData.position;
+=======
+        OldPosition = physicsData.position;
+        physicsData.constraints = _defaultConstraints;
+>>>>>>> 7148147cec99a1b995cc7763b4e7019d5798525a
     }
 
     public void OnPushPullActionUsed()
@@ -147,5 +190,23 @@ public class PhysicsObject : MonoBehaviour {
         _timeLeftToDeactivatePushPullAction = 0.2f;
         PlayerInfo.PlayerInstance.PushPullJoint.enabled = true;
         PlayerInfo.PlayerInstance.PushPullJoint.connectedBody = physicsData;
+    }
+
+    public void OnPhysicsVisionActivated()
+    {
+        if (Halo == null)
+        {
+            return;
+        }
+        Halo.enabled = true;
+    }
+
+    public void OnPhysicsVisionDeactivated()
+    {
+        if (Halo == null)
+        {
+            return;
+        }
+        Halo.enabled = false;
     }
 }

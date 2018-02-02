@@ -2390,6 +2390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 50946963977279022}
   ObjectSprite: {fileID: 0}
+  HaloPrefab: {fileID: 1687180426096842, guid: f9b3beb12b761ab4f92bea0de0dc5dde, type: 2}
   AvailableActions:
     ChangeGravityAction: 0
     ChangeGravityActionMinValue: -5
@@ -2400,6 +2401,7 @@ MonoBehaviour:
     PushPullAction: 1
   CanPlayerInteract: 0
   _timeLeftToDeactivatePushPullAction: 1
+  Halo: {fileID: 0}
   _hasChain: 0
 --- !u!114 &114096999507849864
 MonoBehaviour:
@@ -2677,7 +2679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec17ceaa560940e9bf0dbeafc3a1971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SpriteMesh: {fileID: 11400000, guid: 88dd81631c3e1f34c940bb63ed48cb1f, type: 2}
+  m_SpriteMesh: {fileID: 0}
   m_Color: {r: 0, g: 0.86764693, b: 1, a: 1}
   m_Materials:
   - {fileID: 2100000, guid: b8fe13f8672d03044ab1d0c2f0da8236, type: 2}
@@ -2710,6 +2712,7 @@ MonoBehaviour:
   jump: {fileID: 8300000, guid: ae1b5aa20a8a94e528e90979c04287da, type: 3}
   facingRight: 1
   PushPullJoint: {fileID: 0}
+  PhysicsVisionIsReady: 0
 --- !u!114 &114391857339426056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2741,7 +2744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec17ceaa560940e9bf0dbeafc3a1971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SpriteMesh: {fileID: 11400000, guid: 39ff3f355b503d248abcff3798325ac6, type: 2}
+  m_SpriteMesh: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Materials:
   - {fileID: 2100000, guid: b8fe13f8672d03044ab1d0c2f0da8236, type: 2}
@@ -2942,10 +2945,10 @@ MonoBehaviour:
   jumpCheckDistance: 1
   CameraTouchSpeed: 0.01
   MinDistanceToMoveCamera: 0.3
-  Left: {fileID: 0}
-  Right: {fileID: 0}
+  vel: {x: 0, y: 0, z: 0}
   Jump: {fileID: 0}
   Action: {fileID: 0}
+  _isJumping: 0
 --- !u!114 &114568642613428428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2957,7 +2960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec17ceaa560940e9bf0dbeafc3a1971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SpriteMesh: {fileID: 11400000, guid: 0408c2dd4971aac49b3c8b50774b0685, type: 2}
+  m_SpriteMesh: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Materials:
   - {fileID: 2100000, guid: b8fe13f8672d03044ab1d0c2f0da8236, type: 2}

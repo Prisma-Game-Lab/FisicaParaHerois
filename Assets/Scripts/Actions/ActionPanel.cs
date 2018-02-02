@@ -33,12 +33,13 @@ public class ActionPanel : MonoBehaviour {
 
     private IAction<float> _chosenAction; //ação selecionada no ActionPanel
     private float _chosenValue; //guarda o valor setado no slider
+    private Animator _actionAnim; // Animator do ActionPanel
 
     // Use this for initialization
     void Start ()
     {
-       // _objectSpriteHolder = transform.GetChild(2).GetChild(0).GetComponent<Image>();
-        gameObject.SetActive(false);
+        // _objectSpriteHolder = transform.GetChild(2).GetChild(0).GetComponent<Image>();
+        _actionAnim = gameObject.GetComponent<Animator>();
     }
 
     void Awake()
@@ -59,8 +60,9 @@ public class ActionPanel : MonoBehaviour {
     public void OnActionChosen(int action)
     {
         //Ativa o painel de confirmar ação
-        ChooseActionMenu.gameObject.SetActive(false);
         ConfirmActionMenu.gameObject.SetActive(true);
+        //ChooseActionMenu.gameObject.SetActive(false);
+
 
         if (PlayerInfo.PlayerInstance.Actions.Count < action)
         {
@@ -70,10 +72,12 @@ public class ActionPanel : MonoBehaviour {
 
 		switch (action) {
 		case 0:
+            _actionAnim.SetBool("button2", true);
 			ChosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeGravityActionMinValue;
 			ChosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeGravityActionMaxValue;
 			break;
 		case 1:
+            _actionAnim.SetBool("button1", true);
 			ChosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeMassActionMinValue;
 			ChosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeMassActionMaxValue;
 			break;
@@ -83,6 +87,10 @@ public class ActionPanel : MonoBehaviour {
         ActionNameText.text = _chosenAction.GetActionName();
         _chosenAction.SetTarget(_physicsObject);
         ChosenValueSlider.value = _chosenAction.GetCurrentValue();
+
+        StartCoroutine(ButtonAnimDelay(1.45f));
+
+        ChooseActionMenu.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -102,6 +110,7 @@ public class ActionPanel : MonoBehaviour {
     {
         //_chosenAction.SetTarget(_physicsObject);
         _chosenAction.OnActionUse(_chosenValue);
+        StartCoroutine(ButtonAnimDelay(1.45f));
         OnChooseActionPanelActivated();
     }
 
@@ -110,6 +119,7 @@ public class ActionPanel : MonoBehaviour {
     /// </summary>
     public void OnActionCanceled()
     {
+        StartCoroutine(ButtonAnimDelay(1.45f));
         OnChooseActionPanelActivated();
     }
 
@@ -118,10 +128,11 @@ public class ActionPanel : MonoBehaviour {
     /// </summary>
     public void OnCancel()
     {
-        gameObject.SetActive(false);
-        Time.timeScale = 1;
+        StartCoroutine(CancelButtonDelay(1.15f));
+        //gameObject.SetActive(false);
+        //Time.timeScale = 1;
 
-        _physicsObject = null;
+        //_physicsObject = null;
     }
 
     /// <summary>
@@ -135,8 +146,8 @@ public class ActionPanel : MonoBehaviour {
         //Ativa o painel de ação
         //_objectSpriteHolder.sprite = _physicsObject.ObjectSprite;
         gameObject.SetActive(true);
-        Time.timeScale = 0;
 
+        Time.timeScale = 0;
         OnChooseActionPanelActivated();
     }
 
@@ -166,4 +177,25 @@ public class ActionPanel : MonoBehaviour {
             ActionButtons[i].gameObject.GetComponent<Image>().color = ActionButtons[i].interactable ? AvailableButtonColor : UnavailableButtonColor;
         }
     }
+
+    public IEnumerator CancelButtonDelay (float tempo)
+    {
+        _actionAnim.SetTrigger("exit");
+
+        yield return new WaitForSecondsRealtime (tempo);
+
+        gameObject.SetActive(false);
+        Time.timeScale = 1;
+
+        _physicsObject = null;
+    }
+
+    public IEnumerator ButtonAnimDelay(float tempo)
+    {
+        _actionAnim.SetTrigger("go");
+
+        yield return new WaitForSecondsRealtime(tempo);
+    }
 }
+
+
