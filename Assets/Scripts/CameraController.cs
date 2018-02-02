@@ -30,6 +30,8 @@ public class CameraController : MonoBehaviour {
     private float _minX;
     private float _minY;
 
+    private Vector3 _cameraPosToCheck;
+
 	// Use this for initialization
 	void Start () {
         //calculate maximum camera positions, based on limits set and some camera calculations
@@ -46,51 +48,40 @@ public class CameraController : MonoBehaviour {
         {
             Vector3 curMove = (Time.deltaTime / TimeLeft) * CurOffset;
             
-
-            ////limits x axis
-            //if (Camera.main.transform.position.x + curMove.x > Mathf.Max(Limit1.x, Limit2.x))
-            //{
-            //    curMove.x = Mathf.Max(Limit1.x, Limit2.x) - Camera.main.transform.position.x;
-            //}
-            //else if (Camera.main.transform.position.x + curMove.x < Mathf.Min(Limit1.x, Limit2.x))
-            //{
-            //    curMove.x = Mathf.Min(Limit1.x, Limit2.x) - Camera.main.transform.position.x;
-            //}
-
-            ////limits y axis
-            //if (Camera.main.transform.position.y + curMove.y > Mathf.Max(Limit1.y, Limit2.y))
-            //{
-            //    curMove.y = Mathf.Max(Limit1.y, Limit2.y) - Camera.main.transform.position.y;
-            //}
-            //else if (Camera.main.transform.position.y + curMove.y < Mathf.Min(Limit1.y, Limit2.y))
-            //{
-            //    curMove.y = Mathf.Min(Limit1.y, Limit2.y) - Camera.main.transform.position.y;
-            //}
-
-            CurOffset -= curMove;
-            TimeLeft -= Time.deltaTime;
-            Camera.main.transform.Translate(curMove);
-
+            //checa se camera vai ultrapassar bounds
+            if (!OutOfBounds(Camera.main.transform.position + curMove))
+            {
+                Camera.main.transform.Translate(curMove);
+                CurOffset -= curMove;
+                TimeLeft -= Time.deltaTime;
+            }
+            else
+            {
+                CurOffset = Vector3.zero;
+                TimeLeft = 0;
+            }          
+            
+            _cameraPosToCheck = curMove + Camera.main.transform.position;
             
         }
-
         else
         {
             TimeLeft = 0;
         }
 	}
 
-    public void LateUpdate()
+    //recebe uma posição e retorna true se ela for out of bounds para a camera, conforme especificado pelos limits
+    private bool OutOfBounds(Vector3 position)
     {
-        //Vector3 newPos = new Vector3(Mathf.Clamp(Camera.main.transform.position.x, _minX, _maxX), Mathf.Clamp(Camera.main.transform.position.y, _minY, _maxY), Camera.main.transform.position.z);
-        //Camera.main.transform.SetPositionAndRotation(newPos, Camera.main.transform.rotation);
+        bool tx = position.x > _maxX || position.x < _minX;
+        bool ty = position.y > _maxY || position.y < _minY;
+        return tx || ty;
     }
 
     public void Move(Vector3 offset)
     {
         if (disableScroll) return;
 
-        Debug.Log("Move camera. offset: " + offset.ToString());
         CurOffset = offset;
         TimeLeft = 1/CameraSpeed;
     }
