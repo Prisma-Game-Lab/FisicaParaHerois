@@ -78,17 +78,10 @@ public class CameraController : MonoBehaviour {
         return tx || ty;
     }
 
-    public void LateUpdate()
-    {
-        //Vector3 newPos = new Vector3(Mathf.Clamp(_cameraPosToCheck.x, _minX, _maxX), Mathf.Clamp(_cameraPosToCheck.y, _minY, _maxY), Camera.main.transform.position.z);
-        //Camera.main.transform.SetPositionAndRotation(newPos, Camera.main.transform.rotation);
-    }
-
     public void Move(Vector3 offset)
     {
         if (disableScroll) return;
 
-        Debug.Log("Move camera. offset: " + offset.ToString());
         CurOffset = offset;
         TimeLeft = 1/CameraSpeed;
     }
