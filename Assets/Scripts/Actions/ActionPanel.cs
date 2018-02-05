@@ -187,9 +187,11 @@ public class ActionPanel : MonoBehaviour {
             {
                 case "Change mass":
                     MassValueText.text = action.GetCurrentValue().ToString();
+                    _actionAnim.SetFloat("mass", action.GetCurrentValue());
                     break;
                 case "Change gravity":
                     GravityValueText.text = action.GetCurrentValue().ToString();
+                    _actionAnim.SetFloat("grav", action.GetCurrentValue());
                     break;
                 default:
                     break;
