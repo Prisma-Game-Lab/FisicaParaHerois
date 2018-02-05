@@ -31,6 +31,7 @@ public class PhysicsObject : MonoBehaviour {
     private RigidbodyConstraints2D _defaultConstraints;
 
     private bool _physicsVisionIsReady = false;
+    private Vector3 _initialpos;
 
     void OnValidate()
     {
@@ -88,6 +89,9 @@ public class PhysicsObject : MonoBehaviour {
         }
 
         _defaultConstraints = physicsData.constraints;
+
+        //Guarda a posição inicial (para o caso do objeto sair da fase)
+        _initialpos = transform.position;
     }
 
     void Awake()
@@ -211,5 +215,10 @@ public class PhysicsObject : MonoBehaviour {
             return;
         }
         Halo.enabled = false;
+    }
+
+    public void ResetPos() { 
+        transform.position = _initialpos;
+        transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 }

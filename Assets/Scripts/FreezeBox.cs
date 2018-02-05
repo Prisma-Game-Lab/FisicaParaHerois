@@ -31,7 +31,7 @@ public class FreezeBox : MonoBehaviour {
 
     void OnCollisionStay2D(Collision2D col)
     {
-        if (col.collider.gameObject.CompareTag("Floor"))
+        if (col.collider.gameObject.CompareTag("Floor") || col.collider.gameObject.CompareTag("Gangorra"))
         {
             _touchingFloor = true;
         }
