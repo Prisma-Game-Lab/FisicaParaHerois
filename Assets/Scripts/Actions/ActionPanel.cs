@@ -24,6 +24,8 @@ public class ActionPanel : MonoBehaviour {
     [Header("Components")]
     [Tooltip("Slider que define o valor da ação")] public Slider ChosenValueSlider;
     [Tooltip("Texto que mostra o valor da ação")] public Text ChosenValueText;
+    [Tooltip("Texto que mostra o valor da gravidade")] public Text GravityValueText;
+    [Tooltip("Texto que mostra o valor da massa")] public Text MassValueText;
     [Tooltip("Texto que contem o nome da ação")] public Text ActionNameText;
     [Tooltip("Menu onde a ação é escolhida")] public Transform ChooseActionMenu;
     [Tooltip("Menu onde a ação é configurada")] public Transform ConfirmActionMenu;
@@ -175,6 +177,21 @@ public class ActionPanel : MonoBehaviour {
 
             //Muda a cor do botão para indicar se está disponível
             ActionButtons[i].gameObject.GetComponent<Image>().color = ActionButtons[i].interactable ? AvailableButtonColor : UnavailableButtonColor;
+        }
+
+        foreach (IAction<float> action in PlayerInfo.PlayerInstance.Actions)
+        {
+            switch (action.GetActionName())
+            {
+                case "Change mass":
+                    MassValueText.text = action.GetCurrentValue().ToString();
+                    break;
+                case "Change gravity":
+                    GravityValueText.text = action.GetCurrentValue().ToString();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
