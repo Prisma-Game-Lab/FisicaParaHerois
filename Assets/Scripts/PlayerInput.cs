@@ -184,7 +184,7 @@ public class PlayerInput : MonoBehaviour {
         {
             if (ObjectToReset != null)
             {
-                ObjectToReset.ResetPos();
+                ObjectToReset.ResetObj();
             }
         }
 
