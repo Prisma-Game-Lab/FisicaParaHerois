@@ -13,6 +13,9 @@ public class AvailableActionsData {
 	public float ChangeMassActionMinValue = -5;
 	public float ChangeMassActionMaxValue = 5;
     public bool PushPullAction = true;
+	public float ChangeAnchorPointMinValue = -1.0f;
+	public float ChangeAnchorPointMaxValue = 1.0f;
+	public bool ChangeAnchorPointAction = true;
 
     /// <summary>
     /// Checa se a ação está disponível
@@ -29,7 +32,9 @@ public class AvailableActionsData {
                 return ChangeMassAction;
             case "PushPullAction":
                 return PushPullAction;
-            default:
+			case "ChangeAnchorPointAction":
+				return  ChangeAnchorPointAction;
+			default:
                 Debug.LogError("Action não encontrada no dicionário de ações. A ação foi adicionada no arquivo AvaliableActionsData.cs?");
                 return false;
         }
@@ -53,7 +58,10 @@ public class AvailableActionsData {
             case "PushPullAction":
                 PushPullAction = value;
                 break;
-            default:
+			case  "ChangeAnchorPointAction":
+				ChangeAnchorPointAction = value;
+				break;
+	        default:
                 Debug.LogError("Action não encontrada no dicionário de ações. A ação foi adicionada no arquivo AvaliableActionsData.cs?");
                 return;
         }
