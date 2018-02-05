@@ -10,7 +10,15 @@ public class FreezeBox : MonoBehaviour {
 	void Start () {
         _defaultConstraints = GetComponent<Rigidbody2D>().constraints;
 	}
-	
+
+    void Update()
+    {
+        if (!_touchingFloor)
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        }
+    }
+
 	void OnTriggerEnter2D (Collider2D other) {
         if (other.gameObject.CompareTag("Player"))
         {
