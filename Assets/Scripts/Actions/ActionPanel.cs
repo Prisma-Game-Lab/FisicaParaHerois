@@ -74,11 +74,13 @@ public class ActionPanel : MonoBehaviour {
 
 		switch (action) {
 		case 0:
+            _actionAnim.SetBool("button1", false);
             _actionAnim.SetBool("button2", true);
 			ChosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeGravityActionMinValue;
 			ChosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeGravityActionMaxValue;
 			break;
 		case 1:
+            _actionAnim.SetBool("button2", false);
             _actionAnim.SetBool("button1", true);
 			ChosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeMassActionMinValue;
 			ChosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeMassActionMaxValue;
@@ -103,6 +105,17 @@ public class ActionPanel : MonoBehaviour {
     {
         _chosenValue = ChosenValueSlider.value;
         ChosenValueText.text = _chosenValue.ToString();
+        switch (_chosenAction.GetActionName())
+        {
+            case "Change mass":
+                _actionAnim.SetFloat("mass", _chosenValue);
+                break;
+            case "Change gravity":
+                _actionAnim.SetFloat("grav", _chosenValue);
+                break;
+            default:
+                break;
+        }
     }
 
     /// <summary>
@@ -130,7 +143,7 @@ public class ActionPanel : MonoBehaviour {
     /// </summary>
     public void OnCancel()
     {
-        StartCoroutine(CancelButtonDelay(1.15f));
+        StartCoroutine(CancelButtonDelay(0.7f));
         //gameObject.SetActive(false);
         //Time.timeScale = 1;
 
@@ -185,9 +198,11 @@ public class ActionPanel : MonoBehaviour {
             {
                 case "Change mass":
                     MassValueText.text = action.GetCurrentValue().ToString();
+                    _actionAnim.SetFloat("mass", action.GetCurrentValue());
                     break;
                 case "Change gravity":
                     GravityValueText.text = action.GetCurrentValue().ToString();
+                    _actionAnim.SetFloat("grav", action.GetCurrentValue());
                     break;
                 default:
                     break;

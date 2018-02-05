@@ -31,6 +31,14 @@ public class PhysicsObject : MonoBehaviour {
     private RigidbodyConstraints2D _defaultConstraints;
 
     private bool _physicsVisionIsReady = false;
+    private Vector3 _initialpos;
+    private float _initialgravity, _initialmass;
+
+    [Header("On Reset")]
+    public bool ShouldResetPosition = true;
+    public bool ShouldResetRotation = true;
+    public bool ShouldResetGravity = true;
+    public bool ShouldResetMass = true;
 
     void OnValidate()
     {
@@ -88,6 +96,11 @@ public class PhysicsObject : MonoBehaviour {
         }
 
         _defaultConstraints = physicsData.constraints;
+
+        //Guarda as informações iniciais (para qnd precisar resetar o objeto)
+        _initialpos = transform.position;
+        _initialmass = physicsData.mass;
+        _initialgravity = physicsData.gravityScale;
     }
 
     void Awake()
@@ -211,5 +224,13 @@ public class PhysicsObject : MonoBehaviour {
             return;
         }
         Halo.enabled = false;
+    }
+
+    public void ResetObj() { 
+        if(ShouldResetPosition) transform.position = _initialpos; //resetar posição
+        if (ShouldResetRotation) transform.rotation = Quaternion.Euler(Vector3.zero); //resetar rotação
+
+        if (ShouldResetMass) physicsData.mass = _initialmass; //resetar massa
+        if (ShouldResetGravity) physicsData.gravityScale = _initialgravity; //resetar gravidade
     }
 }
