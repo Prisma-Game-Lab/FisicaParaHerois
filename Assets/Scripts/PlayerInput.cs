@@ -45,6 +45,9 @@ public class PlayerInput : MonoBehaviour {
 
 	private PlayerInfo _info;
 
+    [Header("DEBUG")]
+    public PhysicsObject ObjectToReset;
+
 	// Use this for initialization
 	void Start () {
 		Input.multiTouchEnabled = true;
@@ -175,6 +178,14 @@ public class PlayerInput : MonoBehaviour {
         {
             Debug.Log("VISÃO FÍSICA EXPERIMENTAL");
             PlayerInfo.PlayerInstance.ChangePhysicsVisionStatus();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (ObjectToReset != null)
+            {
+                ObjectToReset.ResetPos();
+            }
         }
 
 		if (Input.GetMouseButtonDown(0))
