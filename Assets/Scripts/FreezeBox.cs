@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FreezeBox : MonoBehaviour {
     private RigidbodyConstraints2D _defaultConstraints;
+    private bool _touchingFloor = false;
 
 	// Use this for initialization
 	void Start () {
@@ -19,4 +20,20 @@ public class FreezeBox : MonoBehaviour {
             }
         }
 	}
+
+    void OnCollisionStay2D(Collision2D col)
+    {
+        if (col.collider.gameObject.CompareTag("Floor"))
+        {
+            _touchingFloor = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.collider.gameObject.CompareTag("Floor"))
+        {
+            _touchingFloor = false;
+        }
+    }
 }
