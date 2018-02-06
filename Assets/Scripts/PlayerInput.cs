@@ -182,10 +182,15 @@ public class PlayerInput : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if (ObjectToReset != null)
-            {
-                ObjectToReset.ResetObj();
-            }
+            DebugResetObj();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Comma)){
+            DebugCreateCheckpoint();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Period)){
+            DebugLoadCheckpoint();
         }
 
 		if (Input.GetMouseButtonDown(0))
@@ -438,8 +443,33 @@ public class PlayerInput : MonoBehaviour {
 		PlayerInfo.PlayerInstance.MoveCamera(offset, MinDistanceToMoveCamera, true);
 	}
 
+    #region DEBUG
+    private void DebugResetObj()
+    {
+        if (ObjectToReset != null)
+        {
+            ObjectToReset.ResetObj();
+        }
+    }
 
-	//    private void CheckJump()
+    private void DebugCreateCheckpoint()
+    {
+        foreach (PhysicsObject obj in PhysicsObject.PhysicsObjectList)
+        {
+            obj.NewCheckpoint();
+        }
+    }
+
+    private void DebugLoadCheckpoint()
+    {
+        foreach (PhysicsObject obj in PhysicsObject.PhysicsObjectList)
+        {
+            obj.LoadLastCheckpoint();
+        }
+    }
+    #endregion
+
+    //    private void CheckJump()
 	//    {
 	//        BoxCollider2D playerCollider = Player.GetComponent<BoxCollider2D>();
 	//        Transform scene = GameObject.Find("SceneObjects").transform;
