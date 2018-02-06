@@ -160,9 +160,8 @@ public class PlayerInput : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown(KeyCode.R))
-		{
-			GameManager.ReloadScene();
-
+        {
+            GameManager.Instance.LoadLastCheckpoint();
 		}
 
 		if (Input.GetKey(KeyCode.E))
@@ -183,10 +182,15 @@ public class PlayerInput : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if (ObjectToReset != null)
-            {
-                ObjectToReset.ResetObj();
-            }
+            DebugResetObj();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Comma)){
+            GameManager.Instance.CreateNewCheckpoint();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Period)){
+            GameManager.Instance.LoadLastCheckpoint();
         }
 
 		if (Input.GetMouseButtonDown(0))
@@ -298,7 +302,7 @@ public class PlayerInput : MonoBehaviour {
 		{
 			if (touch.phase == TouchPhase.Began)
 			{
-				GameManager.ReloadScene();
+                GameManager.Instance.LoadLastCheckpoint();
 			}
 		}
 
@@ -439,8 +443,17 @@ public class PlayerInput : MonoBehaviour {
 		PlayerInfo.PlayerInstance.MoveCamera(offset, MinDistanceToMoveCamera, true);
 	}
 
+    #region DEBUG
+    private void DebugResetObj()
+    {
+        if (ObjectToReset != null)
+        {
+            ObjectToReset.ResetObj();
+        }
+    }
+    #endregion
 
-	//    private void CheckJump()
+    //    private void CheckJump()
 	//    {
 	//        BoxCollider2D playerCollider = Player.GetComponent<BoxCollider2D>();
 	//        Transform scene = GameObject.Find("SceneObjects").transform;
