@@ -39,12 +39,6 @@ public class PhysicsObject : MonoBehaviour {
     private Quaternion _lastCheckpointRotation;
     private float _lastCheckpointGravity, _lastCheckpointMass;
 
-    [Header("On Reset")]
-    public bool ShouldResetPosition = true;
-    public bool ShouldResetRotation = true;
-    public bool ShouldResetGravity = true;
-    public bool ShouldResetMass = true;
-
     void OnValidate()
     {
         if (gameObject.CompareTag("Box"))
@@ -256,11 +250,11 @@ public class PhysicsObject : MonoBehaviour {
     }
 
     public void ResetObj() { 
-        if (ShouldResetPosition) transform.position = _initialPos; //resetar posição
-        if (ShouldResetRotation) transform.rotation = Quaternion.Euler(Vector3.zero); //resetar rotação
+        if (GameManager.Instance.ShouldResetPosition) transform.position = _initialPos; //resetar posição
+        if (GameManager.Instance.ShouldResetRotation) transform.rotation = Quaternion.Euler(Vector3.zero); //resetar rotação
 
-        if (ShouldResetMass) physicsData.mass = _initialMass; //resetar massa
-        if (ShouldResetGravity) physicsData.gravityScale = _initialGravity; //resetar gravidade
+        if (GameManager.Instance.ShouldResetMass) physicsData.mass = _initialMass; //resetar massa
+        if (GameManager.Instance.ShouldResetGravity) physicsData.gravityScale = _initialGravity; //resetar gravidade
     }
 
     public void NewCheckpoint()
