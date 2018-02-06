@@ -42,6 +42,11 @@ public class ActionPanel : MonoBehaviour {
     {
         // _objectSpriteHolder = transform.GetChild(2).GetChild(0).GetComponent<Image>();
         _actionAnim = gameObject.GetComponent<Animator>();
+
+        if (isActiveAndEnabled)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void Awake()
@@ -105,6 +110,17 @@ public class ActionPanel : MonoBehaviour {
     {
         _chosenValue = ChosenValueSlider.value;
         ChosenValueText.text = _chosenValue.ToString();
+        switch (_chosenAction.GetActionName())
+        {
+            case "Change mass":
+                _actionAnim.SetFloat("mass", _chosenValue);
+                break;
+            case "Change gravity":
+                _actionAnim.SetFloat("grav", _chosenValue);
+                break;
+            default:
+                break;
+        }
     }
 
     /// <summary>
