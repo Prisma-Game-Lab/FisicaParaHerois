@@ -698,6 +698,7 @@ GameObject:
   - component: {fileID: 39239174}
   - component: {fileID: 39239173}
   - component: {fileID: 39239172}
+  - component: {fileID: 39239177}
   m_Layer: 9
   m_Name: Box(Clone)
   m_TagString: Box
@@ -756,6 +757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -764,9 +766,12 @@ MonoBehaviour:
     ChangeMassActionMinValue: 1
     ChangeMassActionMaxValue: 10
     PushPullAction: 1
+    ChangeAnchorPointMinValue: -1
+    ChangeAnchorPointMaxValue: 1
+    ChangeAnchorPointAction: 1
   CanPlayerInteract: 1
   _timeLeftToDeactivatePushPullAction: 0.5
-  MassWhenPushed: 0.001
+  Halo: {fileID: 0}
   _hasChain: 0
 --- !u!50 &39239174
 Rigidbody2D:
@@ -829,6 +834,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 39239170}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &39239177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 39239170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b44d7ee17541a9429b4824cde41f284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &39270811
 GameObject:
   m_ObjectHideFlags: 0
@@ -2107,6 +2123,7 @@ GameObject:
   - component: {fileID: 161939901}
   - component: {fileID: 161939900}
   - component: {fileID: 161939899}
+  - component: {fileID: 161939904}
   m_Layer: 9
   m_Name: Box(Clone)
   m_TagString: Box
@@ -2165,6 +2182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -2173,9 +2191,12 @@ MonoBehaviour:
     ChangeMassActionMinValue: 1
     ChangeMassActionMaxValue: 10
     PushPullAction: 1
+    ChangeAnchorPointMinValue: -1
+    ChangeAnchorPointMaxValue: 1
+    ChangeAnchorPointAction: 1
   CanPlayerInteract: 1
   _timeLeftToDeactivatePushPullAction: 0.5
-  MassWhenPushed: 0.001
+  Halo: {fileID: 0}
   _hasChain: 0
 --- !u!50 &161939901
 Rigidbody2D:
@@ -2238,6 +2259,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 161939897}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &161939904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 161939897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b44d7ee17541a9429b4824cde41f284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &162906276
 GameObject:
   m_ObjectHideFlags: 0
@@ -4181,6 +4213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 0}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -5
@@ -4189,9 +4222,12 @@ MonoBehaviour:
     ChangeMassActionMinValue: -5
     ChangeMassActionMaxValue: 5
     PushPullAction: 1
+    ChangeAnchorPointMinValue: -1
+    ChangeAnchorPointMaxValue: 1
+    ChangeAnchorPointAction: 1
   CanPlayerInteract: 0
   _timeLeftToDeactivatePushPullAction: 0.5
-  MassWhenPushed: 0.001
+  Halo: {fileID: 0}
   _hasChain: 0
 --- !u!114 &333105644
 MonoBehaviour:
@@ -5141,6 +5177,7 @@ GameObject:
   - component: {fileID: 393539076}
   - component: {fileID: 393539075}
   - component: {fileID: 393539074}
+  - component: {fileID: 393539079}
   m_Layer: 9
   m_Name: Box(Clone)
   m_TagString: Box
@@ -5199,6 +5236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -5207,9 +5245,12 @@ MonoBehaviour:
     ChangeMassActionMinValue: 1
     ChangeMassActionMaxValue: 10
     PushPullAction: 1
+    ChangeAnchorPointMinValue: -1
+    ChangeAnchorPointMaxValue: 1
+    ChangeAnchorPointAction: 1
   CanPlayerInteract: 1
   _timeLeftToDeactivatePushPullAction: 0.5
-  MassWhenPushed: 0.001
+  Halo: {fileID: 0}
   _hasChain: 0
 --- !u!50 &393539076
 Rigidbody2D:
@@ -5272,6 +5313,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 393539072}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &393539079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 393539072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b44d7ee17541a9429b4824cde41f284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &405492871
 GameObject:
   m_ObjectHideFlags: 0
@@ -5350,6 +5402,7 @@ Transform:
   m_Children:
   - {fileID: 1563077361}
   - {fileID: 333105642}
+  - {fileID: 1089643758}
   m_Father: {fileID: 129152205}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8096,7 +8149,7 @@ Prefab:
     - target: {fileID: 224225941817044180, guid: a060453ba0132ef4a9e4430de4cc558a,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 569
+      value: 378
       objectReference: {fileID: 0}
     - target: {fileID: 224225941817044180, guid: a060453ba0132ef4a9e4430de4cc558a,
         type: 2}
@@ -8803,7 +8856,7 @@ SpriteRenderer:
   m_Size: {x: 4.37, y: 4.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &634834168
 GameObject:
@@ -13057,6 +13110,7 @@ GameObject:
   - component: {fileID: 957611129}
   - component: {fileID: 957611128}
   - component: {fileID: 957611127}
+  - component: {fileID: 957611132}
   m_Layer: 9
   m_Name: Box(Clone)
   m_TagString: Box
@@ -13115,6 +13169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -13123,9 +13178,12 @@ MonoBehaviour:
     ChangeMassActionMinValue: 1
     ChangeMassActionMaxValue: 10
     PushPullAction: 1
+    ChangeAnchorPointMinValue: -1
+    ChangeAnchorPointMaxValue: 1
+    ChangeAnchorPointAction: 1
   CanPlayerInteract: 1
   _timeLeftToDeactivatePushPullAction: 0.5
-  MassWhenPushed: 0.001
+  Halo: {fileID: 0}
   _hasChain: 0
 --- !u!50 &957611129
 Rigidbody2D:
@@ -13188,6 +13246,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 957611125}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &957611132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 957611125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b44d7ee17541a9429b4824cde41f284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &962914860
 GameObject:
   m_ObjectHideFlags: 0
@@ -14067,6 +14136,161 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.884491, y: 5.070381}
   m_EdgeRadius: 0
+--- !u!1 &1089643757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1089643758}
+  - component: {fileID: 1089643761}
+  - component: {fileID: 1089643760}
+  - component: {fileID: 1089643759}
+  - component: {fileID: 1089643762}
+  - component: {fileID: 1089643763}
+  m_Layer: 0
+  m_Name: Platform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1089643758
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1089643757}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.38, y: -6.14, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_Children: []
+  m_Father: {fileID: 410694974}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1089643759
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1089643757}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 13.06, y: 3.78}
+    newSize: {x: 13.06, y: 3.78}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 13.06, y: 3.78}
+  m_EdgeRadius: 0
+--- !u!251 &1089643760
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1089643757}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 256
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
+--- !u!212 &1089643761
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1089643757}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 7f27cffbf5712d34bbf1f9d60edb501f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 13.06, y: 3.78}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+--- !u!114 &1089643762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1089643757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88822728b5c38ae428dccd0955917fa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 1
+  maxHeight: 3
+  minHeight: -3
+  rb: {fileID: 1089643763}
+--- !u!50 &1089643763
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1089643757}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 100
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 5
 --- !u!1 &1100412406
 GameObject:
   m_ObjectHideFlags: 0
@@ -14189,7 +14413,7 @@ SpriteRenderer:
   m_Size: {x: 4.37, y: 4.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &1129491538
 GameObject:
@@ -16005,7 +16229,7 @@ SpriteRenderer:
   m_Size: {x: 4.37, y: 4.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &1343978171
 GameObject:
@@ -18291,7 +18515,7 @@ SpriteRenderer:
   m_Size: {x: 4.37, y: 4.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &1566398946
 GameObject:
@@ -20729,7 +20953,7 @@ SpriteRenderer:
   m_Size: {x: 4.37, y: 4.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &1770219586
 GameObject:
@@ -22346,6 +22570,7 @@ GameObject:
   - component: {fileID: 1874783363}
   - component: {fileID: 1874783362}
   - component: {fileID: 1874783361}
+  - component: {fileID: 1874783366}
   m_Layer: 9
   m_Name: Box(Clone)
   m_TagString: Box
@@ -22404,6 +22629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 0}
   ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 1
     ChangeGravityActionMinValue: -8
@@ -22412,9 +22638,12 @@ MonoBehaviour:
     ChangeMassActionMinValue: 1
     ChangeMassActionMaxValue: 10
     PushPullAction: 1
+    ChangeAnchorPointMinValue: -1
+    ChangeAnchorPointMaxValue: 1
+    ChangeAnchorPointAction: 1
   CanPlayerInteract: 1
   _timeLeftToDeactivatePushPullAction: 0.5
-  MassWhenPushed: 0.001
+  Halo: {fileID: 0}
   _hasChain: 0
 --- !u!50 &1874783363
 Rigidbody2D:
@@ -22477,6 +22706,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1874783359}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1874783366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1874783359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b44d7ee17541a9429b4824cde41f284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1882750333
 GameObject:
   m_ObjectHideFlags: 0
@@ -22597,6 +22837,11 @@ MonoBehaviour:
   CurOffset: {x: 0, y: 0, z: 0}
   TimeLeft: 0
   CameraSpeed: 5
+  PhysicsVisionPostProcessing: {fileID: 0}
+  disableScroll: 0
+  showBoundingBox: 0
+  Limit1: {x: 0, y: 0, z: 0}
+  Limit2: {x: 0, y: 0, z: 0}
 --- !u!61 &1914765396
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22685,6 +22930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsData: {fileID: 1914765406}
   ObjectSprite: {fileID: 0}
+  HaloPrefab: {fileID: 0}
   AvailableActions:
     ChangeGravityAction: 0
     ChangeGravityActionMinValue: -5
@@ -22693,9 +22939,12 @@ MonoBehaviour:
     ChangeMassActionMinValue: -5
     ChangeMassActionMaxValue: 5
     PushPullAction: 1
+    ChangeAnchorPointMinValue: -1
+    ChangeAnchorPointMaxValue: 1
+    ChangeAnchorPointAction: 1
   CanPlayerInteract: 0
   _timeLeftToDeactivatePushPullAction: 0.5
-  MassWhenPushed: 0.001
+  Halo: {fileID: 0}
   _hasChain: 0
 --- !u!114 &1914765402
 MonoBehaviour:
@@ -22710,15 +22959,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1914765404}
   ActionMenu: {fileID: 599486383}
+  ActionMenuGangorra: {fileID: 0}
   HoldTime: 0.8
   realJump: 0
   jumpCheckDistance: 1
   CameraTouchSpeed: 0.01
   MinDistanceToMoveCamera: 0.3
-  Left: {fileID: 0}
-  Right: {fileID: 0}
+  vel: {x: 0, y: 0, z: 0}
   Jump: {fileID: 0}
   Action: {fileID: 0}
+  _isJumping: 0
+  ObjectToReset: {fileID: 0}
 --- !u!114 &1914765403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22751,6 +23002,7 @@ MonoBehaviour:
   jump: {fileID: 8300000, guid: ae1b5aa20a8a94e528e90979c04287da, type: 3}
   facingRight: 1
   PushPullJoint: {fileID: 1914765394}
+  PhysicsVisionIsReady: 0
 --- !u!61 &1914765405
 BoxCollider2D:
   m_ObjectHideFlags: 0
