@@ -1659,6 +1659,7 @@ MonoBehaviour:
   Jump: {fileID: 0}
   Action: {fileID: 0}
   _isJumping: 0
+  ObjectToReset: {fileID: 0}
 --- !u!114 &114729445186823394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1803,10 +1804,17 @@ MonoBehaviour:
     ChangeMassActionMinValue: -5
     ChangeMassActionMaxValue: 5
     PushPullAction: 1
+    ChangeAnchorPointMinValue: -1
+    ChangeAnchorPointMaxValue: 1
+    ChangeAnchorPointAction: 1
   CanPlayerInteract: 0
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
+  ShouldResetPosition: 1
+  ShouldResetRotation: 1
+  ShouldResetGravity: 1
+  ShouldResetMass: 1
 --- !u!114 &114959493440092682
 MonoBehaviour:
   m_ObjectHideFlags: 1

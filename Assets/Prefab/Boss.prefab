@@ -1025,11 +1025,17 @@ MonoBehaviour:
     ChangeMassActionMinValue: -5
     ChangeMassActionMaxValue: 5
     PushPullAction: 1
+    ChangeAnchorPointMinValue: -1
+    ChangeAnchorPointMaxValue: 1
+    ChangeAnchorPointAction: 1
   CanPlayerInteract: 1
-  OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 1
   Halo: {fileID: 0}
   _hasChain: 0
+  ShouldResetPosition: 1
+  ShouldResetRotation: 1
+  ShouldResetGravity: 1
+  ShouldResetMass: 1
 --- !u!114 &114708517273266858
 MonoBehaviour:
   m_ObjectHideFlags: 1
