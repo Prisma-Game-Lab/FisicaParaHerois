@@ -65,10 +65,11 @@ public class ActionPanelGangorra : MonoBehaviour {
 	/// <param name="action"></param>
 	public void OnActionChosen(int action)
 	{
+		//int action should be zero
+
 		//Ativa o painel de confirmar ação
 		ConfirmActionMenu.gameObject.SetActive(true);
 		//ChooseActionMenu.gameObject.SetActive(false);
-
 
 		if (PlayerInfo.PlayerInstance.Actions.Count < action)
 		{
@@ -76,23 +77,11 @@ public class ActionPanelGangorra : MonoBehaviour {
 			return;
 		}
 
-		switch (action) {
-		case 0:
-			_actionAnim.SetBool("button1", false);
-			_actionAnim.SetBool("button2", true);
-			ChosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeGravityActionMinValue;
-			ChosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeGravityActionMaxValue;
-			break;
-		case 1:
-			_actionAnim.SetBool("button2", false);
-			_actionAnim.SetBool("button1", true);
-			ChosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeMassActionMinValue;
-			ChosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeMassActionMaxValue;
-			break;
-		}
-
 		_chosenAction = PlayerInfo.PlayerInstance.Actions[action];
 		ActionNameText.text = _chosenAction.GetActionName();
+
+		Debug.Log (ActionNameText.text);
+
 		_chosenAction.SetTarget(_physicsObject);
 		ChosenValueSlider.value = _chosenAction.GetCurrentValue();
 
