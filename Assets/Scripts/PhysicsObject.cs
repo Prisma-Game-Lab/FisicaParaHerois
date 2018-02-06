@@ -152,7 +152,23 @@ public class PhysicsObject : MonoBehaviour {
 
     void OnMouseDown()
     {
-        //Checa se o painel já está ativo
+		if (this.CompareTag ("Gangorra")) 
+		{
+			//faz o mesmo que foi explicado abaixo, mas para o painel específico da gangorra
+
+			//Checa se o painel já está ativo
+			if (ActionPanelGangorra.Instance.gameObject.activeInHierarchy)
+			{
+				return;
+			}
+			//Senão, ativa com o objeto selecionado
+			if (CanPlayerInteract) {
+				ActionPanelGangorra.Instance.OnPanelActivated(this);
+			}
+			return;
+		}
+
+		//Checa se o painel já está ativo
         if (ActionPanel.Instance.gameObject.activeInHierarchy)
         {
             return;

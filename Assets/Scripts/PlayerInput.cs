@@ -14,6 +14,7 @@ using UnityEngine.EventSystems;
 public class PlayerInput : MonoBehaviour {
 	public PlayerInfo Player;
 	public GameObject ActionMenu;
+	public GameObject ActionMenuGangorra;
 	[Tooltip("Tempo mínimo para identificar um toque longo")]
 	public float HoldTime = 0.8f;
 	public bool realJump;
@@ -430,7 +431,7 @@ public class PlayerInput : MonoBehaviour {
 
 	public void MoveCamera(Vector2 offset)
 	{
-		if (ActionMenu.activeInHierarchy)
+		if (ActionMenu.activeInHierarchy || (ActionMenuGangorra != null && ActionMenuGangorra.activeInHierarchy))
 		{
 			return;
 		}
