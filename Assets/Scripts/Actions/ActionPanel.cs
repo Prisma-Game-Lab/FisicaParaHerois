@@ -42,6 +42,11 @@ public class ActionPanel : MonoBehaviour {
     {
         // _objectSpriteHolder = transform.GetChild(2).GetChild(0).GetComponent<Image>();
         _actionAnim = gameObject.GetComponent<Animator>();
+
+        if (isActiveAndEnabled)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void Awake()
