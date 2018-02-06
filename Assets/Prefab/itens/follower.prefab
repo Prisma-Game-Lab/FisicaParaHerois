@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114939394257979852}
   - component: {fileID: 61408478755383466}
   - component: {fileID: 114947152112563166}
+  - component: {fileID: 114707721905199690}
   m_Layer: 9
   m_Name: follower
   m_TagString: Box
@@ -131,6 +132,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114707721905199690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1919125811188676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b44d7ee17541a9429b4824cde41f284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114939394257979852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,12 +165,13 @@ MonoBehaviour:
     ChangeMassActionMinValue: -5
     ChangeMassActionMaxValue: 5
     PushPullAction: 1
+    ChangeAnchorPointMinValue: -1
+    ChangeAnchorPointMaxValue: 1
+    ChangeAnchorPointAction: 1
   CanPlayerInteract: 1
-  OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
-  PhysicsVisionIsReady: 0
 --- !u!114 &114947152112563166
 MonoBehaviour:
   m_ObjectHideFlags: 1
