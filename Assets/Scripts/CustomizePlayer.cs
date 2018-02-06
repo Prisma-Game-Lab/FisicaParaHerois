@@ -12,10 +12,43 @@ public class CustomizePlayer : MonoBehaviour {
 	public Button[] Categories;
 	public Button[] Color;
 
-	[Header ("Camisetas")]
+	[Header ("Camiseta")]
 	public Sprite[] Camisetas;
 	public Sprite[] Estampas;
-	public Color[] CorCamisetas; 
+	public Color[] CorCamisetas;
+
+    [Header("Olho")]
+    public Sprite[] Olhos;
+    public Sprite[] Cilios;
+    public Color[] CorOlhos;
+
+    [Header("Cor de Pele")]
+    public Sprite[] Corpo;
+    public Color[] CorPele;
+
+    [Header("Nariz")]
+    public Sprite[] Narizes;
+    public Color[] CorNariz;
+
+    [Header("Boca")]
+    public Sprite[] Bocas;
+    public Color[] CorBoca;
+
+    [Header("Cabelo")]
+    public Sprite[] Cabelos;
+    public Color[] CorCabelo;
+
+    [Header("Calça")]
+    public Sprite[] Calcas;
+    public Color[] CorCalca;
+
+    [Header("Sapato")]
+    public Sprite[] Sapatos;
+    public Color[] CorSapato;
+
+    [Header("Acessorio")]
+    public Sprite[] Acessorios;
+    public Color[] CorAcessorio;
 
     [Tooltip("Primeiro e único filho da imagem que é o texto genérico")] public Text TextoGenerico;
 	private int _NumInText = 0;
@@ -100,12 +133,37 @@ public class CustomizePlayer : MonoBehaviour {
 
 	void CategoryButton(int index) {
 
-		// pega o nome da categoria e muda os itens relacionados a ele
-		if (Categories [index].name == "Camisetas") {
-			gameObject.GetComponent<Image> ().sprite = Camisetas [1];
-		}
+        // pega o nome da categoria e muda os itens relacionados a ele
 
+        switch (Categories [index].name) {
 
+            case "Camisas":
+                gameObject.GetComponent<Image>().sprite = Camisetas[1];
+                // dar um jeito de adicionar a estampa ao sprite da camiseta
+                gameObject.GetComponent<Image>().color = CorCamisetas[1];
+                break;
+            case "Pele":
+                break;
+            case "Nariz":
+                break;
+            case "Boca":
+                break;
+            case "Cabelo":
+                break;
+            case "Calcas":
+                break;
+            case "Sapatos":
+                break;
+            case "Acessorios":
+                break;
+            case "Olhos":
+                break;
+            default:
+                break;
+        }
+
+		
+		
 
 		gameObject.GetComponent<Image> ().sprite = Categories [index].GetComponent<Image> ().sprite;		
 		// Muda o asset
