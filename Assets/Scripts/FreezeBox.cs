@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FreezeBox : MonoBehaviour {
+    private Rigidbody2D _rb;
     private RigidbodyConstraints2D _defaultConstraints;
-    private bool _touchingFloor = false;
+    //private bool _touchingFloor = false;
 
 	// Use this for initialization
 	void Start () {
-        _defaultConstraints = GetComponent<Rigidbody2D>().constraints;
+        _rb = GetComponent<Rigidbody2D>();
+        _defaultConstraints = _rb.constraints;
 	}
 
     void Update()
     {
-        if (!_touchingFloor)
+        if (_rb.gravityScale < 0 /*!_touchingFloor*/ && ActionPanel.Instance.gameObject.activeInHierarchy == false)
         {
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         }
@@ -29,6 +31,7 @@ public class FreezeBox : MonoBehaviour {
         }
 	}
 
+    /*
     void OnCollisionStay2D(Collision2D col)
     {
         if (col.collider.gameObject.CompareTag("Floor") || col.collider.gameObject.CompareTag("Gangorra"))
@@ -44,4 +47,5 @@ public class FreezeBox : MonoBehaviour {
             _touchingFloor = false;
         }
     }
+     * */
 }
