@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33294273911971928}
   - component: {fileID: 23365639569096802}
   - component: {fileID: 50636911349799030}
-  - component: {fileID: 114939394257979852}
   - component: {fileID: 61408478755383466}
   - component: {fileID: 114947152112563166}
   m_Layer: 9
@@ -39,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1919125811188676}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.3, y: 3.47, z: 0.13671875}
+  m_LocalPosition: {x: -11.356623, y: -3.641026, z: 0.13671875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -131,34 +130,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114939394257979852
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1919125811188676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 569de5793067cb246b4897702b6cb9f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  physicsData: {fileID: 0}
-  ObjectSprite: {fileID: 21300000, guid: a96820f0605857c4282c91f2228ee0db, type: 3}
-  HaloPrefab: {fileID: 1687180426096842, guid: f9b3beb12b761ab4f92bea0de0dc5dde, type: 2}
-  AvailableActions:
-    ChangeGravityAction: 1
-    ChangeGravityActionMinValue: -5
-    ChangeGravityActionMaxValue: 5
-    ChangeMassAction: 1
-    ChangeMassActionMinValue: -5
-    ChangeMassActionMaxValue: 5
-    PushPullAction: 1
-  CanPlayerInteract: 1
-  OldPosition: {x: -Infinity, y: -Infinity, z: -Infinity}
-  _timeLeftToDeactivatePushPullAction: 0.5
-  Halo: {fileID: 0}
-  _hasChain: 0
-  PhysicsVisionIsReady: 0
 --- !u!114 &114947152112563166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,9 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb7fa5e592a59c409fc623ab2d4109d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathName: 
-  speed: 0.5
-  touchDistance: 0.1
+  pathName: teste
+  speed: 0.09
+  touchDistance: 1.48
   stopped: 0
   repetitionType: 0
   followdirection: 0
