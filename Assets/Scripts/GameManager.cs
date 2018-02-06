@@ -19,6 +19,12 @@ public class GameManager : MonoBehaviour {
     public PlayerData Data;
     public Text TimeText;
 
+    [Header("On Reset")]
+    public bool ShouldResetPosition = true;
+    public bool ShouldResetRotation = true;
+    public bool ShouldResetGravity = true;
+    public bool ShouldResetMass = true;
+
     private static float _time;
 
 	// Use this for initialization
