@@ -159,9 +159,8 @@ public class PlayerInput : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown(KeyCode.R))
-		{
-			GameManager.ReloadScene();
-
+        {
+            GameManager.Instance.LoadLastCheckpoint();
 		}
 
 		if (Input.GetKey(KeyCode.E))
@@ -186,11 +185,11 @@ public class PlayerInput : MonoBehaviour {
         }
 
         if(Input.GetKeyDown(KeyCode.Comma)){
-            DebugCreateCheckpoint();
+            GameManager.Instance.CreateNewCheckpoint();
         }
 
         if(Input.GetKeyDown(KeyCode.Period)){
-            DebugLoadCheckpoint();
+            GameManager.Instance.LoadLastCheckpoint();
         }
 
 		if (Input.GetMouseButtonDown(0))
@@ -302,7 +301,7 @@ public class PlayerInput : MonoBehaviour {
 		{
 			if (touch.phase == TouchPhase.Began)
 			{
-				GameManager.ReloadScene();
+                GameManager.Instance.LoadLastCheckpoint();
 			}
 		}
 
@@ -449,22 +448,6 @@ public class PlayerInput : MonoBehaviour {
         if (ObjectToReset != null)
         {
             ObjectToReset.ResetObj();
-        }
-    }
-
-    private void DebugCreateCheckpoint()
-    {
-        foreach (PhysicsObject obj in PhysicsObject.PhysicsObjectList)
-        {
-            obj.NewCheckpoint();
-        }
-    }
-
-    private void DebugLoadCheckpoint()
-    {
-        foreach (PhysicsObject obj in PhysicsObject.PhysicsObjectList)
-        {
-            obj.LoadLastCheckpoint();
         }
     }
     #endregion

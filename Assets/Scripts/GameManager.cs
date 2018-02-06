@@ -40,6 +40,22 @@ public class GameManager : MonoBehaviour {
         ReloadScene();
     }
 
+    public void LoadLastCheckpoint()
+    {
+        foreach (PhysicsObject obj in PhysicsObject.PhysicsObjectList)
+        {
+            obj.LoadLastCheckpoint();
+        }
+    }
+
+    public void CreateNewCheckpoint()
+    {
+        foreach (PhysicsObject obj in PhysicsObject.PhysicsObjectList)
+        {
+            obj.NewCheckpoint();
+        }
+    }
+
     void Awake()
     {
         //Se registra como instância de GameManager
