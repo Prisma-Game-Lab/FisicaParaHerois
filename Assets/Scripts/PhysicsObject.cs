@@ -10,6 +10,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PhysicsObject : MonoBehaviour {
+    public static List<PhysicsObject> PhysicsObjectList;
 
     [HideInInspector]
     public Rigidbody2D physicsData;
@@ -29,10 +30,14 @@ public class PhysicsObject : MonoBehaviour {
     [HideInInspector] public bool _hasChain = false;
 
     private RigidbodyConstraints2D _defaultConstraints;
-
     private bool _physicsVisionIsReady = false;
-    private Vector3 _initialpos;
-    private float _initialgravity, _initialmass;
+
+    private Vector3 _initialPos;
+    private float _initialGravity, _initialMass;
+
+    private Vector3 _lastCheckpointPos;
+    private Quaternion _lastCheckpointRotation;
+    private float _lastCheckpointGravity, _lastCheckpointMass;
 
     [Header("On Reset")]
     public bool ShouldResetPosition = true;
@@ -83,6 +88,8 @@ public class PhysicsObject : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        PhysicsObjectList.Add(this); //Se adiciona à lista de PhysicsObjects
+
         //Pega a referência do halo
         _physicsVisionIsReady = PlayerInfo.PlayerInstance.PhysicsVisionIsReady;
         if (_physicsVisionIsReady)
@@ -98,14 +105,20 @@ public class PhysicsObject : MonoBehaviour {
         _defaultConstraints = physicsData.constraints;
 
         //Guarda as informações iniciais (para qnd precisar resetar o objeto)
-        _initialpos = transform.position;
-        _initialmass = physicsData.mass;
-        _initialgravity = physicsData.gravityScale;
+        _initialPos = transform.position;
+        _initialMass = physicsData.mass;
+        _initialGravity = physicsData.gravityScale;
+        _lastCheckpointPos = _initialPos;
+        _lastCheckpointMass = _initialMass;
+        _lastCheckpointGravity = _initialGravity;
+        _lastCheckpointRotation = transform.rotation;
     }
 
     void Awake()
     {
         physicsData = gameObject.GetComponent<Rigidbody2D>();
+
+        PhysicsObjectList = new List<PhysicsObject>(); //reseta lista de PhysicsObjects (para evitar problemas, por exemplo, em transição de scenes)
     }
 
     // Update is called once per frame
@@ -227,10 +240,26 @@ public class PhysicsObject : MonoBehaviour {
     }
 
     public void ResetObj() { 
-        if(ShouldResetPosition) transform.position = _initialpos; //resetar posição
+        if (ShouldResetPosition) transform.position = _initialPos; //resetar posição
         if (ShouldResetRotation) transform.rotation = Quaternion.Euler(Vector3.zero); //resetar rotação
 
-        if (ShouldResetMass) physicsData.mass = _initialmass; //resetar massa
-        if (ShouldResetGravity) physicsData.gravityScale = _initialgravity; //resetar gravidade
+        if (ShouldResetMass) physicsData.mass = _initialMass; //resetar massa
+        if (ShouldResetGravity) physicsData.gravityScale = _initialGravity; //resetar gravidade
+    }
+
+    public void NewCheckpoint()
+    {
+        _lastCheckpointPos = transform.position;
+        _lastCheckpointRotation = transform.rotation;
+        _lastCheckpointMass = physicsData.mass;
+        _lastCheckpointGravity = physicsData.gravityScale;
+    }
+
+    public void LoadLastCheckpoint()
+    {
+        transform.position = _lastCheckpointPos;
+        transform.rotation = _lastCheckpointRotation;
+        physicsData.mass = _lastCheckpointMass;
+        physicsData.gravityScale = _lastCheckpointGravity;       
     }
 }
