@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
     public bool ShouldResetRotation = true;
     public bool ShouldResetGravity = true;
     public bool ShouldResetMass = true;
+    public bool ShouldResetVelocity = true;
 
     private static float _time;
 

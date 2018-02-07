@@ -34,10 +34,12 @@ public class PhysicsObject : MonoBehaviour {
 
     private Vector3 _initialPos;
     private float _initialGravity, _initialMass;
+    private Vector2 _initialVelocity;
 
     private Vector3 _lastCheckpointPos;
     private Quaternion _lastCheckpointRotation;
     private float _lastCheckpointGravity, _lastCheckpointMass;
+    private Vector2 _lastCheckpointVelocity;
 
     void OnValidate()
     {
@@ -101,9 +103,11 @@ public class PhysicsObject : MonoBehaviour {
         //Guarda as informações iniciais (para qnd precisar resetar o objeto)
         _initialPos = transform.position;
         _initialMass = physicsData.mass;
+        _initialVelocity = physicsData.velocity;
         _initialGravity = physicsData.gravityScale;
         _lastCheckpointPos = _initialPos;
         _lastCheckpointMass = _initialMass;
+        _lastCheckpointVelocity = _initialVelocity;
         _lastCheckpointGravity = _initialGravity;
         _lastCheckpointRotation = transform.rotation;
     }
@@ -252,7 +256,7 @@ public class PhysicsObject : MonoBehaviour {
     public void ResetObj() { 
         if (GameManager.Instance.ShouldResetPosition) transform.position = _initialPos; //resetar posição
         if (GameManager.Instance.ShouldResetRotation) transform.rotation = Quaternion.Euler(Vector3.zero); //resetar rotação
-
+        if (GameManager.Instance.ShouldResetVelocity) physicsData.velocity = _initialVelocity; //resetar velocity
         if (GameManager.Instance.ShouldResetMass) physicsData.mass = _initialMass; //resetar massa
         if (GameManager.Instance.ShouldResetGravity) physicsData.gravityScale = _initialGravity; //resetar gravidade
     }
@@ -261,6 +265,7 @@ public class PhysicsObject : MonoBehaviour {
     {
         _lastCheckpointPos = transform.position;
         _lastCheckpointRotation = transform.rotation;
+        _lastCheckpointVelocity = physicsData.velocity;
         _lastCheckpointMass = physicsData.mass;
         _lastCheckpointGravity = physicsData.gravityScale;
     }
@@ -269,6 +274,7 @@ public class PhysicsObject : MonoBehaviour {
     {
         transform.position = _lastCheckpointPos;
         transform.rotation = _lastCheckpointRotation;
+        physicsData.velocity = _lastCheckpointVelocity;
         physicsData.mass = _lastCheckpointMass;
         physicsData.gravityScale = _lastCheckpointGravity;       
     }

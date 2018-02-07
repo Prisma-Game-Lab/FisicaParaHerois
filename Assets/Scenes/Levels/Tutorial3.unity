@@ -4955,14 +4955,17 @@ MonoBehaviour:
     ChangeMassActionMinValue: 1
     ChangeMassActionMaxValue: 10
     PushPullAction: 1
+    ChangeAnchorPointMinValue: -1
+    ChangeAnchorPointMaxValue: 1
+    ChangeAnchorPointAction: 1
   CanPlayerInteract: 1
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
-  ShouldResetPosition: 1
-  ShouldResetRotation: 1
-  ShouldResetGravity: 1
-  ShouldResetMass: 1
+  ShowBoundingBox: 1
+  ShouldResetWhenLeavingArea: 1
+  LimitMin: {x: 7.3075123, y: 0.8012595, z: 0}
+  LimitMax: {x: -15.159882, y: -12.884297, z: 0}
 --- !u!50 &427101200
 Rigidbody2D:
   serializedVersion: 4
@@ -22932,14 +22935,17 @@ MonoBehaviour:
     ChangeMassActionMinValue: 1
     ChangeMassActionMaxValue: 10
     PushPullAction: 1
+    ChangeAnchorPointMinValue: -1
+    ChangeAnchorPointMaxValue: 1
+    ChangeAnchorPointAction: 1
   CanPlayerInteract: 1
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
-  ShouldResetPosition: 1
-  ShouldResetRotation: 1
-  ShouldResetGravity: 1
-  ShouldResetMass: 1
+  ShowBoundingBox: 0
+  ShouldResetWhenLeavingArea: 0
+  LimitMin: {x: 0, y: 0, z: 0}
+  LimitMax: {x: 0, y: 0, z: 0}
 --- !u!50 &1449750883
 Rigidbody2D:
   serializedVersion: 4
@@ -23107,14 +23113,17 @@ MonoBehaviour:
     ChangeMassActionMinValue: -5
     ChangeMassActionMaxValue: 5
     PushPullAction: 1
+    ChangeAnchorPointMinValue: -1
+    ChangeAnchorPointMaxValue: 1
+    ChangeAnchorPointAction: 1
   CanPlayerInteract: 0
   _timeLeftToDeactivatePushPullAction: 1
   Halo: {fileID: 0}
   _hasChain: 0
-  ShouldResetPosition: 1
-  ShouldResetRotation: 1
-  ShouldResetGravity: 1
-  ShouldResetMass: 1
+  ShowBoundingBox: 0
+  ShouldResetWhenLeavingArea: 0
+  LimitMin: {x: 0, y: 0, z: 0}
+  LimitMax: {x: 0, y: 0, z: 0}
 --- !u!50 &1451705866
 Rigidbody2D:
   serializedVersion: 4
@@ -29319,14 +29328,17 @@ MonoBehaviour:
     ChangeMassActionMinValue: -5
     ChangeMassActionMaxValue: 5
     PushPullAction: 1
+    ChangeAnchorPointMinValue: -1
+    ChangeAnchorPointMaxValue: 1
+    ChangeAnchorPointAction: 1
   CanPlayerInteract: 0
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
-  ShouldResetPosition: 1
-  ShouldResetRotation: 1
-  ShouldResetGravity: 1
-  ShouldResetMass: 1
+  ShowBoundingBox: 0
+  ShouldResetWhenLeavingArea: 0
+  LimitMin: {x: 0, y: 0, z: 0}
+  LimitMax: {x: 0, y: 0, z: 0}
 --- !u!114 &1711418595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30732,14 +30744,17 @@ MonoBehaviour:
     ChangeMassActionMinValue: -5
     ChangeMassActionMaxValue: 5
     PushPullAction: 1
+    ChangeAnchorPointMinValue: -1
+    ChangeAnchorPointMaxValue: 1
+    ChangeAnchorPointAction: 1
   CanPlayerInteract: 0
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
-  ShouldResetPosition: 1
-  ShouldResetRotation: 1
-  ShouldResetGravity: 1
-  ShouldResetMass: 1
+  ShowBoundingBox: 0
+  ShouldResetWhenLeavingArea: 0
+  LimitMin: {x: 0, y: 0, z: 0}
+  LimitMax: {x: 0, y: 0, z: 0}
 --- !u!114 &1835169354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30753,6 +30768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1835169356}
   ActionMenu: {fileID: 0}
+  ActionMenuGangorra: {fileID: 0}
   HoldTime: 0.8
   realJump: 0
   jumpCheckDistance: 1
