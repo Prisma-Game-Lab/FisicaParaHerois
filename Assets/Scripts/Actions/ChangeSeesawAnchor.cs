@@ -23,9 +23,10 @@ public class ChangeSeesawAnchor : MonoBehaviour, IAction<float> {
 	public void OnActionUse(float newAnchor)
 	{
 		if (_hinge != null && Mathf.Abs (newAnchor) < 1.0f) {
-			_base.transform.localPosition = new Vector3 (newAnchor, _base.transform.localPosition.y, _base.transform.localPosition.z);
-			_physicsObj.transform.SetPositionAndRotation (new Vector3 (_physicsObj.transform.position.x, _base.transform.position.y + _gan.visual_distance_connecting_point, 0.0f), Quaternion.identity);
-			_hinge.anchor = new Vector2(newAnchor, 0.0f);
+			_hinge.anchor = new Vector2(newAnchor / 2.0f, 0.0f);
+			_physicsObj.transform.SetPositionAndRotation (new Vector3 (_physicsObj.transform.position.x, _base.transform.position.y + _gan.visual_distance_connecting_point, _physicsObj.transform.position.z), Quaternion.identity);
+			_base.transform.SetPositionAndRotation (new Vector3 (_physicsObj.transform.position.x + _hinge.anchor.x * _physicsObj.transform.lossyScale.x, _base.transform.position.y, _base.transform.position.z), _base.transform.rotation);
+
 		}
 	}
 
