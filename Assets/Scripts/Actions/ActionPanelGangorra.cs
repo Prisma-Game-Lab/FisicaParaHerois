@@ -24,11 +24,7 @@ public class ActionPanelGangorra : MonoBehaviour {
 	[Header("Components")]
 	[Tooltip("Slider que define o valor da ação")] public Slider ChosenValueSlider;
 	[Tooltip("Texto que mostra o valor da ação")] public Text ChosenValueText;
-	[Tooltip("Texto que mostra o valor da gravidade")] public Text GravityValueText;
-	[Tooltip("Texto que mostra o valor da massa")] public Text MassValueText;
 	[Tooltip("Texto que contem o nome da ação")] public Text ActionNameText;
-	[Tooltip("Menu onde a ação é escolhida")] public Transform ChooseActionMenu;
-	[Tooltip("Menu onde a ação é configurada")] public Transform ConfirmActionMenu;
 
 	private PhysicsObject _physicsObject; //guarda o PhysicsObject que chamou o menu de interação
 	private Image _objectSpriteHolder; //guarda o campo de imagem que contém o sprite do objeto selecionado
@@ -63,32 +59,7 @@ public class ActionPanelGangorra : MonoBehaviour {
 	/// Define o que acontece quando um botão é selecionado
 	/// </summary>
 	/// <param name="action"></param>
-	public void OnActionChosen(int action)
-	{
-		//int action should be zero
 
-		//Ativa o painel de confirmar ação
-		ConfirmActionMenu.gameObject.SetActive(true);
-		//ChooseActionMenu.gameObject.SetActive(false);
-
-		if (PlayerInfo.PlayerInstance.Actions.Count < action)
-		{
-			Debug.LogError("Ação inválida");
-			return;
-		}
-
-		_chosenAction = PlayerInfo.PlayerInstance.Actions[action];
-		ActionNameText.text = _chosenAction.GetActionName();
-
-		Debug.Log (ActionNameText.text);
-
-		_chosenAction.SetTarget(_physicsObject);
-		ChosenValueSlider.value = _chosenAction.GetCurrentValue();
-
-		StartCoroutine(ButtonAnimDelay(1.45f));
-
-		ChooseActionMenu.gameObject.SetActive(false);
-	}
 
 	/// <summary>
 	/// Define o que acontece quando o slider da ação escolhida é modificado
@@ -98,17 +69,18 @@ public class ActionPanelGangorra : MonoBehaviour {
 	{
 		_chosenValue = ChosenValueSlider.value;
 		ChosenValueText.text = _chosenValue.ToString();
-		switch (_chosenAction.GetActionName())
-		{
-		case "Change mass":
-			_actionAnim.SetFloat("mass", _chosenValue);
-			break;
-		case "Change gravity":
-			_actionAnim.SetFloat("grav", _chosenValue);
-			break;
-		default:
-			break;
-		}
+//		
+//		switch (_chosenAction.GetActionName())
+//		{
+//		case "Change mass":
+//			_actionAnim.SetFloat("mass", _chosenValue);
+//			break;
+//		case "Change gravity":
+//			_actionAnim.SetFloat("grav", _chosenValue);
+//			break;
+//		default:
+//			break;
+//		}
 	}
 
 	/// <summary>
@@ -119,16 +91,9 @@ public class ActionPanelGangorra : MonoBehaviour {
 		//_chosenAction.SetTarget(_physicsObject);
 		_chosenAction.OnActionUse(_chosenValue);
 		StartCoroutine(ButtonAnimDelay(1.45f));
-		OnChooseActionPanelActivated();
-	}
 
-	/// <summary>
-	/// Define o que acontece quando o botão de cancelar ação é clicado
-	/// </summary>
-	public void OnActionCanceled()
-	{
-		StartCoroutine(ButtonAnimDelay(1.45f));
-		OnChooseActionPanelActivated();
+		//OnChooseActionPanelActivated();
+		StartCoroutine(CancelButtonDelay(0.7f));
 	}
 
 	/// <summary>
@@ -156,35 +121,24 @@ public class ActionPanelGangorra : MonoBehaviour {
 		gameObject.SetActive(true);
 
 		Time.timeScale = 0;
-		OnChooseActionPanelActivated();
+		//OnChooseActionPanelActivated();
+
+		//escolhe a ação de alterar o eixo da gangorra
+		_chosenAction = PlayerInfo.PlayerInstance.GetComponent<ChangeSeesawAnchor>();
+		ActionNameText.text = _chosenAction.GetActionName();
+		_chosenAction.SetTarget(_physicsObject);
+
+		ChosenValueSlider.wholeNumbers = false;
+		ChosenValueSlider.maxValue = 0.95f;
+		ChosenValueSlider.minValue = -0.95f;
+		ChosenValueSlider.value = _chosenAction.GetCurrentValue();
+
+		OnActionValueChanged();
 	}
 
 	/// <summary>
 	/// Define o que ocorre quando o painel de escolher ação é ativado
 	/// </summary>
-	public void OnChooseActionPanelActivated()
-	{
-		//Ativa o painel de escolher ação
-		ChooseActionMenu.gameObject.SetActive(true);
-		ConfirmActionMenu.gameObject.SetActive(false);
-
-		//Checa ações disponíveis
-		AvailableActionsData availableActions = _physicsObject.AvailableActions;
-
-		if(ActionNames.Count != ActionButtons.Count)
-		{
-			Debug.LogError("Número de botões (excluindo o cancel) não corresponde ao número de ações nomeadas no Inspector.");
-		}
-
-		for(int i = 0; i < ActionNames.Count; i++)
-		{
-			//Checa se cada ação está disponível
-			ActionButtons[i].interactable = availableActions.CheckIfActionIsAvailable(ActionNames[i]);
-
-			//Muda a cor do botão para indicar se está disponível
-			ActionButtons[i].gameObject.GetComponent<Image>().color = ActionButtons[i].interactable ? AvailableButtonColor : UnavailableButtonColor;
-		}
-	}
 
 	public IEnumerator CancelButtonDelay (float tempo)
 	{
