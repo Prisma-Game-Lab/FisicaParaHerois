@@ -2406,10 +2406,10 @@ MonoBehaviour:
   _timeLeftToDeactivatePushPullAction: 1
   Halo: {fileID: 0}
   _hasChain: 0
-  ShouldResetPosition: 1
-  ShouldResetRotation: 1
-  ShouldResetGravity: 1
-  ShouldResetMass: 1
+  ShowBoundingBox: 0
+  ShouldResetWhenLeavingArea: 0
+  LimitMin: {x: 0, y: 0, z: 0}
+  LimitMax: {x: 0, y: 0, z: 0}
 --- !u!114 &114096999507849864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2947,6 +2947,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 114389101921566984}
   ActionMenu: {fileID: 0}
+  ActionMenuGangorra: {fileID: 0}
   HoldTime: 0.8
   realJump: 0
   jumpCheckDistance: 1

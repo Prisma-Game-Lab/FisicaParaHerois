@@ -773,10 +773,6 @@ MonoBehaviour:
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
-  ShowBoundingBox: 0
-  ShouldResetWhenLeavingArea: 0
-  LimitMin: {x: 0, y: 0, z: 0}
-  LimitMax: {x: 0, y: 0, z: 0}
 --- !u!50 &39239174
 Rigidbody2D:
   serializedVersion: 4
@@ -2202,10 +2198,6 @@ MonoBehaviour:
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
-  ShowBoundingBox: 0
-  ShouldResetWhenLeavingArea: 0
-  LimitMin: {x: 0, y: 0, z: 0}
-  LimitMax: {x: 0, y: 0, z: 0}
 --- !u!50 &161939901
 Rigidbody2D:
   serializedVersion: 4
@@ -4237,10 +4229,6 @@ MonoBehaviour:
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
-  ShowBoundingBox: 0
-  ShouldResetWhenLeavingArea: 0
-  LimitMin: {x: 0, y: 0, z: 0}
-  LimitMax: {x: 0, y: 0, z: 0}
 --- !u!114 &333105644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5264,10 +5252,6 @@ MonoBehaviour:
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
-  ShowBoundingBox: 0
-  ShouldResetWhenLeavingArea: 0
-  LimitMin: {x: 0, y: 0, z: 0}
-  LimitMax: {x: 0, y: 0, z: 0}
 --- !u!50 &393539076
 Rigidbody2D:
   serializedVersion: 4
@@ -11560,6 +11544,48 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
+--- !u!1001 &831498768
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4184102141105476, guid: 647d66a6e97cc584393accfe67020dd5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -4.1767244
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184102141105476, guid: 647d66a6e97cc584393accfe67020dd5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -9.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184102141105476, guid: 647d66a6e97cc584393accfe67020dd5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.71423644
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184102141105476, guid: 647d66a6e97cc584393accfe67020dd5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184102141105476, guid: 647d66a6e97cc584393accfe67020dd5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184102141105476, guid: 647d66a6e97cc584393accfe67020dd5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184102141105476, guid: 647d66a6e97cc584393accfe67020dd5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184102141105476, guid: 647d66a6e97cc584393accfe67020dd5, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 647d66a6e97cc584393accfe67020dd5, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &834593372
 GameObject:
   m_ObjectHideFlags: 0
@@ -13031,10 +13057,6 @@ MonoBehaviour:
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
-  ShowBoundingBox: 1
-  ShouldResetWhenLeavingArea: 1
-  LimitMin: {x: -11.654785, y: -12.242786, z: 0}
-  LimitMax: {x: -7.5911636, y: -5.319619, z: 0}
 --- !u!50 &957611129
 Rigidbody2D:
   serializedVersion: 4
@@ -22582,10 +22604,6 @@ MonoBehaviour:
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
-  ShowBoundingBox: 0
-  ShouldResetWhenLeavingArea: 0
-  LimitMin: {x: 0, y: 0, z: 0}
-  LimitMax: {x: 0, y: 0, z: 0}
 --- !u!50 &1874783363
 Rigidbody2D:
   serializedVersion: 4
@@ -22887,10 +22905,6 @@ MonoBehaviour:
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
-  ShowBoundingBox: 0
-  ShouldResetWhenLeavingArea: 0
-  LimitMin: {x: 0, y: 0, z: 0}
-  LimitMax: {x: 0, y: 0, z: 0}
 --- !u!114 &1914765402
 MonoBehaviour:
   m_ObjectHideFlags: 0
