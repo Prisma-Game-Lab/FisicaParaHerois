@@ -10598,10 +10598,17 @@ MonoBehaviour:
     ChangeMassActionMinValue: -5
     ChangeMassActionMaxValue: 5
     PushPullAction: 1
+    ChangeAnchorPointMinValue: -1
+    ChangeAnchorPointMaxValue: 1
+    ChangeAnchorPointAction: 1
   CanPlayerInteract: 0
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
+  ShowBoundingBox: 0
+  ShouldResetWhenLeavingArea: 0
+  LimitMin: {x: 0, y: 0, z: 0}
+  LimitMax: {x: 0, y: 0, z: 0}
 --- !u!114 &516140146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10615,6 +10622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 516140148}
   ActionMenu: {fileID: 0}
+  ActionMenuGangorra: {fileID: 0}
   HoldTime: 0.8
   realJump: 0
   jumpCheckDistance: 1
@@ -36417,10 +36425,17 @@ MonoBehaviour:
     ChangeMassActionMinValue: 1
     ChangeMassActionMaxValue: 10
     PushPullAction: 1
+    ChangeAnchorPointMinValue: -1
+    ChangeAnchorPointMaxValue: 1
+    ChangeAnchorPointAction: 1
   CanPlayerInteract: 1
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
+  ShowBoundingBox: 0
+  ShouldResetWhenLeavingArea: 0
+  LimitMin: {x: 0, y: 0, z: 0}
+  LimitMax: {x: 0, y: 0, z: 0}
 --- !u!50 &1905472696
 Rigidbody2D:
   serializedVersion: 4
@@ -36435,7 +36450,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 4
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: a1bdcf326b53a4e90a32b1db2ff7b43a, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -36610,10 +36625,17 @@ MonoBehaviour:
     ChangeMassActionMinValue: -5
     ChangeMassActionMaxValue: 5
     PushPullAction: 1
+    ChangeAnchorPointMinValue: -1
+    ChangeAnchorPointMaxValue: 1
+    ChangeAnchorPointAction: 1
   CanPlayerInteract: 0
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
+  ShowBoundingBox: 0
+  ShouldResetWhenLeavingArea: 0
+  LimitMin: {x: 0, y: 0, z: 0}
+  LimitMax: {x: 0, y: 0, z: 0}
 --- !u!114 &1912102580
 MonoBehaviour:
   m_ObjectHideFlags: 0
