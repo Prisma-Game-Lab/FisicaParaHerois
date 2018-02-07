@@ -39,6 +39,11 @@ public class PhysicsObject : MonoBehaviour {
     private Quaternion _lastCheckpointRotation;
     private float _lastCheckpointGravity, _lastCheckpointMass;
 
+    [Header("Bounds")]
+    public bool ShowBoundingBox = false;
+    [HideInInspector] public Vector3 Limit1;
+    [HideInInspector] public Vector3 Limit2;
+
     void OnValidate()
     {
         if (gameObject.CompareTag("Box"))
