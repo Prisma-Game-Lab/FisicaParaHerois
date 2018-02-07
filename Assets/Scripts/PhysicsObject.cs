@@ -34,10 +34,18 @@ public class PhysicsObject : MonoBehaviour {
 
     private Vector3 _initialPos;
     private float _initialGravity, _initialMass;
+    private Vector2 _initialVelocity;
 
     private Vector3 _lastCheckpointPos;
     private Quaternion _lastCheckpointRotation;
     private float _lastCheckpointGravity, _lastCheckpointMass;
+    private Vector2 _lastCheckpointVelocity;
+
+    [Header("Bounds")]
+    public bool ShowBoundingBox = false;
+    public bool ShouldResetWhenLeavingArea = false;
+    [HideInInspector] public Vector3 LimitMin;
+    [HideInInspector] public Vector3 LimitMax;
 
     void OnValidate()
     {
@@ -78,6 +86,16 @@ public class PhysicsObject : MonoBehaviour {
         }
 
         Halo.enabled = false;
+
+        if (LimitMin.x < LimitMax.x)
+        {
+            Debug.LogError("Limite minimo está maior que limite máximo na coordenada x");
+        }
+
+        if (LimitMin.y < LimitMax.y)
+        {
+            Debug.LogError("Limite minimo está maior que limite máximo na coordenada y");
+        }
     }
 
 	// Use this for initialization
@@ -101,9 +119,11 @@ public class PhysicsObject : MonoBehaviour {
         //Guarda as informações iniciais (para qnd precisar resetar o objeto)
         _initialPos = transform.position;
         _initialMass = physicsData.mass;
+        _initialVelocity = physicsData.velocity;
         _initialGravity = physicsData.gravityScale;
         _lastCheckpointPos = _initialPos;
         _lastCheckpointMass = _initialMass;
+        _lastCheckpointVelocity = _initialVelocity;
         _lastCheckpointGravity = _initialGravity;
         _lastCheckpointRotation = transform.rotation;
     }
@@ -141,6 +161,11 @@ public class PhysicsObject : MonoBehaviour {
                 }
                  
             }
+        }
+
+        if (ShouldResetWhenLeavingArea && !IsObjectInsideArea())
+        {
+            ResetObj();
         }
     }
 
@@ -252,7 +277,7 @@ public class PhysicsObject : MonoBehaviour {
     public void ResetObj() { 
         if (GameManager.Instance.ShouldResetPosition) transform.position = _initialPos; //resetar posição
         if (GameManager.Instance.ShouldResetRotation) transform.rotation = Quaternion.Euler(Vector3.zero); //resetar rotação
-
+        if (GameManager.Instance.ShouldResetVelocity) physicsData.velocity = _initialVelocity; //reseta velocity
         if (GameManager.Instance.ShouldResetMass) physicsData.mass = _initialMass; //resetar massa
         if (GameManager.Instance.ShouldResetGravity) physicsData.gravityScale = _initialGravity; //resetar gravidade
     }
@@ -261,6 +286,7 @@ public class PhysicsObject : MonoBehaviour {
     {
         _lastCheckpointPos = transform.position;
         _lastCheckpointRotation = transform.rotation;
+        _lastCheckpointVelocity = physicsData.velocity;
         _lastCheckpointMass = physicsData.mass;
         _lastCheckpointGravity = physicsData.gravityScale;
     }
@@ -269,7 +295,23 @@ public class PhysicsObject : MonoBehaviour {
     {
         transform.position = _lastCheckpointPos;
         transform.rotation = _lastCheckpointRotation;
+        physicsData.velocity = _lastCheckpointVelocity;
         physicsData.mass = _lastCheckpointMass;
         physicsData.gravityScale = _lastCheckpointGravity;       
+    }
+
+    public bool IsObjectInsideArea()
+    {
+        if (transform.position.x <= LimitMin.x || transform.position.x >= LimitMax.x)
+        {
+            return false;
+        }
+
+        if (transform.position.y <= LimitMin.y || transform.position.y >= LimitMax.y)
+        {
+            return false;
+        }
+
+        return true;
     }
 }
