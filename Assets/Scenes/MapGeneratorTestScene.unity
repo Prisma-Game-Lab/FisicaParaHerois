@@ -4066,7 +4066,7 @@ GameObject:
   - component: {fileID: 332709691}
   - component: {fileID: 332709690}
   m_Layer: 0
-  m_Name: Floor_Collider
+  m_Name: Floor_Collider*
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4240,7 +4240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6372d414f0af844419283c6484d1aafb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectAffected: {fileID: 0}
+  ObjectAffected: {fileID: 2051437678}
   MinMass: 2
   IsLever: 0
 --- !u!61 &333105645
@@ -14568,7 +14568,7 @@ Prefab:
     - target: {fileID: 224837658164923534, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -548.93616
+      value: -225.9527
       objectReference: {fileID: 0}
     - target: {fileID: 224817745285918218, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
@@ -14578,7 +14578,7 @@ Prefab:
     - target: {fileID: 224817745285918218, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -548.93616
+      value: -225.9527
       objectReference: {fileID: 0}
     - target: {fileID: 224116085015488864, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
@@ -14598,7 +14598,7 @@ Prefab:
     - target: {fileID: 224124039124057954, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 552.93616
+      value: 229.9527
       objectReference: {fileID: 0}
     - target: {fileID: 224385922591503020, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
@@ -14608,7 +14608,7 @@ Prefab:
     - target: {fileID: 224385922591503020, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 552.93616
+      value: 229.9527
       objectReference: {fileID: 0}
     - target: {fileID: 224536339205409580, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
@@ -14628,12 +14628,12 @@ Prefab:
     - target: {fileID: 224559302227333820, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -548.93616
+      value: -225.9527
       objectReference: {fileID: 0}
     - target: {fileID: 224949025069307922, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 594.93616
+      value: 271.9527
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
@@ -16019,7 +16019,7 @@ GameObject:
   - component: {fileID: 1332284754}
   - component: {fileID: 1332284753}
   m_Layer: 0
-  m_Name: Floor_Collider
+  m_Name: Floor_Collider*
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19596,7 +19596,7 @@ GameObject:
   - component: {fileID: 1630560702}
   - component: {fileID: 1630560701}
   m_Layer: 0
-  m_Name: Floor_Collider
+  m_Name: Floor_Collider*
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24168,6 +24168,7 @@ GameObject:
   - component: {fileID: 2051437675}
   - component: {fileID: 2051437677}
   - component: {fileID: 2051437676}
+  - component: {fileID: 2051437678}
   m_Layer: 0
   m_Name: Floor_Borda_MapGenerator(Clone)
   m_TagString: Floor
@@ -24209,6 +24210,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2051437674}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2051437678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2051437674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15641aaddbfad0b49b03de1c0f5fcd4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollidersToDisable:
+  - {fileID: 1332284751}
+  - {fileID: 332709688}
+  - {fileID: 1630560699}
 --- !u!1 &2055518186
 GameObject:
   m_ObjectHideFlags: 0
