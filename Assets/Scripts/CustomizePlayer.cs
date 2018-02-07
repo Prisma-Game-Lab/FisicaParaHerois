@@ -138,25 +138,42 @@ public class CustomizePlayer : MonoBehaviour {
         switch (Categories [index].name) {
 
             case "Camisas":
-                gameObject.GetComponent<Image>().sprite = Camisetas[1];
+                gameObject.GetComponent<Image>().sprite = Camisetas[0];
                 // dar um jeito de adicionar a estampa ao sprite da camiseta
-                gameObject.GetComponent<Image>().color = CorCamisetas[1];
+                gameObject.GetComponent<Image>().color = CorCamisetas[0];
                 break;
-            case "Pele":
+            case "Cor de pele":
+				gameObject.GetComponent<Image>().color = CorPele[0];
+				//vai ter algo mais?
                 break;
             case "Nariz":
-                break;
+				gameObject.GetComponent<Image>().sprite = Narizes[0];
+				gameObject.GetComponent<Image>().color = CorNariz[0];
+				break;
             case "Boca":
+				gameObject.GetComponent<Image>().sprite = Bocas[0];
+				gameObject.GetComponent<Image>().color = CorBoca[0];
                 break;
             case "Cabelo":
+				gameObject.GetComponent<Image>().sprite = Cabelos[0];
+				gameObject.GetComponent<Image>().color = CorCabelo[0];
                 break;
-            case "Calcas":
+            case "Calca":
+				gameObject.GetComponent<Image>().sprite = Calcas[0];
+				gameObject.GetComponent<Image>().color = CorCalca[0];
                 break;
-            case "Sapatos":
+            case "Sapato":
+				gameObject.GetComponent<Image>().sprite = Sapatos[0];
+			gameObject.GetComponent<Image>().color = CorSapato[0];
                 break;
             case "Acessorios":
+				gameObject.GetComponent<Image>().sprite = Acessorios[0];
+				gameObject.GetComponent<Image>().color = CorAcessorio[0];
                 break;
             case "Olhos":
+				gameObject.GetComponent<Image>().sprite = Olhos[0];
+				// dar um jeito de botar cílios aqui
+				gameObject.GetComponent<Image>().color = CorOlhos[0];
                 break;
             default:
                 break;
