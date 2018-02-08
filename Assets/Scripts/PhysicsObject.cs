@@ -32,6 +32,8 @@ public class PhysicsObject : MonoBehaviour {
     private RigidbodyConstraints2D _defaultConstraints;
     private bool _physicsVisionIsReady = false;
 
+    private FreezeBox _freezeBox;
+
     private Vector3 _initialPos;
     private float _initialGravity, _initialMass;
     private Vector2 _initialVelocity;
@@ -117,6 +119,11 @@ public class PhysicsObject : MonoBehaviour {
         physicsData = gameObject.GetComponent<Rigidbody2D>();
 
         PhysicsObjectList = new List<PhysicsObject>(); //reseta lista de PhysicsObjects (para evitar problemas, por exemplo, em transição de scenes)
+
+        if (tag == "Box")
+        {
+            _freezeBox = GetComponent<FreezeBox>();
+        }
     }
 
     // Update is called once per frame
@@ -192,6 +199,13 @@ public class PhysicsObject : MonoBehaviour {
 
         if (!_pushPullAction)
         {
+            //Checa se a colisão é por cima
+            if (IsCollisionFromAbove(collision))
+            {
+                return;
+            }
+
+            //Congela posição se colisão não for por cima
             physicsData.constraints = RigidbodyConstraints2D.FreezePosition;
             return;
         }
@@ -208,6 +222,13 @@ public class PhysicsObject : MonoBehaviour {
 
         if (!_pushPullAction && gameObject != PlayerInfo.PlayerInstance.gameObject)
         {
+            //Checa se a colisão é por cima
+            if (IsCollisionFromAbove(collision))
+            {
+                physicsData.constraints = RigidbodyConstraints2D.FreezePositionX;
+                return;
+            }
+
             physicsData.constraints = RigidbodyConstraints2D.FreezePosition;
         }
 
@@ -220,6 +241,27 @@ public class PhysicsObject : MonoBehaviour {
     void OnCollisionExit2D(Collision2D collision)
     {
         physicsData.constraints = _defaultConstraints;
+    }
+
+    bool IsCollisionFromAbove(Collision2D collision)
+    {
+        //Checa direção da colisão
+        foreach (ContactPoint2D pt in collision.contacts)
+        {
+            //Checa se player está envolvido na colisão
+            if (pt.collider.gameObject != PlayerInfo.PlayerInstance.gameObject &&
+                pt.otherCollider.gameObject != PlayerInfo.PlayerInstance.gameObject)
+            {
+                continue;
+            }
+
+            //Checa se player está acima da caixa
+            if (_freezeBox != null && pt.point.y >= _freezeBox.Collider.bounds.max.y)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void OnPushPullActionUsed()
