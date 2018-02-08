@@ -280,6 +280,7 @@ public class CustomizePlayer : MonoBehaviour {
             case "Cor de pele":
 			
 			_currentCategory = "Cor de pele";
+			gameObject.GetComponent<Image>().sprite = Corpo[0];
 				gameObject.GetComponent<Image>().color = CorPele[0];
 			ChangePalette (CorPele);
 				ChangeAlphaPattern (0);
@@ -399,13 +400,13 @@ public class CustomizePlayer : MonoBehaviour {
 	void ChangePalette(Color[] colors){
 
 		if (colors.Length < _numberColorsActive) {
-			for (int i = colors.Length; i < _numberColorsActive; i++)
+			for (int i = colors.Length; i < Color.Length/*_numberColorsActive*/; i++)
 				Color [i].gameObject.SetActive (false);
 			// se o numero de cores for menor que o numero de botoes, dar um jeito de diminuir o scroll
 		} else if (colors.Length > _numberColorsActive) {
 			for (int i = 0 ; i < colors.Length; i++)
 				Color [i].gameObject.SetActive (true);
-			// se o numero de cores for maior que o numero de botoes, dar um jeito de diminuir o scroll
+			// se o numero de cores for maior que o numero de botoes, dar um jeito de aumentar o scroll
 		}
 
 		_numberColorsActive = colors.Length;
