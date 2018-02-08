@@ -38,7 +38,7 @@ public class ChangeSeesawAnchor : MonoBehaviour, IAction<float> {
 	public float GetCurrentValue()
 	{
 		if (_hinge) {
-			return _hinge.anchor.x;
+			return _hinge.anchor.x * 2;
 		}
 		else return 0;
 	}
