@@ -89,7 +89,7 @@ public class ActionPanelGangorra : MonoBehaviour {
 	public void OnActionConfirm()
 	{
 		//_chosenAction.SetTarget(_physicsObject);
-		_chosenAction.OnActionUse(_chosenValue);
+		if(ChosenValueSlider.interactable) _chosenAction.OnActionUse(_chosenValue);
 		StartCoroutine(ButtonAnimDelay(1.45f));
 
 		//OnChooseActionPanelActivated();
@@ -132,6 +132,18 @@ public class ActionPanelGangorra : MonoBehaviour {
 		ChosenValueSlider.maxValue = 0.95f;
 		ChosenValueSlider.minValue = -0.95f;
 		ChosenValueSlider.value = _chosenAction.GetCurrentValue();
+
+		//se puder interagir e mudar o eixo, habilita interação
+		//aqui dá pra fazer tweaks na UI disso
+		if (_physicsObject.CanPlayerInteract && _physicsObject.AvailableActions.ChangeAnchorPointAction) 
+		{
+			ChosenValueSlider.interactable = true;
+		} 
+		else 
+		{
+			ChosenValueSlider.interactable = false;
+		}
+
 
 		OnActionValueChanged();
 	}
