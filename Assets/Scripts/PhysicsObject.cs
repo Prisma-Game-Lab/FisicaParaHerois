@@ -102,6 +102,11 @@ public class PhysicsObject : MonoBehaviour {
 
         _defaultConstraints = physicsData.constraints;
 
+        if (tag == "Box")
+        {
+            _defaultConstraints = RigidbodyConstraints2D.None;
+        }
+
         //Guarda as informações iniciais (para qnd precisar resetar o objeto)
         _initialPos = transform.position;
         _initialMass = physicsData.mass;
@@ -187,6 +192,16 @@ public class PhysicsObject : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Se colisão for com gangorra, retira restrição de movimentação da caixa
+        if ((collision.collider.transform.parent.tag == "Gangorra" && collision.otherCollider.tag == "Box") ||
+            (collision.otherCollider.transform.parent.tag == "Gangorra" && collision.collider.tag == "Box"))
+        {
+            if (tag == "Box")
+            {
+                physicsData.constraints = _defaultConstraints;
+            }
+        }
+
         //Se player não estiver envolvido na colisão, não faça nada
 		if (((collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject) &&  /*player não está envolvido na colisão*/
             (collision.otherCollider.gameObject != PlayerInfo.PlayerInstance.gameObject)) || /*player não está envolvido na colisão*/
