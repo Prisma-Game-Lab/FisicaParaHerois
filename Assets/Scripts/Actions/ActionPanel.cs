@@ -94,7 +94,6 @@ public class ActionPanel : MonoBehaviour {
 
         _chosenAction = PlayerInfo.PlayerInstance.Actions[action];
         ActionNameText.text = _chosenAction.GetActionName();
-        _chosenAction.SetTarget(_physicsObject);
         ChosenValueSlider.value = _chosenAction.GetCurrentValue();
 
         StartCoroutine(ButtonAnimDelay(1.45f));
@@ -199,6 +198,7 @@ public class ActionPanel : MonoBehaviour {
 
         foreach (IAction<float> action in PlayerInfo.PlayerInstance.Actions)
         {
+            action.SetTarget(_physicsObject);
             switch (action.GetActionName())
             {
                 case "Change mass":
