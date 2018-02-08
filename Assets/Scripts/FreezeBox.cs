@@ -5,10 +5,12 @@ using UnityEngine;
 public class FreezeBox : MonoBehaviour {
     private Rigidbody2D _rb;
     private RigidbodyConstraints2D _defaultConstraints;
+    [HideInInspector] public BoxCollider2D Collider;
     //private bool _touchingFloor = false;
 
 	// Use this for initialization
 	void Start () {
+        Collider = GetComponent<BoxCollider2D>();
         _rb = GetComponent<Rigidbody2D>();
         _defaultConstraints = _rb.constraints;
 	}
