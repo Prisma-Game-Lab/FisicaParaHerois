@@ -225,6 +225,7 @@ public class PhysicsObject : MonoBehaviour {
             //Checa se a colisão é por cima
             if (IsCollisionFromAbove(collision))
             {
+                physicsData.constraints = RigidbodyConstraints2D.FreezePositionX;
                 return;
             }
 
