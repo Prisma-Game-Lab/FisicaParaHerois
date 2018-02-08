@@ -14,7 +14,9 @@ public class CustomizePlayer : MonoBehaviour {
 
 	public GameObject Estampa;
 	public GameObject CiliosItem;
+	public GameObject BarbaItem;
 
+	public GameObject PlayerCustomizable;
 
 	[Header ("Camiseta")]
 	public Sprite[] Camisetas;
@@ -41,6 +43,7 @@ public class CustomizePlayer : MonoBehaviour {
     [Header("Cabelo")]
     public Sprite[] Cabelos;
     public Color[] CorCabelo;
+	public Sprite[] Barba;
 
     [Header("Calça")]
     public Sprite[] Calcas;
@@ -53,6 +56,8 @@ public class CustomizePlayer : MonoBehaviour {
     [Header("Acessorio")]
     public Sprite[] Acessorios;
     public Color[] CorAcessorio;
+
+	public GameObject Sombrancelha;
 
 	private ScrollRect _CategoryScroll;
 	private ScrollRect _ColorScroll;
@@ -110,6 +115,11 @@ public class CustomizePlayer : MonoBehaviour {
 				_indexCategoriaAcessorio += 1;
 				CiliosItem.GetComponent<Image> ().sprite = Cilios [_indexCategoriaAcessorio];
 			}
+		} else if (_currentCategory == "Cabelo") {
+			if (_indexCategoriaAcessorio < Barba.Length - 1) {
+				_indexCategoriaAcessorio += 1;
+				BarbaItem.GetComponent<Image> ().sprite = Barba [_indexCategoriaAcessorio];
+			}
 		}
 
 	}
@@ -127,7 +137,12 @@ public class CustomizePlayer : MonoBehaviour {
 				_indexCategoriaAcessorio -= 1;
 				CiliosItem.GetComponent<Image> ().sprite = Cilios [_indexCategoriaAcessorio];
 			}
-		}
+		} else if (_currentCategory == "Cabelo") {
+			if (_indexCategoriaAcessorio > 0) {
+				_indexCategoriaAcessorio -= 1;
+				BarbaItem.GetComponent<Image> ().sprite = Barba [_indexCategoriaAcessorio];
+			}
+		} 
 	}
 
 	// Muda o item da categoria
@@ -302,6 +317,8 @@ public class CustomizePlayer : MonoBehaviour {
 			_currentCategory = "Cabelo";
 				gameObject.GetComponent<Image>().sprite = Cabelos[0];
 				gameObject.GetComponent<Image>().color = CorCabelo[0];
+			BarbaItem.GetComponent<Image> ().sprite = Barba [0];
+
 			ChangePalette (CorCabelo);
 			ChangeAlphaPattern (0);
 			_indexItemCategoria = 0;
@@ -349,6 +366,8 @@ public class CustomizePlayer : MonoBehaviour {
 			
 			_currentCategory = "Olhos";
 				gameObject.GetComponent<Image>().sprite = Olhos[0];
+			CiliosItem.GetComponent<Image> ().sprite = Cilios [0];
+
 				// dar um jeito de botar cílios aqui
 				ChangePalette (CorOlhos);
 			ChangeAlphaPattern (1f);
@@ -368,6 +387,10 @@ public class CustomizePlayer : MonoBehaviour {
 	void ColorButton(int index) {
 		
 		gameObject.GetComponent<Image> ().color = Color [index].GetComponent<Image> ().color;
+		if (_currentCategory == "Cabelo") {
+			BarbaItem.GetComponent<Image>().color = Color [index].GetComponent<Image> ().color;
+			Sombrancelha.GetComponent<Image>().color = Color [index].GetComponent<Image> ().color;
+		}
 		// muda a cor do asset
 	}
 		
@@ -396,17 +419,23 @@ public class CustomizePlayer : MonoBehaviour {
 	// tira o alpha da estampa e ou cílio
 	void ChangeAlphaPattern(float alpha){
 		
-			if (_currentCategory == "Camisas") {
+		if (_currentCategory == "Camisas") {
 			
 			Color cor = Estampa.GetComponent<Image> ().color;
 			cor.a = alpha;
 			Estampa.GetComponent<Image> ().color = cor;
 
-			} else if (_currentCategory == "Olhos") {
+		} else if (_currentCategory == "Olhos") {
 			
 			Color cor = CiliosItem.GetComponent<Image> ().color;
 			cor.a = alpha;
 			CiliosItem.GetComponent<Image> ().color = cor;
+
+		} else if (_currentCategory == "Cabelo") {
+
+		Color cor = BarbaItem.GetComponent<Image> ().color;
+		cor.a = alpha;
+		BarbaItem.GetComponent<Image> ().color = cor;
 
 		} else {
 			
@@ -414,9 +443,13 @@ public class CustomizePlayer : MonoBehaviour {
 			corEstampa.a = alpha;
 			CiliosItem.GetComponent<Image> ().color = corEstampa;
 
-			Color corCilio = Estampa.GetComponent<Image> ().color;
+			Color corCilio = CiliosItem.GetComponent<Image> ().color;
 			corCilio.a = alpha;
-			Estampa.GetComponent<Image> ().color = corCilio;
+			CiliosItem.GetComponent<Image> ().color = corCilio;
+
+			Color corBarba = BarbaItem.GetComponent<Image> ().color;
+			corBarba.a = alpha;
+			BarbaItem.GetComponent<Image> ().color = corBarba;
 		}
 
 	}
