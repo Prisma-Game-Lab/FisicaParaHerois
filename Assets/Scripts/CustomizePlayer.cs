@@ -54,10 +54,6 @@ public class CustomizePlayer : MonoBehaviour {
     public Sprite[] Acessorios;
     public Color[] CorAcessorio;
 
-    [Tooltip("Primeiro e único filho da imagem que é o texto genérico")] public Text TextoGenerico;
-	private int _NumInSymbol = 0;
-	private string[] _Symbols = {"", "!", "@", "#", "$", "%", "ˆ", "&", "*", "(", ")"};
-	private string originalText = "CUSTOM TEXT";
 	private ScrollRect _CategoryScroll;
 	private ScrollRect _ColorScroll;
 
@@ -86,6 +82,10 @@ public class CustomizePlayer : MonoBehaviour {
 
 		_CategoryScroll = Categories [0].transform.parent.transform.parent.transform.parent.GetComponent<ScrollRect>();
 		_ColorScroll = Color [0].transform.parent.transform.parent.transform.parent.GetComponent<ScrollRect> ();
+
+		gameObject.GetComponent<Image> ().sprite = Corpo [0];
+		gameObject.GetComponent<Image> ().color = CorPele [0];
+		ChangePalette (CorPele);
 	}
 	
 	// Update is called once per frame
@@ -93,8 +93,8 @@ public class CustomizePlayer : MonoBehaviour {
 		
 		// veficar se o retandogulo do botao inclui o centro da tela e executar a acao do botao
 
+		gameObject.GetComponent<Image> ().SetNativeSize ();
 
-		
 	}
 
 	// Muda a estampa/cilios
@@ -139,20 +139,31 @@ public class CustomizePlayer : MonoBehaviour {
 			switch (_currentCategory) {
 
 			case "Camisas": 
+				gameObject.GetComponent<Image> ().sprite = Camisetas [_indexItemCategoria];
 				break;
 			case "Nariz":
+				gameObject.GetComponent<Image> ().sprite = Narizes [_indexItemCategoria];
 				break;
 			case "Boca":
+				gameObject.GetComponent<Image> ().sprite = Bocas [_indexItemCategoria];
+				break;
+			case "Cor de pele":
+				gameObject.GetComponent<Image> ().sprite = Corpo [_indexItemCategoria];
 				break;
 			case "Cabelo":
+				gameObject.GetComponent<Image> ().sprite = Cabelos [_indexItemCategoria];
 				break;
 			case "Calca":
+				gameObject.GetComponent<Image> ().sprite = Calcas [_indexItemCategoria];
 				break;
 			case "Sapato":
+				gameObject.GetComponent<Image> ().sprite = Sapatos [_indexItemCategoria];
 				break;
 			case "Acessorios":
+				gameObject.GetComponent<Image> ().sprite = Acessorios [_indexItemCategoria];
 				break;
 			case "Olhos":
+				gameObject.GetComponent<Image> ().sprite = Olhos [_indexItemCategoria];
 				break;
 			default:
 				break;
@@ -160,55 +171,72 @@ public class CustomizePlayer : MonoBehaviour {
 			}
 
 		}
-		
-		if (_NumInSymbol > 0) {
-			_NumInSymbol -= 1;
-		}
-
-		//TextoGenerico.text = originalText + " " + _NumInText + " " + _Symbols[_NumInSymbol];
-		Debug.Log("Left");
 	}
 
 	// Muda o item da categoria
 	void RightButton() {
 
+
 		switch (_currentCategory) {
 
 		case "Camisas":
-			gameObject.GetComponent<Image> ().sprite = Camisetas [_indexItemCategoria];
+			if (_indexItemCategoria < Camisetas.Length - 1) {
+				_indexItemCategoria += 1;
+				gameObject.GetComponent<Image> ().sprite = Camisetas [_indexItemCategoria];
+			}
 			break;
 		case "Nariz":
-			gameObject.GetComponent<Image> ().sprite = Narizes [_indexItemCategoria];
+			if (_indexItemCategoria < Narizes.Length - 1) {
+				_indexItemCategoria += 1;
+				gameObject.GetComponent<Image> ().sprite = Narizes [_indexItemCategoria];
+			}
 			break;
 		case "Boca":
-			gameObject.GetComponent<Image> ().sprite = Bocas [_indexItemCategoria];
+			if (_indexItemCategoria < Bocas.Length - 1) {
+				_indexItemCategoria += 1;
+				gameObject.GetComponent<Image> ().sprite = Bocas [_indexItemCategoria];
+			}
+			break;
+		case "Cor de pele":
+			if (_indexItemCategoria < Corpo.Length - 1) {
+				_indexItemCategoria += 1;
+				gameObject.GetComponent<Image> ().sprite = Corpo [_indexItemCategoria];
+			}
 			break;
 		case "Cabelo":
-			gameObject.GetComponent<Image> ().sprite = Cabelos [_indexItemCategoria];
+			if (_indexItemCategoria < Cabelos.Length - 1) {
+				_indexItemCategoria += 1;
+				gameObject.GetComponent<Image> ().sprite = Cabelos [_indexItemCategoria];
+			}
 			break;
 		case "Calca":
-			gameObject.GetComponent<Image> ().sprite = Calcas [_indexItemCategoria];
+			if (_indexItemCategoria < Calcas.Length - 1) {
+				_indexItemCategoria += 1;
+				gameObject.GetComponent<Image> ().sprite = Calcas [_indexItemCategoria];
+			}
 			break;
 		case "Sapato":
-			gameObject.GetComponent<Image> ().sprite = Sapatos [_indexItemCategoria];
+			if (_indexItemCategoria < Sapatos.Length - 1) {
+				_indexItemCategoria += 1;
+				gameObject.GetComponent<Image> ().sprite = Sapatos [_indexItemCategoria];
+			}
 			break;
 		case "Acessorios":
-			gameObject.GetComponent<Image> ().sprite = Acessorios [_indexItemCategoria];
+			if (_indexItemCategoria < Acessorios.Length - 1) {
+				_indexItemCategoria += 1;
+				gameObject.GetComponent<Image> ().sprite = Acessorios [_indexItemCategoria];
+			}
 			break;
 		case "Olhos":
-			gameObject.GetComponent<Image> ().sprite = Olhos [_indexItemCategoria];
+			if (_indexItemCategoria < Olhos.Length - 1) {
+				_indexItemCategoria += 1;
+				gameObject.GetComponent<Image> ().sprite = Olhos [_indexItemCategoria];
+			}
 			break;
 		default:
 			break;
 
 		}
-
-		if (_NumInSymbol < 11) {
-			_NumInSymbol += 1;
-		}
-
-		//TextoGenerico.text = originalText + " " + _NumInText + " " + _Symbols[_NumInSymbol];
-		Debug.Log("Right");
 	}
 
 	void CategoryButton(int index) {
@@ -322,7 +350,6 @@ public class CustomizePlayer : MonoBehaviour {
 			_currentCategory = "Olhos";
 				gameObject.GetComponent<Image>().sprite = Olhos[0];
 				// dar um jeito de botar cílios aqui
-				gameObject.GetComponent<Image>().color = CorOlhos[0];
 				ChangePalette (CorOlhos);
 			ChangeAlphaPattern (1f);
 			_indexItemCategoria = 0;
