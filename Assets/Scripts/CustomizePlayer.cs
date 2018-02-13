@@ -25,8 +25,8 @@ public class CustomizePlayer : MonoBehaviour {
 
     [Header("Olho")]
     public Sprite[] Olhos;
+	public Color[] CorOlhos;
     public Sprite[] Cilios;
-    public Color[] CorOlhos;
 
     [Header("Cor de Pele")]
     public Sprite[] Corpo;
@@ -60,7 +60,7 @@ public class CustomizePlayer : MonoBehaviour {
 	public GameObject Sombrancelha;
 
 	private ScrollRect _CategoryScroll;
-	private ScrollRect _ColorScroll;
+	private RectTransform _ColorScroll;
 
 	private int _numberColorsActive = 5;
 	private string _currentCategory;
@@ -85,12 +85,13 @@ public class CustomizePlayer : MonoBehaviour {
 			Color [i].onClick.AddListener (() => ColorButton(index));
 		}
 
-		_CategoryScroll = Categories [0].transform.parent.transform.parent.transform.parent.GetComponent<ScrollRect>();
-		_ColorScroll = Color [0].transform.parent.transform.parent.transform.parent.GetComponent<ScrollRect> ();
+		//_CategoryScroll = Categories [0].transform.parent.transform.parent.transform.parent.GetComponent<ScrollRect>();
+		_ColorScroll = Color [0].transform.parent.transform.parent.GetComponent<RectTransform> ();
 
 		gameObject.GetComponent<Image> ().sprite = Corpo [0];
 		gameObject.GetComponent<Image> ().color = CorPele [0];
 		ChangePalette (CorPele);
+		ActivatePattern ();
 	}
 	
 	// Update is called once per frame
@@ -266,7 +267,7 @@ public class CustomizePlayer : MonoBehaviour {
 				// mudar sempre pra camisa e cor que estava antes
 			gameObject.GetComponent<Image> ().sprite = Camisetas [0];
 			Estampa.GetComponent<Image> ().sprite = Estampas [0];
-			ChangeAlphaPattern (1f);
+			ActivatePattern ();
                 // dar um jeito de adicionar a estampa ao sprite da camiseta
 			gameObject.GetComponent<Image> ().color = CorCamisetas [0];
 			ChangePalette (CorCamisetas);
@@ -283,7 +284,7 @@ public class CustomizePlayer : MonoBehaviour {
 			gameObject.GetComponent<Image>().sprite = Corpo[0];
 				gameObject.GetComponent<Image>().color = CorPele[0];
 			ChangePalette (CorPele);
-				ChangeAlphaPattern (0);
+			ActivatePattern ();
 			_indexItemCategoria = 0;
 			_indexCategoriaAcessorio = 0;
 
@@ -295,7 +296,7 @@ public class CustomizePlayer : MonoBehaviour {
 				gameObject.GetComponent<Image>().sprite = Narizes[0];
 				gameObject.GetComponent<Image>().color = CorNariz[0];
 			ChangePalette (CorNariz);
-			ChangeAlphaPattern (0);
+			ActivatePattern ();
 			_indexItemCategoria = 0;
 			_indexCategoriaAcessorio = 0;
 
@@ -307,7 +308,7 @@ public class CustomizePlayer : MonoBehaviour {
 				gameObject.GetComponent<Image>().sprite = Bocas[0];
 				gameObject.GetComponent<Image>().color = CorBoca[0];
 			ChangePalette (CorBoca);
-			ChangeAlphaPattern (0);
+			ActivatePattern ();
 			_indexItemCategoria = 0;
 			_indexCategoriaAcessorio = 0;
 
@@ -321,7 +322,7 @@ public class CustomizePlayer : MonoBehaviour {
 			BarbaItem.GetComponent<Image> ().sprite = Barba [0];
 
 			ChangePalette (CorCabelo);
-			ChangeAlphaPattern (0);
+			ActivatePattern ();
 			_indexItemCategoria = 0;
 			_indexCategoriaAcessorio = 0;
 
@@ -333,7 +334,7 @@ public class CustomizePlayer : MonoBehaviour {
 				gameObject.GetComponent<Image>().sprite = Calcas[0];
 				gameObject.GetComponent<Image>().color = CorCalca[0];
 			ChangePalette (CorCalca);
-			ChangeAlphaPattern (0);
+			ActivatePattern ();
 			_indexItemCategoria = 0;
 			_indexCategoriaAcessorio = 0;
 
@@ -345,7 +346,7 @@ public class CustomizePlayer : MonoBehaviour {
 				gameObject.GetComponent<Image>().sprite = Sapatos[0];
 				gameObject.GetComponent<Image>().color = CorSapato[0];
 			ChangePalette (CorSapato);
-			ChangeAlphaPattern (0);
+			ActivatePattern ();
 			_indexItemCategoria = 0;
 			_indexCategoriaAcessorio = 0;
 
@@ -357,21 +358,22 @@ public class CustomizePlayer : MonoBehaviour {
 				gameObject.GetComponent<Image>().sprite = Acessorios[0];
 				gameObject.GetComponent<Image>().color = CorAcessorio[0];
 			ChangePalette (CorAcessorio);
-			ChangeAlphaPattern (0);
+			ActivatePattern ();
 			_indexItemCategoria = 0;
 			_indexCategoriaAcessorio = 0;
 
                 break;
 
-            case "Olhos":
+		case "Olhos":
 			
 			_currentCategory = "Olhos";
-				gameObject.GetComponent<Image>().sprite = Olhos[0];
+			gameObject.GetComponent<Image> ().sprite = Olhos [0];
+			gameObject.GetComponent<Image> ().color = CorOlhos[0];
 			CiliosItem.GetComponent<Image> ().sprite = Cilios [0];
 
 				// dar um jeito de botar cílios aqui
-				ChangePalette (CorOlhos);
-			ChangeAlphaPattern (1f);
+			ChangePalette(CorOlhos);
+			ActivatePattern ();
 			_indexItemCategoria = 0;
 			_indexCategoriaAcessorio = 0;
 
@@ -395,19 +397,26 @@ public class CustomizePlayer : MonoBehaviour {
 		// muda a cor do asset
 	}
 		
-	// ajeita o numero de cores que aparecem no display de cores
-	// + fazer com que o scroll diminua conforme o numero de cores
+	// ajeita o numero de cores que aparecem no display de cores e o tamanho do scroll
 	void ChangePalette(Color[] colors){
 
+		// se o numero de cores for menor que o numero de botoes
 		if (colors.Length < _numberColorsActive) {
 			for (int i = colors.Length; i < Color.Length/*_numberColorsActive*/; i++)
 				Color [i].gameObject.SetActive (false);
-			// se o numero de cores for menor que o numero de botoes, dar um jeito de diminuir o scroll
+			
+		// se o numero de cores for maior que o numero de botoes
 		} else if (colors.Length > _numberColorsActive) {
 			for (int i = 0 ; i < colors.Length; i++)
 				Color [i].gameObject.SetActive (true);
-			// se o numero de cores for maior que o numero de botoes, dar um jeito de aumentar o scroll
 		}
+
+		Vector2 ColorPosIni = _ColorScroll.GetChild (0).transform.position;
+
+		float altura = Mathf.Abs(Color [colors.Length - 1].transform.localPosition.y - 202);
+		_ColorScroll.sizeDelta = new Vector2 (_ColorScroll.sizeDelta.x, altura);
+
+		_ColorScroll.GetChild (0).position = ColorPosIni;
 
 		_numberColorsActive = colors.Length;
 
@@ -418,39 +427,82 @@ public class CustomizePlayer : MonoBehaviour {
 	}
 
 	// tira o alpha da estampa e ou cílio
-	void ChangeAlphaPattern(float alpha){
+	void ActivatePattern(){
 		
 		if (_currentCategory == "Camisas") {
-			
-			Color cor = Estampa.GetComponent<Image> ().color;
+
+			BarbaItem.SetActive (false);
+			CiliosItem.SetActive (false);
+			Estampa.SetActive (true);
+			/*Color cor = Estampa.GetComponent<Image> ().color;
 			cor.a = alpha;
-			Estampa.GetComponent<Image> ().color = cor;
+			Estampa.GetComponent<Image> ().color = cor;*/
+
+			/*Color corCilio = CiliosItem.GetComponent<Image> ().color;
+			corCilio.a = 0;
+			CiliosItem.GetComponent<Image> ().color = corCilio;
+
+			Color corBarba = BarbaItem.GetComponent<Image> ().color;
+			corBarba.a = 0;
+			BarbaItem.GetComponent<Image> ().color = corBarba;*/
 
 		} else if (_currentCategory == "Olhos") {
-			
-			Color cor = CiliosItem.GetComponent<Image> ().color;
+
+			Estampa.SetActive (false);
+			BarbaItem.SetActive (false);
+			CiliosItem.SetActive (true);
+
+			/*Color cor = CiliosItem.GetComponent<Image> ().color;
 			cor.a = alpha;
-			CiliosItem.GetComponent<Image> ().color = cor;
+			CiliosItem.GetComponent<Image> ().color = cor;*/
+
+			//Estampa.SetActive (false);
+
+			/*Color corEstampa = Estampa.GetComponent<Image> ().color;
+			corEstampa.a = 0;
+			Estampa.GetComponent<Image> ().color = corEstampa;*/
+
+			/*Color corBarba = BarbaItem.GetComponent<Image> ().color;
+			corBarba.a = 0;
+			BarbaItem.GetComponent<Image> ().color = corBarba;*/
+
 
 		} else if (_currentCategory == "Cabelo") {
 
-		Color cor = BarbaItem.GetComponent<Image> ().color;
-		cor.a = alpha;
-		BarbaItem.GetComponent<Image> ().color = cor;
+			Estampa.SetActive (false);
+			CiliosItem.SetActive (false);
+			BarbaItem.SetActive (true);
+
+			/*Color cor = BarbaItem.GetComponent<Image> ().color;
+			cor.a = alpha;
+			BarbaItem.GetComponent<Image> ().color = cor;*/
+
+			//Estampa.SetActive (false);
+			/*Color corEstampa = Estampa.GetComponent<Image> ().color;
+			corEstampa.a = 0;
+			Estampa.GetComponent<Image> ().color = corEstampa;*/
+
+			/*Color corCilio = CiliosItem.GetComponent<Image> ().color;
+			corCilio.a = 0;
+			CiliosItem.GetComponent<Image> ().color = corCilio;*/
+
 
 		} else {
 			
-			Color corEstampa = Estampa.GetComponent<Image> ().color;
+			Estampa.SetActive (false);
+			CiliosItem.SetActive (false);
+			BarbaItem.SetActive (false);
+			/*Color corEstampa = Estampa.GetComponent<Image> ().color;
 			corEstampa.a = alpha;
-			CiliosItem.GetComponent<Image> ().color = corEstampa;
+			Estampa.GetComponent<Image> ().color = corEstampa;*/
 
-			Color corCilio = CiliosItem.GetComponent<Image> ().color;
+			/*Color corCilio = CiliosItem.GetComponent<Image> ().color;
 			corCilio.a = alpha;
 			CiliosItem.GetComponent<Image> ().color = corCilio;
 
 			Color corBarba = BarbaItem.GetComponent<Image> ().color;
 			corBarba.a = alpha;
-			BarbaItem.GetComponent<Image> ().color = corBarba;
+			BarbaItem.GetComponent<Image> ().color = corBarba;*/
 		}
 
 	}
