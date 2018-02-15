@@ -1914,7 +1914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &532219883
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2132,7 +2132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &569376450
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2382,7 +2382,7 @@ Prefab:
     - target: {fileID: 50417449540055940, guid: b48bbaa0bcf85d942a750cc866f74e5a,
         type: 2}
       propertyPath: m_BodyType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 137560640057366934, guid: b48bbaa0bcf85d942a750cc866f74e5a,
         type: 2}
@@ -2589,7 +2589,8 @@ MonoBehaviour:
   Estampa: {fileID: 532219882}
   CiliosItem: {fileID: 1714411920}
   BarbaItem: {fileID: 569376449}
-  PlayerCustomizable: {fileID: 0}
+  PlayerCustomizable: {fileID: 1076386439}
+  PlayerInGame: {fileID: 602561616}
   Camisetas:
   - {fileID: 21300000, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
   - {fileID: 21300002, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
@@ -2634,7 +2635,10 @@ MonoBehaviour:
   - {fileID: 21300026, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
   - {fileID: 21300028, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
   - {fileID: 21300030, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
-  CorNariz: []
+  CorNariz:
+  - {r: 0.5955882, g: 0.16203503, b: 0.16203503, a: 0}
+  - {r: 0, g: 0.753, b: 0, a: 0}
+  - {r: 0.60294116, g: 0.5530426, b: 0.15073529, a: 0}
   Bocas:
   - {fileID: 21300012, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
   - {fileID: 21300014, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
@@ -2651,17 +2655,23 @@ MonoBehaviour:
   CorCabelo:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0.084178224, g: 0.051470578, b: 1, a: 1}
-  Barba: []
+  Barba:
+  - {fileID: 21300044, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
   Calcas:
   - {fileID: 21300006, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
   - {fileID: 21300006, guid: f066fafa626a7f948b8dfa39ee19c235, type: 3}
-  CorCalca: []
+  CorCalca:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 1, g: 1, b: 1, a: 0}
   Sapatos:
   - {fileID: 21300010, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
-  - {fileID: 0}
-  CorSapato: []
-  Acessorios: []
-  CorAcessorio: []
+  CorSapato:
+  - {r: 0.24243069, g: 0.12840614, b: 0.6985294, a: 0}
+  - {r: 0.89858025, g: 0.2647059, b: 1, a: 0}
+  Acessorios:
+  - {fileID: 21300044, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
+  CorAcessorio:
+  - {r: 0.64705884, g: 0.6185121, b: 0.23313148, a: 0}
   Sombrancelha: {fileID: 0}
 --- !u!114 &648425993
 MonoBehaviour:
@@ -6846,6 +6856,28 @@ Prefab:
       value: 
       objectReference: {fileID: 21475374207992554, guid: c81f1bbbd8f9a8b4bb98909a7e05b0b3,
         type: 2}
+    - target: {fileID: 137112006004573250, guid: b5f1e832ec9408a4ab23a18f3e1beff1,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 137463997349834340, guid: b5f1e832ec9408a4ab23a18f3e1beff1,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 137112006004573250, guid: b5f1e832ec9408a4ab23a18f3e1beff1,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 21413705896503314, guid: 3be9455ce522e664fbb420167f26b119,
+        type: 2}
+    - target: {fileID: 137463997349834340, guid: b5f1e832ec9408a4ab23a18f3e1beff1,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 21304365519763246, guid: ba306194eaa0f134fb4729df55c1cafc,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b5f1e832ec9408a4ab23a18f3e1beff1, type: 2}
   m_IsPrefabParent: 0
@@ -7261,6 +7293,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1076386439 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1448718337277158, guid: b5f1e832ec9408a4ab23a18f3e1beff1,
+    type: 2}
+  m_PrefabInternal: {fileID: 863779897}
 --- !u!1 &1100809846
 GameObject:
   m_ObjectHideFlags: 0
@@ -8691,7 +8728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1714411921
 RectTransform:
   m_ObjectHideFlags: 0

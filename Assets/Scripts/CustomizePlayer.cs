@@ -17,6 +17,7 @@ public class CustomizePlayer : MonoBehaviour {
 	public GameObject BarbaItem;
 
 	public GameObject PlayerCustomizable;
+	public GameObject PlayerInGame;
 
 	[Header ("Camiseta")]
 	public Sprite[] Camisetas;
@@ -69,74 +70,151 @@ public class CustomizePlayer : MonoBehaviour {
 
 	private struct Camisa {
 
-		Sprite camiseta;
-		Sprite estampa;
-		Color cor;
+		public Sprite camiseta;
+		public Sprite estampa;
+		public Color cor;
+
+		public Camisa (Sprite camiseta, Sprite estampa, Color cor){
+			this.camiseta = camiseta;
+			this.estampa = estampa;
+			this.cor = cor;
+		}
 	}
 
 	private struct Olho {
 
-		Sprite olhos;
-		Sprite cilios;
-		Color cor;
+		public Sprite olhos;
+		public Sprite cilios;
+		public Color cor;
+
+		public Olho (Sprite olhos, Sprite cilios, Color cor){
+			this.olhos = olhos;
+			this.cilios = cilios;
+			this.cor = cor;
+		}
 	}
 
 	private struct Cabelo {
 
-		Sprite cabelo;
-		Sprite barba;
-		Color cor;
+		public Sprite cabelo;
+		public Sprite barba;
+		public Color cor;
+
+		public Cabelo (Sprite cabelo, Sprite barba, Color cor){
+			this.cabelo = cabelo;
+			this.barba = barba;
+			this.cor = cor;
+		}
 	}
 
 	private struct CorDePele {
 
-		Sprite corpo;
-		Color cor;
+		public Sprite corpo;
+		public Color cor;
+
+		public CorDePele (Sprite corpo, Color cor){
+			this.corpo = corpo;
+			this.cor = cor;
+		}
 	}
 
 	private struct Nariz {
 
-		Sprite nariz;
-		Color cor;
+		public Sprite nariz;
+		public Color cor;
+
+		public Nariz (Sprite nariz, Color cor){
+			this.nariz = nariz;
+			this.cor = cor;
+		}
 	}
 
 	private struct Boca {
 
-		Sprite boca;
-		Color cor;
+		public Sprite boca;
+		public Color cor;
+
+		public Boca (Sprite boca, Color cor){
+			this.boca = boca;
+			this.cor = cor;
+		}
 	}
 
 	private struct Calca {
 
-		Sprite calca;
-		Color cor;
+		public Sprite calca;
+		public Color cor;
+
+		public Calca (Sprite calca, Color cor){
+			this.calca = calca;
+			this.cor = cor;
+		}
 	}
 
 	private struct Sapato {
 
-		Sprite sapato;
-		Color cor;
+		public Sprite sapato;
+		public Color cor;
+
+		public Sapato (Sprite sapato, Color cor){
+			this.sapato = sapato;
+			this.cor = cor;
+		}
 	}
 
 	private struct Acessorio {
 
-		Sprite acessorio;
-		Color cor;
+		public Sprite acessorio;
+		public Color cor;
+
+		public Acessorio (Sprite acessorio, Color cor){
+			this.acessorio = acessorio;
+			this.cor = cor;
+		}
 	}
 
-	private struct Custom {
+	private struct Customize {
 
-		Camisa camisa;
-		Olho olhos;
-		Cabelo cabelo;
-		CorDePele corDePele;
-		Nariz nariz;
-		Boca boca;
-		Calca calca;
-		Sapato sapato;
-		Acessorio acessorio;
+		public Camisa camisa;
+		public Olho olhos;
+		public Cabelo cabelo;
+		public CorDePele corDePele;
+		public Nariz nariz;
+		public Boca boca;
+		public Calca calca;
+		public Sapato sapato;
+		public Acessorio acessorio;
 
+		public Customize (Camisa camisa, Olho olhos, Cabelo cabelo, CorDePele corDePele, Nariz nariz,
+			Boca boca, Calca calca, Sapato sapato, Acessorio acessorio){
+			this.camisa = camisa;
+			this.olhos = olhos;
+			this.cabelo = cabelo;
+			this.corDePele = corDePele;
+			this.nariz = nariz;
+			this.boca = boca;
+			this.calca = calca;
+			this.sapato = sapato;
+			this.acessorio = acessorio;
+		}
 	}
+
+	private Customize _changePlayer;
+
+	/*private Camisa _camisa;
+	private Olho _olhos;
+	private Cabelo _cabelo;
+	private CorDePele _corDePele;
+	private Nariz _nariz;
+	private Boca _boca;
+	private Calca _calca;
+	private Sapato _sapato;
+	private Acessorio _acessorio;*/
+
+
+	// ativar toda a struct do player com os itens iniciais, (ativar somente eles e deixar desativado todos os outros)
+	// quando for trocar o item, pegar o item original da struct do player, desativar ele, receber a nova imagem, 
+	// ativar ela e setar a nova imagem como a magem do player na struct
 
 	// Use this for initialization
 	void Start () {
@@ -163,6 +241,43 @@ public class CustomizePlayer : MonoBehaviour {
 		gameObject.GetComponent<Image> ().color = CorPele [0];
 		ChangePalette (CorPele);
 		ActivatePattern ();
+
+		//PlayerCustomizable
+
+		_changePlayer = new Customize (
+			new Camisa (Camisetas [0], Estampas [0], CorCamisetas [0]), 
+			new Olho (Olhos [0], Cilios [0], CorOlhos [0]), 
+			new Cabelo (Cabelos [0], Barba [0], CorCabelo [0]), 
+			new CorDePele (Corpo [0], CorPele [0]), 
+			new Nariz (Narizes [0], CorNariz [0]), 
+			new Boca (Bocas [0], CorBoca [0]),
+			new Calca (Calcas [0], CorCalca [0]), 
+			new Sapato (Sapatos [0], CorSapato [0]), 
+			new Acessorio (Acessorios [0], CorAcessorio [0])
+		);
+
+		// cust4_1 - sobrancelha
+		// cust2_0 - cabeca careca
+		// arms - bracos
+		// barba
+		// olhos
+		// nariz
+		// boca
+		// cabelos
+		// estampasDesenho
+		// estampasCor
+		// blusas
+		// calcas
+		// acessorios
+		// sapato
+
+		PlayerCustomizable.transform.Find ("blusas").Find (_changePlayer.camisa.camiseta.name).gameObject.SetActive (true);
+
+
+		Debug.Log (Camisetas[0].name);
+
+		Debug.Log(PlayerCustomizable.transform.Find ("blusas").Find(Camisetas[0].name));
+
 	}
 	
 	// Update is called once per frame
