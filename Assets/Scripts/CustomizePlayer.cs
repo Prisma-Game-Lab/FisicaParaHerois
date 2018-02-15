@@ -67,6 +67,77 @@ public class CustomizePlayer : MonoBehaviour {
 	private int _indexItemCategoria = 0;
 	private int _indexCategoriaAcessorio = 0;
 
+	private struct Camisa {
+
+		Sprite camiseta;
+		Sprite estampa;
+		Color cor;
+	}
+
+	private struct Olho {
+
+		Sprite olhos;
+		Sprite cilios;
+		Color cor;
+	}
+
+	private struct Cabelo {
+
+		Sprite cabelo;
+		Sprite barba;
+		Color cor;
+	}
+
+	private struct CorDePele {
+
+		Sprite corpo;
+		Color cor;
+	}
+
+	private struct Nariz {
+
+		Sprite nariz;
+		Color cor;
+	}
+
+	private struct Boca {
+
+		Sprite boca;
+		Color cor;
+	}
+
+	private struct Calca {
+
+		Sprite calca;
+		Color cor;
+	}
+
+	private struct Sapato {
+
+		Sprite sapato;
+		Color cor;
+	}
+
+	private struct Acessorio {
+
+		Sprite acessorio;
+		Color cor;
+	}
+
+	private struct Custom {
+
+		Camisa camisa;
+		Olho olhos;
+		Cabelo cabelo;
+		CorDePele corDePele;
+		Nariz nariz;
+		Boca boca;
+		Calca calca;
+		Sapato sapato;
+		Acessorio acessorio;
+
+	}
+
 	// Use this for initialization
 	void Start () {
 
@@ -266,11 +337,14 @@ public class CustomizePlayer : MonoBehaviour {
 			_currentCategory = "Camisas";
 				// mudar sempre pra camisa e cor que estava antes
 			gameObject.GetComponent<Image> ().sprite = Camisetas [0];
-			Estampa.GetComponent<Image> ().sprite = Estampas [0];
-			ActivatePattern ();
+			if (Estampas.Length != 0)
+				Estampa.GetComponent<Image> ().sprite = Estampas [0];
                 // dar um jeito de adicionar a estampa ao sprite da camiseta
-			gameObject.GetComponent<Image> ().color = CorCamisetas [0];
-			ChangePalette (CorCamisetas);
+			if (CorCamisetas.Length != 0) {
+				gameObject.GetComponent<Image> ().color = CorCamisetas [0];
+				ChangePalette (CorCamisetas);
+			}
+			ActivatePattern ();
 			_indexItemCategoria = 0;
 			_indexCategoriaAcessorio = 0;
 
@@ -278,86 +352,100 @@ public class CustomizePlayer : MonoBehaviour {
 				// ativar apenas a camisa no personagem
                 break;
 
-            case "Cor de pele":
+		case "Cor de pele":
 			
 			_currentCategory = "Cor de pele";
-			gameObject.GetComponent<Image>().sprite = Corpo[0];
-				gameObject.GetComponent<Image>().color = CorPele[0];
-			ChangePalette (CorPele);
+			gameObject.GetComponent<Image> ().sprite = Corpo [0];
+			if (CorPele.Length != 0) {
+				gameObject.GetComponent<Image> ().color = CorPele [0];
+				ChangePalette (CorPele);
+			}
 			ActivatePattern ();
 			_indexItemCategoria = 0;
 			_indexCategoriaAcessorio = 0;
 
                 break;
 
-            case "Nariz":
+		case "Nariz":
 			
 			_currentCategory = "Nariz";
-				gameObject.GetComponent<Image>().sprite = Narizes[0];
-				gameObject.GetComponent<Image>().color = CorNariz[0];
-			ChangePalette (CorNariz);
+			gameObject.GetComponent<Image> ().sprite = Narizes [0];
+			if (CorNariz.Length != 0) {
+				gameObject.GetComponent<Image> ().color = CorNariz [0];
+				ChangePalette (CorNariz);
+			}
 			ActivatePattern ();
 			_indexItemCategoria = 0;
 			_indexCategoriaAcessorio = 0;
 
 				break;
 
-            case "Boca":
+		case "Boca":
 			
 			_currentCategory = "Boca";
-				gameObject.GetComponent<Image>().sprite = Bocas[0];
-				gameObject.GetComponent<Image>().color = CorBoca[0];
-			ChangePalette (CorBoca);
+			gameObject.GetComponent<Image> ().sprite = Bocas [0];
+			if (CorBoca.Length != 0) {
+				gameObject.GetComponent<Image> ().color = CorBoca [0];
+				ChangePalette (CorBoca);
+			}
 			ActivatePattern ();
 			_indexItemCategoria = 0;
 			_indexCategoriaAcessorio = 0;
 
                 break;
 
-            case "Cabelo":
+		case "Cabelo":
 			
 			_currentCategory = "Cabelo";
-				gameObject.GetComponent<Image>().sprite = Cabelos[0];
-				gameObject.GetComponent<Image>().color = CorCabelo[0];
-			BarbaItem.GetComponent<Image> ().sprite = Barba [0];
-
-			ChangePalette (CorCabelo);
+			gameObject.GetComponent<Image> ().sprite = Cabelos [0];
+			if (Barba.Length != 0)
+				BarbaItem.GetComponent<Image> ().sprite = Barba [0];
+			if (CorCabelo.Length != 0) {
+				gameObject.GetComponent<Image> ().color = CorCabelo [0];
+				ChangePalette (CorCabelo);
+			}
 			ActivatePattern ();
 			_indexItemCategoria = 0;
 			_indexCategoriaAcessorio = 0;
 
                 break;
 
-            case "Calca":
+		case "Calca":
 			
 			_currentCategory = "Calca";
-				gameObject.GetComponent<Image>().sprite = Calcas[0];
-				gameObject.GetComponent<Image>().color = CorCalca[0];
-			ChangePalette (CorCalca);
+			gameObject.GetComponent<Image> ().sprite = Calcas [0];
+			if (CorCalca.Length != 0) {
+				gameObject.GetComponent<Image> ().color = CorCalca [0];
+				ChangePalette (CorCalca);
+			}
 			ActivatePattern ();
 			_indexItemCategoria = 0;
 			_indexCategoriaAcessorio = 0;
 
                 break;
 
-            case "Sapato":
+		case "Sapato":
 			
 			_currentCategory = "Sapato";
-				gameObject.GetComponent<Image>().sprite = Sapatos[0];
-				gameObject.GetComponent<Image>().color = CorSapato[0];
-			ChangePalette (CorSapato);
+			gameObject.GetComponent<Image> ().sprite = Sapatos [0];
+			if (CorSapato.Length != 0) {
+				gameObject.GetComponent<Image> ().color = CorSapato [0];
+				ChangePalette (CorSapato);
+			}
 			ActivatePattern ();
 			_indexItemCategoria = 0;
 			_indexCategoriaAcessorio = 0;
 
                 break;
 
-            case "Acessorios":
+		case "Acessorios":
 			
 			_currentCategory = "Acessorios";
-				gameObject.GetComponent<Image>().sprite = Acessorios[0];
-				gameObject.GetComponent<Image>().color = CorAcessorio[0];
-			ChangePalette (CorAcessorio);
+			gameObject.GetComponent<Image> ().sprite = Acessorios [0];
+			if (CorAcessorio.Length != 0) {
+				gameObject.GetComponent<Image> ().color = CorAcessorio [0];
+				ChangePalette (CorAcessorio);
+			}
 			ActivatePattern ();
 			_indexItemCategoria = 0;
 			_indexCategoriaAcessorio = 0;
@@ -368,11 +456,12 @@ public class CustomizePlayer : MonoBehaviour {
 			
 			_currentCategory = "Olhos";
 			gameObject.GetComponent<Image> ().sprite = Olhos [0];
-			gameObject.GetComponent<Image> ().color = CorOlhos[0];
-			CiliosItem.GetComponent<Image> ().sprite = Cilios [0];
-
-				// dar um jeito de botar cílios aqui
-			ChangePalette(CorOlhos);
+			if (Cilios.Length != 0)
+				CiliosItem.GetComponent<Image> ().sprite = Cilios [0];
+			if (CorOlhos.Length != 0) {
+				gameObject.GetComponent<Image> ().color = CorOlhos [0];
+				ChangePalette (CorOlhos);
+			}
 			ActivatePattern ();
 			_indexItemCategoria = 0;
 			_indexCategoriaAcessorio = 0;
@@ -431,78 +520,29 @@ public class CustomizePlayer : MonoBehaviour {
 		
 		if (_currentCategory == "Camisas") {
 
-			BarbaItem.SetActive (false);
-			CiliosItem.SetActive (false);
-			Estampa.SetActive (true);
-			/*Color cor = Estampa.GetComponent<Image> ().color;
-			cor.a = alpha;
-			Estampa.GetComponent<Image> ().color = cor;*/
-
-			/*Color corCilio = CiliosItem.GetComponent<Image> ().color;
-			corCilio.a = 0;
-			CiliosItem.GetComponent<Image> ().color = corCilio;
-
-			Color corBarba = BarbaItem.GetComponent<Image> ().color;
-			corBarba.a = 0;
-			BarbaItem.GetComponent<Image> ().color = corBarba;*/
+			if (Barba.Length != 0) BarbaItem.SetActive (false);
+			if (Cilios.Length != 0) CiliosItem.SetActive (false);
+			if (Estampas.Length != 0) Estampa.SetActive (true);
 
 		} else if (_currentCategory == "Olhos") {
 
-			Estampa.SetActive (false);
-			BarbaItem.SetActive (false);
-			CiliosItem.SetActive (true);
-
-			/*Color cor = CiliosItem.GetComponent<Image> ().color;
-			cor.a = alpha;
-			CiliosItem.GetComponent<Image> ().color = cor;*/
-
-			//Estampa.SetActive (false);
-
-			/*Color corEstampa = Estampa.GetComponent<Image> ().color;
-			corEstampa.a = 0;
-			Estampa.GetComponent<Image> ().color = corEstampa;*/
-
-			/*Color corBarba = BarbaItem.GetComponent<Image> ().color;
-			corBarba.a = 0;
-			BarbaItem.GetComponent<Image> ().color = corBarba;*/
-
+			if (Estampas.Length != 0) Estampa.SetActive (false);
+			if (Barba.Length != 0) BarbaItem.SetActive (false);
+			if (Cilios.Length != 0) CiliosItem.SetActive (true);
 
 		} else if (_currentCategory == "Cabelo") {
 
-			Estampa.SetActive (false);
-			CiliosItem.SetActive (false);
-			BarbaItem.SetActive (true);
-
-			/*Color cor = BarbaItem.GetComponent<Image> ().color;
-			cor.a = alpha;
-			BarbaItem.GetComponent<Image> ().color = cor;*/
-
-			//Estampa.SetActive (false);
-			/*Color corEstampa = Estampa.GetComponent<Image> ().color;
-			corEstampa.a = 0;
-			Estampa.GetComponent<Image> ().color = corEstampa;*/
-
-			/*Color corCilio = CiliosItem.GetComponent<Image> ().color;
-			corCilio.a = 0;
-			CiliosItem.GetComponent<Image> ().color = corCilio;*/
+			if (Estampas.Length != 0) Estampa.SetActive (false);
+			if (Cilios.Length != 0) CiliosItem.SetActive (false);
+			if (Barba.Length != 0) BarbaItem.SetActive (true);
 
 
 		} else {
 			
-			Estampa.SetActive (false);
-			CiliosItem.SetActive (false);
-			BarbaItem.SetActive (false);
-			/*Color corEstampa = Estampa.GetComponent<Image> ().color;
-			corEstampa.a = alpha;
-			Estampa.GetComponent<Image> ().color = corEstampa;*/
+			if (Estampas.Length != 0) Estampa.SetActive (false);
+			if (Cilios.Length != 0) CiliosItem.SetActive (false);
+			if (Barba.Length != 0) BarbaItem.SetActive (false);
 
-			/*Color corCilio = CiliosItem.GetComponent<Image> ().color;
-			corCilio.a = alpha;
-			CiliosItem.GetComponent<Image> ().color = corCilio;
-
-			Color corBarba = BarbaItem.GetComponent<Image> ().color;
-			corBarba.a = alpha;
-			BarbaItem.GetComponent<Image> ().color = corBarba;*/
 		}
 
 	}
