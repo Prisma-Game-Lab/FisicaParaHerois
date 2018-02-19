@@ -83,16 +83,16 @@ public class ActionPanel : MonoBehaviour {
 
         _chosenAction = PlayerInfo.PlayerInstance.Actions[action];
         ActionNameText.text = _chosenAction.GetActionName();
-        ChosenValueSlider.value = _chosenAction.GetCurrentValue();
+        ChosenValueSlider.value = _chosenAction.GetCurrentValue() / 2.0f; // gambiarra
         //ChosenValueText.text = _chosenAction.GetCurrentValue().ToString();
 
         switch (action) {
 		case 0:
             _actionAnim.SetBool("button1", false);
             _actionAnim.SetBool("button2", true);
-			ChosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeGravityActionMinValue;
-			ChosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeGravityActionMaxValue;
-            ChosenValueText.text = (_chosenAction.GetCurrentValue() * GravityTextMultiplier).ToString();
+			ChosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeGravityActionMinValue / 2.0f; // /2.0 é gambiarra para o slider pular de dois em dois
+			ChosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeGravityActionMaxValue / 2.0f;
+                ChosenValueText.text = (_chosenAction.GetCurrentValue() * GravityTextMultiplier / 2.0f /* gambiarra*/).ToString();
             break;
 		case 1:
             _actionAnim.SetBool("button2", false);
@@ -114,16 +114,18 @@ public class ActionPanel : MonoBehaviour {
     /// <param name="value"></param>
     public void OnActionValueChanged()
     {
-        _chosenValue = ChosenValueSlider.value;
+        
         
         switch (_chosenAction.GetActionName())
         {
             case "Change mass":
+                _chosenValue = ChosenValueSlider.value;
                 _actionAnim.SetFloat("mass", _chosenValue);
                 ChosenValueText.text = (_chosenValue * MassTextMultiplier).ToString();
                 break;
             case "Change gravity":
-                _actionAnim.SetFloat("grav", _chosenValue);
+                _chosenValue = ChosenValueSlider.value;
+                _actionAnim.SetFloat("grav", _chosenValue * 2.0f); // gambiarra
                 ChosenValueText.text = (_chosenValue * GravityTextMultiplier).ToString();
                 break;
             default:
@@ -137,7 +139,20 @@ public class ActionPanel : MonoBehaviour {
     public void OnActionConfirm()
     {
         //_chosenAction.SetTarget(_physicsObject);
-        _chosenAction.OnActionUse(_chosenValue);
+        switch (_chosenAction.GetActionName())
+        {
+            case "Change mass":
+                _chosenAction.OnActionUse(_chosenValue);
+                break;
+            case "Change gravity":
+                _chosenAction.OnActionUse(_chosenValue * 2.0f); //gambiarra
+                break;
+            default:
+                break;
+        }
+    
+
+        
         StartCoroutine(ButtonAnimDelay(1.45f));
         OnChooseActionPanelActivated();
     }
@@ -215,7 +230,7 @@ public class ActionPanel : MonoBehaviour {
                     _actionAnim.SetFloat("mass", action.GetCurrentValue());
                     break;
                 case "Change gravity":
-                    GravityValueText.text = (action.GetCurrentValue() * GravityTextMultiplier).ToString();
+                    GravityValueText.text = (action.GetCurrentValue() * GravityTextMultiplier / 2.0f /* gambiarra*/ ).ToString();
                     _actionAnim.SetFloat("grav", action.GetCurrentValue());
                     break;
                 default:
