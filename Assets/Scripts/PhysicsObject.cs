@@ -242,6 +242,10 @@ public class PhysicsObject : MonoBehaviour {
             return;
         }
 
+		if (_pushPullAction) {
+			_boxPositionBeforeCollision = transform.position;
+		}
+
         if (!_pushPullAction && gameObject != PlayerInfo.PlayerInstance.gameObject)
         {
             //Checa se a colisão é por cima
@@ -271,7 +275,7 @@ public class PhysicsObject : MonoBehaviour {
 		} else {
 			//Physics2D.GetIgnoreCollision(collision.collider.gameObject, this.GetComponent<Collider2D>(),true)
 			//Debug.Log ("TOCO NO PLAYER");
-			if (tag == "Box") {
+			if (tag == "Box" && !_pushPullAction) {
 				transform.position = _boxPositionBeforeCollision;
 			}
 		}
