@@ -44,6 +44,7 @@ public class PhysicsObject : MonoBehaviour {
     private Vector2 _lastCheckpointVelocity;
 
 	private Vector3 _boxPositionBeforeCollision = Vector3.zero;
+	private float _removePlayerFromWallCooldown = 0;
 
     void OnValidate()
     {
@@ -160,6 +161,10 @@ public class PhysicsObject : MonoBehaviour {
                  
             }
         }
+
+		if(_removePlayerFromWallCooldown > 0){
+			_removePlayerFromWallCooldown -= Time.deltaTime;
+		}
     }
 
     void OnMouseDown()
@@ -208,6 +213,27 @@ public class PhysicsObject : MonoBehaviour {
 		if (((collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject) &&  /*player não está envolvido na colisão*/
             (collision.otherCollider.gameObject != PlayerInfo.PlayerInstance.gameObject)) || /*player não está envolvido na colisão*/
             (this.gameObject == PlayerInfo.PlayerInstance.gameObject) /*é o player*/) {
+
+			//Colisão entre player e wall
+			if ((this.gameObject == PlayerInfo.PlayerInstance.gameObject) &&
+			   ((collision.collider.name == "Floor_Collider") ||
+			   (collision.otherCollider.name == "Floor_Collider")) && _removePlayerFromWallCooldown <= 0) {
+				//checa direção
+				foreach (ContactPoint2D pt in collision.contacts) {
+					if(pt.collider.name != "Floor_Collider" &&
+						pt.otherCollider.name != "Floor_Collider")
+					{
+						continue;
+					}
+
+					if (pt.point.x > transform.position.x + 2 || pt.point.x < transform.position.x - 2) {
+						transform.Translate (new Vector3 (0, -1, 0));
+						_removePlayerFromWallCooldown = 2f;
+					}
+				}
+
+			}
+
 			return;
 		} else {
 			//Physics2D.GetIgnoreCollision(collision.collider.gameObject, this.GetComponent<Collider2D>(),true)

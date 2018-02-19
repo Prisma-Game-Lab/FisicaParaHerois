@@ -25,7 +25,7 @@ public class FreezeBox : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other) {
         if (other.gameObject.CompareTag("Player"))
-        {
+		{
             if (GetComponent<Rigidbody2D>().velocity == Vector2.zero)
             {
                 GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
