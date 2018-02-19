@@ -89,12 +89,13 @@ public class ActionPanel : MonoBehaviour {
             _actionAnim.SetBool("button1", true);
 			ChosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeMassActionMinValue;
 			ChosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeMassActionMaxValue;
-			break;
+            break;
 		}
 
         _chosenAction = PlayerInfo.PlayerInstance.Actions[action];
         ActionNameText.text = _chosenAction.GetActionName();
         ChosenValueSlider.value = _chosenAction.GetCurrentValue();
+        ChosenValueText.text = _chosenAction.GetCurrentValue().ToString();
 
         StartCoroutine(ButtonAnimDelay(1.45f));
 
