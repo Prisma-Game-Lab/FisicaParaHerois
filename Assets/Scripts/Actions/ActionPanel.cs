@@ -30,6 +30,10 @@ public class ActionPanel : MonoBehaviour {
     [Tooltip("Menu onde a ação é escolhida")] public Transform ChooseActionMenu;
     [Tooltip("Menu onde a ação é configurada")] public Transform ConfirmActionMenu;
 
+    [Tooltip("Numero que é a razão gravidade mostrada / gravidade real")] public float GravityTextMultiplier;
+    [Tooltip("Numero que é a razão massa mostrada / massa real")] public float MassTextMultiplier;
+
+
     private PhysicsObject _physicsObject; //guarda o PhysicsObject que chamou o menu de interação
     private Image _objectSpriteHolder; //guarda o campo de imagem que contém o sprite do objeto selecionado
 
@@ -77,25 +81,27 @@ public class ActionPanel : MonoBehaviour {
             return;
         }
 
-		switch (action) {
+        _chosenAction = PlayerInfo.PlayerInstance.Actions[action];
+        ActionNameText.text = _chosenAction.GetActionName();
+        ChosenValueSlider.value = _chosenAction.GetCurrentValue();
+        //ChosenValueText.text = _chosenAction.GetCurrentValue().ToString();
+
+        switch (action) {
 		case 0:
             _actionAnim.SetBool("button1", false);
             _actionAnim.SetBool("button2", true);
 			ChosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeGravityActionMinValue;
 			ChosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeGravityActionMaxValue;
-			break;
+            ChosenValueText.text = (_chosenAction.GetCurrentValue() * GravityTextMultiplier).ToString();
+            break;
 		case 1:
             _actionAnim.SetBool("button2", false);
             _actionAnim.SetBool("button1", true);
 			ChosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeMassActionMinValue;
 			ChosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeMassActionMaxValue;
+            ChosenValueText.text = (_chosenAction.GetCurrentValue() * MassTextMultiplier).ToString();
             break;
-		}
-
-        _chosenAction = PlayerInfo.PlayerInstance.Actions[action];
-        ActionNameText.text = _chosenAction.GetActionName();
-        ChosenValueSlider.value = _chosenAction.GetCurrentValue();
-        ChosenValueText.text = _chosenAction.GetCurrentValue().ToString();
+		}        
 
         StartCoroutine(ButtonAnimDelay(1.45f));
 
@@ -109,14 +115,16 @@ public class ActionPanel : MonoBehaviour {
     public void OnActionValueChanged()
     {
         _chosenValue = ChosenValueSlider.value;
-        ChosenValueText.text = _chosenValue.ToString();
+        
         switch (_chosenAction.GetActionName())
         {
             case "Change mass":
                 _actionAnim.SetFloat("mass", _chosenValue);
+                ChosenValueText.text = (_chosenValue * MassTextMultiplier).ToString();
                 break;
             case "Change gravity":
                 _actionAnim.SetFloat("grav", _chosenValue);
+                ChosenValueText.text = (_chosenValue * GravityTextMultiplier).ToString();
                 break;
             default:
                 break;
@@ -203,11 +211,11 @@ public class ActionPanel : MonoBehaviour {
             switch (action.GetActionName())
             {
                 case "Change mass":
-                    MassValueText.text = action.GetCurrentValue().ToString();
+                    MassValueText.text = (action.GetCurrentValue()* MassTextMultiplier).ToString();
                     _actionAnim.SetFloat("mass", action.GetCurrentValue());
                     break;
                 case "Change gravity":
-                    GravityValueText.text = action.GetCurrentValue().ToString();
+                    GravityValueText.text = (action.GetCurrentValue() * GravityTextMultiplier).ToString();
                     _actionAnim.SetFloat("grav", action.GetCurrentValue());
                     break;
                 default:
