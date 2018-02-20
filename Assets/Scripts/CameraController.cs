@@ -43,7 +43,7 @@ public class CameraController : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	public void Update () {
+	public void LateUpdate () {
         if (CurOffset != Vector3.zero && TimeLeft > 0)
         {
             Vector3 curMove = (Time.deltaTime / TimeLeft) * CurOffset;
