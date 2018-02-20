@@ -203,7 +203,7 @@ public class PhysicsObject : MonoBehaviour {
 		if ((collision.collider.transform.parent != null && collision.collider.transform.parent.tag == "Gangorra" && collision.otherCollider.tag == "Box") ||
 			(collision.otherCollider.transform.parent != null && collision.otherCollider.transform.parent.tag == "Gangorra" && collision.collider.tag == "Box"))
         {
-            if (tag == "Box")
+			if (tag == "Box" && !(IsCollisionFromAbove(collision) || IsCollisionFromBelow(collision)))
             {
                 physicsData.constraints = _defaultConstraints;
             }
@@ -268,24 +268,21 @@ public class PhysicsObject : MonoBehaviour {
             return;
         }
 
-		if (_pushPullAction) {
-			_boxPositionBeforeCollision = transform.position;
-		}
-
         if (!_pushPullAction && gameObject != PlayerInfo.PlayerInstance.gameObject)
         {
             //Checa se a colisão é por cima
-            if (IsCollisionFromAbove(collision))
-            {
+			if (IsCollisionFromAbove(collision) || IsCollisionFromBelow(collision))
+			{
                 physicsData.constraints = RigidbodyConstraints2D.FreezePositionX;
                 return;
             }
-
+			Debug.Log("Congelou td. Above: " + IsCollisionFromAbove(collision) + " Below: " + IsCollisionFromBelow(collision));
             physicsData.constraints = RigidbodyConstraints2D.FreezePosition;
         }
 
         else
-        {
+		{
+			_boxPositionBeforeCollision = transform.position;
             physicsData.constraints = _defaultConstraints;
         }
     }
@@ -299,16 +296,16 @@ public class PhysicsObject : MonoBehaviour {
 			(this.gameObject == PlayerInfo.PlayerInstance.gameObject) /*é o player*/) {
 			return;
 		} else {
-			//Physics2D.GetIgnoreCollision(collision.collider.gameObject, this.GetComponent<Collider2D>(),true)
-			//Debug.Log ("TOCO NO PLAYER");
-			if (tag == "Box" && !_pushPullAction) {
-				transform.position = _boxPositionBeforeCollision;
+			if (tag == "Box" && !_pushPullAction && !(IsCollisionFromAbove(collision) || IsCollisionFromBelow(collision))) {
+				transform.position = new Vector3(_boxPositionBeforeCollision.x, transform.position.y, transform.position.z);
+				Debug.Log ("Pfvr nao printe isso. Above: " + IsCollisionFromAbove(collision).ToString() +  " Below: " + IsCollisionFromBelow(collision).ToString());
 			}
 		}
     }
 
     bool IsCollisionFromAbove(Collision2D collision)
     {
+		//* CONTACT POINT
         //Checa direção da colisão
         foreach (ContactPoint2D pt in collision.contacts)
         {
@@ -326,7 +323,47 @@ public class PhysicsObject : MonoBehaviour {
             }
         }
         return false;
+		//*/
+
+		/* RAYCAST
+		Debug.Log ("_freezeBox nula: " + (_freezeBox == null));
+		int layerMask = LayerMask.GetMask("Player"); // Does the ray intersect any objects which are in the player layer.
+		RaycastHit2D ray = Physics2D.Raycast(_freezeBox.Collider.offset, Vector2.up, Mathf.Infinity, layerMask);
+		Debug.Log (ray.collider == null ? "null" : ray.collider.name);
+		return ray.collider != null;
+		*/
     }
+
+	bool IsCollisionFromBelow(Collision2D collision)
+	{
+		//* CONTACT POINT
+		//Checa direção da colisão
+		foreach (ContactPoint2D pt in collision.contacts)
+		{
+			//Checa se player está envolvido na colisão
+			if (pt.collider.gameObject != PlayerInfo.PlayerInstance.gameObject &&
+				pt.otherCollider.gameObject != PlayerInfo.PlayerInstance.gameObject)
+			{
+				continue;
+			}
+
+			//Checa se player está acima da caixa
+			if (_freezeBox != null && pt.point.y <= _freezeBox.Collider.bounds.min.y)
+			{
+				return true;
+			}
+		}
+		return false;
+		//*/
+
+		/* RAYCAST
+		Debug.Log ("_freezeBox nula: " + (_freezeBox == null));
+		int layerMask = LayerMask.GetMask("Player"); // Does the ray intersect any objects which are in the player layer.
+		RaycastHit2D ray = Physics2D.Raycast(_freezeBox.Collider.offset, Vector2.down, Mathf.Infinity, layerMask);
+		Debug.Log (ray.collider == null ? "null" : ray.collider.name);
+		return ray.collider != null;
+		*/
+	}
 
     public void OnPushPullActionUsed()
     {
