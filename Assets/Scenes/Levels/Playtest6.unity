@@ -6343,7 +6343,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 824608934}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.23, y: -16.29, z: -0.55}
+  m_LocalPosition: {x: -16.23, y: -17.01, z: -0.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1932715241}
@@ -6429,7 +6429,7 @@ Rigidbody2D:
   m_Mass: 0.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 4
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: a1bdcf326b53a4e90a32b1db2ff7b43a, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -13268,12 +13268,12 @@ Prefab:
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 300.5
+      value: 312.5
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 169
+      value: 176
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
@@ -13449,6 +13449,16 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: JumpFunction
+      objectReference: {fileID: 0}
+    - target: {fileID: 114923838422127344, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
+        type: 2}
+      propertyPath: GravityTextMultiplier
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114923838422127344, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
+        type: 2}
+      propertyPath: MassTextMultiplier
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 258e6b0fd683f1b42bab9efc4a6f1268, type: 2}
