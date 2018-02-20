@@ -48,19 +48,34 @@ public class CameraController : MonoBehaviour {
         {
             Vector3 curMove = (Time.deltaTime / TimeLeft) * CurOffset;
             
+			/*
             //checa se camera vai ultrapassar bounds
-            if (!OutOfBounds(Camera.main.transform.position + curMove))
+            if (!OutOfBoundsX(Camera.main.transform.position + curMove))
             {
-                Camera.main.transform.Translate(curMove);
-                CurOffset -= curMove;
-                TimeLeft -= Time.deltaTime;
+                //Camera.main.transform.Translate(curMove);
+				curMove = new Vector3(0, curMove.y, curMove.z);
+                //CurOffset -= curMove;
+                //TimeLeft -= Time.deltaTime;
             }
+
+			if(!OutOfBoundsY(Camera.main.transform.position + curMove))
+			{
+				//Camera.main.transform.Translate(curMove);
+				curMove = new Vector3(curMove.x, 0, curMove.z);
+				//CurOffset -= curMove;
+				//TimeLeft -= Time.deltaTime;
+			}
+			/*
             else
             {
                 CurOffset = Vector3.zero;
                 TimeLeft = 0;
-            }          
-            
+            }       */   
+
+			Camera.main.transform.Translate(curMove);
+			CurOffset -= curMove;
+			TimeLeft -= Time.deltaTime;
+
             _cameraPosToCheck = curMove + Camera.main.transform.position;
             
         }
@@ -71,18 +86,35 @@ public class CameraController : MonoBehaviour {
 	}
 
     //recebe uma posição e retorna true se ela for out of bounds para a camera, conforme especificado pelos limits
-    private bool OutOfBounds(Vector3 position)
+    private bool OutOfBoundsX(Vector3 position)
     {
-        bool tx = position.x > _maxX || position.x < _minX;
-        bool ty = position.y > _maxY || position.y < _minY;
-        return tx || ty;
+        return position.x > _maxX || position.x < _minX;
     }
+
+	private bool OutOfBoundsY(Vector3 position)
+	{
+		return position.y > _maxY || position.y < _minY;
+	}
 
     public void Move(Vector3 offset)
     {
         if (disableScroll) return;
 
-        CurOffset = offset;
+		/*
+		CurOffset = offset;
+		if (!OutOfBoundsX (Camera.main.transform.position + offset)) {
+			CurOffset = new Vector3 (0, CurOffset.y, CurOffset.z);
+		}
+
+		if (!OutOfBoundsY (Camera.main.transform.position + offset)) {
+			CurOffset = new Vector3 (CurOffset.x, 0, CurOffset.z);
+		}
+		*/
+
+		Vector3 posCam = Camera.main.transform.position;
+		CurOffset = new Vector3 (Mathf.Clamp (offset.x, _minX - posCam.x, _maxX - posCam.x), 
+					Mathf.Clamp (offset.y, _minY - posCam.y, _maxY - posCam.y));
+
         TimeLeft = 1/CameraSpeed;
     }
 
