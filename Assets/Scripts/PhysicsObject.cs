@@ -276,7 +276,7 @@ public class PhysicsObject : MonoBehaviour {
                 physicsData.constraints = RigidbodyConstraints2D.FreezePositionX;
                 return;
             }
-			Debug.Log("Congelou td. Above: " + IsCollisionFromAbove(collision) + " Below: " + IsCollisionFromBelow(collision));
+
             physicsData.constraints = RigidbodyConstraints2D.FreezePosition;
         }
 
@@ -298,7 +298,6 @@ public class PhysicsObject : MonoBehaviour {
 		} else {
 			if (tag == "Box" && !_pushPullAction && !(IsCollisionFromAbove(collision) || IsCollisionFromBelow(collision))) {
 				transform.position = new Vector3(_boxPositionBeforeCollision.x, transform.position.y, transform.position.z);
-				Debug.Log ("Pfvr nao printe isso. Above: " + IsCollisionFromAbove(collision).ToString() +  " Below: " + IsCollisionFromBelow(collision).ToString());
 			}
 		}
     }
