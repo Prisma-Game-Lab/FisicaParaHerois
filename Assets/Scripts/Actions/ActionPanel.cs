@@ -83,7 +83,7 @@ public class ActionPanel : MonoBehaviour {
 
         _chosenAction = PlayerInfo.PlayerInstance.Actions[action];
         ActionNameText.text = _chosenAction.GetActionName();
-        ChosenValueSlider.value = _chosenAction.GetCurrentValue() / 2.0f; // gambiarra
+        
         //ChosenValueText.text = _chosenAction.GetCurrentValue().ToString();
 
         switch (action) {
@@ -92,7 +92,8 @@ public class ActionPanel : MonoBehaviour {
             _actionAnim.SetBool("button2", true);
 			ChosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeGravityActionMinValue / 2.0f; // /2.0 é gambiarra para o slider pular de dois em dois
 			ChosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeGravityActionMaxValue / 2.0f;
-                ChosenValueText.text = (_chosenAction.GetCurrentValue() * GravityTextMultiplier / 2.0f /* gambiarra*/).ToString();
+            ChosenValueText.text = (_chosenAction.GetCurrentValue() * GravityTextMultiplier / 2.0f /* gambiarra*/).ToString();
+            ChosenValueSlider.value = _chosenAction.GetCurrentValue() / 2.0f; // gambiarra
             break;
 		case 1:
             _actionAnim.SetBool("button2", false);
@@ -100,6 +101,7 @@ public class ActionPanel : MonoBehaviour {
 			ChosenValueSlider.minValue = _physicsObject.AvailableActions.ChangeMassActionMinValue;
 			ChosenValueSlider.maxValue = _physicsObject.AvailableActions.ChangeMassActionMaxValue;
             ChosenValueText.text = (_chosenAction.GetCurrentValue() * MassTextMultiplier).ToString();
+            ChosenValueSlider.value = _chosenAction.GetCurrentValue();
             break;
 		}        
 
