@@ -67,8 +67,13 @@ public class ActionPanelGangorra : MonoBehaviour {
 	/// <param name="value"></param>
 	public void OnActionValueChanged()
 	{
+        if (ChosenValueSlider.value > -0.05 && ChosenValueSlider.value < 0.05)
+            ChosenValueSlider.value = 0;
+
 		_chosenValue = ChosenValueSlider.value;
 		ChosenValueText.text = _chosenValue.ToString();
+
+
 //		
 //		switch (_chosenAction.GetActionName())
 //		{
@@ -93,7 +98,7 @@ public class ActionPanelGangorra : MonoBehaviour {
 		StartCoroutine(ButtonAnimDelay(1.45f));
 
 		//OnChooseActionPanelActivated();
-		StartCoroutine(CancelButtonDelay(0.7f));
+		StartCoroutine(CancelButtonDelay(0.5f));
 	}
 
 	/// <summary>
@@ -101,7 +106,7 @@ public class ActionPanelGangorra : MonoBehaviour {
 	/// </summary>
 	public void OnCancel()
 	{
-		StartCoroutine(CancelButtonDelay(0.7f));
+		StartCoroutine(CancelButtonDelay(0.5f));
 		//gameObject.SetActive(false);
 		//Time.timeScale = 1;
 
@@ -129,8 +134,8 @@ public class ActionPanelGangorra : MonoBehaviour {
 		_chosenAction.SetTarget(_physicsObject);
 
 		ChosenValueSlider.wholeNumbers = false;
-		ChosenValueSlider.maxValue = 0.95f;
-		ChosenValueSlider.minValue = -0.95f;
+		ChosenValueSlider.maxValue = 0.90f;
+		ChosenValueSlider.minValue = -0.90f;
 		ChosenValueSlider.value = _chosenAction.GetCurrentValue();
 
 		//se puder interagir e mudar o eixo, habilita interação
