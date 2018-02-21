@@ -183,6 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   ActionMenu: {fileID: 0}
+  ActionMenuGangorra: {fileID: 0}
   HoldTime: 0.8
   realJump: 0
   jumpCheckDistance: 1
@@ -192,6 +193,7 @@ MonoBehaviour:
   Jump: {fileID: 0}
   Action: {fileID: 0}
   _isJumping: 0
+  ObjectToReset: {fileID: 0}
 --- !u!1 &86051180
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 092f9cf55a7e2614b8447b124695dad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToLoad: Playtest1
+  SceneToLoad: Tutorial2
 --- !u!212 &253647497
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -515,7 +517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 092f9cf55a7e2614b8447b124695dad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToLoad: Playtest2
+  SceneToLoad: Tutorial1
 --- !u!212 &324142817
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -717,7 +719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 092f9cf55a7e2614b8447b124695dad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToLoad: Playtest3
+  SceneToLoad: Tutorial3
 --- !u!212 &583921843
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -961,12 +963,12 @@ Prefab:
     - target: {fileID: 224330773786954354, guid: a500cc435186b3042b24f1a5335c7a30,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 373
+      value: 372.5
       objectReference: {fileID: 0}
     - target: {fileID: 224330773786954354, guid: a500cc435186b3042b24f1a5335c7a30,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 269.5
+      value: 209.5
       objectReference: {fileID: 0}
     - target: {fileID: 224330773786954354, guid: a500cc435186b3042b24f1a5335c7a30,
         type: 2}
