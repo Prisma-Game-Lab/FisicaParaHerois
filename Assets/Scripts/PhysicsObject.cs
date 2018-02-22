@@ -450,8 +450,7 @@ public class PhysicsObject : MonoBehaviour {
         transform.rotation = _lastCheckpointRotation;
         physicsData.velocity = _lastCheckpointVelocity;
         physicsData.mass = _lastCheckpointMass;
-        physicsData.gravityScale = _lastCheckpointGravity;   
-		Debug.Log ("MINHA TAG É: " + tag);
+        physicsData.gravityScale = _lastCheckpointGravity;
 		if (tag == "Gangorra") {
 			_seesaw.Joint.anchor = _seesawLastCheckpointAnchor;
 			_seesaw.base_gangorra.transform.position = _seesawLastCheckpointPosition;
