@@ -122,7 +122,7 @@ public class MapGenerator : MonoBehaviour
 
  					//This is the next position of the Tiles base on the counters, so the first will be (3,0,0) -> (6,0,-3) -> (9,0,-6),etc. So the tiles size will have to be changed for each game, in this case 3x3 square
 					posX = (1.1f * t + 0.34f);
-					posZ = -0.55f;
+					posZ = 0;
 					posY = (-1.1f * c);
 
 					if (layer.name == "Player")
