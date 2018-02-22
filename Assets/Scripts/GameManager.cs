@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
     public bool ShouldResetGravity = true;
     public bool ShouldResetMass = true;
     public bool ShouldResetVelocity = true;
+	public bool ShouldResetSeesaw = true;
 
     private static float _time;
 
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour {
     {
         foreach (PhysicsObject obj in PhysicsObject.PhysicsObjectList)
         {
+			Debug.Log("Obj tag" + obj.tag + " name " + obj.name);
             obj.LoadLastCheckpoint();
         }
     }
