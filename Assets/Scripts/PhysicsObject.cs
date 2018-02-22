@@ -218,6 +218,11 @@ public class PhysicsObject : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+		//Pressure plates não devem ser afetadas por colisão
+		if (gameObject.name == "PressurePlate" || gameObject.name == "newPressurePlate") {
+			return;
+		}
+
         //Se colisão for com gangorra, retira restrição de movimentação da caixa
 		if ((collision.collider.transform.parent != null && collision.collider.transform.parent.tag == "Gangorra" && collision.otherCollider.tag == "Box") ||
 			(collision.otherCollider.transform.parent != null && collision.otherCollider.transform.parent.tag == "Gangorra" && collision.collider.tag == "Box"))
@@ -280,7 +285,13 @@ public class PhysicsObject : MonoBehaviour {
     }
 
     void OnCollisionStay2D(Collision2D collision)
-    {
+	{
+		//Pressure plates não devem ser afetadas por colisão
+		if (gameObject.name == "PressurePlate" || gameObject.name == "newPressurePlate") {
+
+            return;
+		}
+
         //Se player não estiver envolvido na colisão, não faça nada
         if (((collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject && (collision.otherCollider.gameObject != PlayerInfo.PlayerInstance.gameObject)) || this.gameObject == PlayerInfo.PlayerInstance.gameObject))
         {
@@ -308,6 +319,8 @@ public class PhysicsObject : MonoBehaviour {
 
     void OnCollisionExit2D(Collision2D collision)
     {
+        if (gameObject.name == "PressurePlate" || gameObject.name == "newPressurePlate") return;
+
         physicsData.constraints = _defaultConstraints;
 
 		if (((collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject) &&  /*player não está envolvido na colisão*/
