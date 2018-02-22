@@ -218,6 +218,11 @@ public class PhysicsObject : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+		//Pressure plates não devem ser afetadas por colisão
+		if (gameObject.name == "PressurePlate") {
+			return;
+		}
+
         //Se colisão for com gangorra, retira restrição de movimentação da caixa
 		if ((collision.collider.transform.parent != null && collision.collider.transform.parent.tag == "Gangorra" && collision.otherCollider.tag == "Box") ||
 			(collision.otherCollider.transform.parent != null && collision.otherCollider.transform.parent.tag == "Gangorra" && collision.collider.tag == "Box"))
@@ -280,7 +285,12 @@ public class PhysicsObject : MonoBehaviour {
     }
 
     void OnCollisionStay2D(Collision2D collision)
-    {
+	{
+		//Pressure plates não devem ser afetadas por colisão
+		if (gameObject.name == "PressurePlate") {
+			return;
+		}
+
         //Se player não estiver envolvido na colisão, não faça nada
         if (((collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject && (collision.otherCollider.gameObject != PlayerInfo.PlayerInstance.gameObject)) || this.gameObject == PlayerInfo.PlayerInstance.gameObject))
         {
@@ -450,8 +460,7 @@ public class PhysicsObject : MonoBehaviour {
         transform.rotation = _lastCheckpointRotation;
         physicsData.velocity = _lastCheckpointVelocity;
         physicsData.mass = _lastCheckpointMass;
-        physicsData.gravityScale = _lastCheckpointGravity;   
-		Debug.Log ("MINHA TAG É: " + tag);
+        physicsData.gravityScale = _lastCheckpointGravity;
 		if (tag == "Gangorra") {
 			_seesaw.Joint.anchor = _seesawLastCheckpointAnchor;
 			_seesaw.base_gangorra.transform.position = _seesawLastCheckpointPosition;
