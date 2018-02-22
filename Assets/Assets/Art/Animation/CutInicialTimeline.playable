@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NextId: 0
   m_Tracks:
-  - {fileID: 114881482197898602}
   - {fileID: 114536473679682324}
   - {fileID: 114936938493932754}
+  - {fileID: 114881482197898602}
   - {fileID: 114349487407384982}
   m_FixedDuration: 0
   m_EditorSettings:
@@ -877,16 +877,22 @@ AnimationClip:
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 14.783334
+        time: 13.916667
         value: {x: 1.6, y: -2.71, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
+        inSlope: {x: Infinity, y: Infinity, z: Infinity}
+        outSlope: {x: Infinity, y: Infinity, z: Infinity}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 15.5
+        value: {x: -0.72, y: -3.71, z: 0.73000336}
+        inSlope: {x: Infinity, y: Infinity, z: Infinity}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 15.516666
-        value: {x: 0.17, y: -0.010000229, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
+        time: 17
+        value: {x: 1.62, y: -2.87, z: 0.73000336}
+        inSlope: {x: Infinity, y: Infinity, z: Infinity}
+        outSlope: {x: Infinity, y: Infinity, z: Infinity}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -934,17 +940,23 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 14.783334
+        time: 13.916667
         value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
       - serializedVersion: 2
-        time: 15.516666
-        value: 5
-        inSlope: 0
+        time: 15.5
+        value: 0.5
+        inSlope: Infinity
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 135
+      - serializedVersion: 2
+        time: 17
+        value: 0.62
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -983,6 +995,13 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 0
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 95
+      customType: 8
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 0
       attribute: 2389637943
       script: {fileID: 0}
       typeID: 20
@@ -994,13 +1013,6 @@ AnimationClip:
       script: {fileID: 0}
       typeID: 4
       customType: 14
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 0
-      attribute: 2
-      script: {fileID: 0}
-      typeID: 95
-      customType: 8
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 0
@@ -1036,7 +1048,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 15.516666
+    m_StopTime: 17
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -1092,17 +1104,23 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 14.783334
+        time: 13.916667
         value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
       - serializedVersion: 2
-        time: 15.516666
-        value: 5
-        inSlope: 0
+        time: 15.5
+        value: 0.5
+        inSlope: Infinity
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 135
+      - serializedVersion: 2
+        time: 17
+        value: 0.62
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1156,17 +1174,23 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 14.783334
+        time: 13.916667
         value: 1.6
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
       - serializedVersion: 2
-        time: 15.516666
-        value: 0.17
-        inSlope: 0
+        time: 15.5
+        value: -0.72
+        inSlope: Infinity
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 135
+      - serializedVersion: 2
+        time: 17
+        value: 1.62
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1220,17 +1244,23 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 14.783334
+        time: 13.916667
         value: -2.71
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
       - serializedVersion: 2
-        time: 15.516666
-        value: -0.010000229
-        inSlope: 0
+        time: 15.5
+        value: -3.71
+        inSlope: Infinity
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 135
+      - serializedVersion: 2
+        time: 17
+        value: -2.87
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1284,17 +1314,23 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 14.783334
+        time: 13.916667
         value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
       - serializedVersion: 2
-        time: 15.516666
-        value: 0
-        inSlope: 0
+        time: 15.5
+        value: 0.73000336
+        inSlope: Infinity
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 135
+      - serializedVersion: 2
+        time: 17
+        value: 0.73000336
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1758,6 +1794,23 @@ MonoBehaviour:
   m_Parent: {fileID: 11400000}
   m_Children: []
   m_Clips: []
+--- !u!114 &114034302898554588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2024714994, guid: 6a10b2909283487f913b00d94cd3faf5, type: 3}
+  m_Name: AnimationPlayableAsset of Recorded (4)
+  m_EditorClassIdentifier: 
+  m_Clip: {fileID: 0}
+  m_Position: {x: 0, y: 5.7, z: 0}
+  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+  m_UseTrackMatchFields: 0
+  m_MatchTargetFields: 63
+  m_RemoveStartOffset: 0
 --- !u!114 &114118109202719452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2192,6 +2245,17 @@ MonoBehaviour:
     m_DisplayName: Active
     m_Version: 1
   m_PostPlaybackState: 0
+--- !u!114 &114372816878891060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 442072544, guid: 6a10b2909283487f913b00d94cd3faf5, type: 3}
+  m_Name: ActivationPlayableAsset(Clone)
+  m_EditorClassIdentifier: 
 --- !u!114 &114374837131130078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2401,7 +2465,7 @@ MonoBehaviour:
     m_ClipIn: 0
     m_Asset: {fileID: 114518265138692288}
     m_UnderlyingAsset: {fileID: 7400000, guid: b2a4064da837c63489992751fb4c0b6e, type: 2}
-    m_Duration: 2.4166666666666665
+    m_Duration: 7.883333333333333
     m_TimeScale: 1
     m_ParentTrack: {fileID: 114536473679682324}
     m_EaseInDuration: 0
@@ -2524,6 +2588,17 @@ MonoBehaviour:
   m_ApplyOffsets: 0
   m_AvatarMask: {fileID: 0}
   m_ApplyAvatarMask: 1
+--- !u!114 &114578895474449422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 442072544, guid: 6a10b2909283487f913b00d94cd3faf5, type: 3}
+  m_Name: ActivationPlayableAsset(Clone)
+  m_EditorClassIdentifier: 
 --- !u!114 &114622718381046414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2774,7 +2849,7 @@ MonoBehaviour:
     m_ClipIn: 0
     m_Asset: {fileID: 114808269891855780}
     m_UnderlyingAsset: {fileID: 114959852650339172}
-    m_Duration: 3.066666666666667
+    m_Duration: 5.516666666666667
     m_TimeScale: 1
     m_ParentTrack: {fileID: 114914414926540322}
     m_EaseInDuration: 0
@@ -2873,7 +2948,7 @@ MonoBehaviour:
     m_ClipIn: 0
     m_Asset: {fileID: 114446674530488320}
     m_UnderlyingAsset: {fileID: 74688336742667526}
-    m_Duration: 14.783333778381348
+    m_Duration: 18.516666666666666
     m_TimeScale: 1
     m_ParentTrack: {fileID: 114937276769146850}
     m_EaseInDuration: 0
