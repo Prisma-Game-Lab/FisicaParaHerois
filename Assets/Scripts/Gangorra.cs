@@ -6,6 +6,7 @@ public class Gangorra : MonoBehaviour {
 
 	public GameObject base_gangorra;
 	public float visual_distance_connecting_point;
+	[HideInInspector] public HingeJoint2D Joint;
 
 	private Collider2D _coll;
 	private PhysicsObject _po;
@@ -24,6 +25,10 @@ public class Gangorra : MonoBehaviour {
 
 		visual_distance_connecting_point = this.transform.position.y - base_gangorra.transform.position.y;
 
+	}
+
+	void Awake(){
+		Joint = GetComponent<HingeJoint2D>();
 	}
 
 	void OnCollisionStay2D(Collision2D coll)

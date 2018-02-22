@@ -46,6 +46,14 @@ public class PhysicsObject : MonoBehaviour {
 	private Vector3 _boxPositionBeforeCollision = Vector3.zero;
 	private float _removePlayerFromWallCooldown = 0;
 
+	private Gangorra _seesaw;
+	private Vector2 _seesawInitalAnchor;
+	private Vector3 _seesawInitialPosition;
+	private Quaternion _seesawInitialRotation;
+	private Vector2 _seesawLastCheckpointAnchor;
+	private Vector3 _seesawLastCheckpointPosition;
+	private Quaternion _seesawLastCheckpointRotation;
+
     void OnValidate()
     {
         if (gameObject.CompareTag("Box"))
@@ -120,6 +128,17 @@ public class PhysicsObject : MonoBehaviour {
         _lastCheckpointVelocity = _initialVelocity;
         _lastCheckpointGravity = _initialGravity;
         _lastCheckpointRotation = transform.rotation;
+
+		//Guarda informações da gangorra
+		if (tag == "Gangorra") {
+			_seesaw = GetComponent<Gangorra>();
+			_seesawInitalAnchor = _seesaw.Joint.anchor;
+			_seesawInitialPosition = _seesaw.base_gangorra.transform.position;
+			_seesawInitialRotation = _seesaw.base_gangorra.transform.rotation;
+			_seesawLastCheckpointAnchor = _seesaw.Joint.anchor;
+			_seesawLastCheckpointPosition = _seesaw.base_gangorra.transform.position;
+			_seesawLastCheckpointRotation = _seesaw.base_gangorra.transform.rotation;
+		}
     }
 
     void Awake()
@@ -401,6 +420,13 @@ public class PhysicsObject : MonoBehaviour {
         if (GameManager.Instance.ShouldResetVelocity) physicsData.velocity = _initialVelocity; //resetar velocity
         if (GameManager.Instance.ShouldResetMass) physicsData.mass = _initialMass; //resetar massa
         if (GameManager.Instance.ShouldResetGravity) physicsData.gravityScale = _initialGravity; //resetar gravidade
+
+		//resetar gangorra
+		if (tag == "Gangorra" && GameManager.Instance.ShouldResetSeesaw) {
+			_seesaw.Joint.anchor = _seesawInitalAnchor;
+			_seesaw.base_gangorra.transform.position = _seesawInitialPosition;
+			_seesaw.base_gangorra.transform.rotation = _seesawInitialRotation;
+		}
     }
 
     public void NewCheckpoint()
@@ -410,6 +436,12 @@ public class PhysicsObject : MonoBehaviour {
         _lastCheckpointVelocity = physicsData.velocity;
         _lastCheckpointMass = physicsData.mass;
         _lastCheckpointGravity = physicsData.gravityScale;
+
+		if (tag == "Gangorra") {
+			_seesawLastCheckpointAnchor = _seesaw.Joint.anchor;
+			_seesawLastCheckpointPosition = _seesaw.base_gangorra.transform.position;
+			_seesawLastCheckpointRotation = _seesaw.base_gangorra.transform.rotation;
+		}
     }
 
     public void LoadLastCheckpoint()
@@ -418,6 +450,12 @@ public class PhysicsObject : MonoBehaviour {
         transform.rotation = _lastCheckpointRotation;
         physicsData.velocity = _lastCheckpointVelocity;
         physicsData.mass = _lastCheckpointMass;
-        physicsData.gravityScale = _lastCheckpointGravity;       
+        physicsData.gravityScale = _lastCheckpointGravity;   
+		Debug.Log ("MINHA TAG É: " + tag);
+		if (tag == "Gangorra") {
+			_seesaw.Joint.anchor = _seesawLastCheckpointAnchor;
+			_seesaw.base_gangorra.transform.position = _seesawLastCheckpointPosition;
+			_seesaw.base_gangorra.transform.rotation = _seesawLastCheckpointRotation;
+		}
     }
 }
