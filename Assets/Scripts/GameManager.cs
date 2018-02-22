@@ -52,7 +52,6 @@ public class GameManager : MonoBehaviour {
     {
         foreach (PhysicsObject obj in PhysicsObject.PhysicsObjectList)
         {
-			Debug.Log("Obj tag" + obj.tag + " name " + obj.name);
             obj.LoadLastCheckpoint();
         }
     }
