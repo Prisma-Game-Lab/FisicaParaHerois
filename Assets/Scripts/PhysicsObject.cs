@@ -219,7 +219,7 @@ public class PhysicsObject : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
 		//Pressure plates não devem ser afetadas por colisão
-		if (gameObject.name == "PressurePlate") {
+		if (gameObject.name == "PressurePlate" || gameObject.name == "newPressurePlate") {
 			return;
 		}
 
@@ -287,8 +287,9 @@ public class PhysicsObject : MonoBehaviour {
     void OnCollisionStay2D(Collision2D collision)
 	{
 		//Pressure plates não devem ser afetadas por colisão
-		if (gameObject.name == "PressurePlate") {
-			return;
+		if (gameObject.name == "PressurePlate" || gameObject.name == "newPressurePlate") {
+
+            return;
 		}
 
         //Se player não estiver envolvido na colisão, não faça nada
@@ -318,6 +319,8 @@ public class PhysicsObject : MonoBehaviour {
 
     void OnCollisionExit2D(Collision2D collision)
     {
+        if (gameObject.name == "PressurePlate" || gameObject.name == "newPressurePlate") return;
+
         physicsData.constraints = _defaultConstraints;
 
 		if (((collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject) &&  /*player não está envolvido na colisão*/
