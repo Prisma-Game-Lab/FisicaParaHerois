@@ -8440,6 +8440,26 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114806804259645720, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1705258906}
+    - target: {fileID: 114806804259645720, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActionButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 114593468436971738, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1705258906}
+    - target: {fileID: 114593468436971738, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: JumpFunction
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 258e6b0fd683f1b42bab9efc4a6f1268, type: 2}
   m_IsPrefabParent: 0
@@ -40811,8 +40831,8 @@ MonoBehaviour:
   PhysicsVisionPostProcessing: {fileID: 0}
   disableScroll: 0
   showBoundingBox: 1
-  Limit1: {x: -19.169407, y: 1.131671, z: 0}
-  Limit2: {x: 8.532682, y: -12.850908, z: 0}
+  Limit1: {x: -24.135223, y: 1.77495, z: 0}
+  Limit2: {x: 11.749599, y: -13.862334, z: 0}
 --- !u!61 &1705258899
 BoxCollider2D:
   m_ObjectHideFlags: 0
