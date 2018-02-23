@@ -21540,8 +21540,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectAffected: {fileID: 1735604677}
+  Animator: {fileID: 0}
   MinMass: 1
   IsLever: 0
+  FaceUP: 1
 --- !u!61 &976396934
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23440,6 +23442,26 @@ Prefab:
     - target: {fileID: 4408509360445726, guid: 26c5bb902fe8fdd4f8ecefc3801388b9, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114220558568327374, guid: 26c5bb902fe8fdd4f8ecefc3801388b9,
+        type: 2}
+      propertyPath: TargetPosition.x
+      value: 12.33767
+      objectReference: {fileID: 0}
+    - target: {fileID: 114220558568327374, guid: 26c5bb902fe8fdd4f8ecefc3801388b9,
+        type: 2}
+      propertyPath: TargetPosition.y
+      value: -11.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026558594221698, guid: 26c5bb902fe8fdd4f8ecefc3801388b9,
+        type: 2}
+      propertyPath: TargetPosition.x
+      value: 12.33767
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026558594221698, guid: 26c5bb902fe8fdd4f8ecefc3801388b9,
+        type: 2}
+      propertyPath: TargetPosition.y
+      value: -11.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 26c5bb902fe8fdd4f8ecefc3801388b9, type: 2}
@@ -34970,6 +34992,7 @@ MonoBehaviour:
   jump: {fileID: 8300000, guid: ae1b5aa20a8a94e528e90979c04287da, type: 3}
   facingRight: 1
   PushPullJoint: {fileID: 1386054900}
+  DefaultParent: {fileID: 0}
   PhysicsVisionIsReady: 0
 --- !u!61 &1386054912
 BoxCollider2D:
@@ -54201,12 +54224,12 @@ Prefab:
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 960
+      value: 168
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 540
+      value: 94.5
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}

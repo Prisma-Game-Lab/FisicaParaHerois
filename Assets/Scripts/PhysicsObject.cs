@@ -319,7 +319,7 @@ public class PhysicsObject : MonoBehaviour {
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (gameObject.name == "PressurePlate" || gameObject.name == "newPressurePlate") return;
+		if (IsPressurePlate()) return;
 
         physicsData.constraints = _defaultConstraints;
 
@@ -396,9 +396,13 @@ public class PhysicsObject : MonoBehaviour {
 		*/
 	}
 
+	bool IsPressurePlate(){
+		return (gameObject.name == "PressurePlate" || gameObject.name == "newPressurePlate");
+	}
+
     public void OnPushPullActionUsed()
     {
-        if (_hasChain)
+		if (_hasChain || IsPressurePlate())
         {
             return;
         }
