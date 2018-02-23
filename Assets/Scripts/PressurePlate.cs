@@ -10,6 +10,7 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour {
     public AffectedByPressurePlate ObjectAffected;
+    public Animator Animator;
 
     [Header("Pressure Plate")]
     [Tooltip("Guarda a massa mínima que o pressure plate necessita para ser ativado")]public float MinMass = 2;
@@ -17,11 +18,21 @@ public class PressurePlate : MonoBehaviour {
     [Header("Lever")]
     [Tooltip("Indica se é uma alavanca, ou seja, se uma vez pressionada não volta ao estado original")]public bool IsLever = false;
 
+    [Header("FacingUP")]
+    [Tooltip("Determina se o sprite da pressure plate está voltado para cima ou para baixo")]
+    public bool FaceUP = true;
+
     private bool _isActive = false;
+
 
 	// Use this for initialization
 	void Start () {
-		
+        if(Animator == null)
+        {
+            Animator = GetComponent<Animator>();
+        }
+
+        Animator.SetBool("faceUp", FaceUP);
 	}
 	
 	// Update is called once per frame
@@ -32,6 +43,7 @@ public class PressurePlate : MonoBehaviour {
     private void OnCollisionStay2D(Collision2D collision)
     {
         float objectMass;
+        
         bool objectIsValid = collision.collider.gameObject == PlayerInfo.PlayerInstance.gameObject
             || collision.otherCollider.gameObject == PlayerInfo.PlayerInstance.gameObject
             || collision.collider.tag == "Box"
@@ -42,6 +54,8 @@ public class PressurePlate : MonoBehaviour {
         {
             return;
         }
+
+        Animator.SetBool("on", true);
 
         objectMass = collision.collider.gameObject.GetComponent<PhysicsObject>().physicsData.mass;
 
@@ -63,9 +77,12 @@ public class PressurePlate : MonoBehaviour {
             || collision.collider.tag == "Box"
             || collision.otherCollider.tag == "Box";
 
+        Animator.SetBool("on", false);
+
         if (objectIsValid && !IsLever && _isActive)
         {
             Debug.Log("Botão solto");
+            
             ObjectAffected.OnUnpressed();
             _isActive = false;
         }
