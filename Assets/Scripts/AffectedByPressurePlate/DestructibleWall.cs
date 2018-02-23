@@ -7,8 +7,8 @@ public class DestructibleWall : AffectedByPressurePlate {
 	[Tooltip("Posição para onde a porta deve ir")] public Vector3 TargetPosition;
 	public float Speed = 10f;
 
-	private Vector3 _initialPosition;
-	private bool _goingUp;
+	public Vector3 _initialPosition;
+	public bool _goingUp;
 
 	public void Start(){
 		_initialPosition = transform.position;

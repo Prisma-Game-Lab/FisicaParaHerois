@@ -40,14 +40,12 @@ public class PressurePlate : MonoBehaviour {
 		
 	}
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collider)
     {
         float objectMass;
         
-        bool objectIsValid = collision.collider.gameObject == PlayerInfo.PlayerInstance.gameObject
-            || collision.otherCollider.gameObject == PlayerInfo.PlayerInstance.gameObject
-            || collision.collider.tag == "Box"
-            || collision.otherCollider.tag == "Box";
+		bool objectIsValid = collider.gameObject == PlayerInfo.PlayerInstance.gameObject
+		                     || collider.tag == "Box";
 
         //Objeto não é um player ou caixa (ou já está ativo), nada acontece
         if (!objectIsValid || _isActive || IsLever)
@@ -57,7 +55,7 @@ public class PressurePlate : MonoBehaviour {
 
         Animator.SetBool("on", true);
 
-        objectMass = collision.collider.gameObject.GetComponent<PhysicsObject>().physicsData.mass;
+        objectMass = collider.gameObject.GetComponent<PhysicsObject>().physicsData.mass;
 
         //Não faz o efeito da pressure plate a menos que o peso seja maior que o mínimo necessário (ou o objeto seja uma lever)
         if (MinMass > objectMass)
@@ -70,12 +68,10 @@ public class PressurePlate : MonoBehaviour {
         _isActive = true;
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collider)
     {
-        bool objectIsValid = collision.collider.gameObject == PlayerInfo.PlayerInstance.gameObject
-            || collision.otherCollider.gameObject == PlayerInfo.PlayerInstance.gameObject
-            || collision.collider.tag == "Box"
-            || collision.otherCollider.tag == "Box";
+		bool objectIsValid = collider.gameObject == PlayerInfo.PlayerInstance.gameObject
+		                           || collider.tag == "Box";
 
         Animator.SetBool("on", false);
 

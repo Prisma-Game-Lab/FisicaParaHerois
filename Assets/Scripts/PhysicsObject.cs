@@ -396,7 +396,7 @@ public class PhysicsObject : MonoBehaviour {
 		*/
 	}
 
-	bool IsPressurePlate(){
+	public bool IsPressurePlate(){
 		return (gameObject.name == "PressurePlate" || gameObject.name == "newPressurePlate");
 	}
 
