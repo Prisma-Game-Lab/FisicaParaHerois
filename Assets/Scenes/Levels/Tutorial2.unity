@@ -8251,12 +8251,12 @@ Prefab:
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 390
+      value: 297.5
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 163
+      value: 264.5
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
@@ -8431,12 +8431,12 @@ Prefab:
     - target: {fileID: 224904624018132850, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: -27.899998
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224116374900106758, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 55.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 258e6b0fd683f1b42bab9efc4a6f1268, type: 2}
@@ -8446,6 +8446,18 @@ GameObject:
   m_PrefabParentObject: {fileID: 1453035809493322, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
     type: 2}
   m_PrefabInternal: {fileID: 527643841}
+--- !u!114 &527643843 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114593468436971738, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
+    type: 2}
+  m_PrefabInternal: {fileID: 527643841}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &527643844 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114806804259645720, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
+    type: 2}
+  m_PrefabInternal: {fileID: 527643841}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &531160303
 GameObject:
   m_ObjectHideFlags: 0
@@ -37021,8 +37033,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectAffected: {fileID: 1457579438}
+  Animator: {fileID: 0}
   MinMass: 1
   IsLever: 0
+  FaceUP: 1
 --- !u!61 &1509600148
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -40930,8 +40944,8 @@ MonoBehaviour:
   CameraTouchSpeed: 0.01
   MinDistanceToMoveCamera: 1
   vel: {x: 0, y: 0, z: 0}
-  Jump: {fileID: 0}
-  Action: {fileID: 0}
+  Jump: {fileID: 527643843}
+  Action: {fileID: 527643844}
   _isJumping: 0
   ObjectToReset: {fileID: 0}
 --- !u!114 &1705258907
@@ -48243,8 +48257,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectAffected: {fileID: 260345635}
+  Animator: {fileID: 0}
   MinMass: 1
   IsLever: 0
+  FaceUP: 1
 --- !u!61 &2054379507
 BoxCollider2D:
   m_ObjectHideFlags: 0

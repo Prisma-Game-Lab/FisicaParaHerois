@@ -27,6 +27,11 @@ public class PressurePlate : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        if(Animator == null)
+        {
+            Animator = GetComponent<Animator>();
+        }
+
         Animator.SetBool("faceUp", FaceUP);
 	}
 	
