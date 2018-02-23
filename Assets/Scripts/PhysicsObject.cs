@@ -407,6 +407,16 @@ public class PhysicsObject : MonoBehaviour {
             return;
         }
 
+        //checa se o player está em cima da caixa. Se estiver, não pode empurrar
+        int layerMask = LayerMask.GetMask("Player"); // Does the ray intersect any objects which are in the player layer.
+        RaycastHit2D ray = Physics2D.Raycast(_freezeBox.Collider.bounds.ClosestPoint(PlayerInfo.PlayerInstance.transform.position), Vector2.up, 5.0f, layerMask);
+        if(ray.collider != null)
+        {
+            //player está em cima da caixa
+            return;
+        }
+
+
         _pushPullAction = true;
         _timeLeftToDeactivatePushPullAction = 0.2f;
         PlayerInfo.PlayerInstance.PushPullJoint.enabled = true;
