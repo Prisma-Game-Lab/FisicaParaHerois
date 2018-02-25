@@ -16,6 +16,11 @@ public class CameraController : MonoBehaviour {
     {
         if (PhysicsVisionPostProcessing == null)
         {
+            if(Camera.main == null)
+            {
+                return;
+            }
+
             PhysicsVisionPostProcessing = Camera.main.GetComponent<PostProcessingBehaviour>();
         }
     }

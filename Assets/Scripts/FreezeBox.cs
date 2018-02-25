@@ -33,6 +33,13 @@ public class FreezeBox : MonoBehaviour {
         }
 	}
 
+	void OnTriggerStay2D(Collider2D other){
+		PhysicsObject obj = other.gameObject.GetComponent<PhysicsObject>();
+		if (obj != null && obj.IsPressurePlate ()) {
+			_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+		}
+	}
+
     /*
     void OnCollisionStay2D(Collision2D col)
     {

@@ -125,6 +125,12 @@ public class GameManager : MonoBehaviour {
     public void ChangeScene(string scene)
     {
         SceneManager.LoadScene(scene);
+
+		if (IsPaused) {
+			Time.timeScale = 1f;
+			Debug.Log("Jogo despausado");
+			IsPaused = !IsPaused;
+		}
     }
 
     public void OnQuit()

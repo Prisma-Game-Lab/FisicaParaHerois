@@ -319,7 +319,7 @@ public class PhysicsObject : MonoBehaviour {
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (gameObject.name == "PressurePlate" || gameObject.name == "newPressurePlate") return;
+		if (IsPressurePlate()) return;
 
         physicsData.constraints = _defaultConstraints;
 
@@ -396,12 +396,26 @@ public class PhysicsObject : MonoBehaviour {
 		*/
 	}
 
+	public bool IsPressurePlate(){
+		return (gameObject.name == "PressurePlate" || gameObject.name == "newPressurePlate");
+	}
+
     public void OnPushPullActionUsed()
     {
-        if (_hasChain)
+		if (_hasChain || IsPressurePlate())
         {
             return;
         }
+
+        //checa se o player está em cima da caixa. Se estiver, não pode empurrar
+        int layerMask = LayerMask.GetMask("Player"); // Does the ray intersect any objects which are in the player layer.
+        RaycastHit2D ray = Physics2D.Raycast(_freezeBox.Collider.bounds.ClosestPoint(PlayerInfo.PlayerInstance.transform.position), Vector2.up, 5.0f, layerMask);
+        if(ray.collider != null)
+        {
+            //player está em cima da caixa
+            return;
+        }
+
 
         _pushPullAction = true;
         _timeLeftToDeactivatePushPullAction = 0.2f;
