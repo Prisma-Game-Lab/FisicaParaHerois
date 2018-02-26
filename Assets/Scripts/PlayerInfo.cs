@@ -191,6 +191,14 @@ public class PlayerInfo : MonoBehaviour {
 
 	public void Jump(/*float velocity*/)
     {
+		_secondsSinceLastMove = 0;
+
+		//Checa se o movimento está travado e o destrava
+		if (_rb.constraints == RigidbodyConstraints2D.FreezeAll) {
+			IsConstrained = true;
+			_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+		}
+
         if (PushPullJoint.connectedBody != null)
         {
             //não pode pular enquanto segura uma caixa (argumento do Nelson: ela tem no minimo o peso do Player)
