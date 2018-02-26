@@ -415,7 +415,7 @@ public class PhysicsObject : MonoBehaviour {
 	}
 
 	public bool IsPressurePlate(){
-		return (gameObject.name == "PressurePlate" || gameObject.name == "newPressurePlate");
+		return (gameObject.name == "PressurePlate" || gameObject.name == "newPressurePlate" || gameObject.name == "alavanca");
 	}
 
     public void OnPushPullActionUsed()
