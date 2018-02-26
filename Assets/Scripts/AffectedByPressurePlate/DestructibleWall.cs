@@ -25,7 +25,8 @@ public class DestructibleWall : AffectedByPressurePlate {
 		{
 			Debug.Log("Porta destrancada");
 			_Anim.SetBool ("open", true);
-			SetActive(false);
+			//StartCoroutine (WaitTime (0.5f));
+			//SetActive(false);
 		}
 	}
 	
@@ -37,7 +38,7 @@ public class DestructibleWall : AffectedByPressurePlate {
 		{
 			Debug.Log("Porta trancada");
 			_Anim.SetBool ("open", false);
-			SetActive(true);
+			//SetActive(true);
 		}
 	}
 
@@ -48,4 +49,8 @@ public class DestructibleWall : AffectedByPressurePlate {
             collider.SetActive(status);
         }
     }
+
+	/*IEnumerator WaitTime (float time){
+		yield return WaitForSeconds (time);
+	}*/
 }
