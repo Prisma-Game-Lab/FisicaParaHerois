@@ -827,6 +827,12 @@ Prefab:
       value: 
       objectReference: {fileID: 21948921892363552, guid: 41b00c86466d6154e8e0d86d416fb607,
         type: 2}
+    - target: {fileID: 137851795589539362, guid: b5f1e832ec9408a4ab23a18f3e1beff1,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 21957300477512862, guid: ce34d9a9505fd7845b931f5b3e521278,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b5f1e832ec9408a4ab23a18f3e1beff1, type: 2}
   m_IsPrefabParent: 0
@@ -1048,6 +1054,12 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 137063256214819176, guid: 29ac8c1ebf7908c45b84e0925df5b32e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 21118618010945156, guid: 10e2ceee8b5aeb242b712489b277e672,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 29ac8c1ebf7908c45b84e0925df5b32e, type: 2}
   m_IsPrefabParent: 0
@@ -5590,6 +5602,18 @@ GameObject:
   m_PrefabParentObject: {fileID: 1115226070081400, guid: 6876d923ab271b343844ff4953a0e77e,
     type: 2}
   m_PrefabInternal: {fileID: 1998658873}
+--- !u!114 &1427546579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1427546578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: dbdf928efaeb147beb93f0291e7bc80c, type: 2}
 --- !u!1 &1540445054
 GameObject:
   m_ObjectHideFlags: 0
@@ -5672,7 +5696,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1540445054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 240, y: 151, z: 0}
+  m_LocalPosition: {x: 243, y: 136.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 965821710}
