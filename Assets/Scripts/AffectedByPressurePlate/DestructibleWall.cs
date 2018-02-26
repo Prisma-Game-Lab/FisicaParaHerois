@@ -9,6 +9,9 @@ public class DestructibleWall : AffectedByPressurePlate {
 
 	public Vector3 _initialPosition;
 	public bool _goingUp;
+	public int ButtonsNeededToUnlock = 1;
+
+	private int _buttonsPressed = 0;
 
 	public void Start(){
 		_initialPosition = transform.position;
@@ -28,14 +31,26 @@ public class DestructibleWall : AffectedByPressurePlate {
 
 	public override void OnPressed () 
     {
-		_goingUp = true;
-        SetActive(false);
+		_buttonsPressed++;
+
+		if (_buttonsPressed >= ButtonsNeededToUnlock)
+		{
+			Debug.Log("Porta destrancada");
+			_goingUp = true;
+			SetActive(false);
+		}
 	}
 	
     public override void OnUnpressed()
-	{
-		_goingUp = false;
-		SetActive(true);
+	{       
+		_buttonsPressed--;
+
+		if (_buttonsPressed < ButtonsNeededToUnlock)
+		{
+			Debug.Log("Porta trancada");
+			_goingUp = false;
+			SetActive(true);
+		}
 	}
 
     void SetActive(bool status)
