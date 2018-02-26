@@ -11,6 +11,7 @@ public class DestructibleWall : AffectedByPressurePlate {
 	private int _buttonsPressed = 0;
 
 	public void Start(){
+		_Anim.SetBool ("open", false);
 	}
 
 	public void Update(){
