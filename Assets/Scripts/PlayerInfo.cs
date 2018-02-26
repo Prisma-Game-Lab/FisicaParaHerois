@@ -137,7 +137,6 @@ public class PlayerInfo : MonoBehaviour {
 
 		//Checa se o movimento está travado e o destrava
 		if (_rb.constraints == RigidbodyConstraints2D.FreezeAll) {
-			Debug.Log ("AAAAAA");
 			IsConstrained = true;
 			_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 		}
