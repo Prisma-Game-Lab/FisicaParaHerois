@@ -122,7 +122,6 @@ GameObject:
   - component: {fileID: 14413435}
   - component: {fileID: 14413434}
   - component: {fileID: 14413433}
-  - component: {fileID: 14413436}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -170,30 +169,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &14413436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 14413432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ce1533291b427e4f85c628dad486b32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  ActionMenu: {fileID: 0}
-  ActionMenuGangorra: {fileID: 0}
-  HoldTime: 0.8
-  realJump: 0
-  jumpCheckDistance: 1
-  CameraTouchSpeed: 0.01
-  MinDistanceToMoveCamera: 0.3
-  vel: {x: 0, y: 0, z: 0}
-  Jump: {fileID: 0}
-  Action: {fileID: 0}
-  _isJumping: 0
-  ObjectToReset: {fileID: 0}
 --- !u!1 &86051180
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,7 +508,7 @@ SpriteRenderer:
   m_Size: {x: 2.21, y: 1.87}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &284206445
 Transform:
@@ -1036,12 +1011,12 @@ Prefab:
     - target: {fileID: 224330773786954354, guid: a500cc435186b3042b24f1a5335c7a30,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 334
+      value: 237
       objectReference: {fileID: 0}
     - target: {fileID: 224330773786954354, guid: a500cc435186b3042b24f1a5335c7a30,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 188
+      value: 146.5
       objectReference: {fileID: 0}
     - target: {fileID: 224330773786954354, guid: a500cc435186b3042b24f1a5335c7a30,
         type: 2}
@@ -1214,7 +1189,7 @@ SpriteRenderer:
   m_Size: {x: 2.21, y: 1.87}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &1441790981
 Transform:
@@ -1349,7 +1324,7 @@ SpriteRenderer:
   m_Size: {x: 2.21, y: 1.86}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &1930361819
 Transform:
@@ -1495,7 +1470,7 @@ SpriteRenderer:
   m_Size: {x: 2.21, y: 1.86}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &2140905150
 Transform:
