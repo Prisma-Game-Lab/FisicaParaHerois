@@ -4,29 +4,16 @@ using UnityEngine;
 
 public class DestructibleWall : AffectedByPressurePlate {
     public List<GameObject> CollidersToDisable;
-	[Tooltip("Posição para onde a porta deve ir")] public Vector3 TargetPosition;
-	public float Speed = 10f;
 
-	public Vector3 _initialPosition;
-	public bool _goingUp;
+	public Animator _Anim;
 	public int ButtonsNeededToUnlock = 1;
 
 	private int _buttonsPressed = 0;
 
 	public void Start(){
-		_initialPosition = transform.position;
-		_goingUp = false;
 	}
 
 	public void Update(){
-		switch (_goingUp) {
-		case true:
-			transform.Translate ((TargetPosition - transform.position) * (1 / Speed));
-			break;
-		case false:
-			transform.Translate ((_initialPosition - transform.position) * (1 / Speed));
-			break;
-		}
 	}
 
 	public override void OnPressed () 
@@ -36,7 +23,7 @@ public class DestructibleWall : AffectedByPressurePlate {
 		if (_buttonsPressed >= ButtonsNeededToUnlock)
 		{
 			Debug.Log("Porta destrancada");
-			_goingUp = true;
+			_Anim.SetBool ("open", true);
 			SetActive(false);
 		}
 	}
@@ -48,7 +35,7 @@ public class DestructibleWall : AffectedByPressurePlate {
 		if (_buttonsPressed < ButtonsNeededToUnlock)
 		{
 			Debug.Log("Porta trancada");
-			_goingUp = false;
+			_Anim.SetBool ("open", false);
 			SetActive(true);
 		}
 	}
@@ -60,9 +47,4 @@ public class DestructibleWall : AffectedByPressurePlate {
             collider.SetActive(status);
         }
     }
-
-	public void OnDrawGizmos(){
-		Gizmos.color = Color.yellow;
-		Gizmos.DrawSphere(TargetPosition, 0.25f);
-	}
 }
