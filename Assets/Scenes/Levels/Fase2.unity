@@ -34988,7 +34988,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: a18c536fd6529a942b7d9162394bcc3c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -38471,15 +38471,17 @@ Prefab:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 4408509360445726, guid: 26c5bb902fe8fdd4f8ecefc3801388b9, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110002685584694, guid: 26c5bb902fe8fdd4f8ecefc3801388b9, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 8.660811
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 26c5bb902fe8fdd4f8ecefc3801388b9, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1045815895 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114026558594221698, guid: 26c5bb902fe8fdd4f8ecefc3801388b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 1045815894}
-  m_Script: {fileID: 11500000, guid: 15641aaddbfad0b49b03de1c0f5fcd4b, type: 3}
 --- !u!1 &1046367833
 GameObject:
   m_ObjectHideFlags: 0
@@ -44147,7 +44149,7 @@ Prefab:
         type: 2}
       propertyPath: ObjectAffected
       value: 
-      objectReference: {fileID: 1045815895}
+      objectReference: {fileID: 0}
     - target: {fileID: 61560562097606490, guid: cfdd39adec813db48b60ccb63b7b6648,
         type: 2}
       propertyPath: m_Offset.y
