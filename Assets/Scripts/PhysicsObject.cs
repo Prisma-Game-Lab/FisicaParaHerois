@@ -223,14 +223,21 @@ public class PhysicsObject : MonoBehaviour {
 			return;
 		}
 
-        //Se colisão for com gangorra, retira restrição de movimentação da caixa
-		if ((collision.collider.transform.parent != null && collision.collider.transform.parent.tag == "Gangorra" && collision.otherCollider.tag == "Box") ||
-			(collision.otherCollider.transform.parent != null && collision.otherCollider.transform.parent.tag == "Gangorra" && collision.collider.tag == "Box"))
+		//Se colisão for com gangorra
+		if ((collision.collider.transform.parent != null && collision.collider.transform.parent.tag == "Gangorra") ||
+			(collision.otherCollider.transform.parent != null && collision.otherCollider.transform.parent.tag == "Gangorra"))
         {
+			//retira restrição de movimentação da caixa
 			if (tag == "Box" && !(IsCollisionFromAbove(collision) || IsCollisionFromBelow(collision)))
             {
                 physicsData.constraints = _defaultConstraints;
             }
+
+			//faz player ficar parado
+			if (tag == "Player") {
+				Debug.Log ("Trave player");
+				PlayerInfo.PlayerInstance.IsConstrained = true;
+			}
         }
 
         //Se player não estiver envolvido na colisão, não faça nada
@@ -322,6 +329,17 @@ public class PhysicsObject : MonoBehaviour {
 		if (IsPressurePlate()) return;
 
         physicsData.constraints = _defaultConstraints;
+
+		//Se colisão for com gangorra
+		if ((collision.collider.transform.parent != null && collision.collider.transform.parent.tag == "Gangorra") ||
+			(collision.otherCollider.transform.parent != null && collision.otherCollider.transform.parent.tag == "Gangorra"))
+		{
+			//volta player ao normal
+			if (tag == "Player") {
+				Debug.Log ("Destrave player");
+				PlayerInfo.PlayerInstance.IsConstrained = false;
+			}
+		}
 
 		if (((collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject) &&  /*player não está envolvido na colisão*/
 			(collision.otherCollider.gameObject != PlayerInfo.PlayerInstance.gameObject)) || /*player não está envolvido na colisão*/

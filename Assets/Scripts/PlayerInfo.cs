@@ -21,7 +21,9 @@ public class PlayerInfo : MonoBehaviour {
     public float MaxVelocity = 5.0f;
 	public AudioClip jump;
     public bool facingRight = true;
-    public FixedJoint2D PushPullJoint;
+	public FixedJoint2D PushPullJoint;
+	[Tooltip("Segundos desde que o player aperta o botão até impedir o movimento do player quando ele está em cima de uma gangorra")]public float MoveDuration = 0.5f;
+	[HideInInspector] public bool IsConstrained = false;
 
     private bool _receiveDamage;
     private float _damageNumber;
@@ -30,6 +32,7 @@ public class PlayerInfo : MonoBehaviour {
     private bool _physicsVisionActivated = false;
     private PhysicsObject[] _physicsObjects;
     private CameraController _cameraController;
+	private float _secondsSinceLastMove = 0;
 
     [Header("DEBUG")]
     public bool PhysicsVisionIsReady = false;
@@ -62,6 +65,15 @@ public class PlayerInfo : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+		_secondsSinceLastMove += Time.deltaTime;
+
+		if (IsConstrained && _secondsSinceLastMove >= MoveDuration) {
+			_rb.constraints = RigidbodyConstraints2D.FreezeAll;
+		}
+
+		if (!IsConstrained && _rb.constraints == RigidbodyConstraints2D.FreezeAll) {
+			_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+		}
 
         if (_receiveDamage)
         {
@@ -121,6 +133,13 @@ public class PlayerInfo : MonoBehaviour {
     // Movimentação
 	public void Move(bool walkLeft, float minDistanceToMoveCamera/*, bool extraForce*/)
     {
+		_secondsSinceLastMove = 0;
+
+		//Checa se o movimento está travado e o destrava
+		if (_rb.constraints == RigidbodyConstraints2D.FreezeAll) {
+			IsConstrained = true;
+			_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+		}
 
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
 
@@ -152,10 +171,6 @@ public class PlayerInfo : MonoBehaviour {
                 //rb.AddForce(movement);
             }
         }
-
-
-
-
     }
 
     public void MoveCamera(Vector2 offset, float minDistanceToMoveCamera, bool forceCamera = false)
