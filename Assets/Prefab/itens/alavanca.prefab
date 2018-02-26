@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 114556833457661536}
   - component: {fileID: 114629293530501468}
   - component: {fileID: 95939610288708432}
+  - component: {fileID: 114160030300821024}
   m_Layer: 9
   m_Name: alavanca
   m_TagString: Untagged
@@ -89,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1605596155006348}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.21, y: -19.87, z: 0}
+  m_LocalPosition: {x: 7.5300083, y: -3.1191313, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4693185777808644}
@@ -240,6 +241,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114160030300821024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1605596155006348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6372d414f0af844419283c6484d1aafb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectAffected: {fileID: 0}
+  Animator: {fileID: 95939610288708432}
+  MinMass: 2
+  IsLever: 1
+  FaceUP: 1
 --- !u!114 &114556833457661536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -252,8 +269,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectAffected: {fileID: 0}
+  Animator: {fileID: 0}
   MinMass: 2
   IsLever: 1
+  FaceUP: 1
 --- !u!114 &114629293530501468
 MonoBehaviour:
   m_ObjectHideFlags: 1
