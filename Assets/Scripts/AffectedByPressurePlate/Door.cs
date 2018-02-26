@@ -16,6 +16,7 @@ public class Door : AffectedByPressurePlate {
     public bool BeginLocked;
     public string NextScene;
     public int ButtonsNeededToUnlock = 1;
+	public GameObject WinCanvas;
 
 	// Use this for initialization
 	void Start () {
@@ -40,7 +41,11 @@ public class Door : AffectedByPressurePlate {
 
     public void OnEnter()
     {
-        SceneManager.LoadScene(NextScene);
+		if (WinCanvas != null) {
+			WinCanvas.SetActive (true);
+		} else {
+			SceneManager.LoadScene (NextScene);
+		}
     }
 
     public override void OnPressed()
