@@ -7,6 +7,7 @@ public class DestructibleWall : AffectedByPressurePlate {
 
 	public Animator _Anim;
 	public int ButtonsNeededToUnlock = 1;
+	public AudioClip porta;
 
 	private int _buttonsPressed = 0;
 
@@ -25,6 +26,7 @@ public class DestructibleWall : AffectedByPressurePlate {
 		{
 			Debug.Log("Porta destrancada");
 			_Anim.SetBool ("open", true);
+			AudioSource.PlayClipAtPoint (porta, new Vector3(0,0,0));
 			//StartCoroutine (WaitTime (0.5f));
 			//SetActive(false);
 		}
