@@ -864,7 +864,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1532169268261826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.04, y: -21.07, z: 0}
+  m_LocalPosition: {x: -14.494813, y: -5.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4426270598163566}
@@ -1533,8 +1533,11 @@ MonoBehaviour:
   PhysicsVisionPostProcessing: {fileID: 0}
   disableScroll: 0
   showBoundingBox: 1
+  AutoAdjustCamera: 1
+  TimeSinceLastTouch: 0
+  TimeToEnableAutoAdjustCamera: 1
   Limit1: {x: -26.719707, y: -2.6652842, z: 0}
-  Limit2: {x: 19.801336, y: -25.020023, z: 0}
+  Limit2: {x: 8.835692, y: -15.404854, z: 0}
 --- !u!114 &114431266912965068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1910,6 +1913,7 @@ MonoBehaviour:
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
+  Caiu: {fileID: 0}
 --- !u!114 &114959493440092682
 MonoBehaviour:
   m_ObjectHideFlags: 1
