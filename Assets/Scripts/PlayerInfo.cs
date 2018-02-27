@@ -107,6 +107,7 @@ public class PlayerInfo : MonoBehaviour {
     void FixedUpdate()
     {
 		_playerAnim.SetInteger("velocity", (int)(_rb.velocity.x));
+        //if (_rb.velocity.x < 0 && )
     }
 
 	public void CheckInputFlip(string btn) {
@@ -166,7 +167,6 @@ public class PlayerInfo : MonoBehaviour {
 
         if (walkLeft)
         {
-            _playerAnim.SetBool("mirror", true);
             if (rb.velocity.x >= -MaxVelocity)
             {
 				Vector2 vel = new Vector2 (-1*PaceSpeed, _rb.velocity.y);
@@ -174,8 +174,7 @@ public class PlayerInfo : MonoBehaviour {
             }
 
         } else
-        {
-            _playerAnim.SetBool("mirror", false);
+        {      
             if (rb.velocity.x <= MaxVelocity)
             {
 				Vector2 vel = new Vector2 (PaceSpeed, _rb.velocity.y);
@@ -205,6 +204,7 @@ public class PlayerInfo : MonoBehaviour {
     {
 		_secondsSinceLastMove = 0;
 		IsJumping = true;
+        _playerAnim.SetBool("onFloor", false);
 
 		/*
 		//Checa se o movimento está travado e o destrava

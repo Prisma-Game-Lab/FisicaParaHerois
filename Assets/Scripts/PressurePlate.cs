@@ -52,12 +52,17 @@ public class PressurePlate : MonoBehaviour {
 		                     || collider.tag == "Box";
 
         //Objeto não é um player ou caixa (ou já está ativo), nada acontece
-        if (!objectIsValid || _isActive || IsLever)
+        if (!objectIsValid || _isActive)
         {
             return;
         }
 
         Animator.SetBool("on", true);
+
+        if (IsLever)
+        {
+            return;
+        }
 
         objectMass = collider.gameObject.GetComponent<PhysicsObject>().physicsData.mass;
 

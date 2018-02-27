@@ -55,6 +55,7 @@ public class PhysicsObject : MonoBehaviour {
 	private Quaternion _seesawLastCheckpointRotation;
 
 	public AudioClip Caiu;
+    private int faceDir;
 
     void OnValidate()
     {
@@ -169,7 +170,8 @@ public class PhysicsObject : MonoBehaviour {
             else
             {
                 _pushPullAction = false;
-                PlayerInfo.PlayerInstance._playerAnim.SetInteger("face", 0);
+                faceDir = 0;
+                PlayerInfo.PlayerInstance._playerAnim.SetInteger("face", faceDir);
                 //if(PlayerInfo.PlayerInstance.ObjectColliding == this)
                 if (PlayerInfo.PlayerInstance.PushPullJoint.connectedBody == physicsData)
                 {
@@ -223,6 +225,10 @@ public class PhysicsObject : MonoBehaviour {
 
 		if (collision.gameObject.tag == "floor") {
 		AudioSource.PlayClipAtPoint (Caiu, new Vector3 (5, 1, 2));
+            //Adicionar turn off do onFloor do Animator do Player
+            if(gameObject.name == "Player") { 
+                PlayerInfo.PlayerInstance._playerAnim.SetBool("onFloor", true);
+            }
 			Debug.Log ("caiu");
 
 		}
@@ -446,10 +452,16 @@ public class PhysicsObject : MonoBehaviour {
             //player está em cima da caixa
             return;
         }
-        if(PlayerInfo.PlayerInstance.transform.position.x < gameObject.transform.position.x)
-            PlayerInfo.PlayerInstance._playerAnim.SetInteger("face", 1);
+        if (PlayerInfo.PlayerInstance.transform.position.x < gameObject.transform.position.x)
+        {
+            faceDir = 1;
+            PlayerInfo.PlayerInstance._playerAnim.SetInteger("face", faceDir);
+        }
         else
-            PlayerInfo.PlayerInstance._playerAnim.SetInteger("face", -1);
+        {
+            faceDir = -1;
+            PlayerInfo.PlayerInstance._playerAnim.SetInteger("face", faceDir);
+        }
 
         _pushPullAction = true;
         _timeLeftToDeactivatePushPullAction = 0.2f;

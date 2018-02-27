@@ -109,10 +109,8 @@ public class PlayerInput : MonoBehaviour {
 
 		vel = Player.GetComponent<Rigidbody2D> ().velocity;
 
-		if (_isJumping) {
-			_playerAnim.SetBool ("onFloor", false);
-
-		} else {
+		if (!_isJumping) {
+			
 			_playerAnim.SetBool("onFloor", true);
 
 		}
