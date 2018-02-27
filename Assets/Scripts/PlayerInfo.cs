@@ -67,13 +67,17 @@ public class PlayerInfo : MonoBehaviour {
     void Update () {
 		_secondsSinceLastMove += Time.deltaTime;
 
+		/*
+		//Travava o player quando estava na gangorra
 		if (IsConstrained && _secondsSinceLastMove >= MoveDuration) {
 			_rb.constraints = RigidbodyConstraints2D.FreezeAll;
 		}
 
+		//Destravava o player quando não estava na gangorra
 		if (!IsConstrained && _rb.constraints == RigidbodyConstraints2D.FreezeAll) {
 			_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 		}
+		*/
 
         if (_receiveDamage)
         {
@@ -135,11 +139,13 @@ public class PlayerInfo : MonoBehaviour {
     {
 		_secondsSinceLastMove = 0;
 
+		/*
 		//Checa se o movimento está travado e o destrava
 		if (_rb.constraints == RigidbodyConstraints2D.FreezeAll) {
 			IsConstrained = true;
 			_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 		}
+		*/
 
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
 
@@ -188,11 +194,13 @@ public class PlayerInfo : MonoBehaviour {
     {
 		_secondsSinceLastMove = 0;
 
+		/*
 		//Checa se o movimento está travado e o destrava
 		if (_rb.constraints == RigidbodyConstraints2D.FreezeAll) {
 			IsConstrained = true;
 			_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 		}
+		*/
 
         if (PushPullJoint.connectedBody != null)
         {

@@ -225,11 +225,6 @@ public class PlayerInput : MonoBehaviour {
 		if (!_isJumping) Player.Jump ();
 	}
 
-	/*public void ActionFunction() {
-		Debug.Log ("ACTION");
-		ActionButton();
-	}*/
-
 	public void ActionButton()
 	{
 		IAction<float> action = Player.Actions.Find(x => x.GetActionName().Equals("Push/Pull"));
@@ -239,7 +234,6 @@ public class PlayerInput : MonoBehaviour {
 			action.SetTarget(target);
 			if (target != null && !_isJumping)
 			{
-				//PlayerInfo.PlayerInstance.ForceToApplyOnObject = Mathf.Sign(target.transform.position.x - Player.transform.position.x) * 100;
 				action.OnActionUse(Mathf.Sign(target.transform.position.x - Player.transform.position.x)); //O ARGUMENTO NÃ AFETA MAIS! old: O argumento será ou -1, dependendo de se o player estántes ou depois do target.
 			}
 		}
@@ -387,27 +381,6 @@ public class PlayerInput : MonoBehaviour {
 		_isJumping = true;
 	}
 
-	/*private bool IsJumping()
-	{
-		//usa raycast pra ver se hálgum objeto abaixo do player, atéerta distâcia
-		//1.0f temp para distancia míima
-		Vector2 posMin = new Vector2(transform.position.x - Player.GetComponent<BoxCollider2D>().size.x/2 - 0.1f, transform.position.y);
-		Vector2 posMid = new Vector2(transform.position.x, transform.position.y);
-		Vector2 posMax = new Vector2(transform.position.x + Player.GetComponent<BoxCollider2D>().size.x/2 + 0.1f, transform.position.y);
-
-		float alturaPlayer = Player.GetComponent<BoxCollider2D> ().bounds.size.y;
-		//jumpCheckDistance
-		RaycastHit2D hitMin = Physics2D.Raycast(posMin, Vector2.down, alturaPlayer/2 + 0.1f, _layerMask);
-		RaycastHit2D hitMid = Physics2D.Raycast(posMid, Vector2.down, alturaPlayer/2 + 0.1f, _layerMask);
-		RaycastHit2D hitMax = Physics2D.Raycast(posMax, Vector2.down, alturaPlayer/2 + 0.1f, _layerMask);
-
-		if (hitMin.collider == null && hitMid.collider == null && hitMax.collider == null)
-		{
-			return true;
-		}
-		else return false;
-	}*/
-
 	// verifica se estáocando a gangorra e diminui o atrito
 	private bool PlayerTouchingSeesaw()
 	{
@@ -454,44 +427,5 @@ public class PlayerInput : MonoBehaviour {
         }
     }
     #endregion
-
-    //    private void CheckJump()
-	//    {
-	//        BoxCollider2D playerCollider = Player.GetComponent<BoxCollider2D>();
-	//        Transform scene = GameObject.Find("SceneObjects").transform;
-	//        Transform objects = GameObject.Find("PhysicsObjects").transform;
-	//        bool touchingScene = false;
-	//        bool touchingObject = false;
-
-	//        for (int i = 0; i < scene.childCount; i += 1)
-	//        {
-	//            Collider2D sceneObjectCollider = scene.GetChild(i).GetComponent<Collider2D>();
-
-	//            if (playerCollider.IsTouching(sceneObjectCollider))
-	//            {
-	//                touchingScene = true;
-	//            }
-	//        }
-
-	//        for (int i = 0; i < objects.childCount; i += 1)
-	//        {
-	//            Collider2D physicsObjectCollider = objects.GetChild(i).GetComponent<Collider2D>();
-
-	//            if (playerCollider.IsTouching(physicsObjectCollider))
-	//            {
-	//                touchingObject = true;
-	//            }
-	//        }
-
-	//        if ((touchingObject || touchingScene))
-	//        {
-	//            _isJumping = false;
-	//            // verificar aqui se continua a andar ou nã 
-
-	//        } else
-	//        {
-	//            _isJumping = true;
-	//        }
-	//    }
 
 }

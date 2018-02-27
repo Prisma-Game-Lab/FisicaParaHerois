@@ -233,11 +233,13 @@ public class PhysicsObject : MonoBehaviour {
                 physicsData.constraints = _defaultConstraints;
             }
 
+			/* 
 			//faz player ficar parado
 			if (tag == "Player") {
 				Debug.Log ("Trave player");
 				PlayerInfo.PlayerInstance.IsConstrained = true;
 			}
+			*/
         }
 
         //Se player não estiver envolvido na colisão, não faça nada
@@ -330,6 +332,7 @@ public class PhysicsObject : MonoBehaviour {
 
         physicsData.constraints = _defaultConstraints;
 
+		/*
 		//Se colisão for com gangorra
 		if ((collision.collider.transform.parent != null && collision.collider.transform.parent.tag == "Gangorra") ||
 			(collision.otherCollider.transform.parent != null && collision.otherCollider.transform.parent.tag == "Gangorra"))
@@ -340,6 +343,7 @@ public class PhysicsObject : MonoBehaviour {
 				PlayerInfo.PlayerInstance.IsConstrained = false;
 			}
 		}
+		*/
 
 		if (((collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject) &&  /*player não está envolvido na colisão*/
 			(collision.otherCollider.gameObject != PlayerInfo.PlayerInstance.gameObject)) || /*player não está envolvido na colisão*/
