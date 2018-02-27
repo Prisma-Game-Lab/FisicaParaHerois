@@ -6116,7 +6116,7 @@ Prefab:
         type: 2}
       propertyPath: PlanoFechado
       value: 
-      objectReference: {fileID: 1539660282}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f922b4383d3b804aaacedc0a7551451, type: 2}
   m_IsPrefabParent: 0
@@ -21658,12 +21658,12 @@ Prefab:
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 231.5
+      value: 234.5
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 151
+      value: 132
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
@@ -53386,7 +53386,7 @@ Prefab:
     - target: {fileID: 224506834339202468, guid: 797ad5ebd64e41f45a1439810d9d47f8,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -6.080017
+      value: -6.080002
       objectReference: {fileID: 0}
     - target: {fileID: 224506834339202468, guid: 797ad5ebd64e41f45a1439810d9d47f8,
         type: 2}
@@ -53468,16 +53468,16 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 137834007450587590, guid: 797ad5ebd64e41f45a1439810d9d47f8,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 223468774731441202, guid: 797ad5ebd64e41f45a1439810d9d47f8,
         type: 2}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1872504838}
+    - target: {fileID: 137834007450587590, guid: 797ad5ebd64e41f45a1439810d9d47f8,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 797ad5ebd64e41f45a1439810d9d47f8, type: 2}
   m_IsPrefabParent: 0
@@ -62499,11 +62499,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!1 &1539660282 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1759614588955760, guid: 797ad5ebd64e41f45a1439810d9d47f8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1336293411}
 --- !u!1 &1540326182
 GameObject:
   m_ObjectHideFlags: 0
@@ -82399,7 +82394,12 @@ Prefab:
         type: 2}
       propertyPath: PlanoFechado
       value: 
-      objectReference: {fileID: 1539660282}
+      objectReference: {fileID: 0}
+    - target: {fileID: 114353385195627212, guid: 2f922b4383d3b804aaacedc0a7551451,
+        type: 2}
+      propertyPath: Anim
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f922b4383d3b804aaacedc0a7551451, type: 2}
   m_IsPrefabParent: 0

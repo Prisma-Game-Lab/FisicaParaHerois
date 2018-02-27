@@ -11,6 +11,11 @@ public class CameraController : MonoBehaviour {
 
     public bool disableScroll;
     public bool showBoundingBox;
+	[HideInInspector] public bool AutoAdjustCamera = true;
+	[HideInInspector] public float TimeSinceLastTouch = 0;
+	public float TimeToEnableAutoAdjustCamera = 1f;
+
+	public static CameraController Instance;
 
     void OnValidate()
     {
@@ -46,8 +51,21 @@ public class CameraController : MonoBehaviour {
         _minX = Mathf.Min(Limit1.x, Limit2.x) + Camera.main.orthographicSize * Screen.width / Screen.height;
 
     }
+
+	void Awake(){
+		Instance = this;
+	}
 	
 	// Update is called once per frame
+	public void Update(){
+		TimeSinceLastTouch += Time.deltaTime;
+
+		if (TimeSinceLastTouch >= TimeToEnableAutoAdjustCamera) {
+			AutoAdjustCamera = true;
+			TimeSinceLastTouch = 0;
+		}
+	}
+
 	public void LateUpdate () {
 		/*
         if (CurOffset != Vector3.zero && TimeLeft > 0)
@@ -70,7 +88,7 @@ public class CameraController : MonoBehaviour {
             TimeLeft = 0;
         }*/
 
-		if (!PlayerInfo.PlayerInstance.IsJumping) {
+		if (!PlayerInfo.PlayerInstance.IsJumping && AutoAdjustCamera) {
 			Vector3 pos = PlayerInfo.PlayerInstance.transform.position;
 			Camera.main.transform.position = new Vector3 (pos.x, pos.y, Camera.main.transform.position.z);
 		}
@@ -118,4 +136,12 @@ public class CameraController : MonoBehaviour {
             PhysicsVisionPostProcessing.enabled = false;
         }
     }
+
+	public void CameraScroll(Vector2 move){
+		Vector3 posCam = Camera.main.transform.position;
+		Camera.main.transform.Translate(new Vector2(Mathf.Clamp(move.x, _minX - posCam.x, _maxX - posCam.x), 
+			Mathf.Clamp(move.y, _minY - posCam.y, _maxY - posCam.y)));
+		AutoAdjustCamera = false;
+		TimeSinceLastTouch = 0f;
+	}
 }

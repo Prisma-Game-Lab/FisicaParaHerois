@@ -109,10 +109,8 @@ public class PlayerInput : MonoBehaviour {
 
 		vel = Player.GetComponent<Rigidbody2D> ().velocity;
 
-		if (_isJumping) {
-			_playerAnim.SetBool ("onFloor", false);
-
-		} else {
+		if (!_isJumping) {
+			
 			_playerAnim.SetBool("onFloor", true);
 
 		}
@@ -388,8 +386,7 @@ public class PlayerInput : MonoBehaviour {
 		Touch _touch = Input.GetTouch (0);
 
 		Debug.Log("Move Camera");
-		MoveCamera(new Vector2(_touch.deltaPosition.x * CameraTouchSpeed, _touch.deltaPosition.y * CameraTouchSpeed));
-
+		CameraController.Instance.CameraScroll (_touch.deltaPosition * CameraTouchSpeed);
 	}
 
 	void OnTriggerEnter2D(Collider2D other){

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneManaging : MonoBehaviour {
 	public float StartButtonAnimationTime;
 	public Animator StartButtonAnimation;
+	public AudioClip Inicio;
 
 	public void LoadScene(string s)
     {
@@ -22,6 +23,8 @@ public class SceneManaging : MonoBehaviour {
     /// </summary>
     public void StartGameButton(string customizationScene, string mapScene)
     {
+		Debug.Log("Iniciou");
+		AudioSource.PlayClipAtPoint (Inicio, new Vector3 (5, 1, 2));
 		StartCoroutine ("StartButtonDelay", new string[] {customizationScene, mapScene});
 
         return;

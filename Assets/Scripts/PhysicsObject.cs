@@ -54,6 +54,9 @@ public class PhysicsObject : MonoBehaviour {
 	private Vector3 _seesawLastCheckpointPosition;
 	private Quaternion _seesawLastCheckpointRotation;
 
+	public AudioClip Caiu;
+    private int faceDir;
+
     void OnValidate()
     {
         if (gameObject.CompareTag("Box"))
@@ -167,7 +170,8 @@ public class PhysicsObject : MonoBehaviour {
             else
             {
                 _pushPullAction = false;
-                PlayerInfo.PlayerInstance._playerAnim.SetInteger("face", 0);
+                faceDir = 0;
+                PlayerInfo.PlayerInstance._playerAnim.SetInteger("face", faceDir);
                 //if(PlayerInfo.PlayerInstance.ObjectColliding == this)
                 if (PlayerInfo.PlayerInstance.PushPullJoint.connectedBody == physicsData)
                 {
@@ -218,6 +222,17 @@ public class PhysicsObject : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+		if (collision.gameObject.tag == "floor") {
+		AudioSource.PlayClipAtPoint (Caiu, new Vector3 (5, 1, 2));
+            //Adicionar turn off do onFloor do Animator do Player
+            if(gameObject.name == "Player") { 
+                PlayerInfo.PlayerInstance._playerAnim.SetBool("onFloor", true);
+            }
+			Debug.Log ("caiu");
+
+		}
+
 		//Pressure plates não devem ser afetadas por colisão
 		if (gameObject.name == "PressurePlate" || gameObject.name == "newPressurePlate") {
 			return;
@@ -437,10 +452,16 @@ public class PhysicsObject : MonoBehaviour {
             //player está em cima da caixa
             return;
         }
-        if(PlayerInfo.PlayerInstance.transform.position.x < gameObject.transform.position.x)
-            PlayerInfo.PlayerInstance._playerAnim.SetInteger("face", 1);
+        if (PlayerInfo.PlayerInstance.transform.position.x < gameObject.transform.position.x)
+        {
+            faceDir = 1;
+            PlayerInfo.PlayerInstance._playerAnim.SetInteger("face", faceDir);
+        }
         else
-            PlayerInfo.PlayerInstance._playerAnim.SetInteger("face", -1);
+        {
+            faceDir = -1;
+            PlayerInfo.PlayerInstance._playerAnim.SetInteger("face", faceDir);
+        }
 
         _pushPullAction = true;
         _timeLeftToDeactivatePushPullAction = 0.2f;
