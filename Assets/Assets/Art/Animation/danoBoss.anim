@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: playerWalk
+  m_Name: danoBoss
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -18,591 +18,469 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: 0, y: 0, z: 9215.057}
+        value: {x: 0, y: 0, z: 126.077}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/thighL
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0, y: 0, z: 68.91}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/thighL/legL
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0, y: 0, z: -102.289}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/thighL/legL/footL
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0, y: 0, z: -135.88101}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/thighR
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0, y: 0, z: -59.056004}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/thighR/legR
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0, y: 0, z: 103.22301}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/thighR/legR/footR
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0, y: 0, z: 0.44900003}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/tronco1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0, y: 0, z: 1.713}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.2
+        value: {x: 0, y: 0, z: -5.556}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.6
+        value: {x: 0, y: 0, z: 11.087001}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: {x: 0, y: 0, z: -6.7200003}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1.35
+        value: {x: 0, y: 0, z: 6.5780005}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/tronco1/tronco2
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0, y: 0, z: 0.96000004}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/tronco1/tronco2/tronco3
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0, y: 0, z: 130.367}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/tronco1/tronco2/tronco3/neck/armL
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0, y: 0, z: 33.143}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.31666666
-        value: {x: 0, y: 0, z: 9214.333}
-        inSlope: {x: 0, y: 0, z: -3.8593748}
-        outSlope: {x: 0, y: 0, z: -3.8593748}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.75
-        value: {x: 0, y: 0, z: 9163.653}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.0666667
-        value: {x: 0, y: 0, z: 9192.732}
-        inSlope: {x: 0, y: 0, z: 68.53776}
-        outSlope: {x: 0, y: 0, z: 68.53776}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.5
-        value: {x: 0, y: 0, z: 9215.057}
+        value: {x: 0, y: 0, z: -8.613001}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1"
+    path: cintura/tronco1/tronco2/tronco3/neck/armL/foreArmL
   - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: 0, y: 0, z: 90}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.5
-        value: {x: 0, y: 0, z: 90}
+        value: {x: 0, y: 0, z: -134.175}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura"
+    path: cintura/tronco1/tronco2/tronco3/neck/armR
   - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: 0, y: 0, z: 145.69301}
+        value: {x: 0, y: 0, z: -36.433002}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.31666666
-        value: {x: 0, y: 0, z: 161.727}
-        inSlope: {x: 0, y: 0, z: 85.514656}
-        outSlope: {x: 0, y: 0, z: 85.514656}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.75
-        value: {x: 0, y: 0, z: 214.66899}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.0666667
-        value: {x: 0, y: 0, z: 212.933}
-        inSlope: {x: 0, y: 0, z: -9.258626}
-        outSlope: {x: 0, y: 0, z: -9.258626}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.5
-        value: {x: 0, y: 0, z: 145.69301}
+        value: {x: 0, y: 0, z: -11.509001}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2"
+    path: cintura/tronco1/tronco2/tronco3/neck/armR/foreArmR
   - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: 0, y: 0, z: -10.188001}
+        value: {x: 0, y: 0, z: -2.371}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.31666666
-        value: {x: 0, y: 0, z: -43.460003}
-        inSlope: {x: 0, y: 0, z: -63.43334}
-        outSlope: {x: 0, y: 0, z: -63.43334}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.75
-        value: {x: 0, y: 0, z: -57.763004}
+        value: {x: 0, y: 0, z: -17.960001}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 1.0666667
-        value: {x: 0, y: 0, z: -34.387}
-        inSlope: {x: 0, y: 0, z: 63.43334}
-        outSlope: {x: 0, y: 0, z: 63.43334}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.5
-        value: {x: 0, y: 0, z: -10.188001}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2/perna2_2"
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: {x: 0, y: 0, z: 145.682}
+        time: 0.5
+        value: {x: 0, y: 0, z: 14.190001}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.75
-        value: {x: 0, y: 0, z: 201.452}
+        time: 0.8666667
+        value: {x: 0, y: 0, z: -12.641001}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 1.5
-        value: {x: 0, y: 0, z: 145.682}
+        time: 1.2666667
+        value: {x: 0, y: 0, z: 3.2830002}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1"
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: {x: 0, y: 0, z: -149.25201}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.75
-        value: {x: 0, y: 0, z: -199.47299}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.5
-        value: {x: 0, y: 0, z: -149.25201}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2"
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: {x: 0, y: 0, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.31666666
-        value: {x: 0, y: 0, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.75
-        value: {x: 0, y: 0, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.0666667
-        value: {x: 0, y: 0, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.5
-        value: {x: 0, y: 0, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco"
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: {x: 0, y: 0, z: 33.141003}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.75
-        value: {x: 0, y: 0, z: 15.545001}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.5
-        value: {x: 0, y: 0, z: 33.141003}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2/bra\xE7o2_2"
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: {x: 0, y: 0, z: -20.702002}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.31666666
-        value: {x: 0, y: 0, z: -26.301}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.75
-        value: {x: 0, y: 0, z: -20.504002}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.0666667
-        value: {x: 0, y: 0, z: -65.944}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.5
-        value: {x: 0, y: 0, z: -20.702002}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1/perna1_2"
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: {x: 0, y: 0, z: 14.563001}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.75
-        value: {x: 0, y: 0, z: 46.759003}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.5
-        value: {x: 0, y: 0, z: 14.563001}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1/bra\xE7o1_2"
+    path: cintura/tronco1/tronco2/tronco3/neck/head
   m_PositionCurves:
   - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: 0.1920781, y: 0.5970854, z: 0}
+        value: {x: -0.01880464, y: -1.348807, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: -0.10915495, y: 0.3515078, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/thighL
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0.21000353, y: 0.000001758337, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/thighL/legL
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0.7900102, y: -0.0000014305115, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/thighL/legL/footL
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: -0.11591425, y: -0.35216987, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/thighR
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0.24001303, y: -0.0000045597553, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/thighR/legR
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0.7600836, y: 0.00002965331, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/thighR/legR/footR
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0.5833121, y: 0.00000062584877, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/tronco1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0.26, y: 0.000001042699, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.2
+        value: {x: 0.2600022, y: 0.0000019008396, z: 0}
+        inSlope: {x: 0.000008940697, y: 0.0000014880509, z: 0}
+        outSlope: {x: 0.000008940697, y: 0.0000014880509, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.6
+        value: {x: 0.26000535, y: 0.0000019355296, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/tronco1/tronco2
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0.52000463, y: 0.0000002882257, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/tronco1/tronco2/tronco3
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: -0.048871063, y: 0.35786727, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/tronco1/tronco2/tronco3/neck/armL
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0.91221225, y: -0.000041484833, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.31666666
-        value: {x: -0.047112174, y: 0.37497884, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.75
-        value: {x: 0.1066547, y: 0.5800004, z: 0}
-        inSlope: {x: 0.28854975, y: 0.07593408, z: 0}
-        outSlope: {x: 0.28854975, y: 0.07593408, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.0666667
-        value: {x: 0.16930017, y: 0.59423804, z: 0}
-        inSlope: {x: 0.11389786, y: 0.015185993, z: 0}
-        outSlope: {x: 0.11389786, y: 0.015185993, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.5
-        value: {x: 0.1920781, y: 0.5970854, z: 0}
+        value: {x: 0.9122129, y: -0.00004196167, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1"
+    path: cintura/tronco1/tronco2/tronco3/neck/armL/foreArmL
   - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: -0.2080063, y: -0.4262369, z: 0}
+        value: {x: -0.0768126, y: -0.35348204, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cintura/tronco1/tronco2/tronco3/neck/armR
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0.8745936, y: 0.000019669533, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.31666666
-        value: {x: 0.03972842, y: -0.5543772, z: 0}
-        inSlope: {x: 0.22780159, y: -0.22780262, z: 0}
-        outSlope: {x: 0.22780159, y: -0.22780262, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.75
-        value: {x: 0.0824412, y: -0.5970902, z: 0}
-        inSlope: {x: 0, y: -0.07973607, z: 0}
-        outSlope: {x: 0, y: -0.07973607, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.0666667
-        value: {x: -0.18237723, y: -0.61417925, z: 0}
-        inSlope: {x: -0.13668825, y: 0, z: 0}
-        outSlope: {x: -0.13668825, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.5
-        value: {x: -0.2080063, y: -0.4262369, z: 0}
+        value: {x: 0.8745929, y: 0.000019311905, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2"
+    path: cintura/tronco1/tronco2/tronco3/neck/armR/foreArmR
   - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: 1.0000027, y: 0.0000019669533, z: 0}
+        value: {x: 0.1900624, y: -0.00000003818024, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.31666666
-        value: {x: 1.0000212, y: 0.0000017285347, z: 0}
-        inSlope: {x: 0.000047683716, y: -0, z: 0}
-        outSlope: {x: 0.000047683716, y: -0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.75
-        value: {x: 1.0000385, y: 0.0000009536743, z: 0}
-        inSlope: {x: 0.00009218851, y: 0, z: 0}
-        outSlope: {x: 0.00009218851, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.0666667
-        value: {x: 1.1245236, y: 0.000003695488, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.5
-        value: {x: 1.0000027, y: 0.0000019669533, z: 0}
+        value: {x: 0.19006777, y: -0.00000071606917, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2/perna2_2"
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: {x: 1.4037982, y: 0.7358424, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.75
-        value: {x: 1.3354801, y: 0.73584574, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.5
-        value: {x: 1.4037982, y: 0.7358424, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1"
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: {x: 1.2671117, y: -0.69751436, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.75
-        value: {x: 1.2671348, y: -0.69752353, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.5
-        value: {x: 1.2671117, y: -0.69751436, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2"
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: {x: 1.3000042, y: 0.00001335144, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.75
-        value: {x: 1.3000058, y: 0.000014364719, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.5
-        value: {x: 1.3000042, y: 0.00001335144, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2/bra\xE7o2_2"
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: {x: 1.0000086, y: -0.000004172325, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.31666666
-        value: {x: 1.2509238, y: -0.00000011920929, z: 0}
-        inSlope: {x: 0.2585023, y: 0, z: 0}
-        outSlope: {x: 0.2585023, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.75
-        value: {x: 1.2993929, y: -0.00000035762787, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.0666667
-        value: {x: 1.2129182, y: -0.00000017881393, z: 0}
-        inSlope: {x: -0.39917913, y: 0, z: 0}
-        outSlope: {x: -0.39917913, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.5
-        value: {x: 1.0000086, y: -0.000004172325, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1/perna1_2"
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: {x: 1.300008, y: -0.000006556511, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.75
-        value: {x: 1.2999982, y: -0.000000834465, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.5
-        value: {x: 1.300008, y: -0.000006556511, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1/bra\xE7o1_2"
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: {x: 0.8101319, y: 0.000000059604645, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.31666666
-        value: {x: 0.6469527, y: 0, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.75
-        value: {x: 0.8101319, y: 0.000000059604645, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.0666667
-        value: {x: 0.6469527, y: 0, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.5
-        value: {x: 0.8101319, y: 0.000000059604645, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco"
+    path: cintura/tronco1/tronco2/tronco3/neck/head
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves: []
@@ -614,133 +492,203 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 661424475
+      path: 1476748442
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3194345697
+      path: 2357327492
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 4262303277
+      path: 1476748442
+      attribute: 4
+      script: {fileID: 0}
+      typeID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 4039943487
+      attribute: 4
+      script: {fileID: 0}
+      typeID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 866396423
+      attribute: 4
+      script: {fileID: 0}
+      typeID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2357327492
+      attribute: 4
+      script: {fileID: 0}
+      typeID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 3205548402
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1435404513
+      path: 745614168
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3431455067
+      path: 4242226079
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2748011128
+      path: 855103361
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 394040183
+      path: 3598587451
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 946833952
+      path: 1057514775
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1923813868
+      path: 439366547
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 661424475
+      path: 79250445
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 1427186108
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 1910565645
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 4039943487
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2347751022
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 866396423
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 745614168
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 14
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3194345697
+      path: 4242226079
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 14
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 4262303277
+      path: 855103361
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 14
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1435404513
+      path: 3598587451
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 14
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3431455067
+      path: 1057514775
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 14
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2748011128
+      path: 439366547
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 14
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 394040183
+      path: 79250445
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 14
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 946833952
+      path: 1427186108
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 14
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3117609598
+      path: 1910565645
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 14
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1923813868
+      path: 2347751022
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -752,7 +700,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.5
+    m_StopTime: 1.35
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -773,151 +721,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.x
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1"
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.y
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1"
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 9215.057
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 9214.333
-        inSlope: -3.8593748
-        outSlope: -3.8593748
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 9163.653
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 9192.732
-        inSlope: 68.53776
-        outSlope: 68.53776
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 9215.057
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.z
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1"
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0.1920781
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: -0.047112174
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0.1066547
-        inSlope: 0.28854975
-        outSlope: 0.28854975
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0.16930017
-        inSlope: 0.11389786
-        outSlope: 0.11389786
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 0.1920781
+        value: -0.01880464
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -925,7 +729,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1"
+    path: cintura
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -933,31 +737,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0.5970854
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0.37497884
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0.5800004
-        inSlope: 0.07593408
-        outSlope: 0.07593408
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0.59423804
-        inSlope: 0.015185993
-        outSlope: 0.015185993
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 0.5970854
+        value: -1.348807
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -965,7 +745,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1"
+    path: cintura
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -973,30 +753,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -1005,7 +761,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1"
+    path: cintura
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1013,217 +769,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.x
-    path: "Her\xF3i_final/Bones_pers/cintura"
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.y
-    path: "Her\xF3i_final/Bones_pers/cintura"
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 90
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 90
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.z
-    path: "Her\xF3i_final/Bones_pers/cintura"
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.x
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2"
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.y
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2"
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 145.69301
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 161.727
-        inSlope: 85.514656
-        outSlope: 85.514656
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 214.66899
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 212.933
-        inSlope: -9.258626
-        outSlope: -9.258626
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 145.69301
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.z
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2"
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: -0.2080063
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0.03972842
-        inSlope: 0.22780159
-        outSlope: 0.22780159
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0.0824412
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: -0.18237723
-        inSlope: -0.13668825
-        outSlope: -0.13668825
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: -0.2080063
+        value: -0.10915495
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1231,7 +777,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2"
+    path: cintura/thighL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1239,31 +785,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -0.4262369
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: -0.5543772
-        inSlope: -0.22780262
-        outSlope: -0.22780262
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: -0.5970902
-        inSlope: -0.07973607
-        outSlope: -0.07973607
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: -0.61417925
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: -0.4262369
+        value: 0.3515078
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1271,7 +793,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2"
+    path: cintura/thighL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1279,30 +801,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -1311,7 +809,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2"
+    path: cintura/thighL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1319,30 +817,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -1351,7 +825,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2/perna2_2"
+    path: cintura/thighL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1359,30 +833,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -1391,7 +841,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2/perna2_2"
+    path: cintura/thighL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1399,31 +849,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -10.188001
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: -43.460003
-        inSlope: -63.43334
-        outSlope: -63.43334
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: -57.763004
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: -34.387
-        inSlope: 63.43334
-        outSlope: 63.43334
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: -10.188001
+        value: 126.077
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1431,7 +857,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2/perna2_2"
+    path: cintura/thighL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1439,31 +865,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 1.0000027
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 1.0000212
-        inSlope: 0.000047683716
-        outSlope: 0.000047683716
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 1.0000385
-        inSlope: 0.00009218851
-        outSlope: 0.00009218851
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 1.1245236
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 1.0000027
+        value: 0.21000353
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1471,7 +873,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2/perna2_2"
+    path: cintura/thighL/legL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1479,31 +881,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0.0000019669533
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0.0000017285347
-        inSlope: -0
-        outSlope: -0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0.0000009536743
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0.000003695488
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 0.0000019669533
+        value: 0.000001758337
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1511,7 +889,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2/perna2_2"
+    path: cintura/thighL/legL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1519,30 +897,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -1551,7 +905,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2/perna2_2"
+    path: cintura/thighL/legL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1559,18 +913,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -1579,7 +921,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1"
+    path: cintura/thighL/legL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1587,18 +929,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -1607,7 +937,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1"
+    path: cintura/thighL/legL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1615,19 +945,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 145.682
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 201.452
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 145.682
+        value: 68.91
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1635,7 +953,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1"
+    path: cintura/thighL/legL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1643,19 +961,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 1.4037982
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 1.3354801
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 1.4037982
+        value: 0.7900102
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1663,7 +969,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1"
+    path: cintura/thighL/legL/footL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1671,19 +977,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0.7358424
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0.73584574
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 0.7358424
+        value: -0.0000014305115
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1691,7 +985,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1"
+    path: cintura/thighL/legL/footL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1699,18 +993,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -1719,7 +1001,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1"
+    path: cintura/thighL/legL/footL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1727,18 +1009,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -1747,7 +1017,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2"
+    path: cintura/thighL/legL/footL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1755,18 +1025,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -1775,7 +1033,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2"
+    path: cintura/thighL/legL/footL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1783,19 +1041,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -149.25201
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: -199.47299
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: -149.25201
+        value: -102.289
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1803,7 +1049,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2"
+    path: cintura/thighL/legL/footL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1811,19 +1057,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 1.2671117
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 1.2671348
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 1.2671117
+        value: -0.11591425
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1831,7 +1065,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2"
+    path: cintura/thighR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1839,19 +1073,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -0.69751436
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: -0.69752353
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: -0.69751436
+        value: -0.35216987
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1859,7 +1081,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2"
+    path: cintura/thighR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1867,18 +1089,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -1887,7 +1097,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2"
+    path: cintura/thighR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1895,30 +1105,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -1927,7 +1113,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco"
+    path: cintura/thighR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1935,30 +1121,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -1967,7 +1129,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco"
+    path: cintura/thighR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1975,31 +1137,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 0
+        value: -135.88101
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2007,7 +1145,39 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco"
+    path: cintura/thighR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.24001303
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: cintura/thighR/legR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -0.0000045597553
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: cintura/thighR/legR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2019,14 +1189,18 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: cintura/thighR/legR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
       - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
+        time: 0
         value: 0
         inSlope: 0
         outSlope: 0
@@ -2035,7 +1209,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2/bra\xE7o2_2"
+    path: cintura/thighR/legR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2043,18 +1217,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -2063,7 +1225,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2/bra\xE7o2_2"
+    path: cintura/thighR/legR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2071,19 +1233,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 33.141003
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 15.545001
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 33.141003
+        value: -59.056004
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2091,7 +1241,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2/bra\xE7o2_2"
+    path: cintura/thighR/legR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2099,19 +1249,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 1.3000042
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 1.3000058
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 1.3000042
+        value: 0.7600836
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2119,7 +1257,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2/bra\xE7o2_2"
+    path: cintura/thighR/legR/footR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2127,19 +1265,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0.00001335144
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0.000014364719
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 0.00001335144
+        value: 0.00002965331
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2147,7 +1273,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2/bra\xE7o2_2"
+    path: cintura/thighR/legR/footR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2155,18 +1281,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -2175,7 +1289,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2/bra\xE7o2_2"
+    path: cintura/thighR/legR/footR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2183,30 +1297,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -2215,7 +1305,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1/perna1_2"
+    path: cintura/thighR/legR/footR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2223,30 +1313,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -2255,7 +1321,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1/perna1_2"
+    path: cintura/thighR/legR/footR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2263,31 +1329,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -20.702002
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: -26.301
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: -20.504002
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: -65.944
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: -20.702002
+        value: 103.22301
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2295,7 +1337,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1/perna1_2"
+    path: cintura/thighR/legR/footR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2303,31 +1345,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 1.0000086
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 1.2509238
-        inSlope: 0.2585023
-        outSlope: 0.2585023
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 1.2993929
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 1.2129182
-        inSlope: -0.39917913
-        outSlope: -0.39917913
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 1.0000086
+        value: 0.5833121
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2335,7 +1353,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1/perna1_2"
+    path: cintura/tronco1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2343,31 +1361,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -0.000004172325
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: -0.00000011920929
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: -0.00000035762787
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: -0.00000017881393
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: -0.000004172325
+        value: 0.00000062584877
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2375,7 +1369,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1/perna1_2"
+    path: cintura/tronco1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2383,30 +1377,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -2415,7 +1385,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1/perna1_2"
+    path: cintura/tronco1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2423,18 +1393,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -2443,7 +1401,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1/bra\xE7o1_2"
+    path: cintura/tronco1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2451,18 +1409,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -2471,7 +1417,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1/bra\xE7o1_2"
+    path: cintura/tronco1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2479,19 +1425,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 14.563001
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 46.759003
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 14.563001
+        value: 0.44900003
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2499,7 +1433,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1/bra\xE7o1_2"
+    path: cintura/tronco1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2507,19 +1441,19 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 1.300008
+        value: 0.26
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.75
-        value: 1.2999982
-        inSlope: 0
-        outSlope: 0
+        time: 0.2
+        value: 0.2600022
+        inSlope: 0.000008940697
+        outSlope: 0.000008940697
         tangentMode: 136
       - serializedVersion: 2
-        time: 1.5
-        value: 1.300008
+        time: 0.6
+        value: 0.26000535
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2527,7 +1461,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1/bra\xE7o1_2"
+    path: cintura/tronco1/tronco2
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2535,19 +1469,19 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -0.000006556511
+        value: 0.000001042699
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.75
-        value: -0.000000834465
-        inSlope: 0
-        outSlope: 0
+        time: 0.2
+        value: 0.0000019008396
+        inSlope: 0.0000014880509
+        outSlope: 0.0000014880509
         tangentMode: 136
       - serializedVersion: 2
-        time: 1.5
-        value: -0.000006556511
+        time: 0.6
+        value: 0.0000019355296
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2555,7 +1489,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1/bra\xE7o1_2"
+    path: cintura/tronco1/tronco2
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2568,13 +1502,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.75
+        time: 0.2
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 1.5
+        time: 0.6
         value: 0
         inSlope: 0
         outSlope: 0
@@ -2583,7 +1517,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1/bra\xE7o1_2"
+    path: cintura/tronco1/tronco2
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2591,31 +1525,127 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0.8101319
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.31666666
-        value: 0.6469527
+        time: 0.2
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.75
-        value: 0.8101319
+        time: 0.6
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 1.0666667
-        value: 0.6469527
+        time: 1
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 1.5
-        value: 0.8101319
+        time: 1.35
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: cintura/tronco1/tronco2
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.2
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.6
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 1.35
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: cintura/tronco1/tronco2
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1.713
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.2
+        value: -5.556
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.6
+        value: 11.087001
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 1
+        value: -6.7200003
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 1.35
+        value: 6.5780005
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: cintura/tronco1/tronco2
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.52000463
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2623,7 +1653,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco"
+    path: cintura/tronco1/tronco2/tronco3
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2631,31 +1661,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0.000000059604645
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0.000000059604645
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 0.000000059604645
+        value: 0.0000002882257
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2663,7 +1669,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco"
+    path: cintura/tronco1/tronco2/tronco3
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2671,30 +1677,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.31666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.0666667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -2703,7 +1685,697 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco"
+    path: cintura/tronco1/tronco2/tronco3
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: cintura/tronco1/tronco2/tronco3
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: cintura/tronco1/tronco2/tronco3
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.96000004
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: cintura/tronco1/tronco2/tronco3
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -0.048871063
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: cintura/tronco1/tronco2/tronco3/neck/armL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.35786727
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: cintura/tronco1/tronco2/tronco3/neck/armL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: cintura/tronco1/tronco2/tronco3/neck/armL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: cintura/tronco1/tronco2/tronco3/neck/armL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: cintura/tronco1/tronco2/tronco3/neck/armL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 130.367
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: cintura/tronco1/tronco2/tronco3/neck/armL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.91221225
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.31666666
+        value: 0.9122129
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: cintura/tronco1/tronco2/tronco3/neck/armL/foreArmL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -0.000041484833
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.31666666
+        value: -0.00004196167
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: cintura/tronco1/tronco2/tronco3/neck/armL/foreArmL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.31666666
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: cintura/tronco1/tronco2/tronco3/neck/armL/foreArmL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.31666666
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: cintura/tronco1/tronco2/tronco3/neck/armL/foreArmL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.31666666
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: cintura/tronco1/tronco2/tronco3/neck/armL/foreArmL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 33.143
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.31666666
+        value: -8.613001
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: cintura/tronco1/tronco2/tronco3/neck/armL/foreArmL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -0.0768126
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: cintura/tronco1/tronco2/tronco3/neck/armR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -0.35348204
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: cintura/tronco1/tronco2/tronco3/neck/armR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: cintura/tronco1/tronco2/tronco3/neck/armR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: cintura/tronco1/tronco2/tronco3/neck/armR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: cintura/tronco1/tronco2/tronco3/neck/armR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -134.175
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: cintura/tronco1/tronco2/tronco3/neck/armR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.8745936
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.31666666
+        value: 0.8745929
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: cintura/tronco1/tronco2/tronco3/neck/armR/foreArmR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.000019669533
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.31666666
+        value: 0.000019311905
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: cintura/tronco1/tronco2/tronco3/neck/armR/foreArmR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.31666666
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: cintura/tronco1/tronco2/tronco3/neck/armR/foreArmR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.31666666
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: cintura/tronco1/tronco2/tronco3/neck/armR/foreArmR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.31666666
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: cintura/tronco1/tronco2/tronco3/neck/armR/foreArmR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -36.433002
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.31666666
+        value: -11.509001
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: cintura/tronco1/tronco2/tronco3/neck/armR/foreArmR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.1900624
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.31666666
+        value: 0.19006777
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: cintura/tronco1/tronco2/tronco3/neck/head
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -0.00000003818024
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.31666666
+        value: -0.00000071606917
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: cintura/tronco1/tronco2/tronco3/neck/head
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.31666666
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: cintura/tronco1/tronco2/tronco3/neck/head
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.31666666
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.5
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.8666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 1.2666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: cintura/tronco1/tronco2/tronco3/neck/head
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.31666666
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.5
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.8666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 1.2666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: cintura/tronco1/tronco2/tronco3/neck/head
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -2.371
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.31666666
+        value: -17.960001
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.5
+        value: 14.190001
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.8666667
+        value: -12.641001
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 1.2666667
+        value: 3.2830002
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: cintura/tronco1/tronco2/tronco3/neck/head
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -2714,7 +2386,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco"
+    path: cintura/tronco1/tronco2/tronco3/neck/armR/foreArmR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2724,7 +2396,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco"
+    path: cintura/tronco1/tronco2/tronco3/neck/armR/foreArmR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2734,7 +2406,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco"
+    path: cintura/tronco1/tronco2/tronco3/neck/armR/foreArmR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2744,7 +2416,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1"
+    path: cintura/thighL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2754,7 +2426,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1"
+    path: cintura/thighL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2764,7 +2436,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1"
+    path: cintura/thighL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2774,7 +2446,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2"
+    path: cintura/thighL/legL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2784,7 +2456,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2"
+    path: cintura/thighL/legL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2794,7 +2466,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2"
+    path: cintura/thighL/legL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2804,7 +2476,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1/perna1_2"
+    path: cintura/thighL/legL/footL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2814,7 +2486,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1/perna1_2"
+    path: cintura/thighL/legL/footL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2824,7 +2496,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1/perna1_2"
+    path: cintura/thighL/legL/footL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2834,7 +2506,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1"
+    path: cintura/thighR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2844,7 +2516,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1"
+    path: cintura/thighR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2854,7 +2526,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "Her\xF3i_final/Bones_pers/cintura/perna1"
+    path: cintura/thighR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2864,7 +2536,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1/bra\xE7o1_2"
+    path: cintura/thighR/legR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2874,7 +2546,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1/bra\xE7o1_2"
+    path: cintura/thighR/legR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2884,7 +2556,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o1/bra\xE7o1_2"
+    path: cintura/thighR/legR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2894,7 +2566,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "Her\xF3i_final/Bones_pers/cintura"
+    path: cintura/thighR/legR/footR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2904,7 +2576,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "Her\xF3i_final/Bones_pers/cintura"
+    path: cintura/thighR/legR/footR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2914,7 +2586,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "Her\xF3i_final/Bones_pers/cintura"
+    path: cintura/thighR/legR/footR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2924,7 +2596,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2"
+    path: cintura/tronco1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2934,7 +2606,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2"
+    path: cintura/tronco1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2944,7 +2616,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2"
+    path: cintura/tronco1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2954,7 +2626,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2/perna2_2"
+    path: cintura/tronco1/tronco2/tronco3/neck/armL/foreArmL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2964,7 +2636,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2/perna2_2"
+    path: cintura/tronco1/tronco2/tronco3/neck/armL/foreArmL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2974,27 +2646,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "Her\xF3i_final/Bones_pers/cintura/perna2/perna2_2"
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2/bra\xE7o2_2"
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2/bra\xE7o2_2"
+    path: cintura/tronco1/tronco2/tronco3/neck/armL/foreArmL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3004,7 +2656,147 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "Her\xF3i_final/Bones_pers/cintura/tronco/bra\xE7o2/bra\xE7o2_2"
+    path: cintura/tronco1/tronco2/tronco3
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: cintura/tronco1/tronco2/tronco3
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: cintura/tronco1/tronco2/tronco3
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: cintura/tronco1/tronco2/tronco3/neck/armL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: cintura/tronco1/tronco2/tronco3/neck/armL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: cintura/tronco1/tronco2/tronco3/neck/armL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: cintura/tronco1/tronco2
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: cintura/tronco1/tronco2
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: cintura/tronco1/tronco2
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: cintura/tronco1/tronco2/tronco3/neck/armR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: cintura/tronco1/tronco2/tronco3/neck/armR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: cintura/tronco1/tronco2/tronco3/neck/armR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: cintura/tronco1/tronco2/tronco3/neck/head
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: cintura/tronco1/tronco2/tronco3/neck/head
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: cintura/tronco1/tronco2/tronco3/neck/head
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
