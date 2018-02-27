@@ -54,6 +54,8 @@ public class PhysicsObject : MonoBehaviour {
 	private Vector3 _seesawLastCheckpointPosition;
 	private Quaternion _seesawLastCheckpointRotation;
 
+	public AudioClip Caiu;
+
     void OnValidate()
     {
         if (gameObject.CompareTag("Box"))
@@ -218,6 +220,13 @@ public class PhysicsObject : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+		if (collision.gameObject.tag == "floor") {
+		AudioSource.PlayClipAtPoint (Caiu, new Vector3 (5, 1, 2));
+			Debug.Log ("caiu");
+
+		}
+
 		//Pressure plates não devem ser afetadas por colisão
 		if (gameObject.name == "PressurePlate" || gameObject.name == "newPressurePlate") {
 			return;

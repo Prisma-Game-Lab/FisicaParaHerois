@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FreezeBox : MonoBehaviour {
+	public AudioClip Caiu;
     private Rigidbody2D _rb;
     private RigidbodyConstraints2D _defaultConstraints;
     [HideInInspector] public BoxCollider2D Collider;
@@ -39,8 +40,16 @@ public class FreezeBox : MonoBehaviour {
 			_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 		}
 	}
+	/*
+	void OnCollisionEnter2D(Collision2D info)
+	{
+		if (info.gameObject.tag == "Floor") {
+			Debug.Log ("Caiu");
+			AudioSource.PlayClipAtPoint (Caiu, transform.position);
 
-    /*
+		}
+	}
+
     void OnCollisionStay2D(Collision2D col)
     {
         if (col.collider.gameObject.CompareTag("Floor") || col.collider.gameObject.CompareTag("Gangorra"))
