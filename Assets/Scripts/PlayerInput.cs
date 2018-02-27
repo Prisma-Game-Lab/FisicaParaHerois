@@ -278,40 +278,45 @@ public class PlayerInput : MonoBehaviour {
 		GameObject HUDbnt = EventSystem.current.currentSelectedGameObject;
 		TouchPhase phase = touch.phase;
 
-		_lastBntSelected = HUDbnt.name;
+		if (HUDbnt != null) {
+			_lastBntSelected = HUDbnt.name;
 
-		// Nã permite que o player clique no botã enquanto tiver no pause
-		if (!GameManager.IsPaused && !ActionPanel.Instance.isActiveAndEnabled) {
+			// Nã permite que o player clique no botã enquanto tiver no pause
+			if (!GameManager.IsPaused && !ActionPanel.Instance.isActiveAndEnabled) {
 
-		 	if (HUDbnt.name == "Action") {
-				if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
+				if (HUDbnt.name == "Action") {
+					if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
+					{
+						//if (touch.phase == TouchPhase.Stationary) {
+						print("Action");
+						ActionButton();	
+						//}
+					}
+				}
+			}
+
+			if (HUDbnt.name == "Restart")
+			{
+				if (touch.phase == TouchPhase.Began)
 				{
-				//if (touch.phase == TouchPhase.Stationary) {
-					print("Action");
-					ActionButton();	
-				//}
+					GameManager.Instance.LoadLastCheckpoint();
+				}
+			}
+
+			if (HUDbnt.name == "Menu")
+			{
+				// Por enquanto só pausa o jogo
+				if (touch.phase == TouchPhase.Began)
+				{
+					GameManager.Instance.OnPause();
+					print("Menu");
 				}
 			}
 		}
 
-		if (HUDbnt.name == "Restart")
-		{
-			if (touch.phase == TouchPhase.Began)
-			{
-                GameManager.Instance.LoadLastCheckpoint();
-			}
+		else {
+			ScreenTouch ();
 		}
-
-		if (HUDbnt.name == "Menu")
-		{
-			// Por enquanto só pausa o jogo
-			if (touch.phase == TouchPhase.Began)
-			{
-				GameManager.Instance.OnPause();
-				print("Menu");
-			}
-		}
-
 	}
 
 	private void ObjectsTouch(Touch touch)
@@ -326,41 +331,51 @@ public class PlayerInput : MonoBehaviour {
 
 				if (touch.phase == TouchPhase.Began) {
 
-				}  else if (touch.phase == TouchPhase.Stationary) {
+				} else if (touch.phase == TouchPhase.Stationary) {
 					if (touch.deltaTime == HoldTime) {
 						// Long tap
 						Debug.Log ("Change Objects Properties");
 					}
 
-				}  else if (touch.phase == TouchPhase.Moved) {
+				} else if (touch.phase == TouchPhase.Moved) {
 					Debug.Log ("Drag Object");
 					hit.transform.position = touch.position;
 
-				}  else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled) {
+				} else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled) {
 					// Velocidade do drag do objeto
 					// float touchSpeed = touch.deltaPosition.magnitude / touch.deltaTime;
 					Debug.Log ("Throw Object");
 				}
 
-			}  else if (hit.collider.name == "slider") {
+			} else if (hit.collider.name == "slider") {
 				if (touch.phase == TouchPhase.Moved) {
 					Debug.Log ("Move Slider");
 					float y = touch.deltaPosition.y;
 					hit.transform.position = touch.position;
 				}
 
-			}  else if (hit.collider.name == "physicsProperty") {
+			} else if (hit.collider.name == "physicsProperty") {
 				if (touch.phase == TouchPhase.Began) {
 					if (hit.transform.name == "gravity") {
 						Debug.Log ("Change gravity");
-					}  else if (hit.transform.name == "mass") {
+					} else if (hit.transform.name == "mass") {
 						Debug.Log ("Change mass");
-					}  else if (hit.transform.name == "heat") {
+					} else if (hit.transform.name == "heat") {
 						Debug.Log ("Change heat");
 					}
 				}
+			} else {
+				ScreenTouch ();
 			}
 		} 
+	}
+
+	public void ScreenTouch(){
+		Touch _touch = Input.GetTouch (0);
+
+		Debug.Log("Move Camera");
+		MoveCamera(new Vector2(_touch.deltaPosition.x * CameraTouchSpeed, _touch.deltaPosition.y * CameraTouchSpeed));
+
 	}
 
 	void OnTriggerEnter2D(Collider2D other){

@@ -7,18 +7,21 @@ public class TutorialDialog : MonoBehaviour {
 	private int _curText = 0;
 	private int _numTexts;
 	private Transform _textsTransform;
+	private GameObject _dialogCanvas;
 
 	void Start(){
 		_textsTransform = transform.Find ("Texts"); 
 		_numTexts = _textsTransform.childCount;
 	}
 
-	public void OnTriggerStay2D(Collider2D other){
+	public void OnTriggerStay2D(Collider2D other, GameObject DialogCanvas){
 		//se não for o player, ignore
 		if (other.gameObject.tag != "Player") {
 			return;
 		} 
 		if (!_alreadyDisplayedText) {
+			_dialogCanvas = DialogCanvas;
+			DialogCanvas.SetActive (true);
 			ShowText ();
 		}
 	}
@@ -35,6 +38,7 @@ public class TutorialDialog : MonoBehaviour {
 			_textsTransform.GetChild (_curText).gameObject.SetActive (true);
 		} else {
 			gameObject.SetActive (false);
+			_dialogCanvas.SetActive (false);
 		}
 	}
 }

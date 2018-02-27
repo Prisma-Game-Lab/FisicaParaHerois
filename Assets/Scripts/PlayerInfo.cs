@@ -25,6 +25,9 @@ public class PlayerInfo : MonoBehaviour {
     public FixedJoint2D PushPullJoint;
 	[Tooltip("Segundos desde que o player aperta o botão até impedir o movimento do player quando ele está em cima de uma gangorra")]public float MoveDuration = 0.5f;
 	[HideInInspector] public bool IsConstrained = false;
+	[HideInInspector] public bool IsJumping = false;
+	public float JumpDuration = 1.5f;
+	private float _timeSinceJumpStarted = 0.0f;
 
     private bool _receiveDamage;
     private float _damageNumber;
@@ -89,6 +92,14 @@ public class PlayerInfo : MonoBehaviour {
         {
             OnDeath();
         }
+
+		if (IsJumping) {
+			_timeSinceJumpStarted += Time.deltaTime;
+			if (_timeSinceJumpStarted >= JumpDuration) {
+				IsJumping = false;
+				_timeSinceJumpStarted = 0;
+			}
+		}
 
     }
 
@@ -193,6 +204,7 @@ public class PlayerInfo : MonoBehaviour {
 	public void Jump()
     {
 		_secondsSinceLastMove = 0;
+		IsJumping = true;
 
 		/*
 		//Checa se o movimento está travado e o destrava

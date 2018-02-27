@@ -49,6 +49,7 @@ public class CameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void LateUpdate () {
+		/*
         if (CurOffset != Vector3.zero && TimeLeft > 0)
         {
             Vector3 curMove = (Time.deltaTime / TimeLeft) * CurOffset;
@@ -67,7 +68,12 @@ public class CameraController : MonoBehaviour {
         else
         {
             TimeLeft = 0;
-        }
+        }*/
+
+		if (!PlayerInfo.PlayerInstance.IsJumping) {
+			Vector3 pos = PlayerInfo.PlayerInstance.transform.position;
+			Camera.main.transform.position = new Vector3 (pos.x, pos.y, Camera.main.transform.position.z);
+		}
 	}
 
     //recebe uma posição e retorna true se ela for out of bounds para a camera, conforme especificado pelos limits
@@ -81,8 +87,10 @@ public class CameraController : MonoBehaviour {
 		return position.y > _maxY || position.y < _minY;
 	}
 
+
     public void Move(Vector3 offset)
     {
+		/*
         if (disableScroll) return;
 
 		Vector3 posCam = Camera.main.transform.position;
@@ -91,7 +99,9 @@ public class CameraController : MonoBehaviour {
 		CurOffset = offset;
 
         TimeLeft = 1/CameraSpeed;
+        */
     }
+
 
     public void OnPhysicsVisionActivated()
     {
