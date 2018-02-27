@@ -167,7 +167,7 @@ public class PhysicsObject : MonoBehaviour {
             else
             {
                 _pushPullAction = false;
-
+                PlayerInfo.PlayerInstance._playerAnim.SetInteger("face", 0);
                 //if(PlayerInfo.PlayerInstance.ObjectColliding == this)
                 if (PlayerInfo.PlayerInstance.PushPullJoint.connectedBody == physicsData)
                 {
@@ -433,7 +433,10 @@ public class PhysicsObject : MonoBehaviour {
             //player está em cima da caixa
             return;
         }
-
+        if(PlayerInfo.PlayerInstance.transform.position.x < gameObject.transform.position.x)
+            PlayerInfo.PlayerInstance._playerAnim.SetInteger("face", 1);
+        else
+            PlayerInfo.PlayerInstance._playerAnim.SetInteger("face", -1);
 
         _pushPullAction = true;
         _timeLeftToDeactivatePushPullAction = 0.2f;

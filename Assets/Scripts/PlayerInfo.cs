@@ -21,14 +21,14 @@ public class PlayerInfo : MonoBehaviour {
     public float MaxVelocity = 5.0f;
 	public AudioClip jump;
     public bool facingRight = true;
-	public FixedJoint2D PushPullJoint;
+    public Animator _playerAnim;
+    public FixedJoint2D PushPullJoint;
 	[Tooltip("Segundos desde que o player aperta o botão até impedir o movimento do player quando ele está em cima de uma gangorra")]public float MoveDuration = 0.5f;
 	[HideInInspector] public bool IsConstrained = false;
 
     private bool _receiveDamage;
     private float _damageNumber;
     private Rigidbody2D _rb;
-    private Animator _playerAnim;
     private bool _physicsVisionActivated = false;
     private PhysicsObject[] _physicsObjects;
     private CameraController _cameraController;
