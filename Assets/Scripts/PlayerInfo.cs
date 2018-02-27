@@ -131,7 +131,7 @@ public class PlayerInfo : MonoBehaviour {
     }
 
     // Movimentação
-	public void Move(bool walkLeft, float minDistanceToMoveCamera/*, bool extraForce*/)
+	public void Move(bool walkLeft, float minDistanceToMoveCamera)
     {
 		_secondsSinceLastMove = 0;
 
@@ -154,8 +154,6 @@ public class PlayerInfo : MonoBehaviour {
             {
 				Vector2 vel = new Vector2 (-1*PaceSpeed, _rb.velocity.y);
 				rb.velocity = vel; 
-                //Vector2 movement = Vector2.left * PaceSpeed * 8.47f;
-                //rb.AddForce(movement);
             }
 
         } else
@@ -166,9 +164,6 @@ public class PlayerInfo : MonoBehaviour {
 				Vector2 vel = new Vector2 (PaceSpeed, _rb.velocity.y);
 
 				rb.velocity = vel; 
-				
-                //Vector2 movement = Vector2.right * PaceSpeed * 8.47f;
-                //rb.AddForce(movement);
             }
         }
     }
@@ -189,7 +184,7 @@ public class PlayerInfo : MonoBehaviour {
         camera.Move(new Vector3(offset.x, offset.y, 0));
     }
 
-	public void Jump(/*float velocity*/)
+	public void Jump()
     {
 		_secondsSinceLastMove = 0;
 
@@ -206,13 +201,6 @@ public class PlayerInfo : MonoBehaviour {
         }
 
         _rb.AddForce(Vector2.up * JumpForce);
-		/*if (velocity > 0) {
-
-			if (!facingRight)
-				_rb.AddForce (Vector2.left * velocity);
-			else
-				_rb.AddForce (Vector2.right * velocity);
-		}*/
 		AudioSource.PlayClipAtPoint (jump, transform.position);
     }
 
