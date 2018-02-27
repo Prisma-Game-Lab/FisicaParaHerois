@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour {
     public bool ShouldResetMass = true;
     public bool ShouldResetVelocity = true;
 	public bool ShouldResetSeesaw = true;
+	public bool ShouldResetCamera = true;
 
     private static float _time;
 
@@ -54,6 +55,11 @@ public class GameManager : MonoBehaviour {
         {
             obj.LoadLastCheckpoint();
         }
+
+		if (ShouldResetCamera) {
+			Camera.main.transform.position = new Vector3 (PlayerInfo.PlayerInstance.transform.position.x, 
+				PlayerInfo.PlayerInstance.transform.position.y, Camera.main.transform.position.z); 
+		}
     }
 
     public void CreateNewCheckpoint()
