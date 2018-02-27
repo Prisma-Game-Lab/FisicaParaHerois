@@ -119,6 +119,9 @@ public class PlayerInput : MonoBehaviour {
 
 		// Verifica se estáodando o jogo no unity caso contráio serám algum mobile
 		#if UNITY_STANDALONE || UNITY_WEBPLAYER
+		if(TutorialDialog.IsCanvasOn){
+		return;
+		}
 
 		// Nã permite que o player clique no botã enquanto tiver no pause
 		if (!GameManager.IsPaused && !ActionPanel.Instance.isActiveAndEnabled) {
@@ -217,16 +220,27 @@ public class PlayerInput : MonoBehaviour {
 	void FixedUpdate()
 	{
 		#if UNITY_IOS || UNITY_ANDROID
+		if(TutorialDialog.IsCanvasOn){
+			return;
+		}
 		CheckInput();
    		#endif
     }
 
 	public void JumpFunction() {
+		if (TutorialDialog.IsCanvasOn) {
+			return;
+		}
+
 		if (!_isJumping) Player.Jump ();
 	}
 
 	public void ActionButton()
 	{
+		if (TutorialDialog.IsCanvasOn) {
+			return;
+		}
+
 		IAction<float> action = Player.Actions.Find(x => x.GetActionName().Equals("Push/Pull"));
 		if (action != null)
 		{

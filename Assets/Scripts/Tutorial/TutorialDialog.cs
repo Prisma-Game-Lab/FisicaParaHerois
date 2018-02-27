@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TutorialDialog : MonoBehaviour {
+	public static bool IsCanvasOn = false;
 	private bool _alreadyDisplayedText = false;
 	private int _curText = 0;
 	private int _numTexts;
@@ -14,7 +15,7 @@ public class TutorialDialog : MonoBehaviour {
 		_numTexts = _textsTransform.childCount;
 	}
 
-	public void OnTriggerStay2D(Collider2D other, GameObject DialogCanvas){
+	public void OnTrigger(Collider2D other, GameObject DialogCanvas){
 		//se não for o player, ignore
 		if (other.gameObject.tag != "Player") {
 			return;
@@ -22,6 +23,7 @@ public class TutorialDialog : MonoBehaviour {
 		if (!_alreadyDisplayedText) {
 			_dialogCanvas = DialogCanvas;
 			DialogCanvas.SetActive (true);
+			IsCanvasOn = true;
 			ShowText ();
 		}
 	}
@@ -39,6 +41,7 @@ public class TutorialDialog : MonoBehaviour {
 		} else {
 			gameObject.SetActive (false);
 			_dialogCanvas.SetActive (false);
+			IsCanvasOn = false;
 		}
 	}
 }

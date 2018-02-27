@@ -8,6 +8,6 @@ public class TutorialDialogTrigger : MonoBehaviour {
 
 	// Use this for initialization
 	void OnTriggerStay2D(Collider2D other){
-		DialogToActivate.OnTriggerStay2D(other, PlanoFechado);
+		DialogToActivate.OnTrigger(other, PlanoFechado);
 	}
 }

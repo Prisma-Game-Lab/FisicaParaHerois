@@ -60,6 +60,10 @@ public class FixedJoystick : Joystick
 
     public override void OnDrag(PointerEventData eventData)
     {
+		if (TutorialDialog.IsCanvasOn) {
+			return;
+		}
+		
         Vector2 direction = eventData.position - joystickPosition;
 
         inputVector = (direction.magnitude > background.sizeDelta.x / 2f) ? direction.normalized : direction / (background.sizeDelta.x / 2f);

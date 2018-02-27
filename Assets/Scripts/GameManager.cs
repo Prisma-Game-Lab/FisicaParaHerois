@@ -51,6 +51,10 @@ public class GameManager : MonoBehaviour {
 
     public void LoadLastCheckpoint()
     {
+		if (TutorialDialog.IsCanvasOn) {
+			return;
+		}
+
         foreach (PhysicsObject obj in PhysicsObject.PhysicsObjectList)
         {
             obj.LoadLastCheckpoint();
@@ -108,6 +112,10 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public void OnPause()
     {
+		if (TutorialDialog.IsCanvasOn) {
+			return;
+		}
+
         Canvas cnv = (GameObject.Find("Canvas") != null) ? GameObject.Find("Canvas").GetComponent<Canvas>() : GameObject.Find("CanvasTemporaryFix").GetComponent<Canvas>();
         GameObject pause = cnv.transform.Find("Pause").GetComponent<GameObject>();
 
