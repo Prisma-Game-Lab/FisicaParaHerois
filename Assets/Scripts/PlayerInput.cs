@@ -174,11 +174,13 @@ public class PlayerInput : MonoBehaviour {
 			GameManager.Instance.OnPause();
 		}
 
+		/*
         if (Input.GetKeyDown(KeyCode.V))
         {
             Debug.Log("VISÃO FÍSICA EXPERIMENTAL");
             PlayerInfo.PlayerInstance.ChangePhysicsVisionStatus();
         }
+        */
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
