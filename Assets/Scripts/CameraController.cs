@@ -52,31 +52,11 @@ public class CameraController : MonoBehaviour {
         if (CurOffset != Vector3.zero && TimeLeft > 0)
         {
             Vector3 curMove = (Time.deltaTime / TimeLeft) * CurOffset;
-            
-			/*
-            //checa se camera vai ultrapassar bounds
-            if (!OutOfBoundsX(Camera.main.transform.position + curMove))
-            {
-                //Camera.main.transform.Translate(curMove);
-				curMove = new Vector3(0, curMove.y, curMove.z);
-                //CurOffset -= curMove;
-                //TimeLeft -= Time.deltaTime;
-            }
 
-			if(!OutOfBoundsY(Camera.main.transform.position + curMove))
-			{
-				//Camera.main.transform.Translate(curMove);
-				curMove = new Vector3(curMove.x, 0, curMove.z);
-				//CurOffset -= curMove;
-				//TimeLeft -= Time.deltaTime;
-			}
-			/*
-            else
-            {
-                CurOffset = Vector3.zero;
-                TimeLeft = 0;
-            }       */   
-
+			Vector3 posCam = Camera.main.transform.position;
+			curMove = new Vector3 (Mathf.Clamp (curMove.x, _minX - posCam.x, _maxX - posCam.x), 
+				Mathf.Clamp (curMove.y, _minY - posCam.y, _maxY - posCam.y));
+			
 			Camera.main.transform.Translate(curMove);
 			CurOffset -= curMove;
 			TimeLeft -= Time.deltaTime;
@@ -105,20 +85,10 @@ public class CameraController : MonoBehaviour {
     {
         if (disableScroll) return;
 
-		/*
-		CurOffset = offset;
-		if (!OutOfBoundsX (Camera.main.transform.position + offset)) {
-			CurOffset = new Vector3 (0, CurOffset.y, CurOffset.z);
-		}
-
-		if (!OutOfBoundsY (Camera.main.transform.position + offset)) {
-			CurOffset = new Vector3 (CurOffset.x, 0, CurOffset.z);
-		}
-		*/
-
 		Vector3 posCam = Camera.main.transform.position;
-		CurOffset = new Vector3 (Mathf.Clamp (offset.x, _minX - posCam.x, _maxX - posCam.x), 
-					Mathf.Clamp (offset.y, _minY - posCam.y, _maxY - posCam.y));
+		//CurOffset = new Vector3 (Mathf.Clamp (offset.x, _minX - posCam.x, _maxX - posCam.x), 
+		//			Mathf.Clamp (offset.y, _minY - posCam.y, _maxY - posCam.y));
+		CurOffset = offset;
 
         TimeLeft = 1/CameraSpeed;
     }
