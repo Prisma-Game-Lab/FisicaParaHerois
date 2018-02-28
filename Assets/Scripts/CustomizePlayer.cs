@@ -63,6 +63,8 @@ public class CustomizePlayer : MonoBehaviour {
 
 	public Sprite spritePack;
 
+	public GameObject camera;
+
 	//public GameObject[] EyesFix;
 
 	private Transform[] bigPlayerObjs;
@@ -277,6 +279,8 @@ public class CustomizePlayer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		camera.transform.position = new Vector3 (0, 0, -10);
+
 		AdjustSprites ();
 
 		Up.onClick.AddListener (UpButton);
@@ -341,6 +345,8 @@ public class CustomizePlayer : MonoBehaviour {
 		ActivateItemLittlePlayer(_calcaCategory, _changePlayer.calca.cor);
 		ActivateItemLittlePlayer(_sapatoCategory, _changePlayer.sapato.cor);
 		ActivateItemLittlePlayer(_acessorioCategory, _changePlayer.acessorio.cor);
+		ActivateItemLittlePlayer(_corDePeleCategory, _changePlayer.corDePele.cor);
+
 
 
 		// cust4_1 - sobrancelha
@@ -398,7 +404,6 @@ public class CustomizePlayer : MonoBehaviour {
 				else Estampas [0] = item;
 			}*/
 			
-			print (item.name);
 		}
 //		for (i...)
 //		{
@@ -487,48 +492,56 @@ public class CustomizePlayer : MonoBehaviour {
 			case "Camisas": 
 				gameObject.GetComponent<Image> ().sprite = Camisetas [_indexItemCategoria];
 				ActivateItemBigPlayer (Camisetas [_indexItemCategoria].name, _camisaCategory, _changePlayer.camisa.cor, false);
+				ActivateItemLittlePlayer(_camisaCategory, _changePlayer.camisa.cor);
 				_changePlayer.camisa.index = _indexItemCategoria;
 
 				break;
 			case "Nariz":
 				gameObject.GetComponent<Image> ().sprite = Narizes [_indexItemCategoria];
 				ActivateItemBigPlayer (Narizes [_indexItemCategoria].name, _narizCategory, _changePlayer.nariz.cor, false);
+				ActivateItemLittlePlayer(_narizCategory, _changePlayer.nariz.cor);
 				_changePlayer.nariz.index = _indexItemCategoria;
 
 				break;
 			case "Boca":
 				gameObject.GetComponent<Image> ().sprite = Bocas [_indexItemCategoria];
 				ActivateItemBigPlayer (Bocas [_indexItemCategoria].name, _bocaCategory, _changePlayer.boca.cor, false);
+				ActivateItemLittlePlayer(_bocaCategory, _changePlayer.boca.cor);
 				_changePlayer.boca.index = _indexItemCategoria;
 
 				break;
 			case "Cabelo":
 				gameObject.GetComponent<Image> ().sprite = Cabelos [_indexItemCategoria];
 				ActivateItemBigPlayer (Cabelos [_indexItemCategoria].name, _cabeloCategory, _changePlayer.cabelo.cor, false);
+				ActivateItemLittlePlayer(_cabeloCategory, _changePlayer.cabelo.cor);
 				_changePlayer.cabelo.index = _indexItemCategoria;
 
 				break;
 			case "Calca":
 				gameObject.GetComponent<Image> ().sprite = Calcas [_indexItemCategoria];
 				ActivateItemBigPlayer (Calcas [_indexItemCategoria].name, _calcaCategory, _changePlayer.calca.cor, false);
+				ActivateItemLittlePlayer(_calcaCategory, _changePlayer.calca.cor);
 				_changePlayer.calca.index = _indexItemCategoria;
 
 				break;
 			case "Sapato":
 				gameObject.GetComponent<Image> ().sprite = Sapatos [_indexItemCategoria];
 				ActivateItemBigPlayer (Sapatos [_indexItemCategoria].name, _sapatoCategory, _changePlayer.sapato.cor, false);
+				ActivateItemLittlePlayer(_sapatoCategory, _changePlayer.sapato.cor);
 				_changePlayer.sapato.index = _indexItemCategoria;
 
 				break;
 			case "Acessorios":
 				gameObject.GetComponent<Image> ().sprite = Acessorios [_indexItemCategoria];
 				ActivateItemBigPlayer (Acessorios [_indexItemCategoria].name, _acessorioCategory, _changePlayer.acessorio.cor, false);
+				ActivateItemLittlePlayer(_acessorioCategory, _changePlayer.acessorio.cor);
 				_changePlayer.acessorio.index = _indexItemCategoria;
 
 				break;
 			case "Olhos":
 				gameObject.GetComponent<Image> ().sprite = Olhos [_indexItemCategoria];
 				ActivateItemBigPlayer (Olhos [_indexItemCategoria].name, _olhosCategory, _changePlayer.olhos.cor, false);
+				ActivateItemLittlePlayer(_olhosCategory, _changePlayer.olhos.cor);
 				_changePlayer.olhos.index = _indexItemCategoria;
 
 				break;
@@ -548,6 +561,7 @@ public class CustomizePlayer : MonoBehaviour {
 				_indexItemCategoria += 1;
 				gameObject.GetComponent<Image> ().sprite = Camisetas [_indexItemCategoria];
 				ActivateItemBigPlayer (Camisetas [_indexItemCategoria].name, _camisaCategory, _changePlayer.camisa.cor, false);
+				ActivateItemLittlePlayer(_camisaCategory, _changePlayer.camisa.cor);
 				_changePlayer.camisa.index = _indexItemCategoria;
 			}
 			break;
@@ -556,6 +570,7 @@ public class CustomizePlayer : MonoBehaviour {
 				_indexItemCategoria += 1;
 				gameObject.GetComponent<Image> ().sprite = Narizes [_indexItemCategoria];
 				ActivateItemBigPlayer (Narizes [_indexItemCategoria].name, _narizCategory, _changePlayer.nariz.cor, false);
+				ActivateItemLittlePlayer(_narizCategory, _changePlayer.nariz.cor);
 				_changePlayer.nariz.index = _indexItemCategoria;
 			}
 			break;
@@ -564,6 +579,7 @@ public class CustomizePlayer : MonoBehaviour {
 				_indexItemCategoria += 1;
 				gameObject.GetComponent<Image> ().sprite = Bocas [_indexItemCategoria];
 				ActivateItemBigPlayer (Bocas [_indexItemCategoria].name, _bocaCategory, _changePlayer.boca.cor, false);
+				ActivateItemLittlePlayer(_bocaCategory, _changePlayer.boca.cor);
 				_changePlayer.boca.index = _indexItemCategoria;
 			}
 			break;
@@ -572,6 +588,7 @@ public class CustomizePlayer : MonoBehaviour {
 				_indexItemCategoria += 1;
 				gameObject.GetComponent<Image> ().sprite = Cabelos [_indexItemCategoria];
 				ActivateItemBigPlayer (Cabelos [_indexItemCategoria].name, _cabeloCategory, _changePlayer.cabelo.cor, false);
+				ActivateItemLittlePlayer(_cabeloCategory, _changePlayer.cabelo.cor);
 				_changePlayer.cabelo.index = _indexItemCategoria;
 			}
 			break;
@@ -580,6 +597,7 @@ public class CustomizePlayer : MonoBehaviour {
 				_indexItemCategoria += 1;
 				gameObject.GetComponent<Image> ().sprite = Calcas [_indexItemCategoria];
 				ActivateItemBigPlayer (Calcas [_indexItemCategoria].name, _calcaCategory, _changePlayer.calca.cor, false);
+				ActivateItemLittlePlayer(_calcaCategory, _changePlayer.calca.cor);
 				_changePlayer.calca.index = _indexItemCategoria;
 			}
 			break;
@@ -588,6 +606,7 @@ public class CustomizePlayer : MonoBehaviour {
 				_indexItemCategoria += 1;
 				gameObject.GetComponent<Image> ().sprite = Sapatos [_indexItemCategoria];
 				ActivateItemBigPlayer (Sapatos [_indexItemCategoria].name, _sapatoCategory, _changePlayer.sapato.cor, false);
+				ActivateItemLittlePlayer(_sapatoCategory, _changePlayer.sapato.cor);
 				_changePlayer.sapato.index = _indexItemCategoria;
 			}
 			break;
@@ -596,6 +615,7 @@ public class CustomizePlayer : MonoBehaviour {
 				_indexItemCategoria += 1;
 				gameObject.GetComponent<Image> ().sprite = Acessorios [_indexItemCategoria];
 				ActivateItemBigPlayer (Acessorios [_indexItemCategoria].name, _acessorioCategory, _changePlayer.acessorio.cor, false);
+				ActivateItemLittlePlayer(_acessorioCategory, _changePlayer.acessorio.cor);
 				_changePlayer.acessorio.index = _indexItemCategoria;
 			}
 			break;
@@ -604,6 +624,7 @@ public class CustomizePlayer : MonoBehaviour {
 				_indexItemCategoria += 1;
 				gameObject.GetComponent<Image> ().sprite = Olhos [_indexItemCategoria];
 				ActivateItemBigPlayer (Olhos [_indexItemCategoria].name, _olhosCategory, _changePlayer.olhos.cor, false);
+				ActivateItemLittlePlayer(_olhosCategory, _changePlayer.olhos.cor);
 				_changePlayer.olhos.index = _indexItemCategoria;
 			}
 			break;
@@ -632,6 +653,7 @@ public class CustomizePlayer : MonoBehaviour {
 			}
 			ActivatePattern ();
 			ActivateItemBigPlayer (_changePlayer.camisa.camiseta.name, _camisaCategory, _changePlayer.camisa.cor, true);
+			ActivateItemLittlePlayer(_camisaCategory, _changePlayer.camisa.cor);
 			_indexItemCategoria = _changePlayer.camisa.index;
 			_indexCategoriaAcessorio = _changePlayer.camisa.indexEstampa;
 
@@ -648,6 +670,7 @@ public class CustomizePlayer : MonoBehaviour {
 				ChangePalette (CorPele);
 			}
 			ActivatePattern ();
+			ActivateItemLittlePlayer(_corDePeleCategory, _changePlayer.corDePele.cor);
 			//ActivateItemBigPlayer (_changePlayer.corDePele.cor);
 			//_indexItemCategoria = _changePlayer.corDePele.indexCor;
 			//_indexCategoriaAcessorio = 0;
@@ -664,7 +687,7 @@ public class CustomizePlayer : MonoBehaviour {
 			}
 			ActivatePattern ();
 			ActivateItemBigPlayer (_changePlayer.nariz.nariz.name, _narizCategory, _changePlayer.nariz.cor, true);
-
+			ActivateItemLittlePlayer(_narizCategory, _changePlayer.nariz.cor);
 			_indexItemCategoria = _changePlayer.nariz.index;
 			//_indexCategoriaAcessorio = _changePlayer.nariz.indexCor;
 
@@ -680,6 +703,7 @@ public class CustomizePlayer : MonoBehaviour {
 			}
 			ActivatePattern ();
 			ActivateItemBigPlayer (_changePlayer.boca.boca.name, _bocaCategory, _changePlayer.boca.cor, true);
+			ActivateItemLittlePlayer(_bocaCategory, _changePlayer.boca.cor);
 			_indexItemCategoria = _changePlayer.boca.index;
 			//_indexCategoriaAcessorio = 0;
 
@@ -697,6 +721,7 @@ public class CustomizePlayer : MonoBehaviour {
 			}
 			ActivatePattern ();
 			ActivateItemBigPlayer (_changePlayer.cabelo.cabelo.name, _cabeloCategory, _changePlayer.cabelo.cor, true);
+			ActivateItemLittlePlayer(_cabeloCategory, _changePlayer.cabelo.cor);
 			_indexItemCategoria = _changePlayer.cabelo.index;
 			_indexCategoriaAcessorio = _changePlayer.cabelo.indexBarba;
 
@@ -713,7 +738,7 @@ public class CustomizePlayer : MonoBehaviour {
 			}
 			ActivatePattern ();
 			ActivateItemBigPlayer (_changePlayer.calca.calca.name, _calcaCategory, _changePlayer.calca.cor, true);
-
+			ActivateItemLittlePlayer(_calcaCategory, _changePlayer.calca.cor);
 			_indexItemCategoria = _changePlayer.calca.index;
 
                 break;
@@ -728,6 +753,7 @@ public class CustomizePlayer : MonoBehaviour {
 			}
 			ActivatePattern ();
 			ActivateItemBigPlayer (_changePlayer.sapato.sapato.name, _sapatoCategory, _changePlayer.sapato.cor, true);
+			ActivateItemLittlePlayer(_sapatoCategory, _changePlayer.sapato.cor);
 			_indexItemCategoria = _changePlayer.sapato.index;
 
                 break;
@@ -742,6 +768,7 @@ public class CustomizePlayer : MonoBehaviour {
 			}
 			ActivatePattern ();
 			ActivateItemBigPlayer (_changePlayer.acessorio.acessorio.name, _acessorioCategory, _changePlayer.acessorio.cor, true);
+			ActivateItemLittlePlayer(_acessorioCategory, _changePlayer.acessorio.cor);
 			_indexItemCategoria = _changePlayer.acessorio.index;
 
                 break;
@@ -758,6 +785,7 @@ public class CustomizePlayer : MonoBehaviour {
 			}
 			ActivatePattern ();
 			ActivateItemBigPlayer (_changePlayer.olhos.olhos.name, _olhosCategory, _changePlayer.olhos.cor, true);
+			ActivateItemLittlePlayer(_olhosCategory, _changePlayer.olhos.cor);
 			_indexItemCategoria = _changePlayer.olhos.index;
 			_indexCategoriaAcessorio = _changePlayer.olhos.indexCilios;
 
@@ -997,6 +1025,7 @@ public class CustomizePlayer : MonoBehaviour {
 								item.gameObject.SetActive(false);
 
 							} else if (item.name == "base" || item.name == "curta1" || item.name == "curta2"){
+								item.gameObject.SetActive(true);
 								item.GetComponent<Anima2D.SpriteMeshInstance>().color = cor;
 							}
 						}
@@ -1010,6 +1039,7 @@ public class CustomizePlayer : MonoBehaviour {
 								item.gameObject.SetActive(false);
 
 							} else if (item.name == "base" || item.name == "longa1" || item.name == "longa2"){
+								item.gameObject.SetActive(true);
 								item.GetComponent<Anima2D.SpriteMeshInstance>().color = cor;
 							}
 						}
@@ -1022,6 +1052,7 @@ public class CustomizePlayer : MonoBehaviour {
 
 			break;
 		case "Cor de pele":
+
 
 			foreach (Transform child in PlayerInGame.GetComponentsInChildren<Transform>(true)){
 
@@ -1045,6 +1076,18 @@ public class CustomizePlayer : MonoBehaviour {
 
 				if (child.name == "cabelo"){
 
+//					foreach (Transform item in child.GetComponentInChildren<Transform>(true)){
+//
+//						if (item.name == "curta1" || item.name == "curta2") {
+//
+//							item.gameObject.SetActive(false);
+//
+//						} else if (item.name == "base" || item.name == "longa1" || item.name == "longa2"){
+//							item.gameObject.SetActive(true);
+//							item.GetComponent<Anima2D.SpriteMeshInstance>().color = cor;
+//						}
+//					}
+
 				}
 			}
 
@@ -1062,6 +1105,7 @@ public class CustomizePlayer : MonoBehaviour {
 							if (item.name == "calca1") {
 								item.gameObject.SetActive(false);
 							} else if (item.name == "calca3"){
+								item.gameObject.SetActive(true);
 								item.GetComponent<Anima2D.SpriteMeshInstance>().color = cor;
 							}
 						}
@@ -1073,6 +1117,7 @@ public class CustomizePlayer : MonoBehaviour {
 							if (item.name == "calca3") {
 								item.gameObject.SetActive (false);
 							} else if (item.name == "calca1") {
+								item.gameObject.SetActive(true);
 								item.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
 							}
 						}
@@ -1126,6 +1171,8 @@ public class CustomizePlayer : MonoBehaviour {
 				}
 			}
 
+			ActivateItemLittlePlayer(_camisaCategory, _changePlayer.camisa.cor);
+
 			break;
 		case _narizCategory:
 			_changePlayer.nariz.cor = Color [index].GetComponent<Image> ().color;
@@ -1137,6 +1184,8 @@ public class CustomizePlayer : MonoBehaviour {
 				}
 			}
 
+			ActivateItemLittlePlayer(_narizCategory, _changePlayer.nariz.cor);
+
 			break;
 		case _acessorioCategory:
 			_changePlayer.acessorio.cor = Color [index].GetComponent<Image> ().color;
@@ -1147,6 +1196,8 @@ public class CustomizePlayer : MonoBehaviour {
 					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
 				}
 			}
+
+			ActivateItemLittlePlayer(_acessorioCategory, _changePlayer.acessorio.cor);
 
 			break;
 		case _bocaCategory:
@@ -1170,6 +1221,8 @@ public class CustomizePlayer : MonoBehaviour {
 				}
 			}
 
+			ActivateItemLittlePlayer(_bocaCategory, _changePlayer.boca.cor);
+
 			break;
 		case _cabeloCategory:
 			BarbaItem.GetComponent<Image> ().color = Color [index].GetComponent<Image> ().color;
@@ -1192,6 +1245,8 @@ public class CustomizePlayer : MonoBehaviour {
 				}
 			}
 
+			ActivateItemLittlePlayer(_cabeloCategory, _changePlayer.cabelo.cor);
+
 			break;
 		case _calcaCategory:
 			_changePlayer.calca.cor = Color [index].GetComponent<Image> ().color;
@@ -1202,6 +1257,8 @@ public class CustomizePlayer : MonoBehaviour {
 					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
 				}
 			}
+			ActivateItemLittlePlayer(_calcaCategory, _changePlayer.calca.cor);
+
 			break;
 		case _olhosCategory:
 			_changePlayer.olhos.cor = Color [index].GetComponent<Image> ().color;
@@ -1212,6 +1269,8 @@ public class CustomizePlayer : MonoBehaviour {
 					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
 				}
 			}
+			ActivateItemLittlePlayer(_olhosCategory, _changePlayer.olhos.cor);
+
 			break;
 		case _sapatoCategory:
 			_changePlayer.sapato.cor = Color [index].GetComponent<Image> ().color;
@@ -1222,6 +1281,8 @@ public class CustomizePlayer : MonoBehaviour {
 					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
 				}
 			}
+			ActivateItemLittlePlayer(_sapatoCategory, _changePlayer.sapato.cor);
+
 			break;
 		case "Cor de pele":
 			_changePlayer.corDePele.cor = Color [index].GetComponent<Image> ().color;
@@ -1241,6 +1302,8 @@ public class CustomizePlayer : MonoBehaviour {
 					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
 				}
 			}
+
+			ActivateItemLittlePlayer(_corDePeleCategory, _changePlayer.corDePele.cor);
 
 			break;
 		default:
