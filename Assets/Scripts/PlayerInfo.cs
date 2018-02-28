@@ -219,7 +219,6 @@ public class PlayerInfo : MonoBehaviour {
             //não pode pular enquanto segura uma caixa (argumento do Nelson: ela tem no minimo o peso do Player)
             return;
         }
-
         _rb.AddForce(Vector2.up * JumpForce);
 		AudioSource.PlayClipAtPoint (jump, transform.position);
     }

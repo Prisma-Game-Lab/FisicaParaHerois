@@ -246,9 +246,13 @@ public class PlayerInput : MonoBehaviour {
 			action.SetTarget(target);
 			if (target != null && !_isJumping)
 			{
-				action.OnActionUse(Mathf.Sign(target.transform.position.x - Player.transform.position.x)); //O ARGUMENTO NÃ AFETA MAIS! old: O argumento será ou -1, dependendo de se o player estántes ou depois do target.
-			}
-		}
+				action.OnActionUse(Mathf.Sign(target.transform.position.x - Player.transform.position.x)); //O ARGUMENTO NÃ AFETA MAIS! old: O argumento será 1 ou -1, dependendo de se o player está antes ou depois do target.
+                if (target.transform.position.x < Player.transform.position.x)
+                    Player.CheckInputFlip("A");
+                else
+                    Player.CheckInputFlip("D");
+            }
+        }
 	}
 
 	public void CheckInput()
@@ -405,6 +409,7 @@ public class PlayerInput : MonoBehaviour {
 
 
 		_isJumping = true;
+        Player._playerAnim.SetBool("onFloor", false);
 	}
 
 	// verifica se estáocando a gangorra e diminui o atrito
