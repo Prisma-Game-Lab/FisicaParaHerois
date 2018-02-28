@@ -760,9 +760,7 @@ public class CustomizePlayer : MonoBehaviour {
 	}
 
 	// Ativa os assets do player pequeno
-	void ActivateItemLittlePlayer(string item, string category, Color cor){
-
-		PlayerInGame
+	void ActivateItemLittlePlayer(string category, Color cor){
 
 		switch (category) {
 
@@ -867,14 +865,14 @@ public class CustomizePlayer : MonoBehaviour {
 
 					} else if (_changePlayer.calca.calca.name == "cust4_3"){
 
-						foreach (Transform item in child.GetComponentInChildren<Transform>(true)){
+						foreach (Transform item in child.GetComponentInChildren<Transform>(true)) {
 
 							if (item.name == "calca3") {
-								item.gameObject.SetActive(false);
-							} else if (item.name == "calca1"){
-								item.GetComponent<Anima2D.SpriteMeshInstance>().color = cor;
+								item.gameObject.SetActive (false);
+							} else if (item.name == "calca1") {
+								item.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
 							}
-
+						}
 					}
 				}
 			}
@@ -885,7 +883,10 @@ public class CustomizePlayer : MonoBehaviour {
 			foreach (Transform child in PlayerInGame.GetComponentsInChildren<Transform>(true)){
 
 				if (child.name == "sapato"){
+					foreach (Transform item in child.GetComponentInChildren<Transform>(true)){
 
+						item.GetComponent<Anima2D.SpriteMeshInstance>().color = cor;
+					}
 				}
 			}
 
