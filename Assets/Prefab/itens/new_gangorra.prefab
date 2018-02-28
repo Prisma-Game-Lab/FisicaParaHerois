@@ -103,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1110695167111308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.16, z: -4.25}
+  m_LocalPosition: {x: 0, y: 0.16, z: 0}
   m_LocalScale: {x: 0.07, y: 1.71, z: 1}
   m_Children: []
   m_Father: {fileID: 4293842323228446}
@@ -131,7 +131,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1476245207159360}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.398, z: -4.9}
+  m_LocalPosition: {x: 0, y: -0.398, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 4654663442041706}
@@ -157,7 +157,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1524939945337138}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.0298476, y: -2.82, z: -0.55}
+  m_LocalPosition: {x: -6.06, y: -21.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4293842323228446}
@@ -289,6 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   base_gangorra: {fileID: 1476245207159360}
   visual_distance_connecting_point: 0
+  Joint: {fileID: 0}
 --- !u!114 &114459991450480398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,6 +319,7 @@ MonoBehaviour:
   _timeLeftToDeactivatePushPullAction: 1
   Halo: {fileID: 0}
   _hasChain: 0
+  Caiu: {fileID: 0}
 --- !u!212 &212441427774144312
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -420,7 +422,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -6.0298476, y: -2.82}
+  m_ConnectedAnchor: {x: -6.06, y: -21.77}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
