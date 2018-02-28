@@ -67,27 +67,6 @@ public class CameraController : MonoBehaviour {
 	}
 
 	public void LateUpdate () {
-		/*
-        if (CurOffset != Vector3.zero && TimeLeft > 0)
-        {
-            Vector3 curMove = (Time.deltaTime / TimeLeft) * CurOffset;
-
-			Vector3 posCam = Camera.main.transform.position;
-			curMove = new Vector3 (Mathf.Clamp (curMove.x, _minX - posCam.x, _maxX - posCam.x), 
-				Mathf.Clamp (curMove.y, _minY - posCam.y, _maxY - posCam.y));
-			
-			Camera.main.transform.Translate(curMove);
-			CurOffset -= curMove;
-			TimeLeft -= Time.deltaTime;
-
-            _cameraPosToCheck = curMove + Camera.main.transform.position;
-            
-        }
-        else
-        {
-            TimeLeft = 0;
-        }*/
-
 		if (!PlayerInfo.PlayerInstance.IsJumping && AutoAdjustCamera) {
 			Vector3 pos = PlayerInfo.PlayerInstance.transform.position;
 			Camera.main.transform.position = new Vector3 (Mathf.Clamp(pos.x, _minX, _maxX), 
@@ -105,22 +84,6 @@ public class CameraController : MonoBehaviour {
 	{
 		return position.y > _maxY || position.y < _minY;
 	}
-
-
-    public void Move(Vector3 offset)
-    {
-		/*
-        if (disableScroll) return;
-
-		Vector3 posCam = Camera.main.transform.position;
-		//CurOffset = new Vector3 (Mathf.Clamp (offset.x, _minX - posCam.x, _maxX - posCam.x), 
-		//			Mathf.Clamp (offset.y, _minY - posCam.y, _maxY - posCam.y));
-		CurOffset = offset;
-
-        TimeLeft = 1/CameraSpeed;
-        */
-    }
-
 
     public void OnPhysicsVisionActivated()
     {

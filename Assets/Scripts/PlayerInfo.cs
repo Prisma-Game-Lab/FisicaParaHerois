@@ -70,18 +70,6 @@ public class PlayerInfo : MonoBehaviour {
     void Update () {
 		_secondsSinceLastMove += Time.deltaTime;
 
-		/*
-		//Travava o player quando estava na gangorra
-		if (IsConstrained && _secondsSinceLastMove >= MoveDuration) {
-			_rb.constraints = RigidbodyConstraints2D.FreezeAll;
-		}
-
-		//Destravava o player quando não estava na gangorra
-		if (!IsConstrained && _rb.constraints == RigidbodyConstraints2D.FreezeAll) {
-			_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-		}
-		*/
-
         if (_receiveDamage)
         {
 
@@ -151,19 +139,7 @@ public class PlayerInfo : MonoBehaviour {
     {
 		_secondsSinceLastMove = 0;
 
-		/*
-		//Checa se o movimento está travado e o destrava
-		if (_rb.constraints == RigidbodyConstraints2D.FreezeAll) {
-			IsConstrained = true;
-			_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-		}
-		*/
-
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
-
-        //Reseta a posição da câmera
-        Vector3 cameraDistToPlayer = transform.position - Camera.main.transform.position;
-        MoveCamera(new Vector2(cameraDistToPlayer.x, cameraDistToPlayer.y), minDistanceToMoveCamera);
 
         if (walkLeft)
         {
@@ -184,35 +160,11 @@ public class PlayerInfo : MonoBehaviour {
         }
     }
 
-    public void MoveCamera(Vector2 offset, float minDistanceToMoveCamera, bool forceCamera = false)
-    {
-        if (!forceCamera && (minDistanceToMoveCamera > offset.magnitude))
-        {
-            return;
-        }
-
-        CameraController camera = GetComponent<CameraController>();
-        if (camera == null)
-        {
-            Debug.LogError("Player está sem CameraController");
-            return;
-        }
-        camera.Move(new Vector3(offset.x, offset.y, 0));
-    }
-
 	public void Jump()
     {
 		_secondsSinceLastMove = 0;
 		IsJumping = true;
         _playerAnim.SetBool("onFloor", false);
-
-		/*
-		//Checa se o movimento está travado e o destrava
-		if (_rb.constraints == RigidbodyConstraints2D.FreezeAll) {
-			IsConstrained = true;
-			_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-		}
-		*/
 
         if (PushPullJoint.connectedBody != null)
         {

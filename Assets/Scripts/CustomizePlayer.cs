@@ -759,6 +759,143 @@ public class CustomizePlayer : MonoBehaviour {
 			
 	}
 
+	// Ativa os assets do player pequeno
+	void ActivateItemLittlePlayer(string category, Color cor){
+
+		switch (category) {
+
+		case "Camisas": 
+
+			foreach (Transform child in PlayerInGame.GetComponentsInChildren<Transform>(true)){
+
+				if (child.name == "blusas"){
+
+
+					if (_changePlayer.camisa.camiseta.name == "cust1_0"){
+
+						foreach (Transform item in child.GetComponentInChildren<Transform>(true)){
+							
+							if (item.name == "curta1" || item.name == "curta2" || 
+								item.name == "longa1" || item.name == "longa2") {
+
+								item.gameObject.SetActive(false);
+
+							} else if (item.name == "base"){
+								item.GetComponent<Anima2D.SpriteMeshInstance>().color = cor;
+							}
+						}
+					
+					} else if (_changePlayer.camisa.camiseta.name == "cust1_1") {
+
+						foreach (Transform item in child.GetComponentInChildren<Transform>(true)){
+
+							if (item.name == "longa1" || item.name == "longa2") {
+
+								item.gameObject.SetActive(false);
+
+							} else if (item.name == "base" || item.name == "curta1" || item.name == "curta2"){
+								item.GetComponent<Anima2D.SpriteMeshInstance>().color = cor;
+							}
+						}
+
+					} else if (_changePlayer.camisa.camiseta.name == "cust1_21") {
+
+						foreach (Transform item in child.GetComponentInChildren<Transform>(true)){
+
+							if (item.name == "curta1" || item.name == "curta2") {
+
+								item.gameObject.SetActive(false);
+
+							} else if (item.name == "base" || item.name == "longa1" || item.name == "longa2"){
+								item.GetComponent<Anima2D.SpriteMeshInstance>().color = cor;
+							}
+						}
+
+					}
+
+				}
+			}
+
+
+			break;
+		case "Cor de pele":
+
+			foreach (Transform child in PlayerInGame.GetComponentsInChildren<Transform>(true)){
+
+				if (child.name == "corpo"){
+					child.GetComponent<Anima2D.SpriteMeshInstance>().color = cor;
+				} else if (child.name == "blusas") {
+
+					foreach (Transform item in child.GetComponentInChildren<Transform>(true)){
+
+						if (item.name == "braco1" || item.name == "braco2") {
+							item.GetComponent<Anima2D.SpriteMeshInstance>().color = cor;
+						} 
+					}
+				}
+			}
+
+			break;
+		case "Cabelo":
+
+			foreach (Transform child in PlayerInGame.GetComponentsInChildren<Transform>(true)){
+
+				if (child.name == "cabelo"){
+
+				}
+			}
+
+			break;
+		case "Calca":
+			
+			foreach (Transform child in PlayerInGame.GetComponentsInChildren<Transform>(true)){
+
+				if (child.name == "calca"){
+
+					if (_changePlayer.calca.calca.name == "cust1_3"){
+
+						foreach (Transform item in child.GetComponentInChildren<Transform>(true)){
+
+							if (item.name == "calca1") {
+								item.gameObject.SetActive(false);
+							} else if (item.name == "calca3"){
+								item.GetComponent<Anima2D.SpriteMeshInstance>().color = cor;
+							}
+						}
+
+					} else if (_changePlayer.calca.calca.name == "cust4_3"){
+
+						foreach (Transform item in child.GetComponentInChildren<Transform>(true)) {
+
+							if (item.name == "calca3") {
+								item.gameObject.SetActive (false);
+							} else if (item.name == "calca1") {
+								item.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
+							}
+						}
+					}
+				}
+			}
+
+			break;
+		case "Sapato":
+
+			foreach (Transform child in PlayerInGame.GetComponentsInChildren<Transform>(true)){
+
+				if (child.name == "sapato"){
+					foreach (Transform item in child.GetComponentInChildren<Transform>(true)){
+
+						item.GetComponent<Anima2D.SpriteMeshInstance>().color = cor;
+					}
+				}
+			}
+
+			break;
+		default:
+			break;
+		}
+	}
+
 	// Ativa os assets do player grande
 	void ActivateItemBigPlayer(string item, string category, Color cor, bool firstTime){
 
@@ -777,7 +914,7 @@ public class CustomizePlayer : MonoBehaviour {
 
 				} 
 				if (obj.transform.name == item) {
-					
+
 					_changePlayer.camisa.camiseta.name = item;
 					obj.gameObject.SetActive (true);
 
@@ -860,7 +997,7 @@ public class CustomizePlayer : MonoBehaviour {
 
 			break;
 		case "Calca":
-			
+
 			lastItem = _changePlayer.calca.calca.name;
 
 			foreach (Transform obj in bigPlayerObjs){
@@ -921,7 +1058,7 @@ public class CustomizePlayer : MonoBehaviour {
 			print (_changePlayer.olhos.olhos.name + "OLHO");
 			print (item + "ITEM OLHO");
 
-			
+
 			lastItem = _changePlayer.olhos.olhos.name;
 
 			foreach (Transform obj in bigPlayerObjs) {
@@ -951,6 +1088,7 @@ public class CustomizePlayer : MonoBehaviour {
 			break;
 		}
 	}
+
 
 	// Muda os cor do sprite
 	void ColorButton(int index) {
