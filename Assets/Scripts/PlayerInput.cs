@@ -45,6 +45,7 @@ public class PlayerInput : MonoBehaviour {
 
 
 	private PlayerInfo _info;
+	private bool _wasJoystickTouched;
 
     [Header("DEBUG")]
     public PhysicsObject ObjectToReset;
@@ -258,6 +259,7 @@ public class PlayerInput : MonoBehaviour {
 	public void CheckInput()
 	{
 		int touches = Input.touchCount;
+		_wasJoystickTouched = false;
 
 		if (touches > 0)
 		{
@@ -275,6 +277,11 @@ public class PlayerInput : MonoBehaviour {
 					ObjectsTouch (touch);
 				}
 			}
+		}
+
+		//Se o joystick não foi pressionado, reseta sua posição
+		if (!_wasJoystickTouched) {
+			FixedJoystick.Instance.OnPointerUp (null);
 		}
 	}
 		
@@ -319,14 +326,18 @@ public class PlayerInput : MonoBehaviour {
 				}
 			}
 
-			if (HUDbnt.name == "Menu")
-			{
+			if (HUDbnt.name == "Menu") {
 				// Por enquanto só pausa o jogo
-				if (touch.phase == TouchPhase.Began)
-				{
-					GameManager.Instance.OnPause();
-					print("Menu");
+				if (touch.phase == TouchPhase.Began) {
+					GameManager.Instance.OnPause ();
+					print ("Menu");
 				}
+			} 
+
+			if (HUDbnt.tag == "Joystick") {
+				Debug.Log ("Joystick pressed");
+				_wasJoystickTouched = true;
+				return;
 			}
 		}
 
@@ -390,7 +401,7 @@ public class PlayerInput : MonoBehaviour {
 		Touch _touch = Input.GetTouch (0);
 
 		Debug.Log("Move Camera");
-		CameraController.Instance.CameraScroll (_touch.deltaPosition * CameraTouchSpeed);
+		CameraController.Instance.CameraScroll (_touch.deltaPosition * -CameraTouchSpeed);
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
@@ -445,8 +456,6 @@ public class PlayerInput : MonoBehaviour {
 		{
 			return;
 		}
-
-		PlayerInfo.PlayerInstance.MoveCamera(offset, MinDistanceToMoveCamera, true);
 	}
 
     #region DEBUG
