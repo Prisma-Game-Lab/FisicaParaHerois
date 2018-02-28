@@ -483,8 +483,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1469447036156412}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.72, y: 0.36, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.32, y: -1.33, z: -1.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4906314810199830}
@@ -614,7 +614,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1976221286019272}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6, y: -0.29, z: 0}
+  m_LocalPosition: {x: 1.6, y: -0.29, z: -4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4514317544025438}
@@ -811,7 +811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.52000487
+  m_Length: 0.5200049
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4831139925001524}
   m_AttachedIK: {fileID: 0}
@@ -827,7 +827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.34000045
+  m_Length: 0.34000036
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4762917981408858}
   m_AttachedIK: {fileID: 0}
@@ -905,7 +905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.24001297
+  m_Length: 0.24001285
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4451914438704022}
   m_AttachedIK: {fileID: 0}
@@ -921,7 +921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.76008135
+  m_Length: 0.76008147
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4635897464361714}
   m_AttachedIK: {fileID: 0}
@@ -940,8 +940,8 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_SortingLayerID: -538550065
-  m_SortingOrder: 0
+  m_SortingLayerID: -1354324305
+  m_SortingOrder: -1
   m_Bones: []
   m_BoneTransforms:
   - {fileID: 4792682307238378}
@@ -972,7 +972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.7900075
+  m_Length: 0.7900076
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4644306999687200}
   m_AttachedIK: {fileID: 0}
@@ -1018,20 +1018,21 @@ MonoBehaviour:
   ObjectSprite: {fileID: 0}
   HaloPrefab: {fileID: 1687180426096842, guid: f9b3beb12b761ab4f92bea0de0dc5dde, type: 2}
   AvailableActions:
-    ChangeGravityAction: 1
+    ChangeGravityAction: 0
     ChangeGravityActionMinValue: -5
     ChangeGravityActionMaxValue: 5
-    ChangeMassAction: 1
+    ChangeMassAction: 0
     ChangeMassActionMinValue: -5
     ChangeMassActionMaxValue: 5
-    PushPullAction: 1
+    PushPullAction: 0
     ChangeAnchorPointMinValue: -1
     ChangeAnchorPointMaxValue: 1
     ChangeAnchorPointAction: 1
-  CanPlayerInteract: 1
+  CanPlayerInteract: 0
   _timeLeftToDeactivatePushPullAction: 1
   Halo: {fileID: 0}
   _hasChain: 0
+  Caiu: {fileID: 0}
 --- !u!114 &114708517273266858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1044,7 +1045,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Life: 100
-  MaxBoxes: 5
+  BossAnim: {fileID: 0}
+  MaxBoxes: 3
   Door: {fileID: 0}
   AttackState: {fileID: 0}
   IdleState: {fileID: 0}
@@ -1092,7 +1094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.9122169
+  m_Length: 0.91221714
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4048719807807434}
   m_AttachedIK: {fileID: 0}
@@ -1124,7 +1126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.874574
+  m_Length: 0.8745745
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4237422006126216}
   m_AttachedIK: {fileID: 0}
@@ -1141,10 +1143,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StateMachineController: {fileID: 0}
   upGravity: -0.5
-  downGravity: 3
+  downGravity: 5
   lateralVelocity: 2
-  delay: 1
-  boxPrefab: {fileID: 1556055190346826, guid: e0f7bda04a393394da61b997b63af29b, type: 2}
+  delay: 2
+  boxPrefab: {fileID: 1113855135910304, guid: c9fe40cc35179d146b3a9a1385b0f0e4, type: 2}
   spawnPosition: {fileID: 4906314810199830}
   boxDesiredHeight: {fileID: 4048472582313742}
 --- !u!137 &137412513756444826
@@ -1178,9 +1180,9 @@ SkinnedMeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -538550065
+  m_SortingLayerID: -1354324305
   m_SortingLayer: 5
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
