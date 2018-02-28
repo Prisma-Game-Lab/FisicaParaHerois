@@ -54,7 +54,6 @@ public class PlayerInfo : MonoBehaviour {
         }
 
         _physicsObjects = FindObjectsOfType<PhysicsObject>();
-        Debug.Log(_physicsObjects.Length);
     }
 
     // Use this for initialization
