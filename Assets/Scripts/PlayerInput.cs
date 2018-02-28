@@ -405,6 +405,10 @@ public class PlayerInput : MonoBehaviour {
 	}
 
 	public void ScreenTouch(){
+		if (!PlayerInfo.PlayerInstance.MayMoveCamera) {
+			return;
+		}
+
 		Touch _touch = Input.GetTouch (0);
 
 		Debug.Log("Move Camera");
