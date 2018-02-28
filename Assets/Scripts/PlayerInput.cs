@@ -319,14 +319,17 @@ public class PlayerInput : MonoBehaviour {
 				}
 			}
 
-			if (HUDbnt.name == "Menu")
-			{
+			if (HUDbnt.name == "Menu") {
 				// Por enquanto só pausa o jogo
-				if (touch.phase == TouchPhase.Began)
-				{
-					GameManager.Instance.OnPause();
-					print("Menu");
+				if (touch.phase == TouchPhase.Began) {
+					GameManager.Instance.OnPause ();
+					print ("Menu");
 				}
+			} 
+
+			if (HUDbnt.tag == "Joystick") {
+				Debug.Log ("Joystick pressed");
+				return;
 			}
 		}
 
@@ -445,8 +448,6 @@ public class PlayerInput : MonoBehaviour {
 		{
 			return;
 		}
-
-		PlayerInfo.PlayerInstance.MoveCamera(offset, MinDistanceToMoveCamera, true);
 	}
 
     #region DEBUG
