@@ -466,7 +466,7 @@ public class PhysicsObject : MonoBehaviour {
         }
 
         _pushPullAction = true;
-        _timeLeftToDeactivatePushPullAction = 0.2f;
+        _timeLeftToDeactivatePushPullAction = 0.05f;
         PlayerInfo.PlayerInstance.PushPullJoint.enabled = true;
         PlayerInfo.PlayerInstance.PushPullJoint.connectedBody = physicsData;
     }

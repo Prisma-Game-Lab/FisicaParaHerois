@@ -62,6 +62,8 @@ public class FixedJoystick : Joystick
 				_info.CheckInputFlip ("LeftDir");
 			}
 		}
+
+		PlayerInfo.PlayerInstance.MayMoveCamera = (inputVector.x == 0);
 	}
 
     public override void OnDrag(PointerEventData eventData)
