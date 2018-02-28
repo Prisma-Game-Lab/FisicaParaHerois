@@ -15,6 +15,8 @@ public class FixedJoystick : Joystick
 	private bool _realJump;
 	private bool _isJumping;
 
+	static public FixedJoystick Instance;
+
     void OnValidate()
     {
         if (Player == null)
@@ -22,6 +24,10 @@ public class FixedJoystick : Joystick
             Player = PlayerInfo.PlayerInstance;
         }
     }
+
+	void Awake(){
+		Instance = this;
+	}
 
     void Start()
     {
@@ -63,7 +69,7 @@ public class FixedJoystick : Joystick
 		if (TutorialDialog.IsCanvasOn) {
 			return;
 		}
-		
+
         Vector2 direction = eventData.position - joystickPosition;
 
         inputVector = (direction.magnitude > background.sizeDelta.x / 2f) ? direction.normalized : direction / (background.sizeDelta.x / 2f);

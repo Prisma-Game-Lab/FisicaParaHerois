@@ -45,6 +45,7 @@ public class PlayerInput : MonoBehaviour {
 
 
 	private PlayerInfo _info;
+	private bool _wasJoystickTouched;
 
     [Header("DEBUG")]
     public PhysicsObject ObjectToReset;
@@ -258,6 +259,7 @@ public class PlayerInput : MonoBehaviour {
 	public void CheckInput()
 	{
 		int touches = Input.touchCount;
+		_wasJoystickTouched = false;
 
 		if (touches > 0)
 		{
@@ -275,6 +277,11 @@ public class PlayerInput : MonoBehaviour {
 					ObjectsTouch (touch);
 				}
 			}
+		}
+
+		//Se o joystick não foi pressionado, reseta sua posição
+		if (!_wasJoystickTouched) {
+			FixedJoystick.Instance.OnPointerUp (null);
 		}
 	}
 		
@@ -329,6 +336,7 @@ public class PlayerInput : MonoBehaviour {
 
 			if (HUDbnt.tag == "Joystick") {
 				Debug.Log ("Joystick pressed");
+				_wasJoystickTouched = true;
 				return;
 			}
 		}
