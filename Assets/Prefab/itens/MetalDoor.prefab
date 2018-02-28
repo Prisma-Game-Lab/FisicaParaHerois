@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 4408509360445726}
   - component: {fileID: 114220558568327374}
   - component: {fileID: 95645349820059774}
+  - component: {fileID: 82754660061784484}
   m_Layer: 0
   m_Name: MetalDoor
   m_TagString: Untagged
@@ -116,8 +117,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1083407430086088}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.57, y: -0.46, z: 0}
-  m_LocalScale: {x: 7.1999507, y: 6.0684147, z: 3.407502}
+  m_LocalPosition: {x: 3.339, y: -0.46, z: 0}
+  m_LocalScale: {x: 6.7135673, y: 7.573744, z: 3.407502}
   m_Children: []
   m_Father: {fileID: 4408509360445726}
   m_RootOrder: 2
@@ -129,7 +130,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1037054697025692}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.43, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0.43, y: -0.12, z: 0}
   m_LocalScale: {x: 3.1386302, y: 3.5214727, z: 3.407502}
   m_Children: []
   m_Father: {fileID: 4408509360445726}
@@ -142,8 +143,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1799766880191632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.08, y: -11.46, z: 0}
-  m_LocalScale: {x: 1, y: -1.15, z: 1}
+  m_LocalPosition: {x: 1.43, y: -13.946, z: 0}
+  m_LocalScale: {x: 1, y: 1.15, z: 1}
   m_Children:
   - {fileID: 4511147449040720}
   - {fileID: 4880643944128982}
@@ -217,6 +218,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2572474, y: 10.116965}
   m_EdgeRadius: 0
+--- !u!82 &82754660061784484
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1799766880191632}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: eb80d4e9ed2804609968c983204b61ef, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95645349820059774
 Animator:
   serializedVersion: 3
@@ -249,6 +330,7 @@ MonoBehaviour:
   - {fileID: 1779546378594284}
   _Anim: {fileID: 95645349820059774}
   ButtonsNeededToUnlock: 1
+  porta: {fileID: 8300000, guid: eb80d4e9ed2804609968c983204b61ef, type: 3}
 --- !u!212 &212242261897415490
 SpriteRenderer:
   m_ObjectHideFlags: 1

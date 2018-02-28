@@ -21,14 +21,17 @@ public class PlayerInfo : MonoBehaviour {
     public float MaxVelocity = 5.0f;
 	public AudioClip jump;
     public bool facingRight = true;
-	public FixedJoint2D PushPullJoint;
+    public Animator _playerAnim;
+    public FixedJoint2D PushPullJoint;
 	[Tooltip("Segundos desde que o player aperta o botão até impedir o movimento do player quando ele está em cima de uma gangorra")]public float MoveDuration = 0.5f;
 	[HideInInspector] public bool IsConstrained = false;
+	[HideInInspector] public bool IsJumping = false;
+	public float JumpDuration = 1.5f;
+	private float _timeSinceJumpStarted = 0.0f;
 
     private bool _receiveDamage;
     private float _damageNumber;
     private Rigidbody2D _rb;
-    private Animator _playerAnim;
     private bool _physicsVisionActivated = false;
     private PhysicsObject[] _physicsObjects;
     private CameraController _cameraController;
@@ -67,13 +70,17 @@ public class PlayerInfo : MonoBehaviour {
     void Update () {
 		_secondsSinceLastMove += Time.deltaTime;
 
+		/*
+		//Travava o player quando estava na gangorra
 		if (IsConstrained && _secondsSinceLastMove >= MoveDuration) {
 			_rb.constraints = RigidbodyConstraints2D.FreezeAll;
 		}
 
+		//Destravava o player quando não estava na gangorra
 		if (!IsConstrained && _rb.constraints == RigidbodyConstraints2D.FreezeAll) {
 			_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 		}
+		*/
 
         if (_receiveDamage)
         {
@@ -86,12 +93,21 @@ public class PlayerInfo : MonoBehaviour {
             OnDeath();
         }
 
+		if (IsJumping) {
+			_timeSinceJumpStarted += Time.deltaTime;
+			if (_timeSinceJumpStarted >= JumpDuration) {
+				IsJumping = false;
+				_timeSinceJumpStarted = 0;
+			}
+		}
+
     }
 
     //Checa se o player está olhando para a esquerda ou direita
     void FixedUpdate()
     {
 		_playerAnim.SetInteger("velocity", (int)(_rb.velocity.x));
+        //if (_rb.velocity.x < 0 && )
     }
 
 	public void CheckInputFlip(string btn) {
@@ -131,15 +147,17 @@ public class PlayerInfo : MonoBehaviour {
     }
 
     // Movimentação
-	public void Move(bool walkLeft, float minDistanceToMoveCamera/*, bool extraForce*/)
+	public void Move(bool walkLeft, float minDistanceToMoveCamera)
     {
 		_secondsSinceLastMove = 0;
 
+		/*
 		//Checa se o movimento está travado e o destrava
 		if (_rb.constraints == RigidbodyConstraints2D.FreezeAll) {
 			IsConstrained = true;
 			_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 		}
+		*/
 
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
 
@@ -149,26 +167,19 @@ public class PlayerInfo : MonoBehaviour {
 
         if (walkLeft)
         {
-            _playerAnim.SetBool("mirror", true);
             if (rb.velocity.x >= -MaxVelocity)
             {
 				Vector2 vel = new Vector2 (-1*PaceSpeed, _rb.velocity.y);
 				rb.velocity = vel; 
-                //Vector2 movement = Vector2.left * PaceSpeed * 8.47f;
-                //rb.AddForce(movement);
             }
 
         } else
-        {
-            _playerAnim.SetBool("mirror", false);
+        {      
             if (rb.velocity.x <= MaxVelocity)
             {
 				Vector2 vel = new Vector2 (PaceSpeed, _rb.velocity.y);
 
 				rb.velocity = vel; 
-				
-                //Vector2 movement = Vector2.right * PaceSpeed * 8.47f;
-                //rb.AddForce(movement);
             }
         }
     }
@@ -189,30 +200,26 @@ public class PlayerInfo : MonoBehaviour {
         camera.Move(new Vector3(offset.x, offset.y, 0));
     }
 
-	public void Jump(/*float velocity*/)
+	public void Jump()
     {
 		_secondsSinceLastMove = 0;
+		IsJumping = true;
+        _playerAnim.SetBool("onFloor", false);
 
+		/*
 		//Checa se o movimento está travado e o destrava
 		if (_rb.constraints == RigidbodyConstraints2D.FreezeAll) {
 			IsConstrained = true;
 			_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 		}
+		*/
 
         if (PushPullJoint.connectedBody != null)
         {
             //não pode pular enquanto segura uma caixa (argumento do Nelson: ela tem no minimo o peso do Player)
             return;
         }
-
         _rb.AddForce(Vector2.up * JumpForce);
-		/*if (velocity > 0) {
-
-			if (!facingRight)
-				_rb.AddForce (Vector2.left * velocity);
-			else
-				_rb.AddForce (Vector2.right * velocity);
-		}*/
 		AudioSource.PlayClipAtPoint (jump, transform.position);
     }
 

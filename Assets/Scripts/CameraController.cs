@@ -11,6 +11,11 @@ public class CameraController : MonoBehaviour {
 
     public bool disableScroll;
     public bool showBoundingBox;
+	[HideInInspector] public bool AutoAdjustCamera = true;
+	[HideInInspector] public float TimeSinceLastTouch = 0;
+	public float TimeToEnableAutoAdjustCamera = 1f;
+
+	public static CameraController Instance;
 
     void OnValidate()
     {
@@ -46,37 +51,31 @@ public class CameraController : MonoBehaviour {
         _minX = Mathf.Min(Limit1.x, Limit2.x) + Camera.main.orthographicSize * Screen.width / Screen.height;
 
     }
+
+	void Awake(){
+		Instance = this;
+	}
 	
 	// Update is called once per frame
+	public void Update(){
+		TimeSinceLastTouch += Time.deltaTime;
+
+		if (TimeSinceLastTouch >= TimeToEnableAutoAdjustCamera) {
+			AutoAdjustCamera = true;
+			TimeSinceLastTouch = 0;
+		}
+	}
+
 	public void LateUpdate () {
+		/*
         if (CurOffset != Vector3.zero && TimeLeft > 0)
         {
             Vector3 curMove = (Time.deltaTime / TimeLeft) * CurOffset;
-            
-			/*
-            //checa se camera vai ultrapassar bounds
-            if (!OutOfBoundsX(Camera.main.transform.position + curMove))
-            {
-                //Camera.main.transform.Translate(curMove);
-				curMove = new Vector3(0, curMove.y, curMove.z);
-                //CurOffset -= curMove;
-                //TimeLeft -= Time.deltaTime;
-            }
 
-			if(!OutOfBoundsY(Camera.main.transform.position + curMove))
-			{
-				//Camera.main.transform.Translate(curMove);
-				curMove = new Vector3(curMove.x, 0, curMove.z);
-				//CurOffset -= curMove;
-				//TimeLeft -= Time.deltaTime;
-			}
-			/*
-            else
-            {
-                CurOffset = Vector3.zero;
-                TimeLeft = 0;
-            }       */   
-
+			Vector3 posCam = Camera.main.transform.position;
+			curMove = new Vector3 (Mathf.Clamp (curMove.x, _minX - posCam.x, _maxX - posCam.x), 
+				Mathf.Clamp (curMove.y, _minY - posCam.y, _maxY - posCam.y));
+			
 			Camera.main.transform.Translate(curMove);
 			CurOffset -= curMove;
 			TimeLeft -= Time.deltaTime;
@@ -87,7 +86,13 @@ public class CameraController : MonoBehaviour {
         else
         {
             TimeLeft = 0;
-        }
+        }*/
+
+		if (!PlayerInfo.PlayerInstance.IsJumping && AutoAdjustCamera) {
+			Vector3 pos = PlayerInfo.PlayerInstance.transform.position;
+			Camera.main.transform.position = new Vector3 (Mathf.Clamp(pos.x, _minX, _maxX), 
+				Mathf.Clamp(pos.y, _minY, _maxY), Camera.main.transform.position.z);
+		}
 	}
 
     //recebe uma posição e retorna true se ela for out of bounds para a camera, conforme especificado pelos limits
@@ -101,27 +106,21 @@ public class CameraController : MonoBehaviour {
 		return position.y > _maxY || position.y < _minY;
 	}
 
+
     public void Move(Vector3 offset)
     {
+		/*
         if (disableScroll) return;
 
-		/*
-		CurOffset = offset;
-		if (!OutOfBoundsX (Camera.main.transform.position + offset)) {
-			CurOffset = new Vector3 (0, CurOffset.y, CurOffset.z);
-		}
-
-		if (!OutOfBoundsY (Camera.main.transform.position + offset)) {
-			CurOffset = new Vector3 (CurOffset.x, 0, CurOffset.z);
-		}
-		*/
-
 		Vector3 posCam = Camera.main.transform.position;
-		CurOffset = new Vector3 (Mathf.Clamp (offset.x, _minX - posCam.x, _maxX - posCam.x), 
-					Mathf.Clamp (offset.y, _minY - posCam.y, _maxY - posCam.y));
+		//CurOffset = new Vector3 (Mathf.Clamp (offset.x, _minX - posCam.x, _maxX - posCam.x), 
+		//			Mathf.Clamp (offset.y, _minY - posCam.y, _maxY - posCam.y));
+		CurOffset = offset;
 
         TimeLeft = 1/CameraSpeed;
+        */
     }
+
 
     public void OnPhysicsVisionActivated()
     {
@@ -138,4 +137,12 @@ public class CameraController : MonoBehaviour {
             PhysicsVisionPostProcessing.enabled = false;
         }
     }
+
+	public void CameraScroll(Vector2 move){
+		Vector3 posCam = Camera.main.transform.position;
+		Camera.main.transform.Translate(new Vector2(Mathf.Clamp(move.x, _minX - posCam.x, _maxX - posCam.x), 
+			Mathf.Clamp(move.y, _minY - posCam.y, _maxY - posCam.y)));
+		AutoAdjustCamera = false;
+		TimeSinceLastTouch = 0f;
+	}
 }

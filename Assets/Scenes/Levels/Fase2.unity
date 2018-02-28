@@ -424,7 +424,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 13455177}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ef17b11c1bed72e43aeb91a636578ae3, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1197,11 +1197,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4569125725086562, guid: b48bbaa0bcf85d942a750cc866f74e5a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -8.33
+      value: -16.49
       objectReference: {fileID: 0}
     - target: {fileID: 4569125725086562, guid: b48bbaa0bcf85d942a750cc866f74e5a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -5.54
+      value: -16.52
       objectReference: {fileID: 0}
     - target: {fileID: 4569125725086562, guid: b48bbaa0bcf85d942a750cc866f74e5a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6615,7 +6615,7 @@ GameObject:
   - component: {fileID: 181754339}
   m_Layer: 0
   m_Name: Floor_Collider
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7203,7 +7203,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 198734862}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ef17b11c1bed72e43aeb91a636578ae3, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -7306,7 +7306,7 @@ GameObject:
   - component: {fileID: 202585410}
   m_Layer: 0
   m_Name: Floor_Collider
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11534,7 +11534,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 306420789}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ef17b11c1bed72e43aeb91a636578ae3, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -12911,7 +12911,7 @@ GameObject:
   - component: {fileID: 345863333}
   m_Layer: 0
   m_Name: Floor_Collider (4)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20864,7 +20864,7 @@ GameObject:
   - component: {fileID: 568296383}
   m_Layer: 0
   m_Name: Floor_Collider (6)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21963,7 +21963,7 @@ GameObject:
   - component: {fileID: 593457266}
   m_Layer: 0
   m_Name: Floor_Collider (2)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26008,7 +26008,7 @@ GameObject:
   - component: {fileID: 727854791}
   m_Layer: 0
   m_Name: Floor_Collider
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28663,7 +28663,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 800984504}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ef17b11c1bed72e43aeb91a636578ae3, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -35344,7 +35344,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 975568253}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ef17b11c1bed72e43aeb91a636578ae3, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -38482,6 +38482,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 26c5bb902fe8fdd4f8ecefc3801388b9, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1045815895 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114220558568327374, guid: 26c5bb902fe8fdd4f8ecefc3801388b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1045815894}
+  m_Script: {fileID: 11500000, guid: 15641aaddbfad0b49b03de1c0f5fcd4b, type: 3}
 --- !u!1 &1046367833
 GameObject:
   m_ObjectHideFlags: 0
@@ -44149,12 +44155,7 @@ Prefab:
         type: 2}
       propertyPath: ObjectAffected
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 61560562097606490, guid: cfdd39adec813db48b60ccb63b7b6648,
-        type: 2}
-      propertyPath: m_Offset.y
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1045815895}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cfdd39adec813db48b60ccb63b7b6648, type: 2}
   m_IsPrefabParent: 0
@@ -48524,7 +48525,7 @@ GameObject:
   - component: {fileID: 1302647298}
   m_Layer: 0
   m_Name: Floor_Collider
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49718,7 +49719,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1328032252}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ef17b11c1bed72e43aeb91a636578ae3, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -71071,12 +71072,12 @@ Prefab:
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 319.5
+      value: 290
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 179.5
+      value: 163
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
@@ -71251,12 +71252,12 @@ Prefab:
     - target: {fileID: 224904624018132850, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -27.899998
       objectReference: {fileID: 0}
     - target: {fileID: 224116374900106758, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 55.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114806804259645720, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
@@ -76401,7 +76402,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2094234222}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ef17b11c1bed72e43aeb91a636578ae3, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -77442,7 +77443,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2126562942}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ef17b11c1bed72e43aeb91a636578ae3, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

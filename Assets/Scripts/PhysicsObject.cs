@@ -54,6 +54,9 @@ public class PhysicsObject : MonoBehaviour {
 	private Vector3 _seesawLastCheckpointPosition;
 	private Quaternion _seesawLastCheckpointRotation;
 
+	public AudioClip Caiu;
+    private int faceDir;
+
     void OnValidate()
     {
         if (gameObject.CompareTag("Box"))
@@ -167,7 +170,8 @@ public class PhysicsObject : MonoBehaviour {
             else
             {
                 _pushPullAction = false;
-
+                faceDir = 0;
+                PlayerInfo.PlayerInstance._playerAnim.SetInteger("face", faceDir);
                 //if(PlayerInfo.PlayerInstance.ObjectColliding == this)
                 if (PlayerInfo.PlayerInstance.PushPullJoint.connectedBody == physicsData)
                 {
@@ -218,6 +222,17 @@ public class PhysicsObject : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+		if (collision.gameObject.tag == "floor") {
+		AudioSource.PlayClipAtPoint (Caiu, new Vector3 (5, 1, 2));
+            //Adicionar turn off do onFloor do Animator do Player
+            if(gameObject.name == "Player") { 
+                PlayerInfo.PlayerInstance._playerAnim.SetBool("onFloor", true);
+            }
+			Debug.Log ("caiu");
+
+		}
+
 		//Pressure plates não devem ser afetadas por colisão
 		if (gameObject.name == "PressurePlate" || gameObject.name == "newPressurePlate") {
 			return;
@@ -233,11 +248,13 @@ public class PhysicsObject : MonoBehaviour {
                 physicsData.constraints = _defaultConstraints;
             }
 
+			/* 
 			//faz player ficar parado
 			if (tag == "Player") {
 				Debug.Log ("Trave player");
 				PlayerInfo.PlayerInstance.IsConstrained = true;
 			}
+			*/
         }
 
         //Se player não estiver envolvido na colisão, não faça nada
@@ -330,6 +347,7 @@ public class PhysicsObject : MonoBehaviour {
 
         physicsData.constraints = _defaultConstraints;
 
+		/*
 		//Se colisão for com gangorra
 		if ((collision.collider.transform.parent != null && collision.collider.transform.parent.tag == "Gangorra") ||
 			(collision.otherCollider.transform.parent != null && collision.otherCollider.transform.parent.tag == "Gangorra"))
@@ -340,6 +358,7 @@ public class PhysicsObject : MonoBehaviour {
 				PlayerInfo.PlayerInstance.IsConstrained = false;
 			}
 		}
+		*/
 
 		if (((collision.collider.gameObject != PlayerInfo.PlayerInstance.gameObject) &&  /*player não está envolvido na colisão*/
 			(collision.otherCollider.gameObject != PlayerInfo.PlayerInstance.gameObject)) || /*player não está envolvido na colisão*/
@@ -433,7 +452,16 @@ public class PhysicsObject : MonoBehaviour {
             //player está em cima da caixa
             return;
         }
-
+        if (PlayerInfo.PlayerInstance.transform.position.x < gameObject.transform.position.x)
+        {
+            faceDir = 1;
+            PlayerInfo.PlayerInstance._playerAnim.SetInteger("face", faceDir);
+        }
+        else
+        {
+            faceDir = -1;
+            PlayerInfo.PlayerInstance._playerAnim.SetInteger("face", faceDir);
+        }
 
         _pushPullAction = true;
         _timeLeftToDeactivatePushPullAction = 0.2f;

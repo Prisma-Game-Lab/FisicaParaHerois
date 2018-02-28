@@ -13,6 +13,7 @@ public class Health : MonoBehaviour, IDamageable
     public float invulnerability_time;
     public bool imune;
     public float minForce;
+    private Animator Anim;
 
     //propriedade implementada da interface
     public float HealthPoints
@@ -25,12 +26,14 @@ public class Health : MonoBehaviour, IDamageable
     void Awake()
     {
         currentHP = maxHP;
+        Anim = this.GetComponent<Animator>();
     }
 
     public void TakeDamage(float damage)
     {
         currentHP -= damage;
         Debug.Log("Ouch!");
+        Anim.SetTrigger("dano");
         if (currentHP <= 0) Die();
     }
 

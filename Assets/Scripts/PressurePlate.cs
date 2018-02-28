@@ -11,6 +11,10 @@ using UnityEngine;
 public class PressurePlate : MonoBehaviour {
     public AffectedByPressurePlate ObjectAffected;
     public Animator Animator;
+	public AudioClip Press;
+	public AudioClip Solto;
+
+
 
     [Header("Pressure Plate")]
     [Tooltip("Guarda a massa mínima que o pressure plate necessita para ser ativado")]public float MinMass = 2;
@@ -48,12 +52,17 @@ public class PressurePlate : MonoBehaviour {
 		                     || collider.tag == "Box";
 
         //Objeto não é um player ou caixa (ou já está ativo), nada acontece
-        if (!objectIsValid || _isActive || IsLever)
+        if (!objectIsValid || _isActive)
         {
             return;
         }
 
         Animator.SetBool("on", true);
+
+        if (IsLever)
+        {
+            return;
+        }
 
         objectMass = collider.gameObject.GetComponent<PhysicsObject>().physicsData.mass;
 
@@ -66,6 +75,8 @@ public class PressurePlate : MonoBehaviour {
         Debug.Log("Botão pressionado");
         ObjectAffected.OnPressed();
         _isActive = true;
+		AudioSource.PlayClipAtPoint (Press, new Vector3 (5, 1, 2));
+
     }
 
     private void OnTriggerExit2D(Collider2D collider)
@@ -81,6 +92,8 @@ public class PressurePlate : MonoBehaviour {
             
             ObjectAffected.OnUnpressed();
             _isActive = false;
+			AudioSource.PlayClipAtPoint (Solto, new Vector3 (5, 1, 2));
+
         }
     }
 

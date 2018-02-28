@@ -14,6 +14,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour {
     public List<EnemyActionInfo<float>> Actions = new List<EnemyActionInfo<float>>();
     public float Life = 100;
+    public Animator BossAnim;
     [Tooltip("Define o número máximo de caixas simultâneas na fase")] public int MaxBoxes = 5;
     [Tooltip("Porta que será liberada quando o jogador derrotar o boss")] public GameObject Door;
 
