@@ -390,7 +390,7 @@ public class PlayerInput : MonoBehaviour {
 		Touch _touch = Input.GetTouch (0);
 
 		Debug.Log("Move Camera");
-		CameraController.Instance.CameraScroll (_touch.deltaPosition * CameraTouchSpeed);
+		CameraController.Instance.CameraScroll (_touch.deltaPosition * -CameraTouchSpeed);
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
