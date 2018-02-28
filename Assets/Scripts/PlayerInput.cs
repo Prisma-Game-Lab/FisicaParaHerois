@@ -46,6 +46,7 @@ public class PlayerInput : MonoBehaviour {
 
 	private PlayerInfo _info;
 	private bool _wasJoystickTouched;
+	private bool _actionActivated = false;
 
     [Header("DEBUG")]
     public PhysicsObject ObjectToReset;
@@ -212,7 +213,9 @@ public class PlayerInput : MonoBehaviour {
 
 		#endif
 
-
+		if (_actionActivated) {
+			ActionUpdate ();
+		}
 
 	}
 
@@ -236,6 +239,10 @@ public class PlayerInput : MonoBehaviour {
 
 	public void ActionButton()
 	{
+		_actionActivated = !_actionActivated;
+	}
+
+	public void ActionUpdate() {
 		if (TutorialDialog.IsCanvasOn) {
 			return;
 		}
@@ -398,6 +405,10 @@ public class PlayerInput : MonoBehaviour {
 	}
 
 	public void ScreenTouch(){
+		if (!PlayerInfo.PlayerInstance.MayMoveCamera) {
+			return;
+		}
+
 		Touch _touch = Input.GetTouch (0);
 
 		Debug.Log("Move Camera");
