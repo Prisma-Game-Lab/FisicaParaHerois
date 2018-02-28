@@ -90,7 +90,8 @@ public class CameraController : MonoBehaviour {
 
 		if (!PlayerInfo.PlayerInstance.IsJumping && AutoAdjustCamera) {
 			Vector3 pos = PlayerInfo.PlayerInstance.transform.position;
-			Camera.main.transform.position = new Vector3 (pos.x, pos.y, Camera.main.transform.position.z);
+			Camera.main.transform.position = new Vector3 (Mathf.Clamp(pos.x, _minX, _maxX), 
+				Mathf.Clamp(pos.y, _minY, _maxY), Camera.main.transform.position.z);
 		}
 	}
 
