@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class CustomizePlayer : MonoBehaviour {
 
@@ -60,6 +61,12 @@ public class CustomizePlayer : MonoBehaviour {
 
 	public GameObject Sombrancelha;
 
+	public Sprite spritePack;
+
+	//public GameObject[] EyesFix;
+
+	private Transform[] bigPlayerObjs;
+
 	private ScrollRect _CategoryScroll;
 	private RectTransform _ColorScroll;
 
@@ -68,16 +75,32 @@ public class CustomizePlayer : MonoBehaviour {
 	private int _indexItemCategoria = 0;
 	private int _indexCategoriaAcessorio = 0;
 
+	private const string _camisaCategory = "Camisas";
+	private const string _olhosCategory = "Olhos";
+	private const string _cabeloCategory = "Cabelo";
+	private const string _narizCategory = "Nariz";
+	private const string _bocaCategory = "Boca";
+	private const string _calcaCategory = "Calca";
+	private const string _sapatoCategory = "Sapato";
+	private const string _acessorioCategory = "Acessorios";
+	private const string _corDePeleCategory = "Cor de pele";
+
 	private struct Camisa {
 
 		public Sprite camiseta;
 		public Sprite estampa;
 		public Color cor;
+		public int index;
+		public int indexEstampa;
+		public int indexCor;
 
-		public Camisa (Sprite camiseta, Sprite estampa, Color cor){
+		public Camisa (Sprite camiseta, Sprite estampa, Color cor, int index, int indexEstampa, int indexCor){
 			this.camiseta = camiseta;
 			this.estampa = estampa;
 			this.cor = cor;
+			this.index = index;
+			this.indexEstampa = indexEstampa;
+			this.indexCor = indexCor;
 		}
 	}
 
@@ -86,11 +109,17 @@ public class CustomizePlayer : MonoBehaviour {
 		public Sprite olhos;
 		public Sprite cilios;
 		public Color cor;
+		public int index;
+		public int indexCilios;
+		public int indexCor;
 
-		public Olho (Sprite olhos, Sprite cilios, Color cor){
+		public Olho (Sprite olhos, Sprite cilios, Color cor, int index, int indexCilios, int indexCor){
 			this.olhos = olhos;
 			this.cilios = cilios;
 			this.cor = cor;
+			this.index = index;
+			this.indexCilios = indexCilios;
+			this.indexCor = indexCor;
 		}
 	}
 
@@ -99,11 +128,17 @@ public class CustomizePlayer : MonoBehaviour {
 		public Sprite cabelo;
 		public Sprite barba;
 		public Color cor;
+		public int index;
+		public int indexBarba;
+		public int indexCor;
 
-		public Cabelo (Sprite cabelo, Sprite barba, Color cor){
+		public Cabelo (Sprite cabelo, Sprite barba, Color cor, int index, int indexBarba, int indexCor){
 			this.cabelo = cabelo;
 			this.barba = barba;
 			this.cor = cor;
+			this.index = index;
+			this.indexBarba = indexBarba;
+			this.indexCor = indexCor;
 		}
 	}
 
@@ -111,10 +146,12 @@ public class CustomizePlayer : MonoBehaviour {
 
 		public Sprite corpo;
 		public Color cor;
+		public int indexCor;
 
-		public CorDePele (Sprite corpo, Color cor){
+		public CorDePele (Sprite corpo, Color cor, int indexCor){
 			this.corpo = corpo;
 			this.cor = cor;
+			this.indexCor = indexCor;
 		}
 	}
 
@@ -122,10 +159,14 @@ public class CustomizePlayer : MonoBehaviour {
 
 		public Sprite nariz;
 		public Color cor;
+		public int index;
+		public int indexCor;
 
-		public Nariz (Sprite nariz, Color cor){
+		public Nariz (Sprite nariz, Color cor, int index, int indexCor){
 			this.nariz = nariz;
 			this.cor = cor;
+			this.index = index;
+			this.indexCor = indexCor;
 		}
 	}
 
@@ -133,10 +174,14 @@ public class CustomizePlayer : MonoBehaviour {
 
 		public Sprite boca;
 		public Color cor;
+		public int index;
+		public int indexCor;
 
-		public Boca (Sprite boca, Color cor){
+		public Boca (Sprite boca, Color cor, int index, int indexCor){
 			this.boca = boca;
 			this.cor = cor;
+			this.index = index;
+			this.indexCor = indexCor;
 		}
 	}
 
@@ -144,10 +189,14 @@ public class CustomizePlayer : MonoBehaviour {
 
 		public Sprite calca;
 		public Color cor;
+		public int index;
+		public int indexCor;
 
-		public Calca (Sprite calca, Color cor){
+		public Calca (Sprite calca, Color cor, int index, int indexCor){
 			this.calca = calca;
 			this.cor = cor;
+			this.index = index;
+			this.indexCor = indexCor;
 		}
 	}
 
@@ -155,10 +204,14 @@ public class CustomizePlayer : MonoBehaviour {
 
 		public Sprite sapato;
 		public Color cor;
+		public int index;
+		public int indexCor;
 
-		public Sapato (Sprite sapato, Color cor){
+		public Sapato (Sprite sapato, Color cor, int index, int indexCor){
 			this.sapato = sapato;
 			this.cor = cor;
+			this.index = index;
+			this.indexCor = indexCor;
 		}
 	}
 
@@ -166,10 +219,14 @@ public class CustomizePlayer : MonoBehaviour {
 
 		public Sprite acessorio;
 		public Color cor;
+		public int index;
+		public int indexCor;
 
-		public Acessorio (Sprite acessorio, Color cor){
+		public Acessorio (Sprite acessorio, Color cor, int index, int indexCor){
 			this.acessorio = acessorio;
 			this.cor = cor;
+			this.index = index;
+			this.indexCor = indexCor;
 		}
 	}
 
@@ -200,6 +257,7 @@ public class CustomizePlayer : MonoBehaviour {
 	}
 
 	private Customize _changePlayer;
+	private SpriteMetaData[] sliceMetaData;
 
 	/*private Camisa _camisa;
 	private Olho _olhos;
@@ -218,6 +276,8 @@ public class CustomizePlayer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		AdjustSprites ();
 
 		Up.onClick.AddListener (UpButton);
 		Down.onClick.AddListener (DownButton);
@@ -241,20 +301,37 @@ public class CustomizePlayer : MonoBehaviour {
 		gameObject.GetComponent<Image> ().color = CorPele [0];
 		ChangePalette (CorPele);
 		ActivatePattern ();
+		_currentCategory = _corDePeleCategory;
 
-		//PlayerCustomizable
+		bigPlayerObjs = PlayerCustomizable.transform.GetComponentsInChildren<Transform> (true);
 
 		_changePlayer = new Customize (
-			new Camisa (Camisetas [0], Estampas [0], CorCamisetas [0]), 
-			new Olho (Olhos [0], Cilios [0], CorOlhos [0]), 
-			new Cabelo (Cabelos [0], Barba [0], CorCabelo [0]), 
-			new CorDePele (Corpo [0], CorPele [0]), 
-			new Nariz (Narizes [0], CorNariz [0]), 
-			new Boca (Bocas [0], CorBoca [0]),
-			new Calca (Calcas [0], CorCalca [0]), 
-			new Sapato (Sapatos [0], CorSapato [0]), 
-			new Acessorio (Acessorios [0], CorAcessorio [0])
+			new Camisa (Camisetas [0], Estampas [0], CorCamisetas [0], 0, 0, 0), 
+			new Olho (Olhos [0], Cilios [0], CorOlhos [0], 0, 0, 0), 
+			new Cabelo (Cabelos [0], Barba [0], CorCabelo [0], 0, 0, 0), 
+			new CorDePele (Corpo [0], CorPele [0], 0), 
+			new Nariz (Narizes [0], CorNariz [0], 0 , 0), 
+			new Boca (Bocas [0], CorBoca [0], 0 , 0),
+			new Calca (Calcas [0], CorCalca [0], 0 , 0), 
+			new Sapato (Sapatos [0], CorSapato [0], 0 , 0), 
+			new Acessorio (Acessorios [0], CorAcessorio [0], 0, 0)
 		);
+
+		ColorButton (0);
+		Sombrancelha.GetComponent<Anima2D.SpriteMeshInstance> ().color = _changePlayer.cabelo.cor;
+
+
+		ActivateItemBigPlayer (_changePlayer.camisa.camiseta.name, _camisaCategory, _changePlayer.camisa.cor, true);
+		//ActivateItemBigPlayer (_changePlayer.camisa.estampa.name, "Camisas");
+		ActivateItemBigPlayer (_changePlayer.olhos.olhos.name, _olhosCategory, _changePlayer.olhos.cor, true);
+		//ActivateItemBigPlayer (_changePlayer.olhos.cilios.name);
+		ActivateItemBigPlayer (_changePlayer.cabelo.cabelo.name, _cabeloCategory, _changePlayer.cabelo.cor, true);
+		//ActivateItemBigPlayer (_changePlayer.cabelo.barba.name);
+		ActivateItemBigPlayer (_changePlayer.nariz.nariz.name, _narizCategory, _changePlayer.nariz.cor, true);
+		ActivateItemBigPlayer (_changePlayer.boca.boca.name, _bocaCategory, _changePlayer.boca.cor, true);
+		ActivateItemBigPlayer (_changePlayer.calca.calca.name, _calcaCategory, _changePlayer.calca.cor, true);
+		ActivateItemBigPlayer (_changePlayer.sapato.sapato.name, _sapatoCategory, _changePlayer.sapato.cor, true);
+		ActivateItemBigPlayer (_changePlayer.acessorio.acessorio.name, _acessorioCategory, _changePlayer.acessorio.cor, true);
 
 		// cust4_1 - sobrancelha
 		// cust2_0 - cabeca careca
@@ -271,12 +348,62 @@ public class CustomizePlayer : MonoBehaviour {
 		// acessorios
 		// sapato
 
-		PlayerCustomizable.transform.Find ("blusas").Find (_changePlayer.camisa.camiseta.name).gameObject.SetActive (true);
 
 
-		Debug.Log (Camisetas[0].name);
+		//Debug.Log (Camisetas[0].name);
 
-		Debug.Log(PlayerCustomizable.transform.Find ("blusas").Find(Camisetas[0].name));
+		//Debug.Log(PlayerCustomizable.transform.Find ("blusas").Find(Camisetas[0].name));
+
+	}
+
+
+	void AdjustSprites(){
+
+		string path = AssetDatabase.GetAssetPath(spritePack);
+		TextureImporter textureImporter = AssetImporter.GetAtPath(path) as TextureImporter;
+		sliceMetaData = textureImporter.spritesheet;
+
+		foreach (SpriteMetaData item in sliceMetaData){
+
+			// Camisetas
+			if (item.name == "cust1_0" || item.name == "cust1_1" || item.name == "cust1_21"){
+				
+//				if (Camisetas.Length != 0) Camisetas [Camisetas.Length - 1] = item;
+//				else Camisetas [0] = item;
+
+			// Estampas
+			} else if (item.name == "cust1_26" || item.name == "cust1_27" || item.name == "cust1_29" || 
+				item.name == "cust1_31" || item.name == "cust1_32" || item.name == "cust1_35" || 
+				item.name == "cust1_37" || item.name == "cust1_38" || item.name == "cust4_0"){
+
+//				if (Camisetas.Length != 0) Estampas [Camisetas.Length - 1] = item;
+//				else Estampas [0] = item;
+
+			
+			}/* else if (item.name == "cust1_26" || item.name == "cust1_27" || item.name == "cust1_29" || 
+				item.name == "cust1_31" || item.name == "cust1_32" || item.name == "cust1_35" || 
+				item.name == "cust1_37" || item.name == "cust1_38" || item.name == "cust4_0"){
+
+				if (Camisetas.Length != 0) Estampas [Camisetas.Length - 1] = item;
+				else Estampas [0] = item;
+			}*/
+			
+			print (item.name);
+		}
+//		for (i...)
+//		{
+//			string eachName = ...;
+//				...
+//				sliceMetaData[i].name = eachName; 
+//		}
+
+		// Save settings.
+		textureImporter.spritesheet = sliceMetaData;
+		EditorUtility.SetDirty(textureImporter);
+		textureImporter.SaveAndReimport();
+
+		// Reimport/refresh asset.
+		AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
 
 	}
 	
@@ -296,16 +423,19 @@ public class CustomizePlayer : MonoBehaviour {
 			if (_indexCategoriaAcessorio < Estampas.Length - 1) {
 				_indexCategoriaAcessorio += 1;
 				Estampa.GetComponent<Image> ().sprite = Estampas [_indexCategoriaAcessorio];
+				_changePlayer.camisa.indexEstampa = _indexCategoriaAcessorio;
 			}
 		} else if (_currentCategory == "Olhos") {
 			if (_indexCategoriaAcessorio < Cilios.Length - 1) {
 				_indexCategoriaAcessorio += 1;
 				CiliosItem.GetComponent<Image> ().sprite = Cilios [_indexCategoriaAcessorio];
+				_changePlayer.olhos.indexCilios = _indexCategoriaAcessorio;
 			}
 		} else if (_currentCategory == "Cabelo") {
 			if (_indexCategoriaAcessorio < Barba.Length - 1) {
 				_indexCategoriaAcessorio += 1;
 				BarbaItem.GetComponent<Image> ().sprite = Barba [_indexCategoriaAcessorio];
+				_changePlayer.cabelo.indexBarba = _indexCategoriaAcessorio;
 			}
 		}
 
@@ -318,16 +448,19 @@ public class CustomizePlayer : MonoBehaviour {
 			if (_indexCategoriaAcessorio > 0) {
 				_indexCategoriaAcessorio -= 1;
 				Estampa.GetComponent<Image> ().sprite = Estampas [_indexCategoriaAcessorio];
+				_changePlayer.camisa.indexEstampa = _indexCategoriaAcessorio;
 			}
 		} else if (_currentCategory == "Olhos") {
 			if (_indexCategoriaAcessorio > 0) {
 				_indexCategoriaAcessorio -= 1;
 				CiliosItem.GetComponent<Image> ().sprite = Cilios [_indexCategoriaAcessorio];
+				_changePlayer.olhos.indexCilios = _indexCategoriaAcessorio;
 			}
 		} else if (_currentCategory == "Cabelo") {
 			if (_indexCategoriaAcessorio > 0) {
 				_indexCategoriaAcessorio -= 1;
 				BarbaItem.GetComponent<Image> ().sprite = Barba [_indexCategoriaAcessorio];
+				_changePlayer.cabelo.indexBarba = _indexCategoriaAcessorio;
 			}
 		} 
 	}
@@ -336,108 +469,136 @@ public class CustomizePlayer : MonoBehaviour {
 	void LeftButton() {
 
 		if (_indexItemCategoria > 0) {
+
 			_indexItemCategoria -= 1;
 
 			switch (_currentCategory) {
 
 			case "Camisas": 
 				gameObject.GetComponent<Image> ().sprite = Camisetas [_indexItemCategoria];
+				ActivateItemBigPlayer (Camisetas [_indexItemCategoria].name, _camisaCategory, _changePlayer.camisa.cor, false);
+				_changePlayer.camisa.index = _indexItemCategoria;
+
 				break;
 			case "Nariz":
 				gameObject.GetComponent<Image> ().sprite = Narizes [_indexItemCategoria];
+				ActivateItemBigPlayer (Narizes [_indexItemCategoria].name, _narizCategory, _changePlayer.nariz.cor, false);
+				_changePlayer.nariz.index = _indexItemCategoria;
+
 				break;
 			case "Boca":
 				gameObject.GetComponent<Image> ().sprite = Bocas [_indexItemCategoria];
-				break;
-			case "Cor de pele":
-				gameObject.GetComponent<Image> ().sprite = Corpo [_indexItemCategoria];
+				ActivateItemBigPlayer (Bocas [_indexItemCategoria].name, _bocaCategory, _changePlayer.boca.cor, false);
+				_changePlayer.boca.index = _indexItemCategoria;
+
 				break;
 			case "Cabelo":
 				gameObject.GetComponent<Image> ().sprite = Cabelos [_indexItemCategoria];
+				ActivateItemBigPlayer (Cabelos [_indexItemCategoria].name, _cabeloCategory, _changePlayer.cabelo.cor, false);
+				_changePlayer.cabelo.index = _indexItemCategoria;
+
 				break;
 			case "Calca":
 				gameObject.GetComponent<Image> ().sprite = Calcas [_indexItemCategoria];
+				ActivateItemBigPlayer (Calcas [_indexItemCategoria].name, _calcaCategory, _changePlayer.calca.cor, false);
+				_changePlayer.calca.index = _indexItemCategoria;
+
 				break;
 			case "Sapato":
 				gameObject.GetComponent<Image> ().sprite = Sapatos [_indexItemCategoria];
+				ActivateItemBigPlayer (Sapatos [_indexItemCategoria].name, _sapatoCategory, _changePlayer.sapato.cor, false);
+				_changePlayer.sapato.index = _indexItemCategoria;
+
 				break;
 			case "Acessorios":
 				gameObject.GetComponent<Image> ().sprite = Acessorios [_indexItemCategoria];
+				ActivateItemBigPlayer (Acessorios [_indexItemCategoria].name, _acessorioCategory, _changePlayer.acessorio.cor, false);
+				_changePlayer.acessorio.index = _indexItemCategoria;
+
 				break;
 			case "Olhos":
 				gameObject.GetComponent<Image> ().sprite = Olhos [_indexItemCategoria];
+				ActivateItemBigPlayer (Olhos [_indexItemCategoria].name, _olhosCategory, _changePlayer.olhos.cor, false);
+				_changePlayer.olhos.index = _indexItemCategoria;
+
 				break;
 			default:
 				break;
-
 			}
-
 		}
 	}
 
 	// Muda o item da categoria
 	void RightButton() {
-
-
+		
 		switch (_currentCategory) {
 
 		case "Camisas":
 			if (_indexItemCategoria < Camisetas.Length - 1) {
 				_indexItemCategoria += 1;
 				gameObject.GetComponent<Image> ().sprite = Camisetas [_indexItemCategoria];
+				ActivateItemBigPlayer (Camisetas [_indexItemCategoria].name, _camisaCategory, _changePlayer.camisa.cor, false);
+				_changePlayer.camisa.index = _indexItemCategoria;
 			}
 			break;
 		case "Nariz":
 			if (_indexItemCategoria < Narizes.Length - 1) {
 				_indexItemCategoria += 1;
 				gameObject.GetComponent<Image> ().sprite = Narizes [_indexItemCategoria];
+				ActivateItemBigPlayer (Narizes [_indexItemCategoria].name, _narizCategory, _changePlayer.nariz.cor, false);
+				_changePlayer.nariz.index = _indexItemCategoria;
 			}
 			break;
 		case "Boca":
 			if (_indexItemCategoria < Bocas.Length - 1) {
 				_indexItemCategoria += 1;
 				gameObject.GetComponent<Image> ().sprite = Bocas [_indexItemCategoria];
-			}
-			break;
-		case "Cor de pele":
-			if (_indexItemCategoria < Corpo.Length - 1) {
-				_indexItemCategoria += 1;
-				gameObject.GetComponent<Image> ().sprite = Corpo [_indexItemCategoria];
+				ActivateItemBigPlayer (Bocas [_indexItemCategoria].name, _bocaCategory, _changePlayer.boca.cor, false);
+				_changePlayer.boca.index = _indexItemCategoria;
 			}
 			break;
 		case "Cabelo":
 			if (_indexItemCategoria < Cabelos.Length - 1) {
 				_indexItemCategoria += 1;
 				gameObject.GetComponent<Image> ().sprite = Cabelos [_indexItemCategoria];
+				ActivateItemBigPlayer (Cabelos [_indexItemCategoria].name, _cabeloCategory, _changePlayer.cabelo.cor, false);
+				_changePlayer.cabelo.index = _indexItemCategoria;
 			}
 			break;
 		case "Calca":
 			if (_indexItemCategoria < Calcas.Length - 1) {
 				_indexItemCategoria += 1;
 				gameObject.GetComponent<Image> ().sprite = Calcas [_indexItemCategoria];
+				ActivateItemBigPlayer (Calcas [_indexItemCategoria].name, _calcaCategory, _changePlayer.calca.cor, false);
+				_changePlayer.calca.index = _indexItemCategoria;
 			}
 			break;
 		case "Sapato":
 			if (_indexItemCategoria < Sapatos.Length - 1) {
 				_indexItemCategoria += 1;
 				gameObject.GetComponent<Image> ().sprite = Sapatos [_indexItemCategoria];
+				ActivateItemBigPlayer (Sapatos [_indexItemCategoria].name, _sapatoCategory, _changePlayer.sapato.cor, false);
+				_changePlayer.sapato.index = _indexItemCategoria;
 			}
 			break;
 		case "Acessorios":
 			if (_indexItemCategoria < Acessorios.Length - 1) {
 				_indexItemCategoria += 1;
 				gameObject.GetComponent<Image> ().sprite = Acessorios [_indexItemCategoria];
+				ActivateItemBigPlayer (Acessorios [_indexItemCategoria].name, _acessorioCategory, _changePlayer.acessorio.cor, false);
+				_changePlayer.acessorio.index = _indexItemCategoria;
 			}
 			break;
 		case "Olhos":
 			if (_indexItemCategoria < Olhos.Length - 1) {
 				_indexItemCategoria += 1;
 				gameObject.GetComponent<Image> ().sprite = Olhos [_indexItemCategoria];
+				ActivateItemBigPlayer (Olhos [_indexItemCategoria].name, _olhosCategory, _changePlayer.olhos.cor, false);
+				_changePlayer.olhos.index = _indexItemCategoria;
 			}
 			break;
 		default:
 			break;
-
 		}
 	}
 
@@ -451,17 +612,18 @@ public class CustomizePlayer : MonoBehaviour {
 			
 			_currentCategory = "Camisas";
 				// mudar sempre pra camisa e cor que estava antes
-			gameObject.GetComponent<Image> ().sprite = Camisetas [0];
+			gameObject.GetComponent<Image> ().sprite = _changePlayer.camisa.camiseta;
 			if (Estampas.Length != 0)
-				Estampa.GetComponent<Image> ().sprite = Estampas [0];
+				Estampa.GetComponent<Image> ().sprite = _changePlayer.camisa.estampa;
                 // dar um jeito de adicionar a estampa ao sprite da camiseta
 			if (CorCamisetas.Length != 0) {
-				gameObject.GetComponent<Image> ().color = CorCamisetas [0];
+				gameObject.GetComponent<Image> ().color = _changePlayer.camisa.cor;
 				ChangePalette (CorCamisetas);
 			}
 			ActivatePattern ();
-			_indexItemCategoria = 0;
-			_indexCategoriaAcessorio = 0;
+			ActivateItemBigPlayer (_changePlayer.camisa.camiseta.name, _camisaCategory, _changePlayer.camisa.cor, true);
+			_indexItemCategoria = _changePlayer.camisa.index;
+			_indexCategoriaAcessorio = _changePlayer.camisa.indexEstampa;
 
 				// setar a paleta de cores com as cores disponíveis da camisa
 				// ativar apenas a camisa no personagem
@@ -470,135 +632,472 @@ public class CustomizePlayer : MonoBehaviour {
 		case "Cor de pele":
 			
 			_currentCategory = "Cor de pele";
-			gameObject.GetComponent<Image> ().sprite = Corpo [0];
+			gameObject.GetComponent<Image> ().sprite = Corpo[0];
 			if (CorPele.Length != 0) {
-				gameObject.GetComponent<Image> ().color = CorPele [0];
+				gameObject.GetComponent<Image> ().color = _changePlayer.corDePele.cor;
 				ChangePalette (CorPele);
 			}
 			ActivatePattern ();
-			_indexItemCategoria = 0;
-			_indexCategoriaAcessorio = 0;
+			//ActivateItemBigPlayer (_changePlayer.corDePele.cor);
+			//_indexItemCategoria = _changePlayer.corDePele.indexCor;
+			//_indexCategoriaAcessorio = 0;
 
                 break;
 
 		case "Nariz":
 			
 			_currentCategory = "Nariz";
-			gameObject.GetComponent<Image> ().sprite = Narizes [0];
+			gameObject.GetComponent<Image> ().sprite = _changePlayer.nariz.nariz;
 			if (CorNariz.Length != 0) {
-				gameObject.GetComponent<Image> ().color = CorNariz [0];
+				gameObject.GetComponent<Image> ().color = _changePlayer.nariz.cor;
 				ChangePalette (CorNariz);
 			}
 			ActivatePattern ();
-			_indexItemCategoria = 0;
-			_indexCategoriaAcessorio = 0;
+			ActivateItemBigPlayer (_changePlayer.nariz.nariz.name, _narizCategory, _changePlayer.nariz.cor, true);
+
+			_indexItemCategoria = _changePlayer.nariz.index;
+			//_indexCategoriaAcessorio = _changePlayer.nariz.indexCor;
 
 				break;
 
 		case "Boca":
 			
 			_currentCategory = "Boca";
-			gameObject.GetComponent<Image> ().sprite = Bocas [0];
+			gameObject.GetComponent<Image> ().sprite = _changePlayer.boca.boca;
 			if (CorBoca.Length != 0) {
-				gameObject.GetComponent<Image> ().color = CorBoca [0];
+				gameObject.GetComponent<Image> ().color = _changePlayer.boca.cor;
 				ChangePalette (CorBoca);
 			}
 			ActivatePattern ();
-			_indexItemCategoria = 0;
-			_indexCategoriaAcessorio = 0;
+			ActivateItemBigPlayer (_changePlayer.boca.boca.name, _bocaCategory, _changePlayer.boca.cor, true);
+			_indexItemCategoria = _changePlayer.boca.index;
+			//_indexCategoriaAcessorio = 0;
 
                 break;
 
 		case "Cabelo":
 			
 			_currentCategory = "Cabelo";
-			gameObject.GetComponent<Image> ().sprite = Cabelos [0];
+			gameObject.GetComponent<Image> ().sprite = _changePlayer.cabelo.cabelo;
 			if (Barba.Length != 0)
-				BarbaItem.GetComponent<Image> ().sprite = Barba [0];
+				BarbaItem.GetComponent<Image> ().sprite = _changePlayer.cabelo.barba;
 			if (CorCabelo.Length != 0) {
-				gameObject.GetComponent<Image> ().color = CorCabelo [0];
+				gameObject.GetComponent<Image> ().color = _changePlayer.cabelo.cor;
 				ChangePalette (CorCabelo);
 			}
 			ActivatePattern ();
-			_indexItemCategoria = 0;
-			_indexCategoriaAcessorio = 0;
+			ActivateItemBigPlayer (_changePlayer.cabelo.cabelo.name, _cabeloCategory, _changePlayer.cabelo.cor, true);
+			_indexItemCategoria = _changePlayer.cabelo.index;
+			_indexCategoriaAcessorio = _changePlayer.cabelo.indexBarba;
 
                 break;
 
-		case "Calca":
-			
+		case _calcaCategory:
+
 			_currentCategory = "Calca";
-			gameObject.GetComponent<Image> ().sprite = Calcas [0];
+			print (_changePlayer.calca.calca);
+			gameObject.GetComponent<Image> ().sprite = _changePlayer.calca.calca;
 			if (CorCalca.Length != 0) {
-				gameObject.GetComponent<Image> ().color = CorCalca [0];
+				gameObject.GetComponent<Image> ().color = _changePlayer.calca.cor;
 				ChangePalette (CorCalca);
 			}
 			ActivatePattern ();
-			_indexItemCategoria = 0;
-			_indexCategoriaAcessorio = 0;
+			ActivateItemBigPlayer (_changePlayer.calca.calca.name, _calcaCategory, _changePlayer.calca.cor, true);
+
+			_indexItemCategoria = _changePlayer.calca.index;
 
                 break;
 
 		case "Sapato":
 			
 			_currentCategory = "Sapato";
-			gameObject.GetComponent<Image> ().sprite = Sapatos [0];
+			gameObject.GetComponent<Image> ().sprite = _changePlayer.sapato.sapato;
 			if (CorSapato.Length != 0) {
-				gameObject.GetComponent<Image> ().color = CorSapato [0];
+				gameObject.GetComponent<Image> ().color = _changePlayer.sapato.cor;
 				ChangePalette (CorSapato);
 			}
 			ActivatePattern ();
-			_indexItemCategoria = 0;
-			_indexCategoriaAcessorio = 0;
+			ActivateItemBigPlayer (_changePlayer.sapato.sapato.name, _sapatoCategory, _changePlayer.sapato.cor, true);
+			_indexItemCategoria = _changePlayer.sapato.index;
 
                 break;
 
 		case "Acessorios":
 			
 			_currentCategory = "Acessorios";
-			gameObject.GetComponent<Image> ().sprite = Acessorios [0];
+			gameObject.GetComponent<Image> ().sprite = _changePlayer.acessorio.acessorio;
 			if (CorAcessorio.Length != 0) {
-				gameObject.GetComponent<Image> ().color = CorAcessorio [0];
+				gameObject.GetComponent<Image> ().color = _changePlayer.acessorio.cor;
 				ChangePalette (CorAcessorio);
 			}
 			ActivatePattern ();
-			_indexItemCategoria = 0;
-			_indexCategoriaAcessorio = 0;
+			ActivateItemBigPlayer (_changePlayer.acessorio.acessorio.name, _acessorioCategory, _changePlayer.acessorio.cor, true);
+			_indexItemCategoria = _changePlayer.acessorio.index;
 
                 break;
 
 		case "Olhos":
 			
 			_currentCategory = "Olhos";
-			gameObject.GetComponent<Image> ().sprite = Olhos [0];
+			gameObject.GetComponent<Image> ().sprite = _changePlayer.olhos.olhos;
 			if (Cilios.Length != 0)
-				CiliosItem.GetComponent<Image> ().sprite = Cilios [0];
+				CiliosItem.GetComponent<Image> ().sprite = _changePlayer.olhos.cilios;
 			if (CorOlhos.Length != 0) {
-				gameObject.GetComponent<Image> ().color = CorOlhos [0];
+				gameObject.GetComponent<Image> ().color = _changePlayer.olhos.cor;
 				ChangePalette (CorOlhos);
 			}
 			ActivatePattern ();
-			_indexItemCategoria = 0;
-			_indexCategoriaAcessorio = 0;
+			ActivateItemBigPlayer (_changePlayer.olhos.olhos.name, _olhosCategory, _changePlayer.olhos.cor, true);
+			_indexItemCategoria = _changePlayer.olhos.index;
+			_indexCategoriaAcessorio = _changePlayer.olhos.indexCilios;
 
                 break;
 
-            default:
-			
+		default:
                 break;
         }
 			
 	}
 
-	// Muda os cor do texto
-	void ColorButton(int index) {
-		
-		gameObject.GetComponent<Image> ().color = Color [index].GetComponent<Image> ().color;
-		if (_currentCategory == "Cabelo") {
-			BarbaItem.GetComponent<Image>().color = Color [index].GetComponent<Image> ().color;
-			Sombrancelha.GetComponent<Image>().color = Color [index].GetComponent<Image> ().color;
+	// Ativa os assets do player grande
+	void ActivateItemBigPlayer(string item, string category, Color cor, bool firstTime){
+
+		string lastItem;
+
+		switch (category) {
+
+		case "Camisas": 
+
+			lastItem = _changePlayer.camisa.camiseta.name;
+
+			foreach (Transform obj in bigPlayerObjs){
+				if (obj.transform.name == lastItem) {
+
+					obj.gameObject.SetActive (false);
+
+				} 
+				if (obj.transform.name == item) {
+					
+					_changePlayer.camisa.camiseta.name = item;
+					obj.gameObject.SetActive (true);
+
+
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
+				}
+			}
+
+			//PlayerCustomizable.transform.Find ("estampasDesenhos").Find (_changePlayer.camisa.estampa.name).gameObject.SetActive (false);
+			//PlayerCustomizable.transform.Find ("estampasDesenhos").Find (item).gameObject.SetActive (true);
+
+			break;
+		case "Nariz":
+
+			lastItem = _changePlayer.nariz.nariz.name;
+
+			foreach (Transform obj in bigPlayerObjs){
+				if (obj.transform.name == lastItem) {
+
+					obj.gameObject.SetActive (false);
+
+				} 
+				if (obj.transform.name == item) {
+
+					_changePlayer.nariz.nariz.name = item;
+					obj.gameObject.SetActive (true);
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
+				}
+			}
+
+			break;
+		case "Boca":
+
+			lastItem = _changePlayer.boca.boca.name;
+
+			foreach (Transform obj in bigPlayerObjs){
+				if (obj.transform.name == lastItem) {
+
+					obj.gameObject.SetActive (false);
+
+				} 
+				if (obj.transform.name == item) {
+
+					_changePlayer.boca.boca.name = item;
+					obj.gameObject.SetActive (true);
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
+				}
+			}
+
+			break;
+		case "Cor de pele":
+			PlayerCustomizable.transform.Find ("cust2_0").Find (item).gameObject.SetActive (true);
+			PlayerCustomizable.transform.Find ("arms").Find (item).gameObject.SetActive (true);
+			PlayerCustomizable.transform.Find ("cust1_4").Find (item).gameObject.SetActive (true);
+			//obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
+
+			//PlayerCustomizable.transform.Find ("cust2_0").Find (_changePlayer.camisa.camiseta.name).gameObject.SetActive (true);
+			break;
+		case "Cabelo":
+
+			lastItem = _changePlayer.cabelo.cabelo.name;
+
+			foreach (Transform obj in bigPlayerObjs){
+				if (obj.transform.name == lastItem) {
+
+					obj.gameObject.SetActive (false);
+
+				} 
+				if (obj.transform.name == item) {
+
+					_changePlayer.cabelo.cabelo.name = item;
+					obj.gameObject.SetActive (true);
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
+
+					if (obj.childCount > 0) {
+						obj.GetChild (0).gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
+					}
+				}
+			}
+
+			break;
+		case "Calca":
+			
+			lastItem = _changePlayer.calca.calca.name;
+
+			foreach (Transform obj in bigPlayerObjs){
+				if (obj.transform.name == lastItem) {
+
+					obj.gameObject.SetActive (false);
+
+				} 
+				if (obj.transform.name == item) {
+
+					_changePlayer.calca.calca.name = item;
+					obj.gameObject.SetActive (true);
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
+				}
+			}
+
+			break;
+		case "Sapato":
+
+			lastItem = _changePlayer.sapato.sapato.name;
+
+			foreach (Transform obj in bigPlayerObjs){
+				if (obj.transform.name == lastItem) {
+
+					obj.gameObject.SetActive (false);
+
+				} 
+				if (obj.transform.name == item) {
+
+					_changePlayer.sapato.sapato.name = item;
+					obj.gameObject.SetActive (true);
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
+				}
+			}
+
+			break;
+		case "Acessorios":
+
+			lastItem = _changePlayer.acessorio.acessorio.name;
+
+			foreach (Transform obj in bigPlayerObjs){
+				if (obj.transform.name == lastItem) {
+
+					obj.gameObject.SetActive (false);
+
+				} 
+				if (obj.transform.name == item) {
+
+					_changePlayer.acessorio.acessorio.name = item;
+					obj.gameObject.SetActive (true);
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
+				}
+			}
+
+			break;
+		case "Olhos":
+
+			print (_changePlayer.olhos.olhos.name + "OLHO");
+			print (item + "ITEM OLHO");
+
+			
+			lastItem = _changePlayer.olhos.olhos.name;
+
+			foreach (Transform obj in bigPlayerObjs) {
+				if (obj.transform.name == _changePlayer.olhos.olhos.name)
+					obj.gameObject.SetActive (false);
+			}
+
+			foreach (Transform obj in bigPlayerObjs){
+
+				/*if (obj.transform.name == lastItem && !firstTime) {
+					
+						print("Desativa");
+
+						obj.gameObject.SetActive (false);
+
+				} else*/ if (obj.transform.name == item) {
+
+					print("Troca");
+					_changePlayer.olhos.olhos.name = item;
+					obj.gameObject.SetActive (true);
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
+				}
+			}
+
+			break;
+		default:
+			break;
 		}
-		// muda a cor do asset
+	}
+
+	// Muda os cor do sprite
+	void ColorButton(int index) {
+
+		if (_currentCategory != _bocaCategory) {
+			gameObject.GetComponent<Image> ().color = Color [index].GetComponent<Image> ().color;
+		} else {
+			if (_changePlayer.boca.boca.name != "cust1_9" && _changePlayer.boca.boca.name != "cust1_10") {
+				gameObject.GetComponent<Image> ().color = Color [index].GetComponent<Image> ().color;
+			} else {
+				gameObject.GetComponent<Image> ().color = Color [0].GetComponent<Image> ().color;
+			}
+		}
+
+		switch (_currentCategory) {
+
+		case _camisaCategory:
+			_changePlayer.camisa.cor = Color [index].GetComponent<Image> ().color;
+			_changePlayer.camisa.indexCor = index;
+
+			foreach (Transform obj in bigPlayerObjs){
+
+				if (obj.transform.name == _changePlayer.camisa.camiseta.name) {
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
+				}
+			}
+
+			break;
+		case _narizCategory:
+			_changePlayer.nariz.cor = Color [index].GetComponent<Image> ().color;
+			_changePlayer.nariz.indexCor = index;
+			foreach (Transform obj in bigPlayerObjs){
+
+				if (obj.transform.name == _changePlayer.nariz.nariz.name) {
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
+				}
+			}
+
+			break;
+		case _acessorioCategory:
+			_changePlayer.acessorio.cor = Color [index].GetComponent<Image> ().color;
+			_changePlayer.acessorio.indexCor = index;
+			foreach (Transform obj in bigPlayerObjs){
+
+				if (obj.transform.name == _changePlayer.acessorio.acessorio.name) {
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
+				}
+			}
+
+			break;
+		case _bocaCategory:
+			
+			if (_changePlayer.boca.boca.name != "cust1_9" && _changePlayer.boca.boca.name != "cust1_10") {
+				_changePlayer.boca.cor = Color [index].GetComponent<Image> ().color;
+				_changePlayer.boca.indexCor = index;
+			} else {
+				_changePlayer.boca.cor = Color [0].GetComponent<Image> ().color;
+				_changePlayer.boca.indexCor = 0;
+			}
+			foreach (Transform obj in bigPlayerObjs){
+
+				if (obj.transform.name == _changePlayer.boca.boca.name) {
+
+					if (_changePlayer.boca.boca.name != "cust1_9" && _changePlayer.boca.boca.name != "cust1_10") {
+						obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
+					} else {
+						obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [0].GetComponent<Image> ().color;
+					}
+				}
+			}
+
+			break;
+		case _cabeloCategory:
+			BarbaItem.GetComponent<Image> ().color = Color [index].GetComponent<Image> ().color;
+			Sombrancelha.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
+			_changePlayer.cabelo.cor = Color [index].GetComponent<Image> ().color;
+			_changePlayer.cabelo.indexCor = index;
+			foreach (Transform obj in bigPlayerObjs){
+
+				if (obj.transform.name == _changePlayer.cabelo.cabelo.name && obj.transform.name != "thumb_hairs_3") {
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
+					if (obj.childCount > 0) {
+						obj.GetChild(0).GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
+					}
+				}
+				if (obj.transform.name == _changePlayer.cabelo.barba.name) {
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
+				}
+				if (obj.transform.name == "cust4_1") {
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
+				}
+			}
+
+			break;
+		case _calcaCategory:
+			_changePlayer.calca.cor = Color [index].GetComponent<Image> ().color;
+			_changePlayer.calca.indexCor = index;
+			foreach (Transform obj in bigPlayerObjs){
+
+				if (obj.transform.name == _changePlayer.calca.calca.name) {
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
+				}
+			}
+			break;
+		case _olhosCategory:
+			_changePlayer.olhos.cor = Color [index].GetComponent<Image> ().color;
+			_changePlayer.olhos.indexCor = index;
+			foreach (Transform obj in bigPlayerObjs){
+
+				if (obj.transform.name == _changePlayer.olhos.olhos.name) {
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
+				}
+			}
+			break;
+		case _sapatoCategory:
+			_changePlayer.sapato.cor = Color [index].GetComponent<Image> ().color;
+			_changePlayer.sapato.indexCor = index;
+			foreach (Transform obj in bigPlayerObjs){
+
+				if (obj.transform.name == _changePlayer.sapato.sapato.name) {
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
+				}
+			}
+			break;
+		case "Cor de pele":
+			_changePlayer.corDePele.cor = Color [index].GetComponent<Image> ().color;
+
+			foreach (Transform obj in bigPlayerObjs){
+
+				if (obj.transform.name == "cust2_0") {
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
+				}
+				if (obj.transform.name == "arms") {
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
+				}
+				if (obj.transform.name == "cust1_4") {
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
+				}
+				if (obj.transform.name == "thumb_hairs_3") {
+					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
+				}
+			}
+
+			break;
+		default:
+			break;
+		}
 	}
 		
 	// ajeita o numero de cores que aparecem no display de cores e o tamanho do scroll
