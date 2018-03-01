@@ -48,7 +48,10 @@ public class Door : AffectedByPressurePlate {
 			WinCanvas.SetActive (true);
 			LevelStatus.WriteCompleted (curLevel, true);
 		} else {
-			SceneManager.LoadScene (NextScene);
+            LevelStatus.WriteCompleted(curLevel, true);
+            PlayerInfo.PlayerInstance._playerAnim.SetTrigger("win");
+            StartCoroutine("WinDelay", 3.5f);
+            SceneManager.LoadScene (NextScene);
 		}
     }
 
@@ -73,5 +76,10 @@ public class Door : AffectedByPressurePlate {
             Debug.Log("Porta trancada");
             _isLocked = true;
         }
+    }
+
+    IEnumerator WinDelay(float tempo)
+    {
+        yield return new WaitForSecondsRealtime(tempo);
     }
 }
