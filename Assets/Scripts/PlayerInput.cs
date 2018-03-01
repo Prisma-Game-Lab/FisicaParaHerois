@@ -41,13 +41,14 @@ public class PlayerInput : MonoBehaviour {
 
 	public bool _isJumping;
 
+	private bool _activateJump;
+
 	private string _lastBntSelected;
 
 
 	private PlayerInfo _info;
 	private bool _wasJoystickTouched;
 	private bool _actionActivated = false;
-	private bool _isOnMap = false;
 
     [Header("DEBUG")]
     public PhysicsObject ObjectToReset;
@@ -72,7 +73,6 @@ public class PlayerInput : MonoBehaviour {
 
 	void Awake()
 	{
-
 		rb = GetComponent<Rigidbody2D>();
 		_playerAnim = this.GetComponent<Animator>();
 
@@ -236,13 +236,26 @@ public class PlayerInput : MonoBehaviour {
 			return;
 		}
 
-		if (!_isJumping) Player.Jump ();
+		if (!_isJumping && _activateJump) {
+			Player.Jump ();
+			_activateJump = false;
+		}
 	}
 
 	public void ActionButton()
 	{
-		_actionActivated = !_actionActivated;
-	}
+        _actionActivated = !_actionActivated;
+        if (_actionActivated)
+        {
+            Action.animator.SetBool("on", true);
+        }
+        else
+        {
+            Action.animator.SetBool("on", false);
+        }
+        
+
+    }
 
 	public void ActionUpdate() {
 		if (TutorialDialog.IsCanvasOn) {
@@ -257,7 +270,7 @@ public class PlayerInput : MonoBehaviour {
 			if (target != null && !_isJumping)
 			{
 				action.OnActionUse(Mathf.Sign(target.transform.position.x - Player.transform.position.x)); //O ARGUMENTO NÃ AFETA MAIS! old: O argumento será 1 ou -1, dependendo de se o player está antes ou depois do target.
-                if (target.transform.position.x < Player.transform.position.x)
+                if (target.transform.position.x < Player.transform.position.x && target.tag == "Box")
                     Player.CheckInputFlip("A");
                 else
                     Player.CheckInputFlip("D");
@@ -421,6 +434,7 @@ public class PlayerInput : MonoBehaviour {
 
 
 		_isJumping = false;
+		_activateJump = true;
 	}
 
 	void OnTriggerStay2D(Collider2D other){
@@ -432,7 +446,7 @@ public class PlayerInput : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D other){
 
 
-		_isJumping = true;
+		_isJumping = true;		
         Player._playerAnim.SetBool("onFloor", false);
 	}
 
