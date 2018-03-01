@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114679141231649036}
   - component: {fileID: 61489207346072938}
   - component: {fileID: 114535188519528934}
+  - component: {fileID: 95807066693828782}
   m_Layer: 9
   m_Name: newBox
   m_TagString: Box
@@ -66,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1068486328521440}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.81, y: -7.45, z: 0}
+  m_LocalPosition: {x: -13.36, y: -16.52781, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4457148124451548}
@@ -118,6 +119,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &95807066693828782
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1068486328521440}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bc8f3ff55bb5a73468e9ff0fc1919f56, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114535188519528934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b44d7ee17541a9429b4824cde41f284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Caiu: {fileID: 0}
   Collider: {fileID: 0}
 --- !u!114 &114679141231649036
 MonoBehaviour:
@@ -159,6 +178,8 @@ MonoBehaviour:
   _timeLeftToDeactivatePushPullAction: 0.5
   Halo: {fileID: 0}
   _hasChain: 0
+  Caiu: {fileID: 0}
+  boxAnim: {fileID: 0}
 --- !u!212 &212773078487942794
 SpriteRenderer:
   m_ObjectHideFlags: 1
