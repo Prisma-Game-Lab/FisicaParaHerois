@@ -56,6 +56,7 @@ public class PhysicsObject : MonoBehaviour {
 
 	public AudioClip Caiu;
     private int faceDir;
+    [HideInInspector] public Animator boxAnim;
 
     void OnValidate()
     {
@@ -119,6 +120,7 @@ public class PhysicsObject : MonoBehaviour {
         if (tag == "Box")
         {
             _defaultConstraints = RigidbodyConstraints2D.None;
+            boxAnim = this.GetComponent<Animator>();
         }
 
         //Guarda as informações iniciais (para qnd precisar resetar o objeto)
@@ -464,7 +466,7 @@ public class PhysicsObject : MonoBehaviour {
         }
 
         _pushPullAction = true;
-        _timeLeftToDeactivatePushPullAction = 0.2f;
+        _timeLeftToDeactivatePushPullAction = 0.05f;
         PlayerInfo.PlayerInstance.PushPullJoint.enabled = true;
         PlayerInfo.PlayerInstance.PushPullJoint.connectedBody = physicsData;
     }
@@ -493,6 +495,7 @@ public class PhysicsObject : MonoBehaviour {
         if (GameManager.Instance.ShouldResetVelocity) physicsData.velocity = _initialVelocity; //resetar velocity
         if (GameManager.Instance.ShouldResetMass) physicsData.mass = _initialMass; //resetar massa
         if (GameManager.Instance.ShouldResetGravity) physicsData.gravityScale = _initialGravity; //resetar gravidade
+        if (tag == "Box") boxAnim.SetBool("reset", false); //desligar a animação de reset na caixa
 
 		//resetar gangorra
 		if (tag == "Gangorra" && GameManager.Instance.ShouldResetSeesaw) {

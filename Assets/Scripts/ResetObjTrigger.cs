@@ -8,7 +8,9 @@ public class ResetObjTrigger : MonoBehaviour {
         if (other.tag == "Box")
         {
             PhysicsObject obj = other.gameObject.GetComponent<PhysicsObject>();
-            obj.ResetObj();
+            //A animação chama a função ResetObj() ao fim da execução
+            obj.boxAnim.SetBool("reset", true);
+            //obj.ResetObj();
         }
     }
 }
