@@ -41,13 +41,14 @@ public class PlayerInput : MonoBehaviour {
 
 	public bool _isJumping;
 
+	private bool _activateJump;
+
 	private string _lastBntSelected;
 
 
 	private PlayerInfo _info;
 	private bool _wasJoystickTouched;
 	private bool _actionActivated = false;
-	private bool _isOnMap = false;
 
     [Header("DEBUG")]
     public PhysicsObject ObjectToReset;
@@ -72,7 +73,6 @@ public class PlayerInput : MonoBehaviour {
 
 	void Awake()
 	{
-
 		rb = GetComponent<Rigidbody2D>();
 		_playerAnim = this.GetComponent<Animator>();
 
@@ -236,7 +236,10 @@ public class PlayerInput : MonoBehaviour {
 			return;
 		}
 
-		if (!_isJumping) Player.Jump ();
+		if (!_isJumping && _activateJump) {
+			Player.Jump ();
+			_activateJump = false;
+		}
 	}
 
 	public void ActionButton()
@@ -421,6 +424,7 @@ public class PlayerInput : MonoBehaviour {
 
 
 		_isJumping = false;
+		_activateJump = true;
 	}
 
 	void OnTriggerStay2D(Collider2D other){
@@ -432,7 +436,7 @@ public class PlayerInput : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D other){
 
 
-		_isJumping = true;
+		_isJumping = true;		
         Player._playerAnim.SetBool("onFloor", false);
 	}
 
