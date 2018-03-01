@@ -51,7 +51,10 @@ public class Door : AffectedByPressurePlate {
 				LevelStatus.WriteCompleted (curLevel + 1, 0); //libera próximo nível
 			}
 		} else {
-            LevelStatus.WriteCompleted(curLevel, true);
+			LevelStatus.WriteCompleted (curLevel, 1); //marca nível como completo
+			if (LevelStatus.ReadCompleted (curLevel + 1) == -1) {
+				LevelStatus.WriteCompleted (curLevel + 1, 0); //libera próximo nível
+			}
             PlayerInfo.PlayerInstance._playerAnim.SetTrigger("win");
             StartCoroutine("WinDelay", 3.5f);
             SceneManager.LoadScene (NextScene);
