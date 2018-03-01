@@ -241,8 +241,18 @@ public class PlayerInput : MonoBehaviour {
 
 	public void ActionButton()
 	{
-		_actionActivated = !_actionActivated;
-	}
+        _actionActivated = !_actionActivated;
+        if (_actionActivated)
+        {
+            Action.animator.SetBool("on", true);
+        }
+        else
+        {
+            Action.animator.SetBool("on", false);
+        }
+        
+
+    }
 
 	public void ActionUpdate() {
 		if (TutorialDialog.IsCanvasOn) {
