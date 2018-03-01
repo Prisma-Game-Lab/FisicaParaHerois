@@ -38,7 +38,9 @@ public class PlayerInfo : MonoBehaviour {
 	private float _secondsSinceLastMove = 0;
 
     [Header("DEBUG")]
-    public bool PhysicsVisionIsReady = false;
+	public bool PhysicsVisionIsReady = false;
+
+	[HideInInspector] public bool MayMoveCamera = true;
 
     void Awake()
     {

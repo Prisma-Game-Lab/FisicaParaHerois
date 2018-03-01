@@ -271,7 +271,9 @@ public class CustomizePlayer : MonoBehaviour {
 	}
 
 	private Customize _changePlayer;
+	#if UNITY_EDITOR
 	private SpriteMetaData[] sliceMetaData;
+	#endif
 
 	// Use this for initialization
 	void Start () {
@@ -346,7 +348,7 @@ public class CustomizePlayer : MonoBehaviour {
 
 	}
 
-
+#if UNITY_EDITOR
 	void AdjustSprites(){
 
 		string path = AssetDatabase.GetAssetPath(spritePack);
@@ -395,6 +397,7 @@ public class CustomizePlayer : MonoBehaviour {
 		AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
 
 	}
+#endif
 	
 	// Update is called once per frame
 	void Update () {
