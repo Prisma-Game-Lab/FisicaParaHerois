@@ -6170,14 +6170,14 @@ Prefab:
       objectReference: {fileID: 411910645}
     - target: {fileID: 114353385195627212, guid: 2f922b4383d3b804aaacedc0a7551451,
         type: 2}
-      propertyPath: DialogCanvas
+      propertyPath: PlanoFechado
       value: 
       objectReference: {fileID: 100888611}
     - target: {fileID: 114353385195627212, guid: 2f922b4383d3b804aaacedc0a7551451,
         type: 2}
-      propertyPath: PlanoFechado
+      propertyPath: Anim
       value: 
-      objectReference: {fileID: 100888611}
+      objectReference: {fileID: 1327569379}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f922b4383d3b804aaacedc0a7551451, type: 2}
   m_IsPrefabParent: 0
@@ -21719,12 +21719,12 @@ Prefab:
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 256.5
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 144.5
+      value: 197
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
@@ -21899,12 +21899,12 @@ Prefab:
     - target: {fileID: 224904624018132850, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -27.899998
       objectReference: {fileID: 0}
     - target: {fileID: 224116374900106758, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 55.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224120134277849966, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
@@ -53490,6 +53490,11 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
+--- !u!95 &1327569379 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95784086940751908, guid: 797ad5ebd64e41f45a1439810d9d47f8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1336293411}
 --- !u!1 &1329260490
 GameObject:
   m_ObjectHideFlags: 0
@@ -53665,15 +53670,6 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1872504838}
-    - target: {fileID: 137834007450587590, guid: 797ad5ebd64e41f45a1439810d9d47f8,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1409167593989376, guid: 797ad5ebd64e41f45a1439810d9d47f8, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 797ad5ebd64e41f45a1439810d9d47f8, type: 2}
   m_IsPrefabParent: 0
@@ -82510,20 +82506,6 @@ Prefab:
       propertyPath: DialogToActivate
       value: 
       objectReference: {fileID: 714431033}
-    - target: {fileID: 1877333791052072, guid: 2f922b4383d3b804aaacedc0a7551451, type: 2}
-      propertyPath: m_Name
-      value: DialogTrigger End
-      objectReference: {fileID: 0}
-    - target: {fileID: 61041384307598798, guid: 2f922b4383d3b804aaacedc0a7551451,
-        type: 2}
-      propertyPath: m_Offset.y
-      value: -0.018493176
-      objectReference: {fileID: 0}
-    - target: {fileID: 61041384307598798, guid: 2f922b4383d3b804aaacedc0a7551451,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 4.6066732
-      objectReference: {fileID: 0}
     - target: {fileID: 114353385195627212, guid: 2f922b4383d3b804aaacedc0a7551451,
         type: 2}
       propertyPath: PlanoFechado
@@ -82533,6 +82515,10 @@ Prefab:
         type: 2}
       propertyPath: Anim
       value: 
+      objectReference: {fileID: 1327569379}
+    - target: {fileID: 1877333791052072, guid: 2f922b4383d3b804aaacedc0a7551451, type: 2}
+      propertyPath: m_Name
+      value: DialogTrigger End
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f922b4383d3b804aaacedc0a7551451, type: 2}
