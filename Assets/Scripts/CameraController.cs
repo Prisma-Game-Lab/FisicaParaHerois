@@ -67,6 +67,10 @@ public class CameraController : MonoBehaviour {
 	}
 
 	public void LateUpdate () {
+		if (SceneManaging.GetScene () == "Mapa") {
+			return;
+		}
+
 		if (!PlayerInfo.PlayerInstance.IsJumping && AutoAdjustCamera) {
 			Vector3 pos = PlayerInfo.PlayerInstance.transform.position;
 			Camera.main.transform.position = new Vector3 (Mathf.Clamp(pos.x, _minX, _maxX), 
