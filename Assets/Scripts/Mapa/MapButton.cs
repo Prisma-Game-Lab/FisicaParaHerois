@@ -4,15 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MapButton : MonoBehaviour {
-	public static Dictionary<int,bool> CompletedLevels;
+	public static Dictionary<int,int> CompletedLevels;
     public string SceneToLoad;
-    public bool Completed = false;
+	public bool Completed = false;
+	public bool Locked = false;
 	public int index;
     private Animator Anim;
 
 	private void Awake(){
 		if (CompletedLevels == null) {
-			CompletedLevels = new Dictionary<int,bool>();
+			CompletedLevels = new Dictionary<int,int>();
 			CompletedLevels.Add (index, LevelStatus.ReadCompleted(index));
 		} 
 
@@ -20,12 +21,16 @@ public class MapButton : MonoBehaviour {
 			CompletedLevels.Add (index, LevelStatus.ReadCompleted(index));
 		}
 
-		Completed = CompletedLevels[index];
+		Completed = (CompletedLevels[index] > 0);
+		Locked = (CompletedLevels[index] < 0);
 	}
 
     private void Start()
     {
         Anim = GetComponent<Animator>();
+
+		// Checar se a fase foi liberada e atualizar variável "Disabled"
+		Anim.SetBool ("Disabled", Locked);
 
         // Checar se a fase foi completa e atualizar variável "Completed"
         Anim.SetBool("Completed", Completed);
@@ -33,7 +38,9 @@ public class MapButton : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        SceneManager.LoadScene(SceneToLoad);
+		if (!Locked) {
+			SceneManager.LoadScene (SceneToLoad);
+		}
     }
 
 }
