@@ -58215,22 +58215,22 @@ Prefab:
     - target: {fileID: 114418965992029794, guid: b48bbaa0bcf85d942a750cc866f74e5a,
         type: 2}
       propertyPath: Limit2.x
-      value: 3.6587048
+      value: 2.073598
       objectReference: {fileID: 0}
     - target: {fileID: 114418965992029794, guid: b48bbaa0bcf85d942a750cc866f74e5a,
         type: 2}
       propertyPath: Limit2.y
-      value: -19.269602
+      value: -18.682526
       objectReference: {fileID: 0}
     - target: {fileID: 114418965992029794, guid: b48bbaa0bcf85d942a750cc866f74e5a,
         type: 2}
       propertyPath: Limit1.x
-      value: -22.1632
+      value: -21.106464
       objectReference: {fileID: 0}
     - target: {fileID: 114418965992029794, guid: b48bbaa0bcf85d942a750cc866f74e5a,
         type: 2}
       propertyPath: Limit1.y
-      value: -0.52140427
+      value: -1.6955566
       objectReference: {fileID: 0}
     - target: {fileID: 114418965992029794, guid: b48bbaa0bcf85d942a750cc866f74e5a,
         type: 2}
@@ -58242,6 +58242,16 @@ Prefab:
       propertyPath: ActionMenuGangorra
       value: 
       objectReference: {fileID: 1576659589}
+    - target: {fileID: 137160064806637828, guid: b48bbaa0bcf85d942a750cc866f74e5a,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 50417449540055940, guid: b48bbaa0bcf85d942a750cc866f74e5a,
+        type: 2}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b48bbaa0bcf85d942a750cc866f74e5a, type: 2}
   m_IsPrefabParent: 0
@@ -66719,12 +66729,12 @@ Prefab:
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 205
+      value: 290
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 115.5
+      value: 163
       objectReference: {fileID: 0}
     - target: {fileID: 224286470696679982, guid: 258e6b0fd683f1b42bab9efc4a6f1268,
         type: 2}
@@ -77151,11 +77161,16 @@ Prefab:
     - target: {fileID: 114271317155061472, guid: 033b0992c36ac464f850f06834b99667,
         type: 2}
       propertyPath: NextScene
-      value: BossBattle
+      value: Fase4
       objectReference: {fileID: 0}
     - target: {fileID: 4733563381384010, guid: 033b0992c36ac464f850f06834b99667, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114271317155061472, guid: 033b0992c36ac464f850f06834b99667,
+        type: 2}
+      propertyPath: curLevel
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 033b0992c36ac464f850f06834b99667, type: 2}
