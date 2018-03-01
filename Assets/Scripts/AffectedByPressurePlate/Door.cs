@@ -57,7 +57,7 @@ public class Door : AffectedByPressurePlate {
 			}
             PlayerInfo.PlayerInstance._playerAnim.SetTrigger("win");
             StartCoroutine("WinDelay", 3.5f);
-            SceneManager.LoadScene (NextScene);
+            
 		}
     }
 
@@ -87,5 +87,6 @@ public class Door : AffectedByPressurePlate {
     IEnumerator WinDelay(float tempo)
     {
         yield return new WaitForSecondsRealtime(tempo);
+        SceneManager.LoadScene(NextScene);
     }
 }
