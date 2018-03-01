@@ -98,4 +98,8 @@ public class SceneManaging : MonoBehaviour {
 
         CustomizationSceneOkButton(cutsceneScene, mapScene);
     }
+
+	public static string GetScene(){
+		return SceneManager.GetActiveScene().name;
+	}
 }

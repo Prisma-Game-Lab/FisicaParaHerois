@@ -47,6 +47,7 @@ public class PlayerInput : MonoBehaviour {
 	private PlayerInfo _info;
 	private bool _wasJoystickTouched;
 	private bool _actionActivated = false;
+	private bool _isOnMap = false;
 
     [Header("DEBUG")]
     public PhysicsObject ObjectToReset;
@@ -71,6 +72,7 @@ public class PlayerInput : MonoBehaviour {
 
 	void Awake()
 	{
+
 		rb = GetComponent<Rigidbody2D>();
 		_playerAnim = this.GetComponent<Animator>();
 

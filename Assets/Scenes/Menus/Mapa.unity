@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 14413435}
   - component: {fileID: 14413434}
   - component: {fileID: 14413433}
+  - component: {fileID: 14413436}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -170,6 +171,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &14413436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 14413432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f38189470bfe49b9910cf3503d96933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurOffset: {x: 0, y: 0, z: 0}
+  TimeLeft: 0
+  CameraSpeed: 5
+  PhysicsVisionPostProcessing: {fileID: 0}
+  disableScroll: 0
+  showBoundingBox: 0
+  AutoAdjustCamera: 1
+  TimeSinceLastTouch: 0
+  TimeToEnableAutoAdjustCamera: 1
+  Limit1: {x: 0, y: 0, z: 0}
+  Limit2: {x: 0, y: 0, z: 0}
 --- !u!1 &212792260
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 092f9cf55a7e2614b8447b124695dad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToLoad: Fase2
+  SceneToLoad: Fase1
 --- !u!212 &253647497
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -791,7 +814,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 661541866}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -316.4, y: 86.54909, z: 0}
+  m_LocalPosition: {x: -316.4, y: 50.92285, z: 0}
   m_LocalScale: {x: 1.8, y: 1, z: 1}
   m_Children:
   - {fileID: 212792261}
@@ -1505,12 +1528,12 @@ Prefab:
     - target: {fileID: 224330773786954354, guid: a500cc435186b3042b24f1a5335c7a30,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 356
+      value: 231.5
       objectReference: {fileID: 0}
     - target: {fileID: 224330773786954354, guid: a500cc435186b3042b24f1a5335c7a30,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 200.5
+      value: 151
       objectReference: {fileID: 0}
     - target: {fileID: 224330773786954354, guid: a500cc435186b3042b24f1a5335c7a30,
         type: 2}
@@ -1785,6 +1808,11 @@ Prefab:
     - target: {fileID: 1183521209406394, guid: 9002655d0f957074ba724578c9a9e14d, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114895882153170832, guid: 9002655d0f957074ba724578c9a9e14d,
+        type: 2}
+      propertyPath: SceneToLoad
+      value: Tutorial1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9002655d0f957074ba724578c9a9e14d, type: 2}
