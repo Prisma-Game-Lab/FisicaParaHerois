@@ -345,7 +345,7 @@ public class CustomizePlayer : MonoBehaviour {
 
 	}
 
-
+#if UNITY_EDITOR
 	void AdjustSprites(){
 
 		string path = AssetDatabase.GetAssetPath(spritePack);
@@ -394,6 +394,7 @@ public class CustomizePlayer : MonoBehaviour {
 		AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
 
 	}
+#endif
 	
 	// Update is called once per frame
 	void Update () {
