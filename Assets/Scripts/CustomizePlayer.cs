@@ -1063,8 +1063,10 @@ public class CustomizePlayer : MonoBehaviour {
 
 				if (child.name == "cabelo"){
 
-					if (_changePlayer.camisa.camiseta.name == "thumb_hairs_0" ||
-					    _changePlayer.camisa.camiseta.name == "thumb_hairs2_1_3") {
+					print (_changePlayer.cabelo.cabelo.name + " cabelos");
+
+					if (_changePlayer.cabelo.cabelo.name == "thumb_hairs_0" ||
+						_changePlayer.cabelo.cabelo.name == "thumb_hairs2_1_3") {
 
 						child.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
 
@@ -1080,8 +1082,8 @@ public class CustomizePlayer : MonoBehaviour {
 							}
 						}
 
-					} else if (_changePlayer.camisa.camiseta.name == "thumb_hairs_1" ||
-					           _changePlayer.camisa.camiseta.name == "thumb_hairs2_1_2") {
+					} else if (_changePlayer.cabelo.cabelo.name == "thumb_hairs_1" ||
+						_changePlayer.cabelo.cabelo.name == "thumb_hairs2_1_2") {
 
 						child.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
 
@@ -1097,7 +1099,7 @@ public class CustomizePlayer : MonoBehaviour {
 							}
 						}
 
-					} else if (_changePlayer.camisa.camiseta.name == "thumb_hairs_3") {
+					} else if (_changePlayer.cabelo.cabelo.name == "thumb_hairs_3") {
 
 						child.GetComponent<Anima2D.SpriteMeshInstance> ().color = _changePlayer.corDePele.cor;
 
@@ -1110,8 +1112,8 @@ public class CustomizePlayer : MonoBehaviour {
 							} 
 						}
 
-					} else if (_changePlayer.camisa.camiseta.name == "thumb_hairs_2" ||
-					           _changePlayer.camisa.camiseta.name == "thumb_hairs2_1_0") {
+					} else if (_changePlayer.cabelo.cabelo.name == "thumb_hairs_2" ||
+						_changePlayer.cabelo.cabelo.name == "thumb_hairs2_1_0") {
 
 						child.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
 
@@ -1125,7 +1127,7 @@ public class CustomizePlayer : MonoBehaviour {
 						}
 
 					} else if (_changePlayer.cabelo.cabelo.name == "thumb_hairs2_1_4" ||
-						_changePlayer.camisa.camiseta.name == "thumb_hairs2_1_5") {
+						_changePlayer.cabelo.cabelo.name == "thumb_hairs2_1_5") {
 
 						child.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
 
