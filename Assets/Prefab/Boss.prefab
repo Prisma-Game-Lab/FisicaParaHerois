@@ -862,6 +862,9 @@ MonoBehaviour:
   imune: 0
   minForce: 5
   Boss: {fileID: 114708517273266858}
+  XTeleportLeft: 0
+  XTeleportRight: 0
+  BossSpawnInspector: {fileID: 0}
 --- !u!114 &114312750198537608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1048,6 +1051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Life: 100
   BossAnim: {fileID: 0}
+  Left: 0
   MaxBoxes: 3
   Door: {fileID: 0}
   AttackState: {fileID: 0}
