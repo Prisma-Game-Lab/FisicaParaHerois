@@ -57,8 +57,6 @@ public class PlayerInfo : MonoBehaviour {
 
         _physicsObjects = FindObjectsOfType<PhysicsObject>();
 
-		print ("mano do ceu");
-
 		CustomizePlayer.SetPlayer(gameObject);
     }
 
