@@ -275,6 +275,7 @@ public class CustomizePlayer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
 		PlayerInGame.transform.parent.parent.GetComponent<Rigidbody2D> ().isKinematic = true;
 
 		//AdjustSprites ();
@@ -321,7 +322,7 @@ public class CustomizePlayer : MonoBehaviour {
 
 
 		ActivateItemBigPlayer (_changePlayer.camisa.camiseta.name, _camisaCategory, _changePlayer.camisa.cor, true);
-		//ActivateItemBigPlayer (_changePlayer.camisa.estampa.name, "Camisas");
+		//ActivateItemBigPlayer (_changePlayer.camisa.estampa.name, "Estampa", _changePlayer.camisa.cor, true);
 		ActivateItemBigPlayer (_changePlayer.olhos.olhos.name, _olhosCategory, _changePlayer.olhos.cor, true);
 		//ActivateItemBigPlayer (_changePlayer.olhos.cilios.name);
 		ActivateItemBigPlayer (_changePlayer.cabelo.cabelo.name, _cabeloCategory, _changePlayer.cabelo.cor, true);
@@ -398,8 +399,21 @@ public class CustomizePlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		gameObject.GetComponent<Image> ().SetNativeSize ();
+		//gameObject.GetComponent<Image> ().preserveAspect = true;
+		//if (_currentCategory == _cabeloCategory)
+			gameObject.GetComponent<Image> ().SetNativeSize ();
 
+		//Estampa.GetComponent<Image> ().SetNativeSize ();
+		//Estampa.GetComponent<RectTransform> ().sizeDelta = new Vector2 (100, 100);
+		Estampa.GetComponent<Image> ().preserveAspect = true;
+		BarbaItem.GetComponent<Image> ().SetNativeSize ();
+		//BarbaItem.GetComponent<RectTransform> ().sizeDelta = new Vector2 (100, 100);
+		BarbaItem.GetComponent<Image> ().preserveAspect = true;
+		//BarbaItem.GetComponent<RectTransform> ().sizeDelta = new Vector2 (100, 100);
+		CiliosItem.GetComponent<Image> ().SetNativeSize ();
+		//CiliosItem.GetComponent<RectTransform> ().sizeDelta = new Vector2 (100, 100);
+		CiliosItem.GetComponent<Image> ().preserveAspect = true;
+	
 	}
 
 	// Muda a estampa/cilios
@@ -408,7 +422,8 @@ public class CustomizePlayer : MonoBehaviour {
 		if (_currentCategory == "Camisas") {
 			if (_indexCategoriaAcessorio < Estampas.Length - 1) {
 				_indexCategoriaAcessorio += 1;
-				Estampa.GetComponent<Image> ().sprite = Estampas [_indexCategoriaAcessorio];
+				//Estampa.GetComponent<Image> ().sprite = Estampas [_indexCategoriaAcessorio];
+				ActivateItemBigPlayer (Estampas [_indexItemCategoria].name, "Estampa", _changePlayer.camisa.cor, false);
 				_changePlayer.camisa.indexEstampa = _indexCategoriaAcessorio;
 			}
 		} else if (_currentCategory == "Olhos") {
@@ -434,6 +449,7 @@ public class CustomizePlayer : MonoBehaviour {
 			if (_indexCategoriaAcessorio > 0) {
 				_indexCategoriaAcessorio -= 1;
 				Estampa.GetComponent<Image> ().sprite = Estampas [_indexCategoriaAcessorio];
+				//ActivateItemBigPlayer (Estampas [_indexItemCategoria].name, "Estampa", _changePlayer.camisa.cor, false);
 				_changePlayer.camisa.indexEstampa = _indexCategoriaAcessorio;
 			}
 		} else if (_currentCategory == "Olhos") {
@@ -620,14 +636,15 @@ public class CustomizePlayer : MonoBehaviour {
 			
 			_currentCategory = "Camisas";
 			gameObject.GetComponent<Image> ().sprite = _changePlayer.camisa.camiseta;
-			if (Estampas.Length != 0)
-				Estampa.GetComponent<Image> ().sprite = _changePlayer.camisa.estampa;
+			//if (Estampas.Length != 0)
+				//Estampa.GetComponent<Image> ().sprite = _changePlayer.camisa.estampa;
 			if (CorCamisetas.Length != 0) {
 				gameObject.GetComponent<Image> ().color = _changePlayer.camisa.cor;
 				ChangePalette (CorCamisetas);
 			}
 			ActivatePattern ();
 			ActivateItemBigPlayer (_changePlayer.camisa.camiseta.name, _camisaCategory, _changePlayer.camisa.cor, true);
+			//ActivateItemBigPlayer (_changePlayer.camisa.estampa.name, "Estampa", _changePlayer.camisa.cor, true);
 			ActivateItemLittlePlayer(_camisaCategory, _changePlayer.camisa.cor);
 			_indexItemCategoria = _changePlayer.camisa.index;
 			_indexCategoriaAcessorio = _changePlayer.camisa.indexEstampa;
@@ -681,15 +698,16 @@ public class CustomizePlayer : MonoBehaviour {
 			
 			_currentCategory = "Cabelo";
 			gameObject.GetComponent<Image> ().sprite = _changePlayer.cabelo.cabelo;
-			if (Barba.Length != 0)
-				BarbaItem.GetComponent<Image> ().sprite = _changePlayer.cabelo.barba;
+			//if (Barba.Length != 0)
+				//BarbaItem.GetComponent<Image> ().sprite = _changePlayer.cabelo.barba;
 			if (CorCabelo.Length != 0) {
 				gameObject.GetComponent<Image> ().color = _changePlayer.cabelo.cor;
 				ChangePalette (CorCabelo);
 			}
 			ActivatePattern ();
 			ActivateItemBigPlayer (_changePlayer.cabelo.cabelo.name, _cabeloCategory, _changePlayer.cabelo.cor, true);
-			ActivateItemLittlePlayer(_cabeloCategory, _changePlayer.cabelo.cor);
+			ActivateItemLittlePlayer (_cabeloCategory, _changePlayer.cabelo.cor);
+			ColorButton (_changePlayer.cabelo.indexCor);
 			_indexItemCategoria = _changePlayer.cabelo.index;
 			_indexCategoriaAcessorio = _changePlayer.cabelo.indexBarba;
 
@@ -698,7 +716,6 @@ public class CustomizePlayer : MonoBehaviour {
 		case "Calca":
 
 			_currentCategory = "Calca";
-			print (CorCalca.Length + "AAA");
 			gameObject.GetComponent<Image> ().sprite = _changePlayer.calca.calca;
 			if (CorCalca.Length != 0) {
 				gameObject.GetComponent<Image> ().color = _changePlayer.calca.cor;
@@ -745,8 +762,8 @@ public class CustomizePlayer : MonoBehaviour {
 			
 			_currentCategory = "Olhos";
 			gameObject.GetComponent<Image> ().sprite = _changePlayer.olhos.olhos;
-			if (Cilios.Length != 0)
-				CiliosItem.GetComponent<Image> ().sprite = _changePlayer.olhos.cilios;
+			//if (Cilios.Length != 0)
+				//CiliosItem.GetComponent<Image> ().sprite = _changePlayer.olhos.cilios;
 			if (CorOlhos.Length != 0) {
 				gameObject.GetComponent<Image> ().color = _changePlayer.olhos.cor;
 				ChangePalette (CorOlhos);
@@ -918,6 +935,26 @@ public class CustomizePlayer : MonoBehaviour {
 					obj.gameObject.SetActive (true);
 					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
 					_changePlayer.olhos.olhos.name = obj.name;
+				}
+			}
+
+			break;
+
+		case "Estampa":
+			
+			foreach (Transform obj in bigPlayerObjs) {
+				if (obj.transform.name == item) {
+
+
+
+					foreach (Transform asset in bigPlayerObjs) {
+						if (asset.transform.name == _changePlayer.camisa.estampa.name) {
+							asset.gameObject.SetActive (false);
+						}
+					}
+
+					obj.gameObject.SetActive (true);
+					_changePlayer.camisa.estampa.name = obj.name;
 				}
 			}
 
@@ -1097,6 +1134,7 @@ public class CustomizePlayer : MonoBehaviour {
 			if (_changePlayer.boca.boca.name != "thumb_hairs_3") {
 				gameObject.GetComponent<Image> ().color = Color [index].GetComponent<Image> ().color;
 			} 
+			BarbaItem.GetComponent<Image> ().color = Color [index].GetComponent<Image> ().color;
 		}
 
 		switch (_currentCategory) {
@@ -1178,9 +1216,6 @@ public class CustomizePlayer : MonoBehaviour {
 					if (_changePlayer.cabelo.cabelo.name == "thumb_hairs_3") {
 						obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = _changePlayer.corDePele.cor;
 					} else {
-						print (obj.childCount + "entrei porra");
-						print (obj.name + "entrei porra");
-
 						obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
 						if (obj.childCount > 0) {
 							obj.GetChild (0).GetComponent<Anima2D.SpriteMeshInstance> ().color = Color [index].GetComponent<Image> ().color;
@@ -1297,19 +1332,19 @@ public class CustomizePlayer : MonoBehaviour {
 
 			if (Barba.Length != 0) BarbaItem.SetActive (false);
 			if (Cilios.Length != 0) CiliosItem.SetActive (false);
-			if (Estampas.Length != 0) Estampa.SetActive (true);
+			//if (Estampas.Length != 0) Estampa.SetActive (true);
 
 		} else if (_currentCategory == "Olhos") {
 
 			if (Estampas.Length != 0) Estampa.SetActive (false);
 			if (Barba.Length != 0) BarbaItem.SetActive (false);
-			if (Cilios.Length != 0) CiliosItem.SetActive (true);
+			//if (Cilios.Length != 0) CiliosItem.SetActive (true);
 
 		} else if (_currentCategory == "Cabelo") {
 
 			if (Estampas.Length != 0) Estampa.SetActive (false);
 			if (Cilios.Length != 0) CiliosItem.SetActive (false);
-			if (Barba.Length != 0) BarbaItem.SetActive (true);
+			//if (Barba.Length != 0) BarbaItem.SetActive (true);
 
 
 		} else {
