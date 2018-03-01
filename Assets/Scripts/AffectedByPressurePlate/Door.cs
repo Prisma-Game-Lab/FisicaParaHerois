@@ -18,6 +18,9 @@ public class Door : AffectedByPressurePlate {
     public int ButtonsNeededToUnlock = 1;
 	public GameObject WinCanvas;
 
+	[Header("Level Data")]
+	public int curLevel;
+
 	// Use this for initialization
 	void Start () {
         _isLocked = BeginLocked;
@@ -43,6 +46,7 @@ public class Door : AffectedByPressurePlate {
     {
 		if (WinCanvas != null) {
 			WinCanvas.SetActive (true);
+			LevelStatus.WriteCompleted (curLevel, true);
 		} else {
 			SceneManager.LoadScene (NextScene);
 		}

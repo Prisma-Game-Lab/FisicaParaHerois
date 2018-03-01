@@ -57,7 +57,7 @@ public class PlayerInfo : MonoBehaviour {
 
         _physicsObjects = FindObjectsOfType<PhysicsObject>();
 
-		CustomizePlayer.SetPlayer(this.gameObject);
+		//CustomizePlayer.SetPlayer(this.gameObject);
     }
 
     // Use this for initialization

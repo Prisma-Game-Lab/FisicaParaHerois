@@ -40,7 +40,7 @@ public class FreezeBox : MonoBehaviour {
 			_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 		}
 	}
-	/*
+
 	void OnCollisionEnter2D(Collision2D info)
 	{
 		if (info.gameObject.tag == "Floor") {
@@ -49,7 +49,7 @@ public class FreezeBox : MonoBehaviour {
 
 		}
 	}
-
+	/*
     void OnCollisionStay2D(Collision2D col)
     {
         if (col.collider.gameObject.CompareTag("Floor") || col.collider.gameObject.CompareTag("Gangorra"))
