@@ -28,6 +28,8 @@ public class Boss : MonoBehaviour {
 
     private List<GameObject> _boxList;
 
+	public GameObject CutsceneFinal;
+
 
     public void ChangeState(IState newState)
     {
@@ -78,9 +80,16 @@ public class Boss : MonoBehaviour {
     /// <summary>
     /// Define o que ocorre quando o inimigo morre
     /// </summary>
-    void OnDeath()
+    public void OnDeath()
     {
-        Door.SetActive(true);
+		if (CutsceneFinal != null) {
+			CutsceneFinal.SetActive (true);
+		}
+
+		if (Door != null) {
+			Door.SetActive (true);
+		}
+
         Destroy(gameObject);
     }
 
@@ -100,6 +109,4 @@ public class Boss : MonoBehaviour {
             _boxList.Remove(_boxList[0]);
         }
     }
-
-    
 }
