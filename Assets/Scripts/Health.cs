@@ -15,6 +15,8 @@ public class Health : MonoBehaviour, IDamageable
     public float minForce;
     private Animator Anim;
 
+	public Boss Boss;
+
     //propriedade implementada da interface
     public float HealthPoints
     {
@@ -39,7 +41,12 @@ public class Health : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        Destroy(this);
+		if (Boss == null) {
+			Destroy (this);
+			return;
+		} else {
+			Boss.OnDeath ();
+		}
     }
 
     void OnCollisionEnter2D(Collision2D collision)
