@@ -112,6 +112,8 @@ public class PressurePlate : MonoBehaviour {
         }
 
         _isActive = true;
+		Debug.Log("Alavanca");
+		AudioSource.PlayClipAtPoint (Press, new Vector3 (5, 1, 2));
     }
 
 
