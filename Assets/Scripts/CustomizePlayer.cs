@@ -271,7 +271,9 @@ public class CustomizePlayer : MonoBehaviour {
 	}
 
 	private Customize _changePlayer;
+	#if UNITY_EDITOR
 	private SpriteMetaData[] sliceMetaData;
+	#endif
 
 	// Use this for initialization
 	void Start () {
