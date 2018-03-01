@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 public class CustomizePlayer : MonoBehaviour {
 
@@ -276,7 +273,6 @@ public class CustomizePlayer : MonoBehaviour {
 
 	public Button Pronto;
 
-
 	// Use this for initialization
 	void Start () {
 
@@ -329,7 +325,7 @@ public class CustomizePlayer : MonoBehaviour {
 
 
 		ActivateItemBigPlayer (_changePlayer.camisa.camiseta.name, _camisaCategory, _changePlayer.camisa.cor, true);
-		//ActivateItemBigPlayer (_changePlayer.camisa.estampa.name, "Estampa", _changePlayer.camisa.cor, true);
+		ActivateItemBigPlayer (_changePlayer.camisa.estampa.name, "Estampa", _changePlayer.camisa.cor, true);
 		ActivateItemBigPlayer (_changePlayer.olhos.olhos.name, _olhosCategory, _changePlayer.olhos.cor, true);
 		//ActivateItemBigPlayer (_changePlayer.olhos.cilios.name);
 		ActivateItemBigPlayer (_changePlayer.cabelo.cabelo.name, _cabeloCategory, _changePlayer.cabelo.cor, true);
@@ -387,8 +383,11 @@ public class CustomizePlayer : MonoBehaviour {
 		if (_currentCategory == "Camisas") {
 			if (_indexCategoriaAcessorio < Estampas.Length - 1) {
 				_indexCategoriaAcessorio += 1;
-				//Estampa.GetComponent<Image> ().sprite = Estampas [_indexCategoriaAcessorio];
-				ActivateItemBigPlayer (Estampas [_indexItemCategoria].name, "Estampa", _changePlayer.camisa.cor, false);
+				print (Estampas [_indexCategoriaAcessorio].name);
+				print (_indexCategoriaAcessorio);
+
+				Estampa.GetComponent<Image> ().sprite = Estampas [_indexCategoriaAcessorio];
+				ActivateItemBigPlayer (Estampas [_indexCategoriaAcessorio].name, "Estampa", _changePlayer.camisa.cor, false);
 				_changePlayer.camisa.indexEstampa = _indexCategoriaAcessorio;
 			}
 		} else if (_currentCategory == "Olhos") {
@@ -414,7 +413,7 @@ public class CustomizePlayer : MonoBehaviour {
 			if (_indexCategoriaAcessorio > 0) {
 				_indexCategoriaAcessorio -= 1;
 				Estampa.GetComponent<Image> ().sprite = Estampas [_indexCategoriaAcessorio];
-				//ActivateItemBigPlayer (Estampas [_indexItemCategoria].name, "Estampa", _changePlayer.camisa.cor, false);
+				ActivateItemBigPlayer (Estampas [_indexCategoriaAcessorio].name, "Estampa", _changePlayer.camisa.cor, false);
 				_changePlayer.camisa.indexEstampa = _indexCategoriaAcessorio;
 			}
 		} else if (_currentCategory == "Olhos") {
@@ -601,15 +600,15 @@ public class CustomizePlayer : MonoBehaviour {
 			
 			_currentCategory = "Camisas";
 			gameObject.GetComponent<Image> ().sprite = _changePlayer.camisa.camiseta;
-			//if (Estampas.Length != 0)
-				//Estampa.GetComponent<Image> ().sprite = _changePlayer.camisa.estampa;
+			if (Estampas.Length != 0)
+				Estampa.GetComponent<Image> ().sprite = _changePlayer.camisa.estampa;
 			if (CorCamisetas.Length != 0) {
 				gameObject.GetComponent<Image> ().color = _changePlayer.camisa.cor;
 				ChangePalette (CorCamisetas);
 			}
 			ActivatePattern ();
 			ActivateItemBigPlayer (_changePlayer.camisa.camiseta.name, _camisaCategory, _changePlayer.camisa.cor, true);
-			//ActivateItemBigPlayer (_changePlayer.camisa.estampa.name, "Estampa", _changePlayer.camisa.cor, true);
+			ActivateItemBigPlayer (_changePlayer.camisa.estampa.name, "Estampa", _changePlayer.camisa.cor, true);
 			ActivateItemLittlePlayer(_camisaCategory, _changePlayer.camisa.cor, PlayerInGame.transform, _changePlayer.camisa.camiseta.name);
 			_indexItemCategoria = _changePlayer.camisa.index;
 			_indexCategoriaAcessorio = _changePlayer.camisa.indexEstampa;
@@ -906,11 +905,9 @@ public class CustomizePlayer : MonoBehaviour {
 			break;
 
 		case "Estampa":
-			
+
 			foreach (Transform obj in bigPlayerObjs) {
 				if (obj.transform.name == item) {
-
-
 
 					foreach (Transform asset in bigPlayerObjs) {
 						if (asset.transform.name == _changePlayer.camisa.estampa.name) {
@@ -1028,12 +1025,8 @@ public class CustomizePlayer : MonoBehaviour {
 
 				if (child.name == "cabelo"){
 
-					print (roupa);
-
 					if (roupa == "thumb_hairs_0" ||
 						roupa == "thumb_hairs2_1_3") {
-
-						print ("KD");
 
 						child.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
 
@@ -1380,7 +1373,7 @@ public class CustomizePlayer : MonoBehaviour {
 
 			if (Barba.Length != 0) BarbaItem.SetActive (false);
 			if (Cilios.Length != 0) CiliosItem.SetActive (false);
-			//if (Estampas.Length != 0) Estampa.SetActive (true);
+			if (Estampas.Length != 0) Estampa.SetActive (true);
 
 		} else if (_currentCategory == "Olhos") {
 

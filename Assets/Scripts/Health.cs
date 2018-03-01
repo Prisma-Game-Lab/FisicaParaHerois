@@ -16,6 +16,9 @@ public class Health : MonoBehaviour, IDamageable
     private Animator Anim;
 
 	public Boss Boss;
+	public float XTeleportLeft;
+	public float XTeleportRight;
+	public Transform BossSpawnInspector;
 
     //propriedade implementada da interface
     public float HealthPoints
@@ -35,8 +38,26 @@ public class Health : MonoBehaviour, IDamageable
     {
         currentHP -= damage;
         Debug.Log("Ouch!");
-        Anim.SetTrigger("dano");
+
+		if (Anim != null) {
+			Anim.SetTrigger ("dano");
+		}
+
         if (currentHP <= 0) Die();
+		Boss.Left = !Boss.Left;
+
+		switch (Boss.Left) {
+		case true:
+			transform.position = new Vector3 (XTeleportLeft, transform.position.y, transform.position.z);
+			transform.localScale = new Vector3(transform.localScale.x *-1, transform.localScale.y, transform.localScale.z);
+			BossSpawnInspector.transform.position = new Vector3 (-26.6f, transform.position.y, transform.position.z);
+			break;
+		case false:
+			transform.position = new Vector3 (XTeleportRight, transform.position.y, transform.position.z);
+			transform.localScale = new Vector3(transform.localScale.x *-1, transform.localScale.y, transform.localScale.z);
+			BossSpawnInspector.transform.position = new Vector3 (1.9f, transform.position.y, transform.position.z);
+			break;
+		}
     }
 
     public void Die()
