@@ -122,6 +122,8 @@ GameObject:
   - component: {fileID: 14413435}
   - component: {fileID: 14413434}
   - component: {fileID: 14413433}
+  - component: {fileID: 14413437}
+  - component: {fileID: 14413436}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -170,6 +172,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &14413436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 14413432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f38189470bfe49b9910cf3503d96933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurOffset: {x: 0, y: 0, z: 0}
+  TimeLeft: 0
+  CameraSpeed: 5
+  PhysicsVisionPostProcessing: {fileID: 0}
+  disableScroll: 0
+  showBoundingBox: 1
+  AutoAdjustCamera: 1
+  TimeSinceLastTouch: 0
+  TimeToEnableAutoAdjustCamera: 1
+  Limit1: {x: -19.475124, y: 5.842541, z: 0}
+  Limit2: {x: 21.426493, y: -12.619984, z: 0}
+--- !u!114 &14413437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 14413432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5baa193087071459bb1d556da9f47a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MapCamera: {fileID: 14413436}
+  CameraTouchSpeed: 0.01
 --- !u!1001 &75619717
 Prefab:
   m_ObjectHideFlags: 0
@@ -650,7 +687,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 661541866}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -316.40002, y: 86.601456, z: 0}
+  m_LocalPosition: {x: -316.4, y: -2.753357, z: 0}
   m_LocalScale: {x: 1.8, y: 1, z: 1}
   m_Children:
   - {fileID: 212792261}
@@ -1214,12 +1251,12 @@ Prefab:
     - target: {fileID: 224330773786954354, guid: a500cc435186b3042b24f1a5335c7a30,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 273.5
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 224330773786954354, guid: a500cc435186b3042b24f1a5335c7a30,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 154
+      value: 151
       objectReference: {fileID: 0}
     - target: {fileID: 224330773786954354, guid: a500cc435186b3042b24f1a5335c7a30,
         type: 2}
@@ -1623,6 +1660,11 @@ Prefab:
         type: 2}
       propertyPath: Completed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114935377291554282, guid: 6cf03728e9790ad4a9480053e0299bc3,
+        type: 2}
+      propertyPath: SceneToLoad
+      value: Fase1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cf03728e9790ad4a9480053e0299bc3, type: 2}
