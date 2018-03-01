@@ -1063,6 +1063,26 @@ public class CustomizePlayer : MonoBehaviour {
 
 				if (child.name == "cabelo"){
 
+					if (_changePlayer.camisa.camiseta.name == "thumb_hairs_0" ||
+						_changePlayer.camisa.camiseta.name == "thumb_hairs2_1_3"){
+
+						foreach (Transform item in child.GetComponentInChildren<Transform>(true)){
+
+							if (item.name == "curta1" || item.name == "curta2" || 
+								item.name == "longa1" || item.name == "longa2") {
+
+								item.gameObject.SetActive(false);
+
+							} else if (item.name == "base"){
+								item.GetComponent<Anima2D.SpriteMeshInstance>().color = cor;
+							}
+						}
+
+					} else if (_changePlayer.camisa.camiseta.name == "thumb_hairs_1" ||
+						_changePlayer.camisa.camiseta.name == "thumb_hairs2_1_2" ||
+					) {
+						
+
 //					foreach (Transform item in child.GetComponentInChildren<Transform>(true)){
 //
 //						if (item.name == "curta1" || item.name == "curta2") {
