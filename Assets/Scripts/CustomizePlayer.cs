@@ -1064,40 +1064,83 @@ public class CustomizePlayer : MonoBehaviour {
 				if (child.name == "cabelo"){
 
 					if (_changePlayer.camisa.camiseta.name == "thumb_hairs_0" ||
-						_changePlayer.camisa.camiseta.name == "thumb_hairs2_1_3"){
+					    _changePlayer.camisa.camiseta.name == "thumb_hairs2_1_3") {
 
-						foreach (Transform item in child.GetComponentInChildren<Transform>(true)){
+						child.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
 
-							if (item.name == "curta1" || item.name == "curta2" || 
-								item.name == "longa1" || item.name == "longa2") {
+						foreach (Transform item in child.GetComponentInChildren<Transform>(true)) {
 
-								item.gameObject.SetActive(false);
+							if (item.name == "miniCabelos_0" || item.name == "miniCabelos_2") {
 
-							} else if (item.name == "base"){
-								item.GetComponent<Anima2D.SpriteMeshInstance>().color = cor;
+								item.gameObject.SetActive (false);
+
+							} else if (item.name == "miniCabelos_1") {
+								item.gameObject.SetActive (true);
+								item.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
 							}
 						}
 
 					} else if (_changePlayer.camisa.camiseta.name == "thumb_hairs_1" ||
-						_changePlayer.camisa.camiseta.name == "thumb_hairs2_1_2" ||
-					) {
-						
+					           _changePlayer.camisa.camiseta.name == "thumb_hairs2_1_2") {
 
-//					foreach (Transform item in child.GetComponentInChildren<Transform>(true)){
-//
-//						if (item.name == "curta1" || item.name == "curta2") {
-//
-//							item.gameObject.SetActive(false);
-//
-//						} else if (item.name == "base" || item.name == "longa1" || item.name == "longa2"){
-//							item.gameObject.SetActive(true);
-//							item.GetComponent<Anima2D.SpriteMeshInstance>().color = cor;
-//
-//						} else if (item.name == "base"){
-//
-//						}
-//					}
+						child.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
 
+						foreach (Transform item in child.GetComponentInChildren<Transform>(true)) {
+
+							if (item.name == "miniCabelos_1" || item.name == "miniCabelos_2") {
+
+								item.gameObject.SetActive (false);
+
+							} else if (item.name == "miniCabelos_0") {
+								item.gameObject.SetActive (true);
+								item.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
+							}
+						}
+
+					} else if (_changePlayer.camisa.camiseta.name == "thumb_hairs_3") {
+
+						child.GetComponent<Anima2D.SpriteMeshInstance> ().color = _changePlayer.corDePele.cor;
+
+						foreach (Transform item in child.GetComponentInChildren<Transform>(true)) {
+
+							if (item.name == "miniCabelos_0" || item.name == "miniCabelos_1" ||
+								item.name == "miniCabelos_2") {
+
+								item.gameObject.SetActive (false);
+							} 
+						}
+
+					} else if (_changePlayer.camisa.camiseta.name == "thumb_hairs_2" ||
+					           _changePlayer.camisa.camiseta.name == "thumb_hairs2_1_0") {
+
+						child.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
+
+						foreach (Transform item in child.GetComponentInChildren<Transform>(true)) {
+
+							if (item.name == "miniCabelos_0" || item.name == "miniCabelos_1" ||
+								item.name == "miniCabelos_2") {
+
+								item.gameObject.SetActive (false);
+							}
+						}
+
+					} else if (_changePlayer.cabelo.cabelo.name == "thumb_hairs2_1_4" ||
+						_changePlayer.camisa.camiseta.name == "thumb_hairs2_1_5") {
+
+						child.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
+
+						foreach (Transform item in child.GetComponentInChildren<Transform>(true)) {
+
+							if (item.name == "miniCabelos_0" || item.name == "miniCabelos_1") {
+
+								item.gameObject.SetActive (false);
+
+							} else if (item.name == "miniCabelos_2") {
+								item.gameObject.SetActive (true);
+								item.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
+							}
+						}
+					}
 				}
 			}
 
