@@ -68,7 +68,9 @@ public class BossAttackState : MonoBehaviour, IState
         PhysicsObject po = box.GetComponent<PhysicsObject>();
         po.CanPlayerInteract = false;
 
-        StateMachineController.BossAnim.SetBool("is throwing", true);
+		if (StateMachineController.BossAnim != null) {
+			StateMachineController.BossAnim.SetBool ("is throwing", true);
+		}
 
         //talvez adicionar um timer, se passar de tantos segundos || a caixa ficar parada tantos segundos, destruir a caixa
 
@@ -99,7 +101,9 @@ public class BossAttackState : MonoBehaviour, IState
         //move na direção do player
         po.physicsData.isKinematic = true;
         int direction = (_player.transform.position.x > box.transform.position.x) ? 1 : -1;
-        StateMachineController.BossAnim.SetBool("is throwing", false);
+		if (StateMachineController.BossAnim != null) {
+			StateMachineController.BossAnim.SetBool ("is throwing", false);
+		}
 
         po.physicsData.velocity = new Vector2(lateralVelocity * direction, 0.0f);
 
