@@ -275,6 +275,10 @@ public class PlayerInput : MonoBehaviour {
                 else
                     Player.CheckInputFlip("D");
             }
+            else
+            {
+                ActionButton();
+            }
         }
 	}
 
