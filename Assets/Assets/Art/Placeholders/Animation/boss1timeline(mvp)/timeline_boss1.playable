@@ -1232,20 +1232,6 @@ MonoBehaviour:
   m_UseTrackMatchFields: 0
   m_MatchTargetFields: 63
   m_RemoveStartOffset: 1
---- !u!114 &114337638672368492
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1977359656, guid: 6a10b2909283487f913b00d94cd3faf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Clip: {fileID: 8300000, guid: 592d0ce20990848108bb971936b1d609, type: 3}
-  m_Loop: 0
-  m_bufferingTime: 0.1
 --- !u!114 &114346227009808476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1531,6 +1517,20 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Caiu
     m_Version: 1
+--- !u!114 &114528872309920776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1977359656, guid: 6a10b2909283487f913b00d94cd3faf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Clip: {fileID: 8300000, guid: 592d0ce20990848108bb971936b1d609, type: 3}
+  m_Loop: 0
+  m_bufferingTime: 0.1
 --- !u!114 &114539754872846274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1992,13 +1992,13 @@ MonoBehaviour:
     m_ClipIn: 0
     m_Asset: {fileID: 114353094009113908}
     m_UnderlyingAsset: {fileID: 8300000, guid: 592d0ce20990848108bb971936b1d609, type: 3}
-    m_Duration: 12.44047619047619
-    m_TimeScale: 0.84
+    m_Duration: 11.236559139784944
+    m_TimeScale: 0.93
     m_ParentTrack: {fileID: 114808730120609250}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: 10.623809523809523
+    m_BlendOutDuration: 8.539784946236551
     m_MixInCurve:
       serializedVersion: 2
       m_Curve:
@@ -2046,16 +2046,16 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: BossEntry
     m_Version: 1
-  - m_Start: 1.8166666666666667
+  - m_Start: 2.696774193548393
     m_ClipIn: 0
-    m_Asset: {fileID: 114337638672368492}
+    m_Asset: {fileID: 114528872309920776}
     m_UnderlyingAsset: {fileID: 8300000, guid: 592d0ce20990848108bb971936b1d609, type: 3}
-    m_Duration: 12.44047619047619
-    m_TimeScale: 0.84
+    m_Duration: 11.236559139784944
+    m_TimeScale: 0.93
     m_ParentTrack: {fileID: 114808730120609250}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 10.623809523809523
+    m_BlendInDuration: 8.539784946236551
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
@@ -2111,19 +2111,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
