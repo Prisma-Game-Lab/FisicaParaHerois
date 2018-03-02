@@ -270,10 +270,14 @@ public class PlayerInput : MonoBehaviour {
 			if (target != null && !_isJumping)
 			{
 				action.OnActionUse(Mathf.Sign(target.transform.position.x - Player.transform.position.x)); //O ARGUMENTO NÃ AFETA MAIS! old: O argumento será 1 ou -1, dependendo de se o player está antes ou depois do target.
-                if (target.transform.position.x < Player.transform.position.x)
+                if (target.transform.position.x < Player.transform.position.x && target.tag == "Box")
                     Player.CheckInputFlip("A");
                 else
                     Player.CheckInputFlip("D");
+            }
+            else
+            {
+                ActionButton();
             }
         }
 	}

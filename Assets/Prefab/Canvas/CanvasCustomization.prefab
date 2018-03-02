@@ -2781,14 +2781,27 @@ MonoBehaviour:
   - {fileID: 21300054, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
   - {fileID: 21300056, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
   - {fileID: 21300060, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
-  - {fileID: 21300056, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
   - {fileID: 21300064, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
   - {fileID: 21300066, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
   - {fileID: 21300000, guid: f066fafa626a7f948b8dfa39ee19c235, type: 3}
+  - {fileID: 0}
   CorCamisetas:
-  - {r: 0.2604706, g: 0.92015916, b: 0.984, a: 1}
-  - {r: 0.803, g: 0.09796598, b: 0.74518734, a: 1}
+  - {r: 0.57569206, g: 0.86199874, b: 0.8897059, a: 1}
+  - {r: 0.21335296, g: 0.9117647, b: 0.30486906, a: 1}
   - {r: 0.928, g: 0.7126223, b: 0.124352, a: 1}
+  - {r: 0.34334806, g: 0.4705882, b: 0.17301036, a: 1}
+  - {r: 0.75735295, g: 0.45441177, b: 0, a: 1}
+  - {r: 1, g: 0.5280933, b: 0.27205884, a: 1}
+  - {r: 1, g: 0.27205884, b: 0.27205884, a: 1}
+  - {r: 0.7058823, g: 0, b: 0, a: 1}
+  - {r: 0.375, g: 0.375, b: 0.375, a: 1}
+  - {r: 0.15343855, g: 0.16176468, b: 0.15900844, a: 1}
+  - {r: 0.38235295, g: 0.20242214, b: 0.3476077, a: 1}
+  - {r: 0.47335643, g: 0.08217994, b: 0.5588235, a: 1}
+  - {r: 0.9683567, g: 0.42647058, b: 1, a: 1}
+  - {r: 0.89705884, g: 0.27703288, b: 0.27703288, a: 1}
+  - {r: 0.9485294, g: 0.16041304, b: 0.7311179, a: 1}
+  - {r: 0.14424741, g: 0.42647058, b: 0.39143592, a: 1}
   Olhos:
   - {fileID: 21300034, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
   - {fileID: 21300036, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
@@ -2843,7 +2856,6 @@ MonoBehaviour:
   - {fileID: 21300004, guid: ce3e66444589c4f41b9fe400395181f8, type: 3}
   - {fileID: 21300000, guid: ce3e66444589c4f41b9fe400395181f8, type: 3}
   - {fileID: 21300010, guid: ce3e66444589c4f41b9fe400395181f8, type: 3}
-  - {fileID: 21300002, guid: ce3e66444589c4f41b9fe400395181f8, type: 3}
   CorCabelo:
   - {r: 0.5955882, g: 0.26602134, b: 0.052551914, a: 1}
   - {r: 0.9044118, g: 0.53164005, b: 0.059850782, a: 1}
@@ -2872,8 +2884,8 @@ MonoBehaviour:
   - {fileID: 21300006, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
   - {fileID: 21300006, guid: f066fafa626a7f948b8dfa39ee19c235, type: 3}
   CorCalca:
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 1, g: 1, b: 1, a: 0}
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
   Sapatos:
   - {fileID: 21300010, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
   - {fileID: 21300032, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
@@ -2892,6 +2904,9 @@ MonoBehaviour:
   - {r: 0, g: 0.91724133, b: 1, a: 1}
   - {r: 1, g: 0.3333333, b: 0.45399696, a: 1}
   Sombrancelha: {fileID: 0}
+  spritePack: {fileID: 21300000, guid: a9775504a29cc144787b82b1d5b0607d, type: 3}
+  camera: {fileID: 0}
+  Pronto: {fileID: 114017051722856356}
 --- !u!114 &114750510541163648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4385,7 +4400,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1216392011141670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 0.55875, y: 0.55875, z: 0.55875}
   m_Children:
   - {fileID: 224011612684845796}
@@ -4540,7 +4555,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1351812167714172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00012207031, y: -0.000030517578, z: 0}
+  m_LocalPosition: {x: -23.14, y: -50.300003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.99999994}
   m_Children: []
   m_Father: {fileID: 224277297502156220}
@@ -4548,8 +4563,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00012207031, y: -0.000030517578}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -23.14, y: -50.3}
+  m_SizeDelta: {x: 288, y: 151}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224833888892305548
 RectTransform:

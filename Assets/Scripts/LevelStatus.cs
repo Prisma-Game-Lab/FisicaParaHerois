@@ -5,6 +5,14 @@ using UnityEngine;
 public static class LevelStatus {
 	public static void WriteCompleted(int level, int status){
 		PlayerPrefs.SetInt ("Level" + level, status);
+
+        if(MapButton.CompletedLevels == null)
+        {
+            MapButton.CompletedLevels = new Dictionary<int, int>();
+            MapButton.CompletedLevels.Add(level, status);
+            return;
+        }
+
 		MapButton.CompletedLevels[level] = status;
 	}
 
