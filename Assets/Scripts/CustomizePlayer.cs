@@ -598,9 +598,9 @@ public class CustomizePlayer : MonoBehaviour {
 		case "Camisas":
 			
 			_currentCategory = "Camisas";
-			gameObject.GetComponent<Image> ().sprite = _changePlayer.camisa.camiseta;
+			gameObject.GetComponent<Image> ().sprite = Camisetas[_changePlayer.camisa.index];
 			if (Estampas.Length != 0)
-				Estampa.GetComponent<Image> ().sprite = _changePlayer.camisa.estampa;
+				Estampa.GetComponent<Image> ().sprite = Estampas[_changePlayer.camisa.indexEstampa];
 			if (CorCamisetas.Length != 0) {
 				gameObject.GetComponent<Image> ().color = _changePlayer.camisa.cor;
 				ChangePalette (CorCamisetas);
@@ -630,7 +630,7 @@ public class CustomizePlayer : MonoBehaviour {
 		case "Nariz":
 			
 			_currentCategory = "Nariz";
-			gameObject.GetComponent<Image> ().sprite = _changePlayer.nariz.nariz;
+			gameObject.GetComponent<Image> ().sprite = Narizes[_changePlayer.nariz.index];
 			if (CorNariz.Length != 0) {
 				gameObject.GetComponent<Image> ().color = _changePlayer.nariz.cor;
 				ChangePalette (CorNariz);
@@ -645,7 +645,7 @@ public class CustomizePlayer : MonoBehaviour {
 		case "Boca":
 			
 			_currentCategory = "Boca";
-			gameObject.GetComponent<Image> ().sprite = _changePlayer.boca.boca;
+			gameObject.GetComponent<Image> ().sprite = Bocas[_changePlayer.boca.index];
 			if (CorBoca.Length != 0) {
 				gameObject.GetComponent<Image> ().color = _changePlayer.boca.cor;
 				ChangePalette (CorBoca);
@@ -660,7 +660,7 @@ public class CustomizePlayer : MonoBehaviour {
 		case "Cabelo":
 			
 			_currentCategory = "Cabelo";
-			gameObject.GetComponent<Image> ().sprite = _changePlayer.cabelo.cabelo;
+			gameObject.GetComponent<Image> ().sprite = Cabelos[_changePlayer.cabelo.index];
 			//if (Barba.Length != 0)
 				//BarbaItem.GetComponent<Image> ().sprite = _changePlayer.cabelo.barba;
 			if (CorCabelo.Length != 0) {
@@ -679,7 +679,7 @@ public class CustomizePlayer : MonoBehaviour {
 		case "Calca":
 
 			_currentCategory = "Calca";
-			gameObject.GetComponent<Image> ().sprite = _changePlayer.calca.calca;
+			gameObject.GetComponent<Image> ().sprite = Calcas[_changePlayer.calca.index];
 			if (CorCalca.Length != 0) {
 				gameObject.GetComponent<Image> ().color = _changePlayer.calca.cor;
 				ChangePalette (CorCalca);
@@ -694,7 +694,7 @@ public class CustomizePlayer : MonoBehaviour {
 		case "Sapato":
 			
 			_currentCategory = "Sapato";
-			gameObject.GetComponent<Image> ().sprite = _changePlayer.sapato.sapato;
+			gameObject.GetComponent<Image> ().sprite = Sapatos[_changePlayer.sapato.index];
 			if (CorSapato.Length != 0) {
 				gameObject.GetComponent<Image> ().color = _changePlayer.sapato.cor;
 				ChangePalette (CorSapato);
@@ -709,7 +709,7 @@ public class CustomizePlayer : MonoBehaviour {
 		case "Acessorios":
 			
 			_currentCategory = "Acessorios";
-			gameObject.GetComponent<Image> ().sprite = _changePlayer.acessorio.acessorio;
+			gameObject.GetComponent<Image> ().sprite = Acessorios[_changePlayer.acessorio.index];
 			if (CorAcessorio.Length != 0) {
 				gameObject.GetComponent<Image> ().color = _changePlayer.acessorio.cor;
 				ChangePalette (CorAcessorio);
@@ -724,7 +724,7 @@ public class CustomizePlayer : MonoBehaviour {
 		case "Olhos":
 			
 			_currentCategory = "Olhos";
-			gameObject.GetComponent<Image> ().sprite = _changePlayer.olhos.olhos;
+			gameObject.GetComponent<Image> ().sprite = Olhos[_changePlayer.olhos.index];
 			//if (Cilios.Length != 0)
 				//CiliosItem.GetComponent<Image> ().sprite = _changePlayer.olhos.cilios;
 			if (CorOlhos.Length != 0) {
@@ -905,16 +905,16 @@ public class CustomizePlayer : MonoBehaviour {
 
 		case "Estampa":
 
-			if (_changePlayer.camisa.estampa == null) {
-
-				foreach (Transform asset in bigPlayerObjs) {
-					if (asset.transform.name == _changePlayer.camisa.estampa.name) {
-						asset.gameObject.SetActive (false);
-						Estampa.SetActive (false);
-						print ("desativou");
-					}
-				}	
-			} else {
+//			if (_changePlayer.camisa.estampa == null) {
+//
+//				foreach (Transform asset in bigPlayerObjs) {
+//					if (asset.transform.name == _changePlayer.camisa.estampa.name) {
+//						asset.gameObject.SetActive (false);
+//						Estampa.SetActive (false);
+//						print ("desativou");
+//					}
+//				}	
+//			} else {
 
 				foreach (Transform obj in bigPlayerObjs) {
 
@@ -932,7 +932,7 @@ public class CustomizePlayer : MonoBehaviour {
 						_changePlayer.camisa.estampa.name = obj.name;
 					}
 				}
-			}
+			//}
 
 			break;
 		default:
