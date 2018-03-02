@@ -192,7 +192,7 @@ public class PlayerInfo : MonoBehaviour {
         {
             PhysicsObject curObj = objFound.gameObject.GetComponent<PhysicsObject>();
             
-            if(curObj != null && curObj != playerPhysicsObject && curObj.tag != "Gangorra")
+            if(curObj != null && curObj.tag == "Box" && curObj != playerPhysicsObject)
             {
                 float distanceToCurObj = Vector3.Distance(objFound.transform.position, transform.position);
 
