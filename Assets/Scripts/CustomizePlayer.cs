@@ -910,6 +910,7 @@ public class CustomizePlayer : MonoBehaviour {
 				foreach (Transform asset in bigPlayerObjs) {
 					if (asset.transform.name == _changePlayer.camisa.estampa.name) {
 						asset.gameObject.SetActive (false);
+						Estampa.SetActive (false);
 					}
 				}	
 			} else {
