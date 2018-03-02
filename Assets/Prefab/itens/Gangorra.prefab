@@ -103,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1018791799254620}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.398, z: -4.9}
+  m_LocalPosition: {x: 0, y: -0.398, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 4910957588195842}
@@ -131,7 +131,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1612866470057168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.16, z: -4.25}
+  m_LocalPosition: {x: 0, y: 0.16, z: 0}
   m_LocalScale: {x: 0.07, y: 1.71, z: 1}
   m_Children: []
   m_Father: {fileID: 4248705420567708}
@@ -157,7 +157,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1383384689295296}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -9.5, y: -12.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4248705420567708}
@@ -300,11 +300,13 @@ MonoBehaviour:
     PushPullAction: 0
     ChangeAnchorPointMinValue: -1
     ChangeAnchorPointMaxValue: 1
-    ChangeAnchorPointAction: 1
-  CanPlayerInteract: 1
+    ChangeAnchorPointAction: 0
+  CanPlayerInteract: 0
   _timeLeftToDeactivatePushPullAction: 1
   Halo: {fileID: 0}
   _hasChain: 0
+  Caiu: {fileID: 0}
+  boxAnim: {fileID: 0}
 --- !u!114 &114823381585442554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,6 +320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   base_gangorra: {fileID: 1018791799254620}
   visual_distance_connecting_point: 0
+  Joint: {fileID: 0}
 --- !u!212 &212192593692736846
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -349,9 +352,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 776343475
+  m_SortingLayer: 4
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: a4b28cd402f459240b5f003c9e0f3f1f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -393,8 +396,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 776343475
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e2124a72a5216164fb40be358283c03d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -420,7 +423,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -6.0298476, y: -2.82}
+  m_ConnectedAnchor: {x: -9.5, y: -12.99}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
