@@ -24,14 +24,21 @@ public class CutsceneManager : MonoBehaviour {
 	IEnumerator CutsceneCut(){
 		yield return new WaitForSeconds(_length);
 
-		if (ObjectToActivate != null) {
-			ObjectToActivate.SetActive (true);
-		}
-
-		if (ButtonToActivate != null) {
-			ButtonToActivate.onClick.Invoke();
-		}
-
-		gameObject.SetActive (false);
+        AtCutsceneEnd();
 	}
+
+    public void AtCutsceneEnd()
+    {
+        if (ObjectToActivate != null)
+        {
+            ObjectToActivate.SetActive(true);
+        }
+
+        if (ButtonToActivate != null)
+        {
+            ButtonToActivate.onClick.Invoke();
+        }
+
+        gameObject.SetActive(false);
+    }
 }
