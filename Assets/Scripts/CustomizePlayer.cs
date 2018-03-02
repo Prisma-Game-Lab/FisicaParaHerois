@@ -911,11 +911,14 @@ public class CustomizePlayer : MonoBehaviour {
 					if (asset.transform.name == _changePlayer.camisa.estampa.name) {
 						asset.gameObject.SetActive (false);
 						Estampa.SetActive (false);
+						print ("desativou");
 					}
 				}	
 			} else {
 
 				foreach (Transform obj in bigPlayerObjs) {
+
+					print ("ativou");
 
 					if (obj.transform.name == item) {
 
