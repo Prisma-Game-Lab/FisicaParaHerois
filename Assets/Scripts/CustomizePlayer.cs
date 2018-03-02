@@ -325,7 +325,8 @@ public class CustomizePlayer : MonoBehaviour {
 
 
 		ActivateItemBigPlayer (_changePlayer.camisa.camiseta.name, _camisaCategory, _changePlayer.camisa.cor, true);
-		ActivateItemBigPlayer (_changePlayer.camisa.estampa.name, "Estampa", _changePlayer.camisa.cor, true);
+		if (_changePlayer.camisa.estampa != null)
+			ActivateItemBigPlayer (_changePlayer.camisa.estampa.name, "Estampa", _changePlayer.camisa.cor, true);
 		ActivateItemBigPlayer (_changePlayer.olhos.olhos.name, _olhosCategory, _changePlayer.olhos.cor, true);
 		//ActivateItemBigPlayer (_changePlayer.olhos.cilios.name);
 		ActivateItemBigPlayer (_changePlayer.cabelo.cabelo.name, _cabeloCategory, _changePlayer.cabelo.cor, true);
@@ -383,8 +384,6 @@ public class CustomizePlayer : MonoBehaviour {
 		if (_currentCategory == "Camisas") {
 			if (_indexCategoriaAcessorio < Estampas.Length - 1) {
 				_indexCategoriaAcessorio += 1;
-				print (Estampas [_indexCategoriaAcessorio].name);
-				print (_indexCategoriaAcessorio);
 
 				Estampa.GetComponent<Image> ().sprite = Estampas [_indexCategoriaAcessorio];
 				ActivateItemBigPlayer (Estampas [_indexCategoriaAcessorio].name, "Estampa", _changePlayer.camisa.cor, false);
@@ -895,7 +894,7 @@ public class CustomizePlayer : MonoBehaviour {
 							asset.gameObject.SetActive (false);
 						}
 					}
-
+						
 					obj.gameObject.SetActive (true);
 					obj.gameObject.GetComponent<Anima2D.SpriteMeshInstance> ().color = cor;
 					_changePlayer.olhos.olhos.name = obj.name;
@@ -906,17 +905,29 @@ public class CustomizePlayer : MonoBehaviour {
 
 		case "Estampa":
 
-			foreach (Transform obj in bigPlayerObjs) {
-				if (obj.transform.name == item) {
+			if (_changePlayer.camisa.estampa == null) {
 
-					foreach (Transform asset in bigPlayerObjs) {
-						if (asset.transform.name == _changePlayer.camisa.estampa.name) {
-							asset.gameObject.SetActive (false);
-						}
+				foreach (Transform asset in bigPlayerObjs) {
+					if (asset.transform.name == _changePlayer.camisa.estampa.name) {
+						asset.gameObject.SetActive (false);
+						Estampa.SetActive (false);
 					}
+				}	
+			} else {
 
-					obj.gameObject.SetActive (true);
-					_changePlayer.camisa.estampa.name = obj.name;
+				foreach (Transform obj in bigPlayerObjs) {
+
+					if (obj.transform.name == item) {
+
+						foreach (Transform asset in bigPlayerObjs) {
+							if (asset.transform.name == _changePlayer.camisa.estampa.name) {
+								asset.gameObject.SetActive (false);
+							}
+						}
+
+						obj.gameObject.SetActive (true);
+						_changePlayer.camisa.estampa.name = obj.name;
+					}
 				}
 			}
 
