@@ -47,7 +47,7 @@ public class Door : AffectedByPressurePlate {
 		if (WinCanvas != null) {
 			WinCanvas.SetActive (true);
 			LevelStatus.WriteCompleted (curLevel, 1); //marca nível como completo
-			if (LevelStatus.ReadCompleted (curLevel + 1) == -1) {
+			if (LevelStatus.ReadCompleted (curLevel + 1) < 0) {
 				LevelStatus.WriteCompleted (curLevel + 1, 0); //libera próximo nível
 			}
 		} else {
