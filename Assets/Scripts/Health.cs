@@ -31,7 +31,7 @@ public class Health : MonoBehaviour, IDamageable
     void Awake()
     {
         currentHP = maxHP;
-        Anim = this.GetComponent<Animator>();
+        Anim = Boss.BossAnim;
     }
 
     public void TakeDamage(float damage)
@@ -41,12 +41,15 @@ public class Health : MonoBehaviour, IDamageable
 
 		if (Anim != null) {
 			Anim.SetTrigger ("dano");
-		}
+            
+        }
 
         if (currentHP <= 0) Die();
 		Boss.Left = !Boss.Left;
+        StartCoroutine("TeleportBoss");
 
-		switch (Boss.Left) {
+        //botei na coroutine
+        /*switch (Boss.Left) {
 		case true:
 			transform.position = new Vector3 (XTeleportLeft, transform.position.y, transform.position.z);
 			transform.localScale = new Vector3(transform.localScale.x *-1, transform.localScale.y, transform.localScale.z);
@@ -58,6 +61,7 @@ public class Health : MonoBehaviour, IDamageable
 			BossSpawnInspector.transform.position = new Vector3 (1.9f, transform.position.y, transform.position.z);
 			break;
 		}
+        */
     }
 
     public void Die()
@@ -92,6 +96,26 @@ public class Health : MonoBehaviour, IDamageable
         imune = true;
         yield return new WaitForSeconds(invulnerability_time);
         imune = false;
+    }
+
+    IEnumerator TeleportBoss()
+    {
+        yield return new WaitForSecondsRealtime(1.5f);
+        Anim.SetTrigger("teleport");
+        yield return new WaitForSecondsRealtime(1.0f);
+        switch (Boss.Left)
+        {
+            case true:
+                transform.position = new Vector3(XTeleportLeft, transform.position.y, transform.position.z);
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+                BossSpawnInspector.transform.position = new Vector3(-26.6f, transform.position.y, transform.position.z);
+                break;
+            case false:
+                transform.position = new Vector3(XTeleportRight, transform.position.y, transform.position.z);
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+                BossSpawnInspector.transform.position = new Vector3(1.9f, transform.position.y, transform.position.z);
+                break;
+        }
     }
 
 }
