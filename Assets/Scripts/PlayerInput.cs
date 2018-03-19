@@ -244,7 +244,7 @@ public class PlayerInput : MonoBehaviour {
 
 	public void ActionButton()
 	{
-        _actionActivated = !_actionActivated;
+        //_actionActivated = !_actionActivated;
         if (_actionActivated)
         {
             Action.animator.SetBool("on", true);
@@ -274,9 +274,11 @@ public class PlayerInput : MonoBehaviour {
                     Player.CheckInputFlip("A");
                 else
                     Player.CheckInputFlip("D");
+
             }
             else
             {
+                _actionActivated = false;
                 ActionButton();
             }
         }
@@ -287,9 +289,64 @@ public class PlayerInput : MonoBehaviour {
 		int touches = Input.touchCount;
 		_wasJoystickTouched = false;
 
-		if (touches > 0)
+        if (touches > 0)
 		{
-			for (int i = 0; i < touches; i++)
+            if (touches == 1)
+            {
+                Touch touch = Input.GetTouch(0);
+
+                // Verifica se o toque foi em algum item da UI (IsPointerOver pega apenas o toque no UI, 
+                // mas precisa do outro código para não perder uma referencia)
+                if (EventSystem.current.IsPointerOverGameObject(touch.fingerId) && IsPointerOverUIObject())
+                {
+                    Debug.Log("UI is touched");
+                    UITouch(touch);
+                }
+                else
+                {
+                    Debug.Log("UI is not touched");
+                    ObjectsTouch(touch);
+                }
+
+                if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+                {
+                    // _wasJoystickTouched = false;
+                   // if (_actionActivated)
+                       // ActionButton();
+                }
+            }
+
+            if (touches == 2)
+            {
+                Touch touch = Input.GetTouch(1);
+
+                // Verifica se o toque foi em algum item da UI (IsPointerOver pega apenas o toque no UI, 
+                // mas precisa do outro código para não perder uma referencia)
+                if (EventSystem.current.IsPointerOverGameObject(touch.fingerId) && IsPointerOverUIObject())
+                {
+                    Debug.Log("UI is touched");
+                    UITouch(touch);
+                }
+                else
+                {
+                    Debug.Log("UI is not touched");
+                    ObjectsTouch(touch);
+                }
+
+                if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+                {
+                    // _wasJoystickTouched = false;
+                   // if (_actionActivated)
+                     //   ActionButton();
+                }
+                //if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+                // _wasJoystickTouched = false;
+
+            }
+
+            /*print("Number of Touches" + touches);
+
+            for (int i = 0; i < touches; i++) 
 			{
 				Touch touch = Input.GetTouch(i);
 
@@ -302,7 +359,7 @@ public class PlayerInput : MonoBehaviour {
 					Debug.Log ("UI is not touched");
 					ObjectsTouch (touch);
 				}
-			}
+			}*/
 		}
 
 		//Se o joystick não foi pressionado, reseta sua posição
@@ -338,10 +395,15 @@ public class PlayerInput : MonoBehaviour {
 					{
 						//if (touch.phase == TouchPhase.Stationary) {
 						print("Action");
-						ActionButton();	
-						//}
-					}
-				}
+                        _actionActivated = true;
+                        ActionButton();	
+                        //}
+                    } else
+                    {
+                        _actionActivated = false;
+                        ActionButton();
+                    }
+                }
 			}
 
 			if (HUDbnt.name == "Restart")
@@ -363,6 +425,8 @@ public class PlayerInput : MonoBehaviour {
 			if (HUDbnt.tag == "Joystick") {
 				Debug.Log ("Joystick pressed");
 				_wasJoystickTouched = true;
+                //if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+                   // _wasJoystickTouched = false;
 				return;
 			}
 		}
