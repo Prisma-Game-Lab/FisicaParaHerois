@@ -58,6 +58,8 @@ public class PhysicsObject : MonoBehaviour {
     private int faceDir;
     [HideInInspector] public Animator boxAnim;
 
+    private Transform _originalParent;
+
     void OnValidate()
     {
         if (gameObject.CompareTag("Box"))
@@ -144,6 +146,8 @@ public class PhysicsObject : MonoBehaviour {
 			_seesawLastCheckpointPosition = _seesaw.base_gangorra.transform.position;
 			_seesawLastCheckpointRotation = _seesaw.base_gangorra.transform.rotation;
 		}
+
+        _originalParent = transform.parent;
     }
 
     void Awake()
@@ -183,6 +187,7 @@ public class PhysicsObject : MonoBehaviour {
                     //PlayerInfo.PlayerInstance.ObjectColliding = null;
                     //physicsData.mass = _realMass;
                 }
+                transform.parent = _originalParent;
             }
         }
 
@@ -468,6 +473,8 @@ public class PhysicsObject : MonoBehaviour {
         _timeLeftToDeactivatePushPullAction = 0.05f;
         PlayerInfo.PlayerInstance.PushPullJoint.enabled = true;
         PlayerInfo.PlayerInstance.PushPullJoint.connectedBody = physicsData;
+
+        transform.parent = PlayerInfo.PlayerInstance.transform;
     }
 
     public void OnPhysicsVisionActivated()
