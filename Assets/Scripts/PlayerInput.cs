@@ -254,7 +254,6 @@ public class PlayerInput : MonoBehaviour {
             Action.animator.SetBool("on", false);
         }
         
-
     }
 
 	public void ActionUpdate() {
@@ -395,12 +394,12 @@ public class PlayerInput : MonoBehaviour {
 					{
 						//if (touch.phase == TouchPhase.Stationary) {
 						print("Action");
-                        _actionActivated = true;
+                        //_actionActivated = true;
                         ActionButton();	
                         //}
                     } else
                     {
-                        _actionActivated = false;
+                        //_actionActivated = false;
                         ActionButton();
                     }
                 }

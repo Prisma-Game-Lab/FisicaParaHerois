@@ -168,7 +168,7 @@ public class PhysicsObject : MonoBehaviour {
             {
                 _timeLeftToDeactivatePushPullAction -= Time.deltaTime;
             }
-
+            
             else
             {
                 _pushPullAction = false;
@@ -183,7 +183,6 @@ public class PhysicsObject : MonoBehaviour {
                     //PlayerInfo.PlayerInstance.ObjectColliding = null;
                     //physicsData.mass = _realMass;
                 }
-                 
             }
         }
 
