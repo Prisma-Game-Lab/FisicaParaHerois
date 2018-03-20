@@ -244,7 +244,7 @@ public class PlayerInput : MonoBehaviour {
 
 	public void ActionButton()
 	{
-        //_actionActivated = !_actionActivated;
+        _actionActivated = !_actionActivated;
         if (_actionActivated)
         {
             Action.animator.SetBool("on", true);
@@ -278,7 +278,7 @@ public class PlayerInput : MonoBehaviour {
             }
             else
             {
-                _actionActivated = false;
+                //_actionActivated = false;
                 ActionButton();
             }
         }
